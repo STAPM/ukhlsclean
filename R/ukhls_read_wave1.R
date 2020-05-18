@@ -50,7 +50,7 @@ ukhls_read_wave1 <- function(
   id_vars  <- colnames(data[ , c(1,6,7,16,17)])
   x_vars <- colnames(data[ , c(12,13,14,23,25,1295,1302,1303,1339)])
   weight_vars <- colnames(data[,c(1398)])
-  health_vars <- colnames(data[,c(147:168,183:199,201:234,1379,1380)])
+  health_vars <- colnames(data[,c(159:168,183:199,201:234,1379,1380)])
   work_vars <- colnames(data[,c(260,261,264:267,269,272,320,332,333,344:356,358:369,370:381)])
   finance_vars <- colnames(data[,c(530,531)])
   benefit_vars <- colnames(data[,c(1114:1125)])
@@ -65,6 +65,8 @@ ukhls_read_wave1 <- function(
 
                        c("pidp","a_psu","a_strata","a_istrtdatm","a_istrtdaty","a_sex","a_dvage","a_birthy","a_jbstat",
                          "a_mlstat","a_hiqual_dv","a_ethn_dv","a_country","a_gor_dv",
+                         ## Work Variables
+                         "a_jboff","a_jboffy","a_jbsemp","a_jbbgd","a_jbbgm","a_jbbgy","a_jbsize","a_jbhours"
                          ## Health Variables
                          "a_sf12pcs_dv","a_sf12mcs_dv",
                          "a_hcond1","a_hcond2","a_hcond3","a_hcond4","a_hcond5","a_hcond6","a_hcond7","a_hcond8","a_hcond9",
@@ -78,6 +80,8 @@ ukhls_read_wave1 <- function(
 
                        c("pidp","psu","strata","month","year","sex","age","birthyear","econstat",
                          "marstat","hiqual","ethnicity","country","region",
+                         ## Work Variables
+                         "offwork","offworkwhy","semp","start_d","start_m","start_y","employees","hours"
                          ## Health Variables
                          "sf12pcs","sf12mcs",
                          "hcond1","hcond2","hcond3","hcond4","hcond5","hcond6","hcond7","hcond8","hcond9",
