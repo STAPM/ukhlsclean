@@ -48,9 +48,9 @@ ukhls_read_wave5 <- function(
   data.table::setnames(data, names(data), tolower(names(data)))
 
   id_vars  <- colnames(data[ , c(1,2,3,4,8,9,11)])
-  demographic_vars <- colnames(data[ , c(14,15,16,1988,1989,188)])
-  econ_stat_vars <- colnames(data[,c(124)])
-  weight_vars <- colnames(data[,c(2092)])
+  demographic_vars <- colnames(data[ , c(14,15,16,2497,2498,197)])
+  econ_stat_vars <- colnames(data[,c(112)])
+  weight_vars <- colnames(data[,c(2602)])
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,weight_vars)
@@ -60,13 +60,13 @@ ukhls_read_wave5 <- function(
 
   data.table::setnames(data,
 
-                       c("pidp","pid","d_hidp","d_pno","d_psu","d_strata","d_month",
+                       c("pidp","pid","e_hidp","e_pno","e_psu","e_strata","e_month",
                          ## demographic
-                         "d_sex","d_dvage","d_birthy","d_gor_dv","d_urban_dv","d_racel",
+                         "e_sex","e_dvage","e_birthy","e_gor_dv","e_urban_dv","e_racel",
                          ## economic stauts
-                         "d_jbstat",
+                         "e_jbstat",
                          ## weight
-                         "d_indpxub_lw"),
+                         "e_indpxub_lw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata","sample_month",
                          ## demographic
