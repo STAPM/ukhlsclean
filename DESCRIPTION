@@ -1,9 +1,9 @@
 Package: ukhlsclean
 Type: Package
-Title: Data Wrangling for UKHLS/Understanding Society and BHPS data.
+Title: Data Wrangling for UKHLS/BHPS data.
 Version: 0.1.0
 Author: Damon Morris
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
 Description: The package takes raw data for the UK Household Longitudinal Study
     (UKHLS) also called Understanding Society, reads in the data and performs basic 
     cleaning to construct a longitudinal clean dataset with demographic, health, and 
