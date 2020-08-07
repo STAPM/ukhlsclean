@@ -50,6 +50,7 @@ ukhls_read_wave5 <- function(
   id_vars  <- colnames(data[ , c(1,2,3,4,8,9,11)])
   demographic_vars <- colnames(data[ , c(14,15,16,2497,2498,197)])
   econ_stat_vars <- colnames(data[,c(112)])
+  smoke_vars <- colnames(data[,c(891,889,890,892,893,894,895)])
   weight_vars <- colnames(data[,c(2602)])
 
 

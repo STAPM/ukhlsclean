@@ -50,6 +50,7 @@ ukhls_read_wave6 <- function(
   id_vars  <- colnames(data[ , c(1,2,3,4,8,9,11)])
   demographic_vars <- colnames(data[ , c(15,16,17,1931,1932,123)])
   econ_stat_vars <- colnames(data[,c(57)])
+  smoke_vars <- colnames(data[,c(515,516)])
   weight_vars <- colnames(data[,c(2047)])
 
 
@@ -65,6 +66,8 @@ ukhls_read_wave6 <- function(
                          "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_racel",
                          ## economic stauts
                          "f_jbstat",
+                         ## smoking variables
+                         "f_smoker", "f_ncigs",
                          ## weight
                          "f_indpxub_lw"),
 
@@ -73,6 +76,8 @@ ukhls_read_wave6 <- function(
                          "sex","age","birth_year","region","urban","ethnicity_raw",
                          ## economic status
                          "econ_stat",
+                         ## smoking variables
+                         "smoker", "ncigs",
                          ## weight
                          "weight"))
 
