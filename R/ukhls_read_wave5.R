@@ -66,6 +66,8 @@ ukhls_read_wave5 <- function(
                          "e_sex","e_dvage","e_birthy","e_gor_dv","e_urban_dv","e_racel",
                          ## economic stauts
                          "e_jbstat",
+                         ## smoking variables
+                         "e_ncigs","e_smever","e_smnow","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
                          ## weight
                          "e_indpxub_lw"),
 
@@ -74,6 +76,8 @@ ukhls_read_wave5 <- function(
                          "sex","age","birth_year","region","urban","ethnicity_raw",
                          ## economic status
                          "econ_stat",
+                         ## smoking variables
+                         "ncigs","smever","smnow","smcigs","smncigs","aglquit","smagbg",
                          ## weight
                          "weight"))
 
