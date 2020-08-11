@@ -7,11 +7,6 @@
 clean_smoke(data = NULL)
 }
 \description{
-Reads and does basic cleaning on the UKHLS first wave.
-}
-\details{
-A sample of the population living in private households. All persons living in the house, including those
-under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
-two children were selected at random. Information was obtained directly from persons aged 13 and
-over. Information about children aged 0-12 was obtained from a parent, with the child present.
+Clean smoking variables and backwards impute smoking behaviour to waves prior to the smoking
+questions being asked in the UKHLS.
 }

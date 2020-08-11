@@ -6,13 +6,13 @@
 \usage{
 ukhls_read_wave1(
   root = c("C:/"),
-  file = "Users/User/Documents/Datasets/UKHLS/tab/ukhls_w1/a_indresp.tab"
+  path = "Users/User/Documents/Datasets/UKHLS/tab/"
 )
 }
 \arguments{
 \item{root}{Character - the root directory.}
 
-\item{file}{Character - the file path and name.}
+\item{path}{Character - the file path and name.}
 }
 \value{
 Returns a data table. Note that:
