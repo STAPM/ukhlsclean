@@ -21,7 +21,7 @@
 #' }
 #'
 #' @param root Character - the root directory.
-#' @param file Character - the file path and name.
+#' @param path Character - the file path and name.
 #' @importFrom data.table :=
 #' @return Returns a data table. Note that:
 #' \itemize{
@@ -35,20 +35,20 @@
 #' @export
 ukhls_read_wave2 <- function(
   root = c("C:/"),
-  file = "Users/User/Documents/Datasets/UKHLS/tab/ukhls_w2/b_indresp.tab"
+  path = "Users/User/Documents/Datasets/UKHLS/tab/"
 ) {
 
 
   print("Reading UKHLS Wave 2")
   data <- data.table::fread(
-    paste0(root[1], file),
+    paste0(root[1], path, "ukhls_w2/b_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,4,7,8,10)])
-  demographic_vars <- colnames(data[ , c(13,14,15,1542,1543,169)])
+  id_vars  <- colnames(data[ , c(1,2,3,4,7,8)])
+  demographic_vars <- colnames(data[ , c(13,14,15,1542,1543)])
   econ_stat_vars <- colnames(data[,c(90)])
   weight_vars <- colnames(data[,c(1638)])
 
@@ -60,17 +60,17 @@ ukhls_read_wave2 <- function(
 
   data.table::setnames(data,
 
-                       c("pidp","pid","b_hidp","b_pno","b_psu","b_strata","b_month",
+                       c("pidp","pid","b_hidp","b_pno","b_psu","b_strata",
                          ## demographic
-                         "b_sex","b_dvage","b_birthy","b_gor_dv","b_urban_dv","b_racel",
+                         "b_sex","b_dvage","b_birthy","b_gor_dv","b_urban_dv",
                          ## economic stauts
                          "b_jbstat",
                          ## weight
                          "b_indinus_xw"),
 
-                       c("pidp","pid","hidp","person_number","psu","strata","sample_month",
+                       c("pidp","pid","hidp","person_number","psu","strata",
                          ## demographic
-                         "sex","age","birth_year","region","urban","ethnicity_raw",
+                         "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
                          ## weight
@@ -78,7 +78,32 @@ ukhls_read_wave2 <- function(
 
   data$wave <- 2
 
-  data$bhps <- ifelse(is.na(data$pid),TRUE,FALSE)
+  data$bhps <- ifelse(!is.na(data$pid),TRUE,FALSE)
 
-  return(data[])
+  ######## Add in cross-wave data
+
+  data.xwave <- data.table::fread(
+    paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
+  data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
+
+  xwave_vars  <- colnames(data.xwave[ , c(1,34)])
+
+  data.xwave <- data.xwave[ , xwave_vars, with = F]
+  data.table::setnames(data.xwave,
+                       # old names
+                       c("pidp","racel_dv"),
+                       # new names
+                       c("pidp","ethnicity_raw"))
+
+  ####### Combine - keep all observations in the main data and drop excess xwave observations
+
+  data_merged <- merge(x = data,
+                       y = data.xwave,
+                       by="pidp",
+                       all.x=TRUE,
+                       all.y=FALSE)
+
+  return(data_merged[])
 }
