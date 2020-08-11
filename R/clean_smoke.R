@@ -1,12 +1,8 @@
 
 #' Clean Smoking Variables
 #'
-#' Reads and does basic cleaning on the UKHLS first wave.
-#'
-#' A sample of the population living in private households. All persons living in the house, including those
-#' under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
-#' two children were selected at random. Information was obtained directly from persons aged 13 and
-#' over. Information about children aged 0-12 was obtained from a parent, with the child present.
+#' Clean smoking variables and backwards impute smoking behaviour to waves prior to the smoking
+#' questions being asked in the UKHLS.
 #'
 #' @export
 clean_smoke <- function(data = NULL) {
@@ -21,7 +17,7 @@ data[is.nan(QuitAge) , QuitAge:=Inf, by=pidp]
 data[, MeanCigs:=mean(smncigs,na.rm=TRUE), by=pidp]  # umber of cigs smoked by former smokers
 data[, MeanCurrCigs:=mean(ncigs,na.rm=TRUE), by=pidp] # number of cigs smoked by current smokers
 
-data[wave < 5 & age >= StartAge & age < QuitAge, current_smoker := TRUE] # backfill current smoker status if in prior waves was within the smoking age range
+data[wave < 5 & age >= StartAge & age <= QuitAge, current_smoker := TRUE] # backfill current smoker status if in prior waves was within the smoking age range
 data[wave < 5 & is.na(current_smoker), current_smoker := FALSE]
 
 # for those who smoked in waves 1-4, fill in ncigs as the ncigs "used to smoke" stated in wave 5
