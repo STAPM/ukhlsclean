@@ -4,10 +4,8 @@
 \alias{ukhls_read_wave8}
 \title{Read Understanding Society Wave 8}
 \usage{
-ukhls_read_wave8(
-  root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/"
-)
+ukhls_read_wave8(root = c("C:/"),
+  path = "Users/User/Documents/Datasets/UKHLS/tab/")
 }
 \arguments{
 \item{root}{Character - the root directory.}
