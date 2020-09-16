@@ -7,5 +7,6 @@
 clean_demographic(data = NULL)
 }
 \description{
-Reads and does basic cleaning on the UKHLS demographic variables - gender, ethnicity, region.
+Reads and does basic cleaning on the UKHLS demographic variables -
+age, gender, ethnicity, region and urban vs rural.
 }
