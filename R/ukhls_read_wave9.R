@@ -88,14 +88,14 @@ ukhls_read_wave9 <- function(
   )
   data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
 
-  xwave_vars  <- colnames(data.xwave[ , c(1,34)])
+  xwave_vars  <- colnames(data.xwave[ , c(1,34,17,18)])
 
   data.xwave <- data.xwave[ , xwave_vars, with = F]
   data.table::setnames(data.xwave,
                        # old names
-                       c("pidp","racel_dv"),
+                       c("pidp","racel_dv","dcsedfl_dv","dcsedw_dv"),
                        # new names
-                       c("pidp","ethnicity_raw"))
+                       c("pidp","ethnicity_raw","deceased","deceased_when"))
 
   ####### Combine - keep all observations in the main data and drop excess xwave observations
 
