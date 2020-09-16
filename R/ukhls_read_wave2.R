@@ -1,13 +1,7 @@
 
 #' Read Understanding Society Wave 2
 #'
-#' Reads and does basic cleaning on the UKHLS first wave.
-#'
-#' A sample of the population living in private households. All persons living in the house, including those
-#' under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
-#' two children were selected at random. Information was obtained directly from persons aged 13 and
-#' over. Information about children aged 0-12 was obtained from a parent, with the child present.
-#'
+#' Reads and does basic cleaning on the UKHLS second wave.
 #' MISSING VALUES
 #'
 #' \itemize{
