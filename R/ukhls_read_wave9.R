@@ -75,7 +75,7 @@ ukhls_read_wave9 <- function(
                          ## weight
                          "weight"))
 
-  data$wave <- 9
+  data$wave <- "UKHLS Wave 9"
 
   data$bhps <- ifelse(!is.na(data$pid),TRUE,FALSE)
 

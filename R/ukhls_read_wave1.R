@@ -76,7 +76,7 @@ print("Reading UKHLS Wave 1")
                          ## weight
                          "weight"))
 
-  data$wave <- 1
+  data$wave <- "UKHLS Wave 1"
 
   data$bhps <- FALSE
 
