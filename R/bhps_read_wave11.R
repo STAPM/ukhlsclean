@@ -68,8 +68,9 @@ bhps_read_wave11 <- function(
                          "weight","weight_l"))
 
   data$wave <- "BHPS Wave 11"
+  data$bhps_sample <- TRUE
+  data$dataset <- "BHPS"
 
-  data$bhps <- TRUE
   ######## Add in cross-wave data
 
   data.xwave <- data.table::fread(

@@ -76,8 +76,8 @@ ukhls_read_wave7 <- function(
                          "weight"))
 
   data$wave <- "UKHLS Wave 7"
-
-  data$bhps <- ifelse(!is.na(data$pid),TRUE,FALSE)
+  data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
+  data$dataset <- "UKHLS"
 
   ######## Add in cross-wave data
 

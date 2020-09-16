@@ -71,8 +71,8 @@ bhps_read_wave1 <- function(
                          "weight"))
 
   data$wave <- "BHPS Wave 1"
-  data$bhps <- TRUE
-
+  data$bhps_sample <- TRUE
+  data$dataset <- "BHPS"
 
   ######## Add in cross-wave data
 

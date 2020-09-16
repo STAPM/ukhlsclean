@@ -77,9 +77,8 @@ print("Reading UKHLS Wave 1")
                          "weight"))
 
   data$wave <- "UKHLS Wave 1"
-
-  data$bhps <- FALSE
-
+  data$bhps_sample <- FALSE
+  data$dataset <- "UKHLS"
 
   ######## Add in cross-wave data
 
