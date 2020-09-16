@@ -1,4 +1,6 @@
 library(ukhlsclean)
+library(data.table)
+library(dplyr)
 
 root <- "/Volumes/"
 path <- "ScHARR Work/Data/UKHLS/raw data/"
@@ -14,4 +16,10 @@ data <- combine_waves(list(bhps_read_wave1(root,path),bhps_read_wave2(root,path)
                            ukhls_read_wave5(root,path),ukhls_read_wave6(root,path),
                            ukhls_read_wave7(root,path),ukhls_read_wave8(root,path),
                            ukhls_read_wave9(root,path)
-))
+                           ),ukhls=TRUE)
+
+clean_data <- data %>%
+  ukhlsclean::clean_demographic()
+
+
+
