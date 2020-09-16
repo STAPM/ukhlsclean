@@ -75,6 +75,7 @@ ukhls_read_wave8 <- function(
                          "weight"))
 
   data$wave <- "UKHLS Wave 8"
+  data$wave_no <- 26
   data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
   data$dataset <- "UKHLS"
 

@@ -67,6 +67,7 @@ bhps_read_wave7 <- function(
                          "weight","weight_l"))
 
   data$wave <- "BHPS Wave 7"
+  data$wave_no <- 7
   data$bhps_sample <- TRUE
   data$dataset <- "BHPS"
 
