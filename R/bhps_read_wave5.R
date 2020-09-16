@@ -1,6 +1,6 @@
-#' Read British Household Panel Survey Wave 4
+#' Read British Household Panel Survey Wave 5
 #'
-#' Reads and does basic cleaning on the BHPS 4th wave.
+#' Reads and does basic cleaning on the BHPS 5th wave.
 #'
 #' MISSING VALUES
 #'
@@ -27,23 +27,23 @@
 #' \item The probabilistic sampling unit have the year appended to them.
 #' }
 #' @export
-bhps_read_wave4 <- function(
+bhps_read_wave5 <- function(
   root = c("C:/"),
   path = "Users/User/Documents/Datasets/UKHLS/tab/"
 ) {
 
-  print("Reading BHPS Wave 4")
+  print("Reading BHPS Wave 5")
   data <- data.table::fread(
-    paste0(root[1], path, "bhps_w4/bd_indresp.tab"),
+    paste0(root[1], path, "bhps_w5/be_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
   id_vars          <- colnames(data[ , c(1,4,5)])
-  demographic_vars <- colnames(data[ , c(30,750,29,905,78)])
+  demographic_vars <- colnames(data[ , c(30,824,29,979,78)])
   econ_stat_vars   <- colnames(data[,c(31)])
-  weight_vars      <- colnames(data[,c(832,830)])
+  weight_vars      <- colnames(data[,c(906,904)])
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,weight_vars)
   names <- tolower(names)
@@ -51,13 +51,13 @@ bhps_read_wave4 <- function(
   data <- data[ , names, with = F]
 
   data.table::setnames(data,
-                       c("pid","bd_hidp","bd_pno",
+                       c("pid","be_hidp","be_pno",
                          ## demographic
-                         "bd_sex","bd_age_dv","bd_doby","bd_gor_dv","bd_race",
+                         "be_sex","be_age_dv","be_doby","be_gor_dv","be_race",
                          ## economic stauts
-                         "bd_jbstat",
+                         "be_jbstat",
                          ## weight
-                         "bd_xrwght","bd_lrwght"),
+                         "be_xrwght","be_lrwght"),
                        c("pid","hidp","person_number",
                          ## demographic
                          "sex","age","birth_year","region","ethnicity_raw",
@@ -66,7 +66,7 @@ bhps_read_wave4 <- function(
                          ## weight
                          "weight","weight_l"))
 
-  data$wave <- "BHPS Wave 4"
+  data$wave <- "BHPS Wave 5"
 
   data$bhps <- TRUE
   ######## Add in cross-wave data
