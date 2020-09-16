@@ -4,10 +4,8 @@
 \alias{ukhls_read_wave8}
 \title{Read Understanding Society Wave 8}
 \usage{
-ukhls_read_wave8(
-  root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/"
-)
+ukhls_read_wave8(root = c("C:/"),
+  path = "Users/User/Documents/Datasets/UKHLS/tab/")
 }
 \arguments{
 \item{root}{Character - the root directory.}
@@ -26,14 +24,9 @@ except -8 ("don't know") as this is data.
 }
 }
 \description{
-Reads and does basic cleaning on the UKHLS first wave.
+Reads and does basic cleaning on the UKHLS eighth wave.
 }
 \details{
-A sample of the population living in private households. All persons living in the house, including those
-under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
-two children were selected at random. Information was obtained directly from persons aged 13 and
-over. Information about children aged 0-12 was obtained from a parent, with the child present.
-
 MISSING VALUES
 
 \itemize{

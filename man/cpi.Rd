@@ -4,14 +4,12 @@
 \name{cpi}
 \alias{cpi}
 \title{Monthly Consumer Price Index}
-\format{
-A data frame with 351 observations and 3 variables.
+\format{A data frame with 351 observations and 3 variables.
 \describe{
     \item{year}{}
     \item{month}{}
     \item{cpi_value}{}
-}
-}
+}}
 \usage{
 cpi
 }

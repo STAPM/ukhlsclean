@@ -1,4 +1,3 @@
-
 #' Read Understanding Society Wave 2
 #'
 #' Reads and does basic cleaning on the UKHLS second wave.
