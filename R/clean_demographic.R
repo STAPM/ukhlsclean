@@ -40,7 +40,7 @@ clean_demographic <- function(data = NULL) {
   data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:9) , ethnicity_2cat := "non_white"]
   # BHPS wave 13-18
   data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(1:5) , ethnicity_2cat := "white"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(2:18), ethnicity_2cat := "non_white"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(6:18), ethnicity_2cat := "non_white"]
   # UKHLS cross wave
   data[dataset == "UKHLS" & ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
