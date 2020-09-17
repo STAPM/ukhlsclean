@@ -16,17 +16,18 @@ clean_demographic <- function(data = NULL) {
 
   ### ethnicity
 
+
   # BHPS wave 1-12
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw %in% c(1)   , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw %in% c(2:4) , ethnicity_5cat := "black"]
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw %in% c(5:8) , ethnicity_5cat := "asian"]
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw == 9        , ethnicity_5cat := "other"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_5cat := "white"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:4) , ethnicity_5cat := "black"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(5:8) , ethnicity_5cat := "asian"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw == 9        , ethnicity_5cat := "other"]
   # BHPS wave 13-18
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(1:5)      , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(14:16)    , ethnicity_5cat := "black"]
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(10:13,17) , ethnicity_5cat := "asian"]
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(6:9)      , ethnicity_5cat := "mixed"]
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw == 18            , ethnicity_5cat := "other"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(1:5)      , ethnicity_5cat := "white"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(14:16)    , ethnicity_5cat := "black"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(10:13,17) , ethnicity_5cat := "asian"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(6:9)      , ethnicity_5cat := "mixed"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw == 18            , ethnicity_5cat := "other"]
   # UKHLS cross wave
   data[dataset == "UKHLS" & ethnicity_raw %in% c(1:4)     , ethnicity_5cat := "white"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(14:16)   , ethnicity_5cat := "black"]
@@ -35,11 +36,11 @@ clean_demographic <- function(data = NULL) {
   data[dataset == "UKHLS" & ethnicity_raw == 97           , ethnicity_5cat := "other"]
 
   # BHPS wave 1-12
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw %in% c(1)   , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave < 13 & ethnicity_raw %in% c(2:9) , ethnicity_5cat := "non_white"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_2cat := "white"]
+  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:9) , ethnicity_2cat := "non_white"]
   # BHPS wave 13-18
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(1:5) , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave >= 13 & ethnicity_raw %in% c(2:18), ethnicity_5cat := "non_white"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(1:5) , ethnicity_2cat := "white"]
+  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(2:18), ethnicity_2cat := "non_white"]
   # UKHLS cross wave
   data[dataset == "UKHLS" & ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
@@ -49,6 +50,11 @@ clean_demographic <- function(data = NULL) {
 
   data <- subset(data,select = -c(ethnicity_raw))
 
+  ## fill in missing values
+  data$ethnicity_5cat <- with(data, ave(ethnicity_5cat, pid, FUN = function(x)
+                                        replace(x, is.na(x), x[!is.na(x)][1L])))
+  data$ethnicity_2cat <- with(data, ave(ethnicity_2cat, pid, FUN = function(x)
+                                         replace(x, is.na(x), x[!is.na(x)][1L])))
 ### region
 
   data[region == 1  , gor := "north_east"]
