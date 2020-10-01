@@ -40,14 +40,16 @@ ukhls_read_wave8 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,4,8,9)])
-  demographic_vars <- colnames(data[ , c(15,16,17,2032,2033)])
-  econ_stat_vars <- colnames(data[,c(83)])
-  smoke_vars <- colnames(data[,c(345,346,347)])
-  weight_vars <- colnames(data[,c(2135)])
+  id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
+  demographic_vars <- colnames(data[,c(15,16,17,2032,2033)])
+  econ_stat_vars   <- colnames(data[,c(83)])
+  education_vars   <- colnames(data[,c(2070)])
+  health_vars      <- colnames(data[,c(259,348)])
+  smoke_vars       <- colnames(data[,c(345,346,347)])
+  weight_vars      <- colnames(data[,c(2135)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,smoke_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,smoke_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -59,6 +61,10 @@ ukhls_read_wave8 <- function(
                          "h_sex","h_dvage","h_birthy","h_gor_dv","h_urban_dv",
                          ## economic status
                          "h_jbstat",
+                         ## education variables
+                         "h_hiqual_dv",
+                         ## health variables
+                         "h_health","h_aidhh",
                          ## smoking variables
                          "h_smoker", "h_ncigs", "h_ecigs",
                          ## weight
@@ -69,6 +75,10 @@ ukhls_read_wave8 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring",
                          ## smoking variables
                          "smoker", "ncigs", "ecigs",
                          ## weight

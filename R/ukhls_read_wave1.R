@@ -47,13 +47,15 @@ print("Reading UKHLS Wave 1")
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,6,7)])
-  demographic_vars <- colnames(data[ , c(12,13,14,1303,1304)])
-  econ_stat_vars <- colnames(data[,c(23)])
-  weight_vars <- colnames(data[,c(1398)])
+  id_vars          <- colnames(data[, c(1,2,3,6,7)])
+  demographic_vars <- colnames(data[, c(12,13,14,1303,1304)])
+  education_vars   <- colnames(data[, c(1339)])
+  health_vars      <- colnames(data[, c(169,235)])
+  econ_stat_vars   <- colnames(data[, c(23)])
+  weight_vars      <- colnames(data[, c(1398)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -63,8 +65,12 @@ print("Reading UKHLS Wave 1")
                        c("pidp","a_hidp","a_pno","a_psu","a_strata",
                          ## demographic
                          "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv",
-                         ## economic stauts
+                         ## economic status
                          "a_jbstat",
+                         ## education variables
+                         "a_hiqual_dv",
+                         ## health variables
+                         "a_health","a_aidhh",
                          ## weight
                          "a_indinus_xw"),
 
@@ -73,6 +79,10 @@ print("Reading UKHLS Wave 1")
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring",
                          ## weight
                          "weight"))
 

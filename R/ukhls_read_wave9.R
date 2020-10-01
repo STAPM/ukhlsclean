@@ -41,14 +41,16 @@ ukhls_read_wave9 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,4,8,9)])
-  demographic_vars <- colnames(data[ , c(15,16,17,2982,2983)])
-  econ_stat_vars <- colnames(data[,c(84)])
-  smoke_vars <- colnames(data[,c(1043,1044,1045,1055)])
-  weight_vars <- colnames(data[,c(3099)])
+  id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
+  demographic_vars <- colnames(data[,c(15,16,17,2982,2983)])
+  econ_stat_vars   <- colnames(data[,c(84)])
+  education_vars   <- colnames(data[,c(3020)])
+  health_vars      <- colnames(data[,c(924,1226)])
+  smoke_vars       <- colnames(data[,c(1043,1044,1045,1055)])
+  weight_vars      <- colnames(data[,c(3099)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,smoke_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,smoke_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -60,6 +62,10 @@ ukhls_read_wave9 <- function(
                          "i_sex","i_dvage","i_birthy","i_gor_dv","i_urban_dv",
                          ## economic stauts
                          "i_jbstat",
+                         ## education variables
+                         "i_hiqual_dv",
+                         ## health variables
+                         "i_health","i_aidhh",
                          ## smoke variables
                          "i_smoker", "i_ncigs", "i_giveup", "i_ecigs1",
                          ## weight
@@ -70,6 +76,10 @@ ukhls_read_wave9 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring",
                          ## smoke variables
                          "smoker", "ncigs", "giveup", "ecigs1",
                          ## weight

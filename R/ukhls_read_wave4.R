@@ -41,13 +41,15 @@ ukhls_read_wave4 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,4,8,9)])
-  demographic_vars <- colnames(data[ , c(14,15,16,1988,1989)])
-  econ_stat_vars <- colnames(data[,c(124)])
-  weight_vars <- colnames(data[,c(2092)])
+  id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
+  demographic_vars <- colnames(data[,c(14,15,16,1988,1989)])
+  econ_stat_vars   <- colnames(data[,c(124)])
+  education_vars   <- colnames(data[,c(2026)])
+  health_vars      <- colnames(data[,c(253,345)])
+  weight_vars      <- colnames(data[,c(2092)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -59,6 +61,10 @@ ukhls_read_wave4 <- function(
                          "d_sex","d_dvage","d_birthy","d_gor_dv","d_urban_dv",
                          ## economic stauts
                          "d_jbstat",
+                         ## education variables
+                         "d_hiqual_dv",
+                         ## health variables
+                         "d_health","d_aidhh",
                          ## weight
                          "d_indpxub_lw"),
 
@@ -67,6 +73,10 @@ ukhls_read_wave4 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring",
                          ## weight
                          "weight"))
 

@@ -41,14 +41,16 @@ ukhls_read_wave5 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- colnames(data[ , c(1,2,3,4,8,9)])
-  demographic_vars <- colnames(data[ , c(14,15,16,2497,2498)])
-  econ_stat_vars <- colnames(data[,c(112)])
-  smoke_vars <- colnames(data[,c(891,889,890,892,893,894,895)])
-  weight_vars <- colnames(data[,c(2602)])
+  id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
+  demographic_vars <- colnames(data[,c(14,15,16,2497,2498)])
+  econ_stat_vars   <- colnames(data[,c(112)])
+  education_vars   <- colnames(data[,c(2535)])
+  health_vars      <- colnames(data[,c(852,948)])
+  smoke_vars       <- colnames(data[,c(891,889,890,892,893,894,895)])
+  weight_vars      <- colnames(data[,c(2602)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,smoke_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,smoke_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -60,6 +62,10 @@ ukhls_read_wave5 <- function(
                          "e_sex","e_dvage","e_birthy","e_gor_dv","e_urban_dv",
                          ## economic stauts
                          "e_jbstat",
+                         ## education variables
+                         "e_hiqual_dv",
+                         ## health variables
+                         "e_health","e_aidhh",
                          ## smoking variables
                          "e_ncigs","e_smever","e_smnow","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
                          ## weight
@@ -70,6 +76,10 @@ ukhls_read_wave5 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring",
                          ## smoking variables
                          "ncigs","smever","smnow","smcigs","smncigs","aglquit","smagbg",
                          ## weight
