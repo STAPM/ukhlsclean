@@ -6,6 +6,22 @@
 #' @export
 clean_demographic <- function(data = NULL) {
 
+  ### age bands
+
+  data[ , ageband := c("16-19",
+                       "20-24",
+                       "25-29",
+                       "30-34",
+                       "35-39",
+                       "40-44",
+                       "45-49",
+                       "50-54",
+                       "55-59",
+                       "60-64",
+                       "65-69",
+                       "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
+  data$ageband <- as.factor(data$ageband)
+
   ### gender
 
   data[sex == 1, gender := "male"]
@@ -58,17 +74,18 @@ clean_demographic <- function(data = NULL) {
   data[dataset == "UKHLS" & ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
 
+  data$ethnicity_9cat <- as.factor(data$ethnicity_9cat)
   data$ethnicity_5cat <- as.factor(data$ethnicity_5cat)
   data$ethnicity_2cat <- as.factor(data$ethnicity_2cat)
 
   data <- subset(data,select = -c(ethnicity_raw))
 
-  ## fill in missing values
+  ## fill in missing values for BHPS data
   data$ethnicity_5cat <- with(data, ave(ethnicity_5cat, pid, FUN = function(x)
                                         replace(x, is.na(x), x[!is.na(x)][1L])))
   data$ethnicity_2cat <- with(data, ave(ethnicity_2cat, pid, FUN = function(x)
                                          replace(x, is.na(x), x[!is.na(x)][1L])))
-### region
+  ### region
 
   data[region == 1  , gor := "north_east"]
   data[region == 2  , gor := "north_west"]
