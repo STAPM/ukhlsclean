@@ -16,7 +16,19 @@ clean_demographic <- function(data = NULL) {
 
   ### ethnicity
 
+  ##### 9-categories
+  # UKHLS cross wave
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(1)        , ethnicity_9cat := "white_british"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(2:4)      , ethnicity_9cat := "white_non_british"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(5:8)      , ethnicity_9cat := "mixed"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(9)        , ethnicity_9cat := "indian"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(10)       , ethnicity_9cat := "pakistani"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(11)       , ethnicity_9cat := "bangladeshi"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(12:13,17) , ethnicity_9cat := "other_asian"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(14:16)    , ethnicity_9cat := "black"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(17,97)    , ethnicity_9cat := "other"]
 
+  ##### 5-categories
   # BHPS wave 1-12
   data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_5cat := "white"]
   data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:4) , ethnicity_5cat := "black"]
@@ -31,10 +43,11 @@ clean_demographic <- function(data = NULL) {
   # UKHLS cross wave
   data[dataset == "UKHLS" & ethnicity_raw %in% c(1:4)     , ethnicity_5cat := "white"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(14:16)   , ethnicity_5cat := "black"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(9:13,17) , ethnicity_5cat := "asian"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(9:13)    , ethnicity_5cat := "asian"]
   data[dataset == "UKHLS" & ethnicity_raw %in% c(5:8)     , ethnicity_5cat := "mixed"]
-  data[dataset == "UKHLS" & ethnicity_raw == 97           , ethnicity_5cat := "other"]
+  data[dataset == "UKHLS" & ethnicity_raw %in% c(17,97)   , ethnicity_5cat := "other"]
 
+  ##### 2-categories
   # BHPS wave 1-12
   data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_2cat := "white"]
   data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:9) , ethnicity_2cat := "non_white"]
