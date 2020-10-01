@@ -28,3 +28,5 @@ clean_data <- data %>%
 
 
 
+summary(clean_data$ethnicity_2cat)
+summary(clean_data$ethnicity_5cat)
