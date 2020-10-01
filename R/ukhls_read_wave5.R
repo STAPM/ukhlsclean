@@ -46,7 +46,7 @@ ukhls_read_wave5 <- function(
   econ_stat_vars   <- colnames(data[,c(112)])
   education_vars   <- colnames(data[,c(2535)])
   health_vars      <- colnames(data[,c(852,948)])
-  smoke_vars       <- colnames(data[,c(891,889,890,892,893,894,895)])
+  smoke_vars       <- colnames(data[,c(889:895)])
   weight_vars      <- colnames(data[,c(2602)])
 
 
@@ -67,7 +67,7 @@ ukhls_read_wave5 <- function(
                          ## health variables
                          "e_health","e_aidhh",
                          ## smoking variables
-                         "e_ncigs","e_smever","e_smnow","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
+                         "e_smever","e_smnow","e_ncigs","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
                          ## weight
                          "e_indpxub_lw"),
 
@@ -81,7 +81,7 @@ ukhls_read_wave5 <- function(
                          ## health variables
                          "lt_sick","caring",
                          ## smoking variables
-                         "ncigs","smever","smnow","smcigs","smncigs","aglquit","smagbg",
+                         "smever","smnow","ncigs","smcigs","smncigs","aglquit","smagbg",
                          ## weight
                          "weight"))
 
