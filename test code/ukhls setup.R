@@ -17,3 +17,9 @@ ukhls <- combine_waves(list(ukhls_read_wave1(root,path),ukhls_read_wave2(root,pa
                            ukhls_read_wave9(root,path)),ukhls=TRUE)
 
 data <- ukhls
+
+clean_data <- data %>%
+  ukhlsclean::clean_demographic() %>%
+  ukhlsclean::clean_education() %>%
+  ukhlsclean::clean_health() %>%
+  ukhlsclean::clean_smoke()
