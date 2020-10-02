@@ -11,17 +11,19 @@ combine_waves <- function(
   ukhls = TRUE
 ) {
 
+  # combine all the data tables
   data <- data.table::rbindlist(data_list, use.names = T, fill = T)
 
-  if (ukhls == TRUE) {
-  data <- data[order(pid,pidp,wave_no),]
-  setcolorder(data, c("pid", "pidp", "wave_no"))
-  } else {
-  data <- data[order(pid,pidp,wave_no),]
-  setcolorder(data, c("pid", "wave_no"))
-  }
+  # remove the pid and pidp identifiers
+  data <- subset(data,select = -c(pid,pidp))
+
+  # order rows and columns
+  data <- data[order(id,wave_no),]
+  setcolorder(data, c("id","hidp","wave","wave_no","dataset","bhps_sample"))
+
   # create a year-quarter time variable
   ##data$time <- as.yearqtr(paste0(data$year, "-", data$quarter))
+
 
 
   return(data)
