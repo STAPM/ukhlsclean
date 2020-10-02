@@ -89,6 +89,7 @@ ukhls_read_wave9 <- function(
   data$wave_no <- 27
   data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
   data$dataset <- "UKHLS"
+  data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)
 
   ######## Add in cross-wave data
 

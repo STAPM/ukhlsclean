@@ -90,6 +90,7 @@ print("Reading UKHLS Wave 1")
   data$wave_no <- 19
   data$bhps_sample <- FALSE
   data$dataset <- "UKHLS"
+  data$id <- data$pidp
 
   ######## Add in cross-wave data
 
@@ -115,6 +116,7 @@ print("Reading UKHLS Wave 1")
                                    by="pidp",
                                    all.x=TRUE,
                                    all.y=FALSE)
+
 
   return(data_merged[])
 }
