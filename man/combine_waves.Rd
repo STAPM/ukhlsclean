@@ -4,12 +4,10 @@
 \alias{combine_waves}
 \title{Combine waves of UKHLS}
 \usage{
-combine_waves(data_list, ukhls = TRUE)
+combine_waves(data_list)
 }
 \arguments{
 \item{data_list}{List of data tables to combine.}
-
-\item{ukhls}{TRUE if `data_list` contains UKHLS waves}
 }
 \description{
 Combines years of data when provided as a list of data tables.

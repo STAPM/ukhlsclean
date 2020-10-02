@@ -3,9 +3,8 @@
 #' Combines years of data when provided as a list of data tables.
 #'
 #' @param data_list List of data tables to combine.
-#' @param ukhls TRUE if `data_list` contains UKHLS waves
 #'
-#'
+#' @export
 combine_waves <- function(
   data_list
 ) {
@@ -22,8 +21,6 @@ combine_waves <- function(
 
   # create a year-quarter time variable
   ##data$time <- as.yearqtr(paste0(data$year, "-", data$quarter))
-
-
 
   return(data)
 }
