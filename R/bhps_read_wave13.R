@@ -97,5 +97,7 @@ bhps_read_wave13 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
+  data.table::setnames(data,c("pid"),c("id"))
+
   return(data_merged[])
 }
