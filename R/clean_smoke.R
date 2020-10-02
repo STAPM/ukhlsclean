@@ -7,7 +7,7 @@
 clean_smoke <- function(data = NULL) {
 
   # ensure data is sorted
-  data <- data[order(pidp,wave),]
+  data <- data[order(id,wave),]
 
   # non-smoking status
   data[wave %in% c("UKHLS Wave 2","UKHLS Wave 5"), non_smoker := ifelse(smever==2,"yes","no")]
