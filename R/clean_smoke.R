@@ -56,7 +56,7 @@ clean_smoke <- function(data = NULL) {
 
   # age started smoking
   data[smagbg == 0, smagbg := NA]
-  data[smk_age_start := pmin(smagbg,na.rm=TRUE), by = "id"]
+  data[, smk_age_start := pmin(smagbg,na.rm=TRUE), by = "id"]
 
   data[, smk_age_start := nafill(smk_age_start, type = "nocb"), by = "id"]
   data[, smk_age_start := nafill(smk_age_start, type = "locf"), by = "id"]
