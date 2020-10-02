@@ -31,13 +31,36 @@ clean_smoke <- function(data = NULL) {
   data$former_smoker  <- as.factor(data$former_smoker)
   data$current_smoker <- as.factor(data$current_smoker)
 
+  # fill in NA for former smoker in later waves which only asks if a current smoker or not. differentiate between
+  # a non and a former smoker using the wave 2 and wave 5 information on smoking history
+
+  # if individual is a current smoker, can't be a former smoker
+  data[is.na(former_smoker) & current_smoker == "yes", former_smoker := "no"]
+  # if ever a previous current smoker, then "non_smokers" need to be changed to former smokers
+      # calculate multiple lags to pick up smoking behaviour in previous waves
+  data[ , c("lag1","lag2","lag3","lag4","lag5","lag6","lag7","lag8") := shift(current_smoker, n=(1:8), type = "lag"), by = "pidp"]
+
+      # create individual level identifier for ever having smoked.
+  data[ , ever := ifelse(smever==1,1,NA)]
+  data[(lag1=="yes"|lag2=="yes"|lag3=="yes"|lag4=="yes"|
+          lag5=="yes"|lag6=="yes"|lag7=="yes"|lag8=="yes")  , ever := 1]
+  data[, ever := nafill(ever_smoked, type = "nocb"), by = "pidp"]
+
+     # use information on ever having smoked to
+
+  data[is.na(ever) & is.na(former_smoker) & current_smoker == "no", former_smoker := "no"]
+  data[is.na(ever), non_smoker = "yes"]
+  data[ever == 1 & is.na(former_smoker) & current_smoker == "no", former_smoker := "yes"]
+  data[ever == 1 & former_smoker == "yes", non_smoker := "no"]
+
   # age started smoking
   data[smagbg == 0, smagbg := NA]
   data[bhps_sample == FALSE, smk_age_start := min(smagbg,na.rm=TRUE), by = "pidp"]
   data[bhps_sample == TRUE , smk_age_start := min(smagbg,na.rm=TRUE), by = "pid"]
 
   # remove raw variables no longer needed
-  data <- subset(data,select = -c(smever,smnow,smcigs,smncigs,aglquit,smagbg,smoker))
+  data <- subset(data,select = -c(smever,smnow,smcigs,smncigs,aglquit,smagbg,smoker,ever,
+                                  lag1,lag2,lag3,lag4,lag5,lag6,lag7,lag8))
 
 
   return(data)
