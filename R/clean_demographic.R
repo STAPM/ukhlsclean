@@ -81,9 +81,9 @@ clean_demographic <- function(data = NULL) {
   data <- subset(data,select = -c(ethnicity_raw))
 
   ## fill in missing values for BHPS data
-  data$ethnicity_5cat <- with(data, ave(ethnicity_5cat, pid, FUN = function(x)
+  data$ethnicity_5cat <- with(data, ave(ethnicity_5cat, id, FUN = function(x)
                                         replace(x, is.na(x), x[!is.na(x)][1L])))
-  data$ethnicity_2cat <- with(data, ave(ethnicity_2cat, pid, FUN = function(x)
+  data$ethnicity_2cat <- with(data, ave(ethnicity_2cat, id, FUN = function(x)
                                          replace(x, is.na(x), x[!is.na(x)][1L])))
   ### region
 
