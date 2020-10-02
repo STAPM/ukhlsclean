@@ -44,19 +44,23 @@ clean_smoke <- function(data = NULL) {
   data[ , ever := ifelse(smever==1,1,NA)]
   data[(lag1=="yes"|lag2=="yes"|lag3=="yes"|lag4=="yes"|
           lag5=="yes"|lag6=="yes"|lag7=="yes"|lag8=="yes")  , ever := 1]
-  data[, ever := nafill(ever_smoked, type = "nocb"), by = "pidp"]
+  data[, ever := nafill(ever, type = "nocb"), by = "pidp"]
+  data[, ever := nafill(ever, type = "locf"), by = "pidp"]
 
      # use information on ever having smoked to
 
   data[is.na(ever) & is.na(former_smoker) & current_smoker == "no", former_smoker := "no"]
-  data[is.na(ever), non_smoker = "yes"]
+  data[is.na(ever), non_smoker := "yes"]
   data[ever == 1 & is.na(former_smoker) & current_smoker == "no", former_smoker := "yes"]
   data[ever == 1 & former_smoker == "yes", non_smoker := "no"]
 
   # age started smoking
   data[smagbg == 0, smagbg := NA]
-  data[bhps_sample == FALSE, smk_age_start := min(smagbg,na.rm=TRUE), by = "pidp"]
-  data[bhps_sample == TRUE , smk_age_start := min(smagbg,na.rm=TRUE), by = "pid"]
+  data[bhps_sample == FALSE, smk_age_start := pmin(smagbg,na.rm=TRUE), by = "pidp"]
+  data[bhps_sample == TRUE , smk_age_start := pmin(smagbg,na.rm=TRUE), by = "pid"]
+
+  data[, smk_age_start := nafill(smk_age_start, type = "nocb"), by = "pidp"]
+  data[, smk_age_start := nafill(smk_age_start, type = "locf"), by = "pidp"]
 
   # remove raw variables no longer needed
   data <- subset(data,select = -c(smever,smnow,smcigs,smncigs,aglquit,smagbg,smoker,ever,
