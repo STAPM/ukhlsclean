@@ -4,8 +4,10 @@
 \alias{ukhls_read_covid19}
 \title{Read Understanding Society - Covid-19 Data}
 \usage{
-ukhls_read_covid19(root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/")
+ukhls_read_covid19(
+  root = c("C:/"),
+  path = "Users/User/Documents/Datasets/UKHLS/tab/"
+)
 }
 \arguments{
 \item{root}{Character - the root directory.}

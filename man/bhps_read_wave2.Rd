@@ -4,8 +4,10 @@
 \alias{bhps_read_wave2}
 \title{Read British Household Panel Survey Wave 2}
 \usage{
-bhps_read_wave2(root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/")
+bhps_read_wave2(
+  root = c("C:/"),
+  path = "Users/User/Documents/Datasets/UKHLS/tab/"
+)
 }
 \arguments{
 \item{root}{Character - the root directory.}

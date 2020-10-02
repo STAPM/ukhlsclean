@@ -24,7 +24,8 @@ data <- combine_waves(list(bhps_read_wave1(root,path),bhps_read_wave2(root,path)
                            ),ukhls=TRUE)
 
 clean_data <- data %>%
-  ukhlsclean::clean_demographic()
+  ukhlsclean::clean_demographic() %>%
+  ukhlsclean::clean_smoke()
 
 
 
