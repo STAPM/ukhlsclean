@@ -7,8 +7,7 @@
 #'
 #'
 combine_waves <- function(
-  data_list,
-  ukhls = TRUE
+  data_list
 ) {
 
   # combine all the data tables
