@@ -28,4 +28,5 @@ clean_data <- data %>%
   ukhlsclean::clean_demographic() %>%
   ukhlsclean::clean_education() %>%
   ukhlsclean::clean_health() %>%
-  ukhlsclean::clean_smoke()
+  ukhlsclean::clean_smoke() %>%
+  ukhlsclean::clean_econ_status()
