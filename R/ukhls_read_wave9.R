@@ -36,7 +36,7 @@ ukhls_read_wave9 <- function(
   print("Reading UKHLS Wave 9")
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w9/i_indresp.tab"),
-    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
 
   data.table::setnames(data, names(data), tolower(names(data)))
