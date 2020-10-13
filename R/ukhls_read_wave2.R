@@ -43,7 +43,7 @@ ukhls_read_wave2 <- function(
   id_vars          <- colnames(data[,c(1,2,3,4,7,8)])
   demographic_vars <- colnames(data[,c(13,14,15,1542,1543)])
   econ_stat_vars   <- colnames(data[,c(90)])
-  work_vars        <- colnames(data[,c(1456,1457,770,1447)])
+  work_vars        <- colnames(data[,c(1457,1458,770,1447)])
   education_vars   <- colnames(data[,c(1580)])
   health_vars      <- colnames(data[,c(242,272)])
   smoke_vars       <- colnames(data[,c(235:241)])
