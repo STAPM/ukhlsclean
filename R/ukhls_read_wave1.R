@@ -52,10 +52,11 @@ print("Reading UKHLS Wave 1")
   education_vars   <- colnames(data[, c(1339)])
   health_vars      <- colnames(data[, c(169,235)])
   econ_stat_vars   <- colnames(data[, c(23)])
+  work_vars        <- colnames(data[, c(1266,1267,272,1256)])
   weight_vars      <- colnames(data[, c(1398)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -67,6 +68,8 @@ print("Reading UKHLS Wave 1")
                          "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv",
                          ## economic status
                          "a_jbstat",
+                         ## work variables
+                         "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv",
                          ## education variables
                          "a_hiqual_dv",
                          ## health variables
@@ -79,6 +82,8 @@ print("Reading UKHLS Wave 1")
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## work variables
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc",
                          ## education variables
                          "highest_qual",
                          ## health variables

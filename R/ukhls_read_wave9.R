@@ -44,13 +44,14 @@ ukhls_read_wave9 <- function(
   id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
   demographic_vars <- colnames(data[,c(15,16,17,2982,2983)])
   econ_stat_vars   <- colnames(data[,c(84)])
+  work_vars        <- colnames(data[,c(2884,2885,1646,2874)])
   education_vars   <- colnames(data[,c(3020)])
   health_vars      <- colnames(data[,c(924,1226)])
   smoke_vars       <- colnames(data[,c(1043,1044)])
   weight_vars      <- colnames(data[,c(3099)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,smoke_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,smoke_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -62,6 +63,8 @@ ukhls_read_wave9 <- function(
                          "i_sex","i_dvage","i_birthy","i_gor_dv","i_urban_dv",
                          ## economic stauts
                          "i_jbstat",
+                         ## work variables
+                         "i_paygu_dv","i_payg_dv","i_jbhrs","i_fimnlabgrs_dv",
                          ## education variables
                          "i_hiqual_dv",
                          ## health variables
@@ -76,6 +79,8 @@ ukhls_read_wave9 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## work variables
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc",
                          ## education variables
                          "highest_qual",
                          ## health variables

@@ -44,12 +44,13 @@ ukhls_read_wave3 <- function(
   id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
   demographic_vars <- colnames(data[,c(14,15,16,2904,2905)])
   econ_stat_vars   <- colnames(data[,c(102)])
+  work_vars        <- colnames(data[,c(2790,2791,1589,2780)])
   education_vars   <- colnames(data[,c(2942)])
   health_vars      <- colnames(data[,c(1035,1115)])
   weight_vars      <- colnames(data[,c(3042)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,education_vars,health_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -61,6 +62,8 @@ ukhls_read_wave3 <- function(
                          "c_sex","c_dvage","c_birthy","c_gor_dv","c_urban_dv",
                          ## economic stauts
                          "c_jbstat",
+                         ## work variables
+                         "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv",
                          ## education variables
                          "c_hiqual_dv",
                          ## health variables
@@ -73,6 +76,8 @@ ukhls_read_wave3 <- function(
                          "sex","age","birth_year","region","urban",
                          ## economic status
                          "econ_stat",
+                         ## work variables
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc",
                          ## education variables
                          "highest_qual",
                          ## health variables
