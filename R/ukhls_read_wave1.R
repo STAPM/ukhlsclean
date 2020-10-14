@@ -50,7 +50,7 @@ print("Reading UKHLS Wave 1")
   id_vars          <- colnames(data[, c(1,2,3,6,7)])
   demographic_vars <- colnames(data[, c(12,13,14,1303,1304)])
   education_vars   <- colnames(data[, c(1339)])
-  health_vars      <- colnames(data[, c(169,235)])
+  health_vars      <- colnames(data[, c(169,235,147,1061,1064)])
   econ_stat_vars   <- colnames(data[, c(23)])
   work_vars        <- colnames(data[, c(1266,1267,272,1256)])
   weight_vars      <- colnames(data[, c(1398)])
@@ -73,7 +73,7 @@ print("Reading UKHLS Wave 1")
                          ## education variables
                          "a_hiqual_dv",
                          ## health variables
-                         "a_health","a_aidhh",
+                         "a_health","a_aidhh","a_scsf1","a_sclfsat1","a_sclfsato",
                          ## weight
                          "a_indinus_xw"),
 
@@ -87,7 +87,7 @@ print("Reading UKHLS Wave 1")
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring",
+                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
                          ## weight
                          "weight"))
 

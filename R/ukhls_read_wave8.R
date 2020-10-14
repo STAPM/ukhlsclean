@@ -45,7 +45,7 @@ ukhls_read_wave8 <- function(
   econ_stat_vars   <- colnames(data[,c(83)])
   work_vars        <- colnames(data[,c(1943,1944,614,1933)])
   education_vars   <- colnames(data[,c(2070)])
-  health_vars      <- colnames(data[,c(259,348)])
+  health_vars      <- colnames(data[,c(259,348,1080,1104,1107)])
   smoke_vars       <- colnames(data[,c(345,346)])
   weight_vars      <- colnames(data[,c(2135)])
 
@@ -67,7 +67,7 @@ ukhls_read_wave8 <- function(
                          ## education variables
                          "h_hiqual_dv",
                          ## health variables
-                         "h_health","h_aidhh",
+                         "h_health","h_aidhh","h_scsf1","h_sclfsat1","h_sclfsato",
                          ## smoking variables
                          "h_smoker", "h_ncigs",
                          ## weight
@@ -83,7 +83,7 @@ ukhls_read_wave8 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring",
+                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
                          ## smoking variables
                          "smoker", "ncigs",
                          ## weight

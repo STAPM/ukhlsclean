@@ -46,7 +46,7 @@ ukhls_read_wave4 <- function(
   econ_stat_vars   <- colnames(data[,c(124)])
   work_vars        <- colnames(data[,c(1900,1901,792,1890)])
   education_vars   <- colnames(data[,c(2026)])
-  health_vars      <- colnames(data[,c(253,345)])
+  health_vars      <- colnames(data[,c(253,345,1575,1599,1602)])
   weight_vars      <- colnames(data[,c(2092)])
 
 
@@ -67,7 +67,7 @@ ukhls_read_wave4 <- function(
                          ## education variables
                          "d_hiqual_dv",
                          ## health variables
-                         "d_health","d_aidhh",
+                         "d_health","d_aidhh","d_scsf1","d_sclfsat1","d_sclfsato",
                          ## weight
                          "d_indpxub_lw"),
 
@@ -81,7 +81,7 @@ ukhls_read_wave4 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring",
+                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
                          ## weight
                          "weight"))
 
