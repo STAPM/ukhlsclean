@@ -30,4 +30,5 @@ clean_data <- data %>%
   ukhlsclean::clean_health() %>%
   ukhlsclean::clean_smoke() %>%
   ukhlsclean::clean_econ_status() %>%
-  ukhlsclean::clean_hhold()
+  ukhlsclean::clean_hhold() %>%
+  ukhlsclean::clean_hours_earn()
