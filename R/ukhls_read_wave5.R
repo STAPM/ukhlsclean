@@ -75,7 +75,7 @@ ukhls_read_wave5 <- function(
                          ## smoking variables
                          "e_smever","e_smnow","e_ncigs","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
                          ## weight
-                         "e_indpxub_lw"),
+                         "e_indinus_lw","e_indinub_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata",
                          ## demographic
@@ -93,7 +93,7 @@ ukhls_read_wave5 <- function(
                          ## smoking variables
                          "smever","smnow","ncigs","smcigs","smncigs","aglquit","smagbg",
                          ## weight
-                         "weight"))
+                         "weight_lw","weight_xw"))
 
   data$wave <- "UKHLS Wave 5"
   data$wave_no <- 5

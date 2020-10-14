@@ -89,7 +89,7 @@ print("Reading UKHLS Wave 1")
                          ## health variables
                          "lt_sick","caring","gen_health","health_satisf","life_satisf",
                          ## weight
-                         "weight"))
+                         "weight_xw"))
 
   data$wave <- "UKHLS Wave 1"
   data$wave_no <- 1

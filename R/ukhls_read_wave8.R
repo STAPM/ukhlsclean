@@ -74,7 +74,7 @@ ukhls_read_wave8 <- function(
                          ## smoking variables
                          "h_smoker", "h_ncigs",
                          ## weight
-                         "h_indpxub_lw"),
+                         "h_indinus_lw","h_indinub_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata",
                          ## demographic
@@ -92,7 +92,7 @@ ukhls_read_wave8 <- function(
                          ## smoking variables
                          "smoker", "ncigs",
                          ## weight
-                         "weight"))
+                         "weight_lw","weight_xw"))
 
   data$wave <- "UKHLS Wave 8"
   data$wave_no <- 8

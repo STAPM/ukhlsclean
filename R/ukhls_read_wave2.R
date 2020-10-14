@@ -48,7 +48,7 @@ ukhls_read_wave2 <- function(
   health_vars      <- colnames(data[,c(242,272,1337,1377,1380)])
   preg_vars        <- colnames(data[,c(384,400,416,432,448)])
   smoke_vars       <- colnames(data[,c(235:241)])
-  weight_vars      <- colnames(data[,c(1638)])
+  weight_vars      <- colnames(data[,c(1646,1647)])
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,weight_vars)
@@ -74,7 +74,7 @@ ukhls_read_wave2 <- function(
                          ## smoking variables
                          "b_smever","b_smnow","b_ncigs","b_smcigs","b_smncigs","b_aglquit","b_smagbg",
                          ## weight
-                         "b_indinus_xw"),
+                         "b_indinus_lw","b_indinub_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata",
                          ## demographic
@@ -92,7 +92,7 @@ ukhls_read_wave2 <- function(
                          ## smoking variables
                          "smever","smnow","ncigs","smcigs","smncigs","aglquit","smagbg",
                          ## weight
-                         "weight"))
+                         "weight_lw","weight_xw"))
 
   data$wave <- "UKHLS Wave 2"
   data$wave_no <- 2

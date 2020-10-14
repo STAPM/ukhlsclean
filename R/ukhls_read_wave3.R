@@ -72,7 +72,7 @@ ukhls_read_wave3 <- function(
                          ## pregnancy variables
                          "c_pregout1","c_pregout2","c_pregout3",
                          ## weight
-                         "c_indpxub_lw"),
+                         "c_indinus_lw","c_indinub_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata",
                          ## demographic
@@ -88,7 +88,7 @@ ukhls_read_wave3 <- function(
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3",
                          ## weight
-                         "weight"))
+                         "weight_lw","weight_xw"))
 
   data$wave <- "UKHLS Wave 3"
   data$wave_no <- 3
