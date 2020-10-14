@@ -91,6 +91,31 @@ ukhls_read_wave4 <- function(
   data$dataset <- "UKHLS"
   data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)
 
+  ######## ADD IN HOUSEHOLD DATA
+
+  data.hhold <- data.table::fread(
+    paste0(root[1], path, "ukhls_w4/d_hhresp.tab"),
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
+  data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
+
+  hhold_vars <- colnames(data.hhold[, c(1,524,10,12,466,506,512,513,514,515)])
+
+  data.hhold <- data.hhold[ , hhold_vars, with = F]
+  data.table::setnames(data.hhold,
+                       # old names
+                       c("d_hidp","d_tenure_dv","d_numadult","d_nkids015","d_hhsize","d_hhtype_dv",
+                         "d_nch02_dv","d_nch34_dv","d_nch511_dv","d_nch1215_dv"),
+                       # new names
+                       c("hidp","hh_tenure","hh_numadult","hh_numchild","hh_size","hh_type",
+                         "hh_numchild02","hh_numchild34","hh_numchild511","hh_numchild1215"))
+
+  hhold_merged <- merge(x = data,
+                        y = data.hhold,
+                        by="hidp",
+                        all.x=TRUE,
+                        all.y=FALSE)
+
   ######## Add in cross-wave data
 
   data.xwave <- data.table::fread(
@@ -110,7 +135,7 @@ ukhls_read_wave4 <- function(
 
   ####### Combine - keep all observations in the main data and drop excess xwave observations
 
-  data_merged <- merge(x = data,
+  data_merged <- merge(x = hhold_merged,
                        y = data.xwave,
                        by="pidp",
                        all.x=TRUE,
