@@ -3,7 +3,7 @@
 #' Clean all household level variables.
 #'
 #' @export
-clean_smoke <- function(data = NULL) {
+clean_hhold <- function(data = NULL) {
 
   # generate number of adults variable from hhsize and hhkids for waves 5-9
   data[wave %in% c("UKHLS Wave 5","UKHLS Wave 6",
