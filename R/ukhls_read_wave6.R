@@ -47,6 +47,7 @@ ukhls_read_wave6 <- function(
   work_vars        <- colnames(data[,c(1836,1837,1012,1826)])
   education_vars   <- colnames(data[,c(1969)])
   health_vars      <- colnames(data[,c(434,517,1405,1441,1444)])
+  preg_vars        <- colnames(data[,c(640,658,676,694,712)])
   smoke_vars       <- colnames(data[,c(515,516)])
   weight_vars      <- colnames(data[,c(2047)])
 
@@ -69,6 +70,8 @@ ukhls_read_wave6 <- function(
                          "f_hiqual_dv",
                          ## health variables
                          "f_health","f_aidhh","f_scsf1","f_sclfsat1","f_sclfsato",
+                         ## pregnancy variables
+                         "f_pregout1","f_pregout2","f_pregout3","f_pregout4","f_pregout5",
                          ## smoking variables
                          "f_smoker", "f_ncigs",
                          ## weight
@@ -85,6 +88,8 @@ ukhls_read_wave6 <- function(
                          "highest_qual",
                          ## health variables
                          "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         ## pregnancy variables
+                         "pregout1","pregout2","pregout3","pregout4","pregout5",
                          ## smoking variables
                          "smoker", "ncigs",
                          ## weight

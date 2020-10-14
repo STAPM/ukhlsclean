@@ -47,6 +47,7 @@ ukhls_read_wave3 <- function(
   work_vars        <- colnames(data[,c(2790,2791,1589,2780)])
   education_vars   <- colnames(data[,c(2942)])
   health_vars      <- colnames(data[,c(1035,1115,2156,2188,2191)])
+  preg_vars        <- colnames(data[,c(1212,1230,1248)])
   weight_vars      <- colnames(data[,c(3042)])
 
 
@@ -68,6 +69,8 @@ ukhls_read_wave3 <- function(
                          "c_hiqual_dv",
                          ## health variables
                          "c_health","c_aidhh","c_scsf1","c_sclfsat1","c_sclfsato",
+                         ## pregnancy variables
+                         "c_pregout1","c_pregout2","c_pregout3",
                          ## weight
                          "c_indpxub_lw"),
 
@@ -82,6 +85,8 @@ ukhls_read_wave3 <- function(
                          "highest_qual",
                          ## health variables
                          "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         ## pregnancy variables
+                         "pregout1","pregout2","pregout3",
                          ## weight
                          "weight"))
 
