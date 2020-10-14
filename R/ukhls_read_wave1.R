@@ -97,6 +97,31 @@ print("Reading UKHLS Wave 1")
   data$dataset <- "UKHLS"
   data$id <- data$pidp
 
+  ######## ADD IN HOUSEHOLD DATA
+
+  data.hhold <- data.table::fread(
+    paste0(root[1], path, "ukhls_w1/a_hhresp.tab"),
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
+  data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
+
+  hhold_vars <- colnames(data.hhold[, c(1,225,173,174,178,207,213,214,215,216)])
+
+  data.hhold <- data.hhold[ , hhold_vars, with = F]
+  data.table::setnames(data.hhold,
+                       # old names
+                       c("a_hidp","a_tenure_dv","a_numadult","a_numchild","a_hhsize","a_hhtype_dv",
+                         "a_nch02_dv","a_nch34_dv","a_nch511_dv","a_nch1215_dv"),
+                       # new names
+                       c("hidp","hh_tenure","hh_numadult","hh_numchild","hh_size","hh_type",
+                         "hh_numchild02","hh_numchild34","hh_numchild511","hh_numchild1215"))
+
+  hhold_merged <- merge(x = data,
+                        y = data.hhold,
+                        by="hidp",
+                        all.x=TRUE,
+                        all.y=FALSE)
+
   ######## ADD IN CROSS-WAVE DATA
 
   data.xwave <- data.table::fread(
@@ -114,9 +139,9 @@ print("Reading UKHLS Wave 1")
                        # new names
                        c("pidp","ethnicity_raw","deceased","deceased_when"))
 
-  ####### Combine - keep all observations in the main data and drop excess xwave observations
+  ## Combine - keep all observations in the main data and drop excess xwave observations
 
-  data_merged <- merge(x = data,
+  data_merged <- merge(x = hhold_merged,
                        y = data.xwave,
                                    by="pidp",
                                    all.x=TRUE,
