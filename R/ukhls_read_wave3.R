@@ -86,7 +86,7 @@ ukhls_read_wave3 <- function(
                          "weight"))
 
   data$wave <- "UKHLS Wave 3"
-  data$wave_no <- 21
+  data$wave_no <- 3
   data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
   data$dataset <- "UKHLS"
   data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)

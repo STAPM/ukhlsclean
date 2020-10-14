@@ -92,12 +92,12 @@ print("Reading UKHLS Wave 1")
                          "weight"))
 
   data$wave <- "UKHLS Wave 1"
-  data$wave_no <- 19
+  data$wave_no <- 1
   data$bhps_sample <- FALSE
   data$dataset <- "UKHLS"
   data$id <- data$pidp
 
-  ######## Add in cross-wave data
+  ######## ADD IN CROSS-WAVE DATA
 
   data.xwave <- data.table::fread(
     paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
