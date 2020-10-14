@@ -104,7 +104,7 @@ clean_demographic <- function(data = NULL) {
 
   data <- subset(data,select = -c(region))
 
-### area
+  ### area
 
   data[urban == 1  , area := "urban"]
   data[urban == 2  , area := "rural"]
@@ -112,6 +112,14 @@ clean_demographic <- function(data = NULL) {
   data$area <- as.factor(data$area)
 
   data <- subset(data,select = -c(urban))
+
+  ### marital status
+  data[mlstat == 1         , marstat := "single"]
+  data[mlstat %in% c(2,3)  , marstat := "married"]
+  data[mlstat %in% c(4:9)  , marstat := "sep_div_wid"]
+  data$marstat <- as.factor(data$marstat)
+
+  data <- subset(data,select = -c(mlstat))
 
 return(data)
 }
