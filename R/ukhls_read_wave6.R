@@ -49,7 +49,7 @@ ukhls_read_wave6 <- function(
   health_vars      <- colnames(data[,c(434,517,1405,1441,1444)])
   preg_vars        <- colnames(data[,c(640,658,676,694,712)])
   smoke_vars       <- colnames(data[,c(515,516)])
-  weight_vars      <- colnames(data[,c(2047)])
+  weight_vars      <- colnames(data[,c(2050,2051)])
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,weight_vars)

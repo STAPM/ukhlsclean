@@ -48,7 +48,7 @@ ukhls_read_wave3 <- function(
   education_vars   <- colnames(data[,c(2942)])
   health_vars      <- colnames(data[,c(1035,1115,2156,2188,2191)])
   preg_vars        <- colnames(data[,c(1212,1230,1248)])
-  weight_vars      <- colnames(data[,c(3042)])
+  weight_vars      <- colnames(data[,c(3045,3046)])
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,weight_vars)
