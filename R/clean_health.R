@@ -9,8 +9,6 @@ clean_health <- function(data = NULL) {
   data[caring == 2, care_hhold := "no"]
 
   data$care_hhold <- as.factor(data$care_hhold)
-  data <- subset(data,select = -c(caring))
-
   ### individual has a long-standing illness/disability
 
   data[lt_sick == 1, disability := "yes"]
