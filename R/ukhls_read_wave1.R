@@ -47,8 +47,8 @@ print("Reading UKHLS Wave 1")
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- colnames(data[, c(1,2,3,6,7)])
-  demographic_vars <- colnames(data[, c(12,13,14,1303,1304)])
+  id_vars          <- colnames(data[, c(1,2,3,6,7,17,16,15)])
+  demographic_vars <- colnames(data[, c(12,13,14,1303,1304,25)])
   education_vars   <- colnames(data[, c(1339)])
   health_vars      <- colnames(data[, c(169,235,147,1061,1064)])
   econ_stat_vars   <- colnames(data[, c(23)])
@@ -63,9 +63,9 @@ print("Reading UKHLS Wave 1")
 
   data.table::setnames(data,
 
-                       c("pidp","a_hidp","a_pno","a_psu","a_strata",
+                       c("pidp","a_hidp","a_pno","a_psu","a_strata","a_istrtdaty","a_istrtdatm","a_istrtdatd",
                          ## demographic
-                         "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv",
+                         "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat",
                          ## economic status
                          "a_jbstat",
                          ## work variables
@@ -77,9 +77,9 @@ print("Reading UKHLS Wave 1")
                          ## weight
                          "a_indinus_xw"),
 
-                       c("pidp","hidp","person_number","psu","strata",
+                       c("pidp","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
-                         "sex","age","birth_year","region","urban",
+                         "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
                          "econ_stat",
                          ## work variables

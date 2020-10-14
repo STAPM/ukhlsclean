@@ -41,8 +41,8 @@ ukhls_read_wave9 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- colnames(data[,c(1,2,3,4,8,9)])
-  demographic_vars <- colnames(data[,c(15,16,17,2982,2983)])
+  id_vars          <- colnames(data[,c(1,2,3,4,8,9,59,60,61)])
+  demographic_vars <- colnames(data[,c(15,16,17,2982,2983,86)])
   econ_stat_vars   <- colnames(data[,c(84)])
   work_vars        <- colnames(data[,c(2884,2885,1646,2874)])
   education_vars   <- colnames(data[,c(3020)])
@@ -59,9 +59,9 @@ ukhls_read_wave9 <- function(
 
   data.table::setnames(data,
 
-                       c("pidp","pid","i_hidp","i_pno","i_psu","i_strata",
+                       c("pidp","pid","i_hidp","i_pno","i_psu","i_strata","i_istrtdaty","i_istrtdatm","i_istrtdatd",
                          ## demographic
-                         "i_sex","i_dvage","i_birthy","i_gor_dv","i_urban_dv",
+                         "i_sex","i_dvage","i_birthy","i_gor_dv","i_urban_dv","i_mlstat",
                          ## economic stauts
                          "i_jbstat",
                          ## work variables
@@ -77,9 +77,9 @@ ukhls_read_wave9 <- function(
                          ## weight
                          "i_indinus_lw","i_indinub_xw"),
 
-                       c("pidp","pid","hidp","person_number","psu","strata",
+                       c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
-                         "sex","age","birth_year","region","urban",
+                         "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
                          "econ_stat",
                          ## work variables
