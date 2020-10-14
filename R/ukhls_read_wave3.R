@@ -51,7 +51,7 @@ ukhls_read_wave3 <- function(
   weight_vars      <- colnames(data[,c(3042)])
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
