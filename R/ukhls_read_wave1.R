@@ -73,7 +73,7 @@ print("Reading UKHLS Wave 1")
                          ## education variables
                          "a_hiqual_dv",
                          ## health variables
-                         "a_health","a_aidhh","a_scsf1","a_sclfsat1","a_sclfsato",
+                         "a_health","a_aidhh","a_sf1","a_sclfsat1","a_sclfsato",
                          ## weight
                          "a_indinus_xw"),
 
