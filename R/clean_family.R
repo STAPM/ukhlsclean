@@ -8,4 +8,5 @@ clean_family <- function(data = NULL) {
 
   ### number and ages of children
 
+  return(data)
 }
