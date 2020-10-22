@@ -22,5 +22,27 @@ combine_waves <- function(
   # create a year-quarter time variable
   ##data$time <- as.yearqtr(paste0(data$year, "-", data$quarter))
 
+  # create flags for each wave
+
+  data[, wave_1 := ifelse(wave_no == 1,1,0)]
+  data[, wave_2 := ifelse(wave_no == 2,1,0)]
+  data[, wave_3 := ifelse(wave_no == 3,1,0)]
+  data[, wave_4 := ifelse(wave_no == 4,1,0)]
+  data[, wave_5 := ifelse(wave_no == 5,1,0)]
+  data[, wave_6 := ifelse(wave_no == 6,1,0)]
+  data[, wave_7 := ifelse(wave_no == 7,1,0)]
+  data[, wave_8 := ifelse(wave_no == 8,1,0)]
+  data[, wave_9 := ifelse(wave_no == 9,1,0)]
+
+  data[, wave_1 := max(wave_1), by = "id"]
+  data[, wave_2 := max(wave_2), by = "id"]
+  data[, wave_3 := max(wave_3), by = "id"]
+  data[, wave_4 := max(wave_4), by = "id"]
+  data[, wave_5 := max(wave_5), by = "id"]
+  data[, wave_6 := max(wave_6), by = "id"]
+  data[, wave_7 := max(wave_7), by = "id"]
+  data[, wave_8 := max(wave_8), by = "id"]
+  data[, wave_9 := max(wave_9), by = "id"]
+
   return(data)
 }
