@@ -7,6 +7,5 @@
 clean_hours_earn(data = NULL)
 }
 \description{
-Reads and does basic cleaning on the UKHLS demographic variables -
-age, gender, ethnicity, region and urban vs rural.
+cleans earnings variables and converts into real terms.
 }

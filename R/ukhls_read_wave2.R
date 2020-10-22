@@ -15,6 +15,7 @@
 #'
 #' @param root Character - the root directory.
 #' @param path Character - the file path and name.
+#' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)
 #' @importFrom data.table :=
 #' @return Returns a data table. Note that:
 #' \itemize{
@@ -28,7 +29,8 @@
 #' @export
 ukhls_read_wave2 <- function(
   root = c("C:/"),
-  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/"
+  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  full = TRUE
 ) {
 
 
@@ -37,6 +39,10 @@ ukhls_read_wave2 <- function(
     paste0(root[1], path, "ukhls_w2/b_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
+  if (full == TRUE) {
+    # retain full interviews only
+    data <- data[b_ivfio==1,]
+  }
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
