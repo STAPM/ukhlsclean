@@ -17,7 +17,6 @@ combine_waves <- function(
 
   # order rows and columns
   data <- data[order(id,wave_no),]
-  setcolorder(data, c("id","hidp","wave","wave_no","dataset","bhps_sample"))
 
   # create a year-quarter time variable
   ##data$time <- as.yearqtr(paste0(data$year, "-", data$quarter))
@@ -43,6 +42,12 @@ combine_waves <- function(
   data[, wave_7 := max(wave_7), by = "id"]
   data[, wave_8 := max(wave_8), by = "id"]
   data[, wave_9 := max(wave_9), by = "id"]
+
+  # order columns
+  setcolorder(data, c("id","hidp","wave","wave_no","dataset","bhps_sample",
+                      "wave_1","wave_2","wave_3","wave_4","wave_5","wave_6",
+                      "wave_7","wave_8","wave_9"))
+
 
   return(data)
 }
