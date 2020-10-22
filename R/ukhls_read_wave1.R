@@ -35,7 +35,7 @@
 #' @export
 ukhls_read_wave1 <- function(
   root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/"
+  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/"
 ) {
 
 

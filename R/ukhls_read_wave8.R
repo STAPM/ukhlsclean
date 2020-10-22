@@ -29,7 +29,7 @@
 #' @export
 ukhls_read_wave8 <- function(
   root = c("C:/"),
-  path = "Users/User/Documents/Datasets/UKHLS/tab/"
+  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/"
 ) {
 
   print("Reading UKHLS Wave 8")
