@@ -42,7 +42,7 @@ ukhls_read_wave6 <- function(
   )
   if (full == TRUE) {
     # retain full interviews only
-    data <- data[e_ivfio==1,]
+    data <- data[f_ivfio==1,]
   }
 
   data.table::setnames(data, names(data), tolower(names(data)))
