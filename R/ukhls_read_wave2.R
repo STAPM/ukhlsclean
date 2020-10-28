@@ -49,7 +49,7 @@ ukhls_read_wave2 <- function(
   id_vars          <- colnames(data[,c(1,2,3,4,7,8,80,81,82)])
   demographic_vars <- colnames(data[,c(13,14,15,1542,1543,92)])
   econ_stat_vars   <- colnames(data[,c(90)])
-  work_vars        <- colnames(data[,c(1457,1458,770,1447)])
+  work_vars        <- colnames(data[,c(1457,1458,770,1447,1461)])
   education_vars   <- colnames(data[,c(1580)])
   health_vars      <- colnames(data[,c(242,272,1337,1377,1380)])
   preg_vars        <- colnames(data[,c(384,400,416,432,448)])
@@ -70,7 +70,7 @@ ukhls_read_wave2 <- function(
                          ## economic stauts
                          "b_jbstat",
                          ## work variables
-                         "b_paygu_dv","b_payg_dv","b_jbhrs","b_fimnlabgrs_dv",
+                         "b_paygu_dv","b_payg_dv","b_jbhrs","b_fimnlabgrs_dv","b_seearngrs_dv",
                          ## education variables
                          "b_hiqual_dv",
                          ## health variables
@@ -88,7 +88,7 @@ ukhls_read_wave2 <- function(
                          ## economic status
                          "econ_stat",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
                          ## education variables
                          "highest_qual",
                          ## health variables
