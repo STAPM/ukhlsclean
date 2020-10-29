@@ -1,7 +1,7 @@
 Package: ukhlsclean
 Type: Package
 Title: Data Wrangling for UKHLS/BHPS data.
-Version: 0.3.0
+Version: 0.3.1
 Author: Damon Morris
 Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
 Description: The package takes raw data for the UK Household Longitudinal Study
