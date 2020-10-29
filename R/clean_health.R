@@ -6,7 +6,7 @@ clean_health <- function(data = NULL) {
   ### individual is a carer for someone in their household
 
   data[caring == 1, care_hhold := "yes"]
-  data[caring == 2, care_hhold := "no"]
+  data[caring != 1, care_hhold := "no"]
 
   data$care_hhold <- as.factor(data$care_hhold)
   ### individual has a long-standing illness/disability
