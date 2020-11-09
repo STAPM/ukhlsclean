@@ -56,9 +56,10 @@ ukhls_read_wave6 <- function(
   preg_vars        <- colnames(data[,c(640,658,676,694,712)])
   smoke_vars       <- colnames(data[,c(515,516)])
   weight_vars      <- colnames(data[,c(2050,2051)])
+  alc_vars         <- Hmisc::Cs(f_dklm,f_drnk4w,f_evralc,f_fivealcdr)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -80,6 +81,8 @@ ukhls_read_wave6 <- function(
                          "f_pregout1","f_pregout2","f_pregout3","f_pregout4","f_pregout5",
                          ## smoking variables
                          "f_smoker", "f_ncigs",
+                         ## alcohol variables
+                         "f_dklm","f_drnk4w","f_evralc","f_fivealcdr",
                          ## weight
                          "f_indinus_lw","f_indinub_xw"),
 
@@ -98,6 +101,8 @@ ukhls_read_wave6 <- function(
                          "pregout1","pregout2","pregout3","pregout4","pregout5",
                          ## smoking variables
                          "smoker", "ncigs",
+                         ## alcohol variables
+                         "dklm","drnk4w","evralc","fivealcdr",
                          ## weight
                          "weight_lw","weight_xw"))
 

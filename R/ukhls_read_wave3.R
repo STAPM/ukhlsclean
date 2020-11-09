@@ -55,9 +55,10 @@ ukhls_read_wave3 <- function(
   health_vars      <- colnames(data[,c(1035,1115,2156,2188,2191)])
   preg_vars        <- colnames(data[,c(1212,1230,1248)])
   weight_vars      <- colnames(data[,c(3045,3046)])
+  alc_vars         <- Hmisc::Cs(c_dklm,c_drnk4w,c_evralc,c_fivealcdr)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,alc_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -77,6 +78,8 @@ ukhls_read_wave3 <- function(
                          "c_health","c_aidhh","c_scsf1","c_sclfsat1","c_sclfsato",
                          ## pregnancy variables
                          "c_pregout1","c_pregout2","c_pregout3",
+                         ## alcohol variables
+                         "c_dklm","c_drnk4w","c_evralc","c_fivealcdr",
                          ## weight
                          "c_indinus_lw","c_indinub_xw"),
 
@@ -93,6 +96,8 @@ ukhls_read_wave3 <- function(
                          "lt_sick","caring","gen_health","health_satisf","life_satisf",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3",
+                         ## alcohol variables
+                         "dklm","drnk4w","evralc","fivealcdr",
                          ## weight
                          "weight_lw","weight_xw"))
 
