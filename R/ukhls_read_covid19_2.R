@@ -1,6 +1,6 @@
-#' Read Understanding Society - Covid-19 Data Wave 1
+#' Read Understanding Society - Covid-19 Data Wave 2
 #'
-#' Reads and does basic cleaning on the UKHLS Covid-19 survey first wave.
+#' Reads and does basic cleaning on the UKHLS Covid-19 survey second wave.
 #'
 #' A sample of the UKHLS respondents repeatedly sampled during Covid-19 pandemic.
 #'
@@ -29,48 +29,39 @@
 #' \item The probabilistic sampling unit have the year appended to them.
 #' }
 #' @export
-ukhls_read_covid19_1 <- function(
+ukhls_read_covid19_2 <- function(
   root = c("C:/"),
   path = "Users/User/Documents/Datasets/UKHLS/tab/"
 ) {
-  print("Reading UKHLS Covid-19 Wave 1")
+  print("Reading UKHLS Covid-19 Wave 2")
 
-  #### First Covid Wave
-    data <- data.table::fread(
-      paste0(root[1], path, "ukhls_covid19/ca_indresp_w.tab"),
-      na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
-    )
+  #### Second Covid Wave
+  data <- data.table::fread(
+    paste0(root[1], path, "ukhls_covid19/cb_indresp_w.tab"),
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
 
-  ##### Clean wave 1
+  ##### Clean wave 2
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars  <- Hmisc::Cs(pidp,ca_betaindin_xw_t)
-  alc_vars <- Hmisc::Cs(ca_auditc1_cv,ca_auditc2,ca_auditc3_cv,ca_auditc4,ca_auditc5_cv)
-  smk_vars <- Hmisc::Cs(ca_smoker,ca_ncigs,ca_ecigs1)
+  id_vars  <- Hmisc::Cs(pidp,cb_betaindin_xw_t)
+  #alc_vars <- Hmisc::Cs(cb_auditc1_cv,cb_auditc2,cb_auditc3_cv,cb_auditc4,cb_auditc5_cv)
+  #smk_vars <- Hmisc::Cs(cb_smoker,cb_ncigs,cb_ecigs1)
 
-
-  names <- c(id_vars,alc_vars,smk_vars)
+  names <- c(id_vars)
   data <- data[ , names, with = F]
 
   data.table::setnames(data,
 
-                       c("pidp","ca_betaindin_xw_t",
-                         ### alcohol vars
-                         "ca_auditc1_cv","ca_auditc2","ca_auditc3_cv","ca_auditc4","ca_auditc5_cv",
-                         ### smoker vars
-                         "ca_smoker","ca_ncigs","ca_ecigs1"
-                         ),
+                       c("pidp","cb_betaindin_xw_t"
+                       ),
 
-                       c("id","weight",
-                         ### alcohol vars
-                         "auditc1","auditc2","auditc3","auditc4","auditc5",
-                         ### smoker vars
-                         "smoker","ncigs","ecigs1"
-                         ))
+                       c("id","weight"
+                       ))
 
-  data$wave <- "UKHLS Covid-19 Wave 1"
-  data$wave_no <- 1
+  data$wave <- "UKHLS Covid-19 Wave 2"
+  data$wave_no <- 2
 
 
   return(data[])
