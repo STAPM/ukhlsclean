@@ -47,15 +47,15 @@ ukhls_read_wave3 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- colnames(data[,c(1,2,3,4,8,9,89,90,91)])
-  demographic_vars <- colnames(data[,c(14,15,16,2904,2905,104)])
-  econ_stat_vars   <- colnames(data[,c(102)])
-  work_vars        <- colnames(data[,c(2790,2791,1589,2780,2794)])
-  education_vars   <- colnames(data[,c(2942)])
-  health_vars      <- colnames(data[,c(1035,1115,2156,2188,2191)])
-  preg_vars        <- colnames(data[,c(1212,1230,1248)])
-  weight_vars      <- colnames(data[,c(3045,3046)])
+  id_vars          <- Hmisc::Cs(pidp,pid,c_hidp,c_pno,c_psu,c_strata,c_istrtdaty,c_istrtdatm,c_istrtdatd)
+  demographic_vars <- Hmisc::Cs(c_sex,c_dvage,c_birthy,c_gor_dv,c_urban_dv,c_mlstat)
+  econ_stat_vars   <- Hmisc::Cs(c_jbstat,c_jbhas,c_jboff,c_jboffy)
+  work_vars        <- Hmisc::Cs(c_paygu_dv,c_payg_dv,c_jbhrs,c_fimnlabgrs_dv,c_seearngrs_dv)
+  education_vars   <- Hmisc::Cs(c_hiqual_dv)
+  health_vars      <- Hmisc::Cs(c_health,c_aidhh,c_scsf1,c_sclfsat1,c_sclfsato)
+  preg_vars        <- Hmisc::Cs(c_pregout1,c_pregout2,c_pregout3)
   alc_vars         <- Hmisc::Cs(c_dklm,c_drnk4w,c_evralc,c_fivealcdr)
+  weight_vars      <- Hmisc::Cs(c_indinus_lw,c_indinub_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,alc_vars,weight_vars)
@@ -69,7 +69,7 @@ ukhls_read_wave3 <- function(
                          ## demographic
                          "c_sex","c_dvage","c_birthy","c_gor_dv","c_urban_dv","c_mlstat",
                          ## economic stauts
-                         "c_jbstat",
+                         "c_jbstat","c_jbhas","c_jboff","c_jboffy",
                          ## work variables
                          "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv","c_seearngrs_dv",
                          ## education variables
@@ -87,7 +87,7 @@ ukhls_read_wave3 <- function(
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
-                         "econ_stat",
+                         "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
                          ## education variables

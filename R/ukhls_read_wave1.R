@@ -1,4 +1,3 @@
-
 #' Read Understanding Society Wave 1
 #'
 #' Reads and does basic cleaning on the UKHLS first wave.
@@ -53,13 +52,13 @@ print("Reading UKHLS Wave 1")
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- colnames(data[, c(1,2,3,6,7,17,16,15)])
-  demographic_vars <- colnames(data[, c(12,13,14,1303,1304,25)])
-  education_vars   <- colnames(data[, c(1339)])
-  health_vars      <- colnames(data[, c(169,235,147,1061,1064)])
-  econ_stat_vars   <- colnames(data[, c(23)])
-  work_vars        <- colnames(data[, c(1266,1267,272,1256,1270)])
-  weight_vars      <- colnames(data[, c(1398)])
+  id_vars          <- Hmisc::Cs(pidp,a_hidp,a_pno,a_psu,a_strata,a_istrtdaty,a_istrtdatm,a_istrtdatd)
+  demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat)
+  econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy)
+  work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv)
+  education_vars   <- Hmisc::Cs(a_hiqual_dv)
+  health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sf1,a_sclfsat1,a_sclfsato)
+  weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,weight_vars)
@@ -73,7 +72,7 @@ print("Reading UKHLS Wave 1")
                          ## demographic
                          "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat",
                          ## economic status
-                         "a_jbstat",
+                         "a_jbstat","a_jbhas","a_jboff","a_jboffy",
                          ## work variables
                          "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv","a_seearngrs_dv",
                          ## education variables
@@ -87,7 +86,7 @@ print("Reading UKHLS Wave 1")
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
-                         "econ_stat",
+                         "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
                          ## education variables

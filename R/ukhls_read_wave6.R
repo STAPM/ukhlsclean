@@ -47,16 +47,16 @@ ukhls_read_wave6 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- colnames(data[,c(1,2,3,4,8,9,33,34,35)])
-  demographic_vars <- colnames(data[,c(15,16,17,1931,1932,59)])
-  econ_stat_vars   <- colnames(data[,c(57)])
-  work_vars        <- colnames(data[,c(1836,1837,1012,1826,1840)])
-  education_vars   <- colnames(data[,c(1969)])
-  health_vars      <- colnames(data[,c(434,517,1405,1441,1444)])
-  preg_vars        <- colnames(data[,c(640,658,676,694,712)])
-  smoke_vars       <- colnames(data[,c(515,516)])
-  weight_vars      <- colnames(data[,c(2050,2051)])
+  id_vars          <- Hmisc::Cs(pidp,pid,f_hidp,f_pno,f_psu,f_strata,f_istrtdaty,f_istrtdatm,f_istrtdatd)
+  demographic_vars <- Hmisc::Cs(f_sex,f_dvage,f_birthy,f_gor_dv,f_urban_dv,f_mlstat)
+  econ_stat_vars   <- Hmisc::Cs(f_jbstat,f_jbhas,f_jboff,f_jboffy)
+  work_vars        <- Hmisc::Cs(f_paygu_dv,f_payg_dv,f_jbhrs,f_fimnlabgrs_dv,f_seearngrs_dv)
+  education_vars   <- Hmisc::Cs(f_hiqual_dv)
+  health_vars      <- Hmisc::Cs(f_health,f_aidhh,f_scsf1,f_sclfsat1,f_sclfsato)
+  preg_vars        <- Hmisc::Cs(f_pregout1,f_pregout2,f_pregout3,f_pregout4,f_pregout5)
+  smoke_vars       <- Hmisc::Cs(f_smoker, f_ncigs)
   alc_vars         <- Hmisc::Cs(f_dklm,f_drnk4w,f_evralc,f_fivealcdr)
+  weight_vars      <- Hmisc::Cs(f_indinus_lw,f_indinub_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
@@ -70,7 +70,7 @@ ukhls_read_wave6 <- function(
                          ## demographic
                          "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_mlstat",
                          ## economic stauts
-                         "f_jbstat",
+                         "f_jbstat","f_jbhas","f_jboff","f_jboffy",
                          ## work variables
                          "f_paygu_dv","f_payg_dv","f_jbhrs","f_fimnlabgrs_dv","f_seearngrs_dv",
                          ## education variables
@@ -90,7 +90,7 @@ ukhls_read_wave6 <- function(
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
-                         "econ_stat",
+                         "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
                          ## education variables
