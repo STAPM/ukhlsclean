@@ -1,7 +1,7 @@
 #' Clean Smoking Variables
 #'
-#' Clean smoking variables and backwards impute smoking behaviour to waves prior to the smoking
-#' questions being asked in the UKHLS.
+#' Clean all variables related to smoking behaviour - current smoking status, smoking history, and
+#' level of cigarette consumption for current smokers.
 #'
 #' @export
 clean_smoke <- function(data = NULL) {

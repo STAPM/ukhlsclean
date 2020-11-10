@@ -7,5 +7,7 @@
 clean_hours_earn(data = NULL)
 }
 \description{
-cleans earnings variables and converts into real terms.
+cleans earnings variables and converts into real terms. Variables with "pay"
+in the name relate to earnings from employment, "earnings" refers to employed
+and self employed earnings combined.
 }

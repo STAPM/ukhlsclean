@@ -2,13 +2,10 @@ library(ukhlsclean)
 library(data.table)
 library(dplyr)
 
-## directory for working on mac
-root <- "/Volumes/"
-path <- "ScHARR Work/Data/UKHLS/raw data/"
 
-## directory for working on desktop
+## set directory
 root <- "C:/"
-path <- "Users/User/Documents/Datasets/UKHLS/tab/"
+path <- "Users/cm1djm/Documents/Datasets/UKHLS/tab/"
 
 ukhls <- combine_waves(list(ukhls_read_wave1(root,path),
                             ukhls_read_wave2(root,path),
