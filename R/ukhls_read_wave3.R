@@ -52,7 +52,8 @@ ukhls_read_wave3 <- function(
   econ_stat_vars   <- Hmisc::Cs(c_jbstat,c_jbhas,c_jboff,c_jboffy)
   work_vars        <- Hmisc::Cs(c_paygu_dv,c_payg_dv,c_jbhrs,c_fimnlabgrs_dv,c_seearngrs_dv)
   education_vars   <- Hmisc::Cs(c_hiqual_dv)
-  health_vars      <- Hmisc::Cs(c_health,c_aidhh,c_scsf1,c_sclfsat1,c_sclfsato)
+  health_vars      <- Hmisc::Cs(c_health,c_aidhh,c_sclfsat1,c_sclfsato,c_sf12pcs_dv,c_sf12mcs_dv,
+                                c_scsf1,c_scsf2a,c_scsf2b,c_scsf3a,c_scsf3b,c_scsf4a,c_scsf4b,c_scsf5,c_scsf6a,c_scsf6b,c_scsf6c,c_scsf7)
   preg_vars        <- Hmisc::Cs(c_pregout1,c_pregout2,c_pregout3)
   alc_vars         <- Hmisc::Cs(c_dklm,c_drnk4w,c_evralc,c_fivealcdr)
   weight_vars      <- Hmisc::Cs(c_indinus_lw,c_indinub_xw)
@@ -75,7 +76,8 @@ ukhls_read_wave3 <- function(
                          ## education variables
                          "c_hiqual_dv",
                          ## health variables
-                         "c_health","c_aidhh","c_scsf1","c_sclfsat1","c_sclfsato",
+                         "c_health","c_aidhh","c_sclfsat1","c_sclfsato","c_sf12pcs_dv","c_sf12mcs_dv",
+                         "c_scsf1","c_scsf2a","c_scsf2b","c_scsf3a","c_scsf3b","c_scsf4a","c_scsf4b","c_scsf5","c_scsf6a","c_scsf6b","c_scsf6c","c_scsf7",
                          ## pregnancy variables
                          "c_pregout1","c_pregout2","c_pregout3",
                          ## alcohol variables
@@ -93,7 +95,8 @@ ukhls_read_wave3 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3",
                          ## alcohol variables

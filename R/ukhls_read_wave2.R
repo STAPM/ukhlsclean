@@ -51,7 +51,8 @@ ukhls_read_wave2 <- function(
   econ_stat_vars   <- Hmisc::Cs(b_jbstat,b_jbhas,b_jboff,b_jboffy)
   work_vars        <- Hmisc::Cs(b_paygu_dv,b_payg_dv,b_jbhrs,b_fimnlabgrs_dv,b_seearngrs_dv)
   education_vars   <- Hmisc::Cs(b_hiqual_dv)
-  health_vars      <- Hmisc::Cs(b_health,b_aidhh,b_scsf1,b_sclfsat1,b_sclfsato)
+  health_vars      <- Hmisc::Cs(b_health,b_aidhh,b_sclfsat1,b_sclfsato,b_sf12pcs_dv,b_sf12mcs_dv,
+                                b_scsf1,b_scsf2a,b_scsf2b,b_scsf3a,b_scsf3b,b_scsf4a,b_scsf4b,b_scsf5,b_scsf6a,b_scsf6b,b_scsf6c,b_scsf7)
   preg_vars        <- Hmisc::Cs(b_pregout1,b_pregout2,b_pregout3,b_pregout4,b_pregout5)
   smoke_vars       <- Hmisc::Cs(b_smever,b_smnow,b_ncigs,b_smcigs,b_smncigs,b_aglquit,b_smagbg)
   alc_vars         <- Hmisc::Cs(b_sceverdrnk,b_scfalcdrnk)
@@ -76,7 +77,8 @@ ukhls_read_wave2 <- function(
                          ## education variables
                          "b_hiqual_dv",
                          ## health variables
-                         "b_health","b_aidhh","b_scsf1","b_sclfsat1","b_sclfsato",
+                         "b_health","b_aidhh","b_sclfsat1","b_sclfsato","b_sf12pcs_dv","b_sf12mcs_dv",
+                         "b_scsf1","b_scsf2a","b_scsf2b","b_scsf3a","b_scsf3b","b_scsf4a","b_scsf4b","b_scsf5","b_scsf6a","b_scsf6b","b_scsf6c","b_scsf7",
                          ## pregnancy variables
                          "b_pregout1","b_pregout2","b_pregout3","b_pregout4","b_pregout5",
                          ## smoking variables
@@ -96,7 +98,8 @@ ukhls_read_wave2 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3","pregout4","pregout5",
                          ## smoking variables

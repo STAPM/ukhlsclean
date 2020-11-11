@@ -52,7 +52,8 @@ ukhls_read_wave9 <- function(
   econ_stat_vars   <- Hmisc::Cs(i_jbstat,i_jbhas,i_jboff,i_jboffy)
   work_vars        <- Hmisc::Cs(i_paygu_dv,i_payg_dv,i_jbhrs,i_fimnlabgrs_dv,i_seearngrs_dv)
   education_vars   <- Hmisc::Cs(i_hiqual_dv)
-  health_vars      <- Hmisc::Cs(i_health,i_aidhh,i_scsf1,i_sclfsat1,i_sclfsato)
+  health_vars      <- Hmisc::Cs(i_health,i_aidhh,i_sclfsat1,i_sclfsato,i_sf12pcs_dv,i_sf12mcs_dv,
+                                i_scsf1,i_scsf2a,i_scsf2b,i_scsf3a,i_scsf3b,i_scsf4a,i_scsf4b,i_scsf5,i_scsf6a,i_scsf6b,i_scsf6c,i_scsf7)
   preg_vars        <- Hmisc::Cs(i_pregout1,i_pregout2,i_pregout3)
   smoke_vars       <- Hmisc::Cs(i_smoker,i_ncigs)
   alc_vars         <- Hmisc::Cs(i_auditc1,i_auditc2,i_auditc3,i_auditc4,i_auditc5)
@@ -76,7 +77,8 @@ ukhls_read_wave9 <- function(
                          ## education variables
                          "i_hiqual_dv",
                          ## health variables
-                         "i_health","i_aidhh","i_scsf1","i_sclfsat1","i_sclfsato",
+                         "i_health","i_aidhh","i_sclfsat1","i_sclfsato","i_sf12pcs_dv","i_sf12mcs_dv",
+                         "i_scsf1","i_scsf2a","i_scsf2b","i_scsf3a","i_scsf3b","i_scsf4a","i_scsf4b","i_scsf5","i_scsf6a","i_scsf6b","i_scsf6c","i_scsf7",
                          ## pregnancy variables
                          "i_pregout1","i_pregout2","i_pregout3",
                          ## smoke variables
@@ -96,7 +98,8 @@ ukhls_read_wave9 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3",
                          ## smoke variables

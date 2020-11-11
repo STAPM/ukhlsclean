@@ -57,7 +57,8 @@ print("Reading UKHLS Wave 1")
   econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy)
   work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv)
   education_vars   <- Hmisc::Cs(a_hiqual_dv)
-  health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sf1,a_sclfsat1,a_sclfsato)
+  health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sclfsat1,a_sclfsato,a_sf12pcs_dv,a_sf12mcs_dv,
+                                a_sf1,a_sf2a,a_sf2b,a_sf3a,a_sf3b,a_sf4a,a_sf4b,a_sf5,a_sf6a,a_sf6b,a_sf6c,a_sf7)
   weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
@@ -78,7 +79,8 @@ print("Reading UKHLS Wave 1")
                          ## education variables
                          "a_hiqual_dv",
                          ## health variables
-                         "a_health","a_aidhh","a_sf1","a_sclfsat1","a_sclfsato",
+                         "a_health","a_aidhh","a_sclfsat1","a_sclfsato","a_sf12pcs_dv","a_sf12mcs_dv",
+                         "a_sf1","a_sf2a","a_sf2b","a_sf3a","a_sf3b","a_sf4a","a_sf4b","a_sf5","a_sf6a","a_sf6b","a_sf6c","a_sf7",
                          ## weight
                          "a_indinus_xw"),
 
@@ -92,7 +94,8 @@ print("Reading UKHLS Wave 1")
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## weight
                          "weight_xw"))
 

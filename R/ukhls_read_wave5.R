@@ -52,7 +52,8 @@ ukhls_read_wave5 <- function(
   econ_stat_vars   <- Hmisc::Cs(e_jbstat,e_jbhas,e_jboff,e_jboffy)
   work_vars        <- Hmisc::Cs(e_paygu_dv,e_payg_dv,e_jbhrs,e_fimnlabgrs_dv,e_seearngrs_dv)
   education_vars   <- Hmisc::Cs(e_hiqual_dv)
-  health_vars      <- Hmisc::Cs(e_health,e_aidhh,e_scsf1,e_sclfsat1,e_sclfsato)
+  health_vars      <- Hmisc::Cs(e_health,e_aidhh,e_sclfsat1,e_sclfsato,e_sf12pcs_dv,e_sf12mcs_dv,
+                                e_scsf1,e_scsf2a,e_scsf2b,e_scsf3a,e_scsf3b,e_scsf4a,e_scsf4b,e_scsf5,e_scsf6a,e_scsf6b,e_scsf6c,e_scsf7)
   preg_vars        <- Hmisc::Cs(e_pregout1,e_pregout2,e_pregout3)
   smoke_vars       <- Hmisc::Cs(e_smever,e_smnow,e_ncigs,e_smcigs,e_smncigs,e_aglquit,e_smagbg)
   alc_vars         <- Hmisc::Cs(e_sceverdrnk,e_scfalcdrnk)
@@ -76,7 +77,8 @@ ukhls_read_wave5 <- function(
                          ## education variables
                          "e_hiqual_dv",
                          ## health variables
-                         "e_health","e_aidhh","e_scsf1","e_sclfsat1","e_sclfsato",
+                         "e_health","e_aidhh","e_sclfsat1","e_sclfsato","e_sf12pcs_dv","e_sf12mcs_dv",
+                         "e_scsf1","e_scsf2a","e_scsf2b","e_scsf3a","e_scsf3b","e_scsf4a","e_scsf4b","e_scsf5","e_scsf6a","e_scsf6b","e_scsf6c","e_scsf7",
                          ## pregnancy variables
                          "e_pregout1","e_pregout2","e_pregout3",
                          ## smoking variables
@@ -96,7 +98,8 @@ ukhls_read_wave5 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3",
                          ## smoking variables

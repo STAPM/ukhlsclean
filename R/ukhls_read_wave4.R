@@ -52,7 +52,8 @@ ukhls_read_wave4 <- function(
   econ_stat_vars   <- Hmisc::Cs(d_jbstat,d_jbhas,d_jboff,d_jboffy)
   work_vars        <- Hmisc::Cs(d_paygu_dv,d_payg_dv,d_jbhrs,d_fimnlabgrs_dv,d_seearngrs_dv)
   education_vars   <- Hmisc::Cs(d_hiqual_dv)
-  health_vars      <- Hmisc::Cs(d_health,d_aidhh,d_scsf1,d_sclfsat1,d_sclfsato)
+  health_vars      <- Hmisc::Cs(d_health,d_aidhh,d_sclfsat1,d_sclfsato,d_sf12pcs_dv,d_sf12mcs_dv,
+                                d_scsf1,d_scsf2a,d_scsf2b,d_scsf3a,d_scsf3b,d_scsf4a,d_scsf4b,d_scsf5,d_scsf6a,d_scsf6b,d_scsf6c,d_scsf7)
   preg_vars        <- Hmisc::Cs(d_pregout1,d_pregout2,d_pregout3,d_pregout4)
   alc_vars         <- Hmisc::Cs(d_dklm,d_drnk4w,d_evralc,d_fivealcdr)
   weight_vars      <- Hmisc::Cs(d_indinus_lw,d_indinub_xw)
@@ -75,7 +76,8 @@ ukhls_read_wave4 <- function(
                          ## education variables
                          "d_hiqual_dv",
                          ## health variables
-                         "d_health","d_aidhh","d_scsf1","d_sclfsat1","d_sclfsato",
+                         "d_health","d_aidhh","d_sclfsat1","d_sclfsato","d_sf12pcs_dv","d_sf12mcs_dv",
+                         "d_scsf1","d_scsf2a","d_scsf2b","d_scsf3a","d_scsf3b","d_scsf4a","d_scsf4b","d_scsf5","d_scsf6a","d_scsf6b","d_scsf6c","d_scsf7",
                          ## pregnancy variables
                          "d_pregout1","d_pregout2","d_pregout3","d_pregout4",
                          ## alcohol variables
@@ -93,7 +95,8 @@ ukhls_read_wave4 <- function(
                          ## education variables
                          "highest_qual",
                          ## health variables
-                         "lt_sick","caring","gen_health","health_satisf","life_satisf",
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
                          "pregout1","pregout2","pregout3","pregout4",
                          ## alcohol variables
