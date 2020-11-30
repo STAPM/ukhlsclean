@@ -40,7 +40,7 @@ clean_health <- function(data = NULL) {
   data[is.na(pregnant) , pregnant := 0]
 
   ### remove raw variables
-  data <- subset(data,select = -c(lt_sick,caring,health_satisf,life_satisf,gen_health,
+  data <- subset(data,select = -c(lt_sick,caring,health_satisf,life_satisf,
                                   pregout1,pregout2,pregout3,pregout4,pregout5))
 
 }
