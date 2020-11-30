@@ -34,13 +34,6 @@ clean_health <- function(data = NULL) {
   data[life_satisf == 6, satisfaction_life := "mostly satisfied"]
   data[life_satisf == 7, satisfaction_life := "completely satisfied"]
 
-  ### satisfaction with life in general
-  data[gen_health == 1, general_health := "excellent"]
-  data[gen_health == 2, general_health := "very good"]
-  data[gen_health == 3, general_health := "good"]
-  data[gen_health == 4, general_health := "fair"]
-  data[gen_health == 5, general_health := "poor"]
-
   ### currently pregnant
   data[pregout1 == 4 | pregout2 == 4 |
        pregout3 == 4 | pregout4 == 4 | pregout5 == 4, pregnant := 1]
