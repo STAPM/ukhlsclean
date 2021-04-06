@@ -34,7 +34,8 @@ ukhls_read_wave8 <- function(
   full = TRUE
 ) {
 
-  print("Reading UKHLS Wave 8")
+  cat("\tReading UKHLS Wave 8")
+
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w8/h_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
@@ -163,6 +164,8 @@ ukhls_read_wave8 <- function(
                        by="pidp",
                        all.x=TRUE,
                        all.y=FALSE)
+
+  cat(crayon::cyan("\tdone\n"))
 
   return(data_merged[])
 }

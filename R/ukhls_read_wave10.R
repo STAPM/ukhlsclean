@@ -1,6 +1,6 @@
-#' Read Understanding Society Wave 6
+#' Read Understanding Society Wave 10
 #'
-#' Reads and does basic cleaning on the UKHLS sixth wave.
+#' Reads and does basic cleaning on the UKHLS ninth wave.
 #'
 #' MISSING VALUES
 #'
@@ -28,36 +28,36 @@
 #' \item The probabilistic sampling unit have the year appended to them.
 #' }
 #' @export
-ukhls_read_wave6 <- function(
+ukhls_read_wave10 <- function(
   root = c("C:/"),
   path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
   full = TRUE
 ) {
 
-  cat("\tReading UKHLS Wave 6")
 
+  print("Reading UKHLS Wave 9")
   data <- data.table::fread(
-    paste0(root[1], path, "ukhls_w6/f_indresp.tab"),
+    paste0(root[1], path, "ukhls_w10/j_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
   if (full == TRUE) {
     # retain full interviews only
-    data <- data[f_ivfio==1,]
+    data <- data[i_ivfio==1,]
   }
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- Hmisc::Cs(pidp,pid,f_hidp,f_pno,f_psu,f_strata,f_istrtdaty,f_istrtdatm,f_istrtdatd)
-  demographic_vars <- Hmisc::Cs(f_sex,f_dvage,f_birthy,f_gor_dv,f_urban_dv,f_mlstat)
-  econ_stat_vars   <- Hmisc::Cs(f_jbstat,f_jbhas,f_jboff,f_jboffy)
-  work_vars        <- Hmisc::Cs(f_paygu_dv,f_payg_dv,f_jbhrs,f_fimnlabgrs_dv,f_seearngrs_dv)
-  education_vars   <- Hmisc::Cs(f_hiqual_dv)
-  health_vars      <- Hmisc::Cs(f_health,f_aidhh,f_sclfsat1,f_sclfsato,f_sf12pcs_dv,f_sf12mcs_dv,
-                                f_scsf1,f_scsf2a,f_scsf2b,f_scsf3a,f_scsf3b,f_scsf4a,f_scsf4b,f_scsf5,f_scsf6a,f_scsf6b,f_scsf6c,f_scsf7)
-  preg_vars        <- Hmisc::Cs(f_pregout1,f_pregout2,f_pregout3,f_pregout4,f_pregout5)
-  smoke_vars       <- Hmisc::Cs(f_smoker, f_ncigs)
-  alc_vars         <- Hmisc::Cs(f_dklm,f_drnk4w,f_evralc,f_fivealcdr)
-  weight_vars      <- Hmisc::Cs(f_indinus_lw,f_indinub_xw)
+  id_vars          <- Hmisc::Cs(pidp,pid,j_hidp,j_pno,j_psu,j_strata,j_istrtdaty,j_istrtdatm,j_istrtdatd)
+  demographic_vars <- Hmisc::Cs(j_sex,j_dvage,j_birthy,j_gor_dv,j_urban_dv,j_mlstat)
+  econ_stat_vars   <- Hmisc::Cs(j_jbstat,j_jbhas,j_jboff,j_jboffy)
+  work_vars        <- Hmisc::Cs(j_paygu_dv,j_payg_dv,j_jbhrs,j_fimnlabgrs_dv,j_seearngrs_dv)
+  education_vars   <- Hmisc::Cs(j_hiqual_dv)
+  health_vars      <- Hmisc::Cs(j_health,i_aidhh,j_sclfsat1,j_sclfsato,j_sf12pcs_dv,j_sf12mcs_dv,
+                                j_scsf1,j_scsf2a,j_scsf2b,j_scsf3a,j_scsf3b,j_scsf4a,j_scsf4b,j_scsf5,j_scsf6a,j_scsf6b,j_scsf6c,j_scsf7)
+  preg_vars        <- Hmisc::Cs(j_pregout1,j_pregout2,j_pregout3)
+  smoke_vars       <- Hmisc::Cs(j_smoker,j_ncigs)
+  alc_vars         <- Hmisc::Cs(j_auditc1,j_auditc2,j_auditc3,j_auditc4,j_auditc5)
+  weight_vars      <- Hmisc::Cs(j_indinus_lw,j_indinub_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
@@ -67,26 +67,26 @@ ukhls_read_wave6 <- function(
 
   data.table::setnames(data,
 
-                       c("pidp","pid","f_hidp","f_pno","f_psu","f_strata","f_istrtdaty","f_istrtdatm","f_istrtdatd",
+                       c("pidp","pid","j_hidp","j_pno","j_psu","j_strata","j_istrtdaty","j_istrtdatm","j_istrtdatd",
                          ## demographic
-                         "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_mlstat",
-                         ## economic stauts
-                         "f_jbstat","f_jbhas","f_jboff","f_jboffy",
+                         "j_sex","j_dvage","j_birthy","j_gor_dv","j_urban_dv","j_mlstat",
+                         ## economic status
+                         "j_jbstat","j_jbhas","j_jboff","j_jboffy",
                          ## work variables
-                         "f_paygu_dv","f_payg_dv","f_jbhrs","f_fimnlabgrs_dv","f_seearngrs_dv",
+                         "j_paygu_dv","j_payg_dv","j_jbhrs","j_fimnlabgrs_dv","j_seearngrs_dv",
                          ## education variables
-                         "f_hiqual_dv",
+                         "j_hiqual_dv",
                          ## health variables
-                         "f_health","f_aidhh","f_sclfsat1","f_sclfsato","f_sf12pcs_dv","f_sf12mcs_dv",
-                         "f_scsf1","f_scsf2a","f_scsf2b","f_scsf3a","f_scsf3b","f_scsf4a","f_scsf4b","f_scsf5","f_scsf6a","f_scsf6b","f_scsf6c","f_scsf7",
+                         "j_health","j_aidhh","j_sclfsat1","j_sclfsato","j_sf12pcs_dv","j_sf12mcs_dv",
+                         "j_scsf1","j_scsf2a","j_scsf2b","j_scsf3a","j_scsf3b","j_scsf4a","j_scsf4b","j_scsf5","j_scsf6a","j_scsf6b","j_scsf6c","j_scsf7",
                          ## pregnancy variables
-                         "f_pregout1","f_pregout2","f_pregout3","f_pregout4","f_pregout5",
-                         ## smoking variables
-                         "f_smoker", "f_ncigs",
+                         "j_pregout1","j_pregout2","j_pregout3",
+                         ## smoke variables
+                         "j_smoker", "j_ncigs",
                          ## alcohol variables
-                         "f_dklm","f_drnk4w","f_evralc","f_fivealcdr",
+                         "j_auditc1","j_auditc2","j_auditc3","j_auditc4","j_auditc5",
                          ## weight
-                         "f_indinus_lw","f_indinub_xw"),
+                         "j_indinus_lw","j_indinub_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
@@ -101,16 +101,16 @@ ukhls_read_wave6 <- function(
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
-                         "pregout1","pregout2","pregout3","pregout4","pregout5",
-                         ## smoking variables
+                         "pregout1","pregout2","pregout3",
+                         ## smoke variables
                          "smoker", "ncigs",
                          ## alcohol variables
-                         "dklm","drnk4w","evralc","fivealcdr",
+                         "auditc1","auditc2","auditc3","auditc4","auditc5",
                          ## weight
                          "weight_lw","weight_xw"))
 
-  data$wave <- "UKHLS Wave 6"
-  data$wave_no <- 6
+  data$wave <- "UKHLS Wave 10"
+  data$wave_no <- 10
   data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
   data$dataset <- "UKHLS"
   data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)
@@ -118,18 +118,18 @@ ukhls_read_wave6 <- function(
   ######## ADD IN HOUSEHOLD DATA
 
   data.hhold <- data.table::fread(
-    paste0(root[1], path, "ukhls_w6/f_hhresp.tab"),
+    paste0(root[1], path, "ukhls_w10/j_hhresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
 
-  hhold_vars <- colnames(data.hhold[, c(1,445,432,395,427,433,434,435,436)])
+  hhold_vars <- colnames(data.hhold[, c(1,333,320,271,315,321,322,323,324)])
 
   data.hhold <- data.hhold[ , hhold_vars, with = F]
   data.table::setnames(data.hhold,
                        # old names
-                       c("f_hidp","f_tenure_dv","f_nkids_dv","f_hhsize","f_hhtype_dv",
-                         "f_nch02_dv","f_nch34_dv","f_nch511_dv","f_nch1215_dv"),
+                       c("j_hidp","j_tenure_dv","j_nkids_dv","j_hhsize","j_hhtype_dv",
+                         "j_nch02_dv","j_nch34_dv","j_nch511_dv","j_nch1215_dv"),
                        # new names
                        c("hidp","hh_tenure","hh_numchild","hh_size","hh_type",
                          "hh_numchild02","hh_numchild34","hh_numchild511","hh_numchild1215"))
