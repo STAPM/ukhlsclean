@@ -34,15 +34,15 @@ ukhls_read_wave10 <- function(
   full = TRUE
 ) {
 
+  cat("\tReading UKHLS Wave 10")
 
-  print("Reading UKHLS Wave 9")
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w10/j_indresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
   if (full == TRUE) {
     # retain full interviews only
-    data <- data[i_ivfio==1,]
+    data <- data[j_ivfio==1,]
   }
 
   data.table::setnames(data, names(data), tolower(names(data)))
@@ -52,15 +52,15 @@ ukhls_read_wave10 <- function(
   econ_stat_vars   <- Hmisc::Cs(j_jbstat,j_jbhas,j_jboff,j_jboffy)
   work_vars        <- Hmisc::Cs(j_paygu_dv,j_payg_dv,j_jbhrs,j_fimnlabgrs_dv,j_seearngrs_dv)
   education_vars   <- Hmisc::Cs(j_hiqual_dv)
-  health_vars      <- Hmisc::Cs(j_health,i_aidhh,j_sclfsat1,j_sclfsato,j_sf12pcs_dv,j_sf12mcs_dv,
+  health_vars      <- Hmisc::Cs(j_health,j_aidhh,j_sclfsat1,j_sclfsato,j_sf12pcs_dv,j_sf12mcs_dv,
                                 j_scsf1,j_scsf2a,j_scsf2b,j_scsf3a,j_scsf3b,j_scsf4a,j_scsf4b,j_scsf5,j_scsf6a,j_scsf6b,j_scsf6c,j_scsf7)
   preg_vars        <- Hmisc::Cs(j_pregout1,j_pregout2,j_pregout3)
   smoke_vars       <- Hmisc::Cs(j_smoker,j_ncigs)
-  alc_vars         <- Hmisc::Cs(j_auditc1,j_auditc2,j_auditc3,j_auditc4,j_auditc5)
+  alc_vars         <- Hmisc::Cs(NULL)
   weight_vars      <- Hmisc::Cs(j_indinus_lw,j_indinub_xw)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
+  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -83,8 +83,6 @@ ukhls_read_wave10 <- function(
                          "j_pregout1","j_pregout2","j_pregout3",
                          ## smoke variables
                          "j_smoker", "j_ncigs",
-                         ## alcohol variables
-                         "j_auditc1","j_auditc2","j_auditc3","j_auditc4","j_auditc5",
                          ## weight
                          "j_indinus_lw","j_indinub_xw"),
 
@@ -104,8 +102,6 @@ ukhls_read_wave10 <- function(
                          "pregout1","pregout2","pregout3",
                          ## smoke variables
                          "smoker", "ncigs",
-                         ## alcohol variables
-                         "auditc1","auditc2","auditc3","auditc4","auditc5",
                          ## weight
                          "weight_lw","weight_xw"))
 
@@ -117,6 +113,8 @@ ukhls_read_wave10 <- function(
 
   ######## ADD IN HOUSEHOLD DATA
 
+  cat("\tMerge Household")
+
   data.hhold <- data.table::fread(
     paste0(root[1], path, "ukhls_w10/j_hhresp.tab"),
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
@@ -124,6 +122,7 @@ ukhls_read_wave10 <- function(
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
 
   hhold_vars <- colnames(data.hhold[, c(1,333,320,271,315,321,322,323,324)])
+ # hhold_vars <- Hmisc::Cs(pidp,pid,j_hidp,j_pno,j_psu,j_strata,j_istrtdaty,j_istrtdatm,j_istrtdatd)
 
   data.hhold <- data.hhold[ , hhold_vars, with = F]
   data.table::setnames(data.hhold,
@@ -141,6 +140,8 @@ ukhls_read_wave10 <- function(
                         all.y=FALSE)
 
   ######## Add in cross-wave data
+
+  cat("\tMerge Cross-Wave")
 
   data.xwave <- data.table::fread(
     paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
