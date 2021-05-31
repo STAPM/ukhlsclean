@@ -6,19 +6,12 @@
 #' @export
 clean_demographic <- function(data = NULL) {
 
+  cat(crayon::green("\tCleaning demographic variables\n"))
+
   ### age bands
 
-  data[ , ageband := c("16-19",
-                       "20-24",
-                       "25-29",
-                       "30-34",
-                       "35-39",
-                       "40-44",
-                       "45-49",
-                       "50-54",
-                       "55-59",
-                       "60-64",
-                       "65-69",
+  data[ , ageband := c("16-19", "20-24", "25-29", "30-34", "35-39", "40-44",
+                       "45-49", "50-54", "55-59", "60-64", "65-69",
                        "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
   data$ageband <- as.factor(data$ageband)
 
@@ -27,64 +20,39 @@ clean_demographic <- function(data = NULL) {
   data[sex == 1, gender := "male"]
   data[sex == 2, gender := "female"]
 
-  data$gender <- as.factor(data$gender)
+  data[,gender := as.factor(gender)]
   data <- subset(data,select = -c(sex))
 
   ### ethnicity
 
   ##### 9-categories
-  # UKHLS cross wave
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(1)        , ethnicity_9cat := "white_british"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(2:4)      , ethnicity_9cat := "white_non_british"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(5:8)      , ethnicity_9cat := "mixed"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(9)        , ethnicity_9cat := "indian"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(10)       , ethnicity_9cat := "pakistani"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(11)       , ethnicity_9cat := "bangladeshi"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(12:13,17) , ethnicity_9cat := "other_asian"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(14:16)    , ethnicity_9cat := "black"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(17,97)    , ethnicity_9cat := "other"]
+  data[ethnicity_raw %in% c(1)        , ethnicity_9cat := "white_british"]
+  data[ethnicity_raw %in% c(2:4)      , ethnicity_9cat := "white_non_british"]
+  data[ethnicity_raw %in% c(5:8)      , ethnicity_9cat := "mixed"]
+  data[ethnicity_raw %in% c(9)        , ethnicity_9cat := "indian"]
+  data[ethnicity_raw %in% c(10)       , ethnicity_9cat := "pakistani"]
+  data[ethnicity_raw %in% c(11)       , ethnicity_9cat := "bangladeshi"]
+  data[ethnicity_raw %in% c(12:13,17) , ethnicity_9cat := "other_asian"]
+  data[ethnicity_raw %in% c(14:16)    , ethnicity_9cat := "black"]
+  data[ethnicity_raw %in% c(17,97)    , ethnicity_9cat := "other"]
 
   ##### 5-categories
-  # BHPS wave 1-12
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:4) , ethnicity_5cat := "black"]
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(5:8) , ethnicity_5cat := "asian"]
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw == 9        , ethnicity_5cat := "other"]
-  # BHPS wave 13-18
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(1:5)      , ethnicity_5cat := "white"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(14:16)    , ethnicity_5cat := "black"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(10:13,17) , ethnicity_5cat := "asian"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(6:9)      , ethnicity_5cat := "mixed"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw == 18            , ethnicity_5cat := "other"]
-  # UKHLS cross wave
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(1:4)     , ethnicity_5cat := "white"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(14:16)   , ethnicity_5cat := "black"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(9:13)    , ethnicity_5cat := "asian"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(5:8)     , ethnicity_5cat := "mixed"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(17,97)   , ethnicity_5cat := "other"]
+  data[ethnicity_raw %in% c(1:4)     , ethnicity_5cat := "white"]
+  data[ethnicity_raw %in% c(14:16)   , ethnicity_5cat := "black"]
+  data[ethnicity_raw %in% c(9:13)    , ethnicity_5cat := "asian"]
+  data[ethnicity_raw %in% c(5:8)     , ethnicity_5cat := "mixed"]
+  data[ethnicity_raw %in% c(17,97)   , ethnicity_5cat := "other"]
 
   ##### 2-categories
-  # BHPS wave 1-12
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(1)   , ethnicity_2cat := "white"]
-  data[dataset == "BHPS" & wave_no < 13 & ethnicity_raw %in% c(2:9) , ethnicity_2cat := "non_white"]
-  # BHPS wave 13-18
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(1:5) , ethnicity_2cat := "white"]
-  data[dataset == "BHPS" & wave_no >= 13 & ethnicity_raw %in% c(6:18), ethnicity_2cat := "non_white"]
-  # UKHLS cross wave
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
-  data[dataset == "UKHLS" & ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
+  data[ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
+  data[ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
 
-  data$ethnicity_9cat <- as.factor(data$ethnicity_9cat)
-  data$ethnicity_5cat <- as.factor(data$ethnicity_5cat)
-  data$ethnicity_2cat <- as.factor(data$ethnicity_2cat)
+  data[,ethnicity_9cat := as.factor(ethnicity_9cat)]
+  data[,ethnicity_5cat := as.factor(ethnicity_5cat)]
+  data[,ethnicity_2cat := as.factor(ethnicity_2cat)]
 
   data <- subset(data,select = -c(ethnicity_raw))
 
-  ## fill in missing values for BHPS data
-  data$ethnicity_5cat <- with(data, ave(ethnicity_5cat, id, FUN = function(x)
-                                        replace(x, is.na(x), x[!is.na(x)][1L])))
-  data$ethnicity_2cat <- with(data, ave(ethnicity_2cat, id, FUN = function(x)
-                                         replace(x, is.na(x), x[!is.na(x)][1L])))
   ### region
 
   data[region == 1  , gor := "north_east"]
@@ -100,7 +68,7 @@ clean_demographic <- function(data = NULL) {
   data[region == 11 , gor := "scotland"]
   data[region == 12 , gor := "northern_ireland"]
 
-  data$gor <- as.factor(data$gor)
+  data[,gor := as.factor(gor)]
 
   data <- subset(data,select = -c(region))
 
@@ -109,7 +77,7 @@ clean_demographic <- function(data = NULL) {
   data[urban == 1  , area := "urban"]
   data[urban == 2  , area := "rural"]
 
-  data$area <- as.factor(data$area)
+  data[,area := as.factor(area)]
 
   data <- subset(data,select = -c(urban))
 
@@ -117,9 +85,23 @@ clean_demographic <- function(data = NULL) {
   data[mlstat == 1         , marstat := "single"]
   data[mlstat %in% c(2,3)  , marstat := "married"]
   data[mlstat %in% c(4:9)  , marstat := "sep_div_wid"]
-  data$marstat <- as.factor(data$marstat)
+
+  data[,marstat := as.factor(marstat)]
 
   data <- subset(data,select = -c(mlstat))
+
+
+  ### highest qualification
+
+  data[highest_qual == 1, hiqual := "degree"]
+  data[highest_qual == 2, hiqual := "other_he"]
+  data[highest_qual == 3, hiqual := "alevel"]
+  data[highest_qual == 4, hiqual := "gcse"]
+  data[highest_qual == 5, hiqual := "other_qual"]
+  data[highest_qual == 9, hiqual := "no_qual"]
+
+  data[,hiqual <- as.factor(hiqual)]
+  data <- subset(data,select = -c(highest_qual))
 
 return(data)
 }

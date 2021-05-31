@@ -34,10 +34,13 @@ ukhls_read_wave9 <- function(
   full = TRUE
 ) {
 
-  cat("\tReading UKHLS Wave 9")
+  cat(crayon::blue("\tReading UKHLS Wave 9"))
+
+  cat(crayon::cyan("\tIndividual..."))
 
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w9/i_indresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
   if (full == TRUE) {
@@ -117,8 +120,11 @@ ukhls_read_wave9 <- function(
 
   ######## ADD IN HOUSEHOLD DATA
 
+  cat(crayon::cyan("\tHousehold..."))
+
   data.hhold <- data.table::fread(
     paste0(root[1], path, "ukhls_w9/i_hhresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
@@ -136,14 +142,17 @@ ukhls_read_wave9 <- function(
 
   hhold_merged <- merge(x = data,
                         y = data.hhold,
-                        by="hidp",
+                        by = "hidp",
                         all.x=TRUE,
                         all.y=FALSE)
 
   ######## Add in cross-wave data
 
+  cat(crayon::cyan("\tCross-Wave..."))
+
   data.xwave <- data.table::fread(
     paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
@@ -165,7 +174,7 @@ ukhls_read_wave9 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::cyan("\tdone\n"))
+  cat(crayon::white("\tdone\n"))
 
   return(data_merged[])
 }

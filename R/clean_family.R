@@ -3,8 +3,7 @@
 #' @export
 clean_family <- function(data = NULL) {
 
-  ### marital status
-
+  cat(crayon::green("\tCleaning family background variables\n"))
 
   ### number and ages of children
 

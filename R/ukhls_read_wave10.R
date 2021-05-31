@@ -34,10 +34,13 @@ ukhls_read_wave10 <- function(
   full = TRUE
 ) {
 
-  cat("\tReading UKHLS Wave 10")
+  cat(crayon::blue("\tReading UKHLS Wave 10"))
+
+  cat(crayon::cyan("\tIndividual..."))
 
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w10/j_indresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
   if (full == TRUE) {
@@ -113,16 +116,16 @@ ukhls_read_wave10 <- function(
 
   ######## ADD IN HOUSEHOLD DATA
 
-  cat("\tMerge Household")
+  cat(crayon::cyan("\tHousehold..."))
 
   data.hhold <- data.table::fread(
     paste0(root[1], path, "ukhls_w10/j_hhresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
 
-  hhold_vars <- colnames(data.hhold[, c(1,333,320,271,315,321,322,323,324)])
- # hhold_vars <- Hmisc::Cs(pidp,pid,j_hidp,j_pno,j_psu,j_strata,j_istrtdaty,j_istrtdatm,j_istrtdatd)
+  hhold_vars <- colnames(data.hhold[, c(1,495,482,445,477,483,484,485,486)])
 
   data.hhold <- data.hhold[ , hhold_vars, with = F]
   data.table::setnames(data.hhold,
@@ -141,10 +144,11 @@ ukhls_read_wave10 <- function(
 
   ######## Add in cross-wave data
 
-  cat("\tMerge Cross-Wave")
+  cat(crayon::cyan("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
     paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
@@ -166,7 +170,7 @@ ukhls_read_wave10 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::cyan("\tdone\n"))
+  cat(crayon::white("\tdone\n"))
 
   return(data_merged[])
 }

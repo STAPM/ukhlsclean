@@ -3,6 +3,8 @@
 #' @export
 clean_health <- function(data = NULL) {
 
+  cat(crayon::green("\tCleaning health variables\n"))
+
   ### individual is a carer for someone in their household
 
   data[caring == 1, care_hhold := "yes"]

@@ -39,10 +39,13 @@ ukhls_read_wave1 <- function(
   full = TRUE
 ) {
 
-  cat("\tReading UKHLS Wave 1")
+  cat(crayon::blue("\tReading UKHLS Wave 1"))
+
+  cat(crayon::cyan("\tIndividual..."))
 
   data <- data.table::fread(
     paste0(root[1], path, "ukhls_w1/a_indresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
   if (full == TRUE) {
@@ -99,16 +102,17 @@ ukhls_read_wave1 <- function(
                          ## weight
                          "weight_xw"))
 
-  data$wave <- "UKHLS Wave 1"
-  data$wave_no <- 1
-  data$bhps_sample <- FALSE
-  data$dataset <- "UKHLS"
-  data$id <- data$pidp
+  data[,wave_no := 1]
+  data[,bhps_sample := FALSE]
+  data[,id := data$pidp]
 
   ######## ADD IN HOUSEHOLD DATA
 
+  cat(crayon::cyan("\tHousehold..."))
+
   data.hhold <- data.table::fread(
     paste0(root[1], path, "ukhls_w1/a_hhresp.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
@@ -132,8 +136,11 @@ ukhls_read_wave1 <- function(
 
   ######## ADD IN CROSS-WAVE DATA
 
+  cat(crayon::cyan("\tCross-Wave..."))
+
   data.xwave <- data.table::fread(
     paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
+    showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
@@ -155,7 +162,7 @@ ukhls_read_wave1 <- function(
                                    all.x=TRUE,
                                    all.y=FALSE)
 
-  cat(crayon::cyan("\tdone\n"))
+  cat(crayon::white("\tdone\n"))
 
   return(data_merged[])
 }

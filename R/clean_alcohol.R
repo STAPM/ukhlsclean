@@ -5,25 +5,27 @@
 #' @export
 clean_alcohol <- function(data = NULL) {
 
+  cat(crayon::green("\tCleaning alcohol variables\n"))
+
   # ensure data is sorted
-  data <- data[order(id,wave),]
+  data <- data[order(id,wave_no),]
 
   #### wave 7 and 9 variables
 
   # drink in the last 12 months (no = current abstainer)
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & auditc1 == 1, current_abstainer := 0]
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & auditc1 == 2, current_abstainer := 1]
+  data[wave_no %in% c(7,9) & auditc1 == 1, current_abstainer := 0]
+  data[wave_no %in% c(7,9) & auditc1 == 2, current_abstainer := 1]
 
   # always been a non-drinker (yes = always abstainer)
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & auditc1 == 1, always_abstainer := 0]
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & auditc2 == 2, always_abstainer := 0]
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & auditc2 == 1, always_abstainer := 1]
+  data[wave_no %in% c(7,9) & auditc1 == 1, always_abstainer := 0]
+  data[wave_no %in% c(7,9) & auditc2 == 2, always_abstainer := 0]
+  data[wave_no %in% c(7,9) & auditc2 == 1, always_abstainer := 1]
 
   # drinks on a typical day
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & current_abstainer == 1 , auditc4 := 0]
+  data[wave_no %in% c(7,9) & current_abstainer == 1 , auditc4 := 0]
 
   # frequency of binge drinking (6+ drinks in one day)
-  data[wave %in% c("UKHLS Wave 7","UKHLS Wave 9") & current_abstainer == 1 , auditc5 := 1]
+  data[wave_no %in% c(7,9) & current_abstainer == 1 , auditc5 := 1]
 
 
   # make factors

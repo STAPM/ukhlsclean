@@ -7,6 +7,8 @@
 #' @export
 clean_econ_status <- function(data = NULL) {
 
+  cat(crayon::green("\tCleaning economic status variables\n"))
+
   ### 2 categories - work/not work
 
   data[econ_stat == 1 , econ_stat_2cat := "employed"]
