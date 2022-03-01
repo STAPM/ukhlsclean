@@ -40,7 +40,7 @@ ukhls_read_wave3 <- function(
   file <- here::here(paste0(root, path))
 
   data <- data.table::fread(
-    paste0(file, "ukhls_w3/c_indresp.tab"),
+    paste0(file, "/ukhls_w3/c_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
