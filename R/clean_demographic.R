@@ -22,6 +22,7 @@ clean_demographic <- function(data = NULL) {
 
   data[,gender := as.factor(gender)]
   data <- subset(data,select = -c(sex))
+  setnames(data, "gender", "sex")
 
   ### ethnicity
 
