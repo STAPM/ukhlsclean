@@ -7,14 +7,17 @@
 ukhls_clean_global(
   data,
   ages = 16:89,
+  waves = 1:11,
   keep_vars = NULL,
-  complete_vars = c("year", "age", "gender")
+  complete_vars = c("year", "age", "sex")
 )
 }
 \arguments{
 \item{data}{Data table - the combined Understanding Society dataset.}
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
+
+\item{waves}{Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).}
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
