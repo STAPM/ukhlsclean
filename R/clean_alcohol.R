@@ -8,7 +8,7 @@ clean_alcohol <- function(data = NULL) {
   cat(crayon::green("\tCleaning alcohol variables\n"))
 
   # ensure data is sorted
-  data <- data[order(id,wave_no),]
+  data <- data[order(id, wave_no),]
 
   #### wave 7 and 9 variables
 
@@ -40,7 +40,7 @@ clean_alcohol <- function(data = NULL) {
                            levels = c(0,1,2,3,4,5),
                            labels = c("0","1-2","3-4","5-6","7-9","10+")) ]
 
-  data[, freq_binge := factor(freq_binge,
+  data[, freq_binge := factor(auditc5,
                               levels = 1:5,
                               labels = c("Never","Less than monthly","Monthly","Weekly","Daily")) ]
 
