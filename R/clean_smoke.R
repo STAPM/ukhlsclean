@@ -23,8 +23,8 @@ clean_smoke <- function(data = NULL) {
   data[wave_no %in% c(2,5) & smever == 1 & smnow == 1, current_smoker := "yes"]
   data[wave_no %in% c(2,5) & smever == 1 & smnow == 2, current_smoker := "no"]
   data[wave_no %in% c(2,5) & smever == 2, current_smoker := "no"]
-  data[wave_no %in% c(6:10) & smoker == 1, current_smoker := "yes"]
-  data[wave_no %in% c(6:10) & smoker == 2, current_smoker := "no"]
+  data[wave_no %in% c(6:11) & smoker == 1, current_smoker := "yes"]
+  data[wave_no %in% c(6:11) & smoker == 2, current_smoker := "no"]
 
   # ever smoked
   data[wave_no %in% c(2,5) & smever == 2, ever_smoked := "no"]
@@ -55,10 +55,10 @@ clean_smoke <- function(data = NULL) {
   data[, othersmoker_hhold := as.factor(data$othersmoker_hhold)]
 
   # remove raw variables no longer needed
-  data <- subset(data,select = -c(smever, smnow, smcigs, smncigs, aglquit,
-                                  smagbg, smoker, smoke, num_smoker_hhold,
-                                  num_othersmoker_hhold))
 
+  data[, c("smever", "smnow", "smcigs", "smncigs", "aglquit",
+           "smagbg", "smoker", "smoke", "num_smoker_hhold",
+           "num_othersmoker_hhold") := NULL]
 
   return(data)
 }
