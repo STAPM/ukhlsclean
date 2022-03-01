@@ -29,7 +29,7 @@ except -8 ("don't know") as this is data.
 }
 }
 \description{
-Reads and does basic cleaning on the UKHLS ninth wave.
+Reads and does basic cleaning on the UKHLS tenth wave.
 }
 \details{
 MISSING VALUES

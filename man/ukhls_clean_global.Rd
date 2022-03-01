@@ -7,7 +7,7 @@
 ukhls_clean_global(
   data,
   ages = 16:89,
-  keep_vars = c("year", "age", "gender"),
+  keep_vars = NULL,
   complete_vars = c("year", "age", "gender")
 )
 }
@@ -16,7 +16,7 @@ ukhls_clean_global(
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
 
-\item{keep_vars}{Character vector - the names of the variables to keep (defaults to year, age and gender).}
+\item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).}
 }

@@ -30,9 +30,10 @@ except -8 ("don't know") as this is data.
 }
 \description{
 Reads and does basic cleaning on the UKHLS second wave.
-MISSING VALUES
 }
 \details{
+MISSING VALUES
+
 \itemize{
 \item -1 Don't know.
 \item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
