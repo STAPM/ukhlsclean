@@ -49,7 +49,7 @@ combine_waves <- function(
 
   ## calculate number of waves each individual is in
 
-  clean_data[, nwaves := .N, by = c("id")]
+  data[, nwaves := .N, by = c("id")]
 
   # order columns
   setcolorder(data, c("id","hidp","wave_no","bhps_sample","nwaves",
