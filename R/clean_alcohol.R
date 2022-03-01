@@ -13,31 +13,43 @@ clean_alcohol <- function(data = NULL) {
   #### wave 7 and 9 variables
 
   # drink in the last 12 months (no = current abstainer)
-  data[wave_no %in% c(7,9) & auditc1 == 1, current_abstainer := 0]
-  data[wave_no %in% c(7,9) & auditc1 == 2, current_abstainer := 1]
+  data[wave_no %in% c(7,9,11) & auditc1 == 1, current_abstainer := 0]
+  data[wave_no %in% c(7,9,11) & auditc1 == 2, current_abstainer := 1]
 
   # always been a non-drinker (yes = always abstainer)
-  data[wave_no %in% c(7,9) & auditc1 == 1, always_abstainer := 0]
-  data[wave_no %in% c(7,9) & auditc2 == 2, always_abstainer := 0]
-  data[wave_no %in% c(7,9) & auditc2 == 1, always_abstainer := 1]
+  data[wave_no %in% c(7,9,11) & auditc1 == 1, always_abstainer := 0]
+  data[wave_no %in% c(7,9,11) & auditc2 == 2, always_abstainer := 0]
+  data[wave_no %in% c(7,9,11) & auditc2 == 1, always_abstainer := 1]
 
   # drinks on a typical day
-  data[wave_no %in% c(7,9) & current_abstainer == 1 , auditc4 := 0]
+  data[wave_no %in% c(7,9,11) & current_abstainer == 1 , auditc4 := 0]
 
   # frequency of binge drinking (6+ drinks in one day)
-  data[wave_no %in% c(7,9) & current_abstainer == 1 , auditc5 := 1]
+  data[wave_no %in% c(7,9,11) & current_abstainer == 1 , auditc5 := 1]
 
 
   # make factors
-  data$current_abstainer <- factor(data$current_abstainer,levels = c(0,1), labels = c("no","yes"))
-  data$always_abstainer  <- factor(data$always_abstainer,levels = c(0,1), labels = c("no","yes"))
-  data$ndrinks           <- factor(data$auditc4,levels = c(0,1,2,3,4,5), labels = c("0","1-2","3-4","5-6","7-9","10+"))
-  data$freq_binge        <- factor(data$auditc5,levels = c(1,2,3,4,5), labels = c("Never","Less than monthly","Monthly","Weekly","Daily"))
+
+  data[, current_abstainer := factor(current_abstainer,
+                                     levels = c(0,1),
+                                     labels = c("no","yes")) ]
+  data[, always_abstainer := factor(always_abstainer,
+                                    levels = c(0,1),
+                                    labels = c("no","yes")) ]
+  data[, ndrinks := factor(auditc4,
+                           levels = c(0,1,2,3,4,5),
+                           labels = c("0","1-2","3-4","5-6","7-9","10+")) ]
+
+  data[, freq_binge := factor(freq_binge,
+                              levels = 1:5,
+                              labels = c("Never","Less than monthly","Monthly","Weekly","Daily")) ]
 
 
   # remove raw variables no longer needed
-  data <- subset(data,select = -c(dklm,drnk4w,evralc,fivealcdr,auditc1,auditc2,auditc3,auditc4,auditc5))
+  #data <- subset(data,select = -c(dklm,drnk4w,evralc,fivealcdr,auditc1,auditc2,auditc3,auditc4,auditc5))
 
+  data[, c("dklm", "drnk4w", "evralc", "fivealcdr",
+           "auditc1", "auditc2", "auditc3", "auditc4", "auditc5") := NULL]
 
   return(data)
 }
