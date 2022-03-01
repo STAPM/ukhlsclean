@@ -115,12 +115,11 @@ ukhls_read_wave11 <- function(
                          ## weight
                          "weight_lw","weight_xw"))
 
-
-  data$wave <- "UKHLS Wave 11"
-  data$wave_no <- 11
-  data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
-  data$dataset <- "UKHLS"
-  data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)
+  data[, wave := "UKHLS Wave 11"]
+  data[, wave_no := 11]
+  data[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
+  data[, dataset := "UKHLS"]
+  data[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
   ######## ADD IN HOUSEHOLD DATA
 

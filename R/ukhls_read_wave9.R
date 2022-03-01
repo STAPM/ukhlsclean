@@ -38,8 +38,10 @@ ukhls_read_wave9 <- function(
 
   cat(crayon::cyan("\tIndividual..."))
 
+  file <- here::here(paste0(root, path))
+
   data <- data.table::fread(
-    paste0(root[1], path, "ukhls_w9/i_indresp.tab"),
+    paste0(file, "ukhls_w9/i_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -112,11 +114,11 @@ ukhls_read_wave9 <- function(
                          ## weight
                          "weight_lw","weight_xw"))
 
-  data$wave <- "UKHLS Wave 9"
-  data$wave_no <- 9
-  data$bhps_sample <- ifelse(!is.na(data$pid),TRUE,FALSE)
-  data$dataset <- "UKHLS"
-  data$id <- ifelse(data$bhps_sample==FALSE,data$pidp,data$pid)
+  data[, wave := "UKHLS Wave 9"]
+  data[, wave_no := 9]
+  data[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
+  data[, dataset := "UKHLS"]
+  data[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
   ######## ADD IN HOUSEHOLD DATA
 

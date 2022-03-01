@@ -43,8 +43,10 @@ ukhls_read_wave1 <- function(
 
   cat(crayon::cyan("\tIndividual..."))
 
+  file <- here::here(paste0(root, path))
+
   data <- data.table::fread(
-    paste0(root[1], path, "ukhls_w1/a_indresp.tab"),
+    paste0(file, "ukhls_w1/a_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -102,9 +104,11 @@ ukhls_read_wave1 <- function(
                          ## weight
                          "weight_xw"))
 
-  data[,wave_no := 1]
-  data[,bhps_sample := FALSE]
-  data[,id := data$pidp]
+  data[, wave := "UKHLS Wave 1"]
+  data[, wave_no := 1]
+  data[, bhps_sample := FALSE]
+  data[, dataset := "UKHLS"]
+  data[, id := pidp]
 
   ######## ADD IN HOUSEHOLD DATA
 
