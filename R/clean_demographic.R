@@ -15,6 +15,9 @@ clean_demographic <- function(data = NULL) {
                        "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
   data$ageband <- as.factor(data$ageband)
 
+  data[ , age_cat := c("16-24", "25-34", "35-49", "50-64", "65+")[findInterval(age, c(16, 25, 35, 50, 65))]]
+  data$age_cat <- as.factor(data$age_cat)
+
   ### gender
 
   data[sex == 1, gender := "male"]
