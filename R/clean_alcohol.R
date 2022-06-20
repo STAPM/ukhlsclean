@@ -11,6 +11,8 @@ clean_alcohol <- function(data = NULL) {
   data <- data[order(id, wave_no),]
 
   #### wave 7 and 9 variables
+  if("auditc1" %in% colnames(data)) {
+
 
   # drink in the last 12 months (no = current abstainer)
   data[wave_no %in% c(7,9,11) & auditc1 == 1, current_abstainer := 0]
@@ -26,6 +28,7 @@ clean_alcohol <- function(data = NULL) {
 
   # frequency of binge drinking (6+ drinks in one day)
   data[wave_no %in% c(7,9,11) & current_abstainer == 1 , auditc5 := 1]
+
 
 
   # make factors
@@ -46,10 +49,11 @@ clean_alcohol <- function(data = NULL) {
 
 
   # remove raw variables no longer needed
-  #data <- subset(data,select = -c(dklm,drnk4w,evralc,fivealcdr,auditc1,auditc2,auditc3,auditc4,auditc5))
 
   data[, c("dklm", "drnk4w", "evralc", "fivealcdr",
            "auditc1", "auditc2", "auditc3", "auditc4", "auditc5") := NULL]
+
+  }
 
   return(data)
 }

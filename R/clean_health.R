@@ -5,20 +5,25 @@ clean_health <- function(data = NULL) {
 
   cat(crayon::green("\tCleaning health variables\n"))
 
-  ### individual is a carer for someone in their household
+  #############################################################
+  ### individual is a carer for someone in their household ####
 
   data[caring == 1, care_hhold := "yes"]
   data[caring != 1 | is.na(caring), care_hhold := "no"]
 
-  data$care_hhold <- as.factor(data$care_hhold)
-  ### individual has a long-standing illness/disability
+  data[, care_hhold := as.factor(care_hhold)]
+
+  #########################################################
+  ### individual has a long-standing illness/disability ###
 
   data[lt_sick == 1, disability := "yes"]
   data[lt_sick == 2, disability := "no"]
 
-  data$disability <- as.factor(data$disability)
+  data[, disability := as.factor(disability)]
 
-  ### satisfaction with health
+  ################################
+  ### satisfaction with health ###
+
   data[health_satisf == 1, satisfaction_health := "completely disatisfied"]
   data[health_satisf == 2, satisfaction_health := "mostly disatisfied"]
   data[health_satisf == 3, satisfaction_health := "somewhat disatisfied"]
@@ -27,7 +32,9 @@ clean_health <- function(data = NULL) {
   data[health_satisf == 6, satisfaction_health := "mostly satisfied"]
   data[health_satisf == 7, satisfaction_health := "completely satisfied"]
 
-  ### satisfaction with life in general
+  #########################################
+  ### satisfaction with life in general ###
+
   data[life_satisf == 1, satisfaction_life := "completely disatisfied"]
   data[life_satisf == 2, satisfaction_life := "mostly disatisfied"]
   data[life_satisf == 3, satisfaction_life := "somewhat disatisfied"]
@@ -36,13 +43,37 @@ clean_health <- function(data = NULL) {
   data[life_satisf == 6, satisfaction_life := "mostly satisfied"]
   data[life_satisf == 7, satisfaction_life := "completely satisfied"]
 
-  ### currently pregnant
+  ##########################
+  ### currently pregnant ###
+
+  if("pregout1" %in% colnames(data)) {
+
   data[pregout1 == 4 | pregout2 == 4 |
-       pregout3 == 4 | pregout4 == 4 | pregout5 == 4, pregnant := 1]
+       pregout3 == 4 , pregnant := 1]
   data[is.na(pregnant) , pregnant := 0]
 
+  data[, c("pregout1","pregout2","pregout3") := NULL]
+
+  }
+  if("pregout4" %in% colnames(data)) {
+
+    data[pregout4 == 4, pregnant := 1]
+    data[is.na(pregnant) , pregnant := 0]
+
+    data[, c("pregout4") := NULL]
+
+  }
+  if("pregout5" %in% colnames(data)) {
+
+    data[pregout5 == 4, pregnant := 1]
+    data[is.na(pregnant) , pregnant := 0]
+
+    data[, c("pregout5") := NULL]
+
+  }
+
   ### remove raw variables
-  data <- subset(data,select = -c(lt_sick,caring,health_satisf,life_satisf,
-                                  pregout1,pregout2,pregout3,pregout4,pregout5))
+
+  data[, c("lt_sick","caring","health_satisf","life_satisf") := NULL]
 
 }
