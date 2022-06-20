@@ -6,14 +6,14 @@
 \usage{
 ukhls_read_wave7(
   root = c("C:/"),
-  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
   full = TRUE
 )
 }
 \arguments{
 \item{root}{Character - the root directory.}
 
-\item{path}{Character - the file path and name.}
+\item{file}{Character - the file path and name.}
 
 \item{full}{Logical - TRUE if restricting the sample to full interviews only (excluding proxies)}
 }

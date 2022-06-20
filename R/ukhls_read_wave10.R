@@ -15,7 +15,7 @@
 #' }
 #'
 #' @param root Character - the root directory.
-#' @param path Character - the file path and name.
+#' @param file Character - the file path and name.
 #' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)
 #' @importFrom data.table :=
 #' @return Returns a data table. Note that:
@@ -30,7 +30,7 @@
 #' @export
 ukhls_read_wave10 <- function(
   root = c("C:/"),
-  path = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
   full = TRUE
 ) {
 
@@ -38,10 +38,10 @@ ukhls_read_wave10 <- function(
 
   cat(crayon::cyan("\tIndividual..."))
 
-  file <- here::here(paste0(root, path))
+  path <- here::here(paste0(root, file))
 
   data <- data.table::fread(
-    paste0(file, "/ukhls_w10/j_indresp.tab"),
+    paste0(path, "/ukhls_w10/j_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -116,12 +116,13 @@ ukhls_read_wave10 <- function(
   data[, dataset := "UKHLS"]
   data[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
-  ######## ADD IN HOUSEHOLD DATA
+  ########################################
+  ######## ADD IN HOUSEHOLD DATA #########
 
   cat(crayon::cyan("\tHousehold..."))
 
   data.hhold <- data.table::fread(
-    paste0(root[1], path, "ukhls_w10/j_hhresp.tab"),
+    paste0(path, "/ukhls_w10/j_hhresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
@@ -144,12 +145,13 @@ ukhls_read_wave10 <- function(
                         all.x=TRUE,
                         all.y=FALSE)
 
-  ######## Add in cross-wave data
+  #########################################
+  ######## ADD IN CROSS-WAVE DATA #########
 
   cat(crayon::cyan("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
-    paste0(root[1], path, "ukhls_wx/xwavedat.tab"),
+    paste0(path, "/ukhls_wx/xwavedat.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
