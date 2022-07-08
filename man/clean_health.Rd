@@ -7,5 +7,7 @@
 clean_health(data = NULL)
 }
 \description{
-Clean Health and Caring Variables
+Produce clean versions of variables measuring health outcomes. Also apply the
+algorithm developed by Gray A, Rivero-Arias O, Clarke P (2006) to estimate
+EQ-5D utility values from SF-12 responses
 }

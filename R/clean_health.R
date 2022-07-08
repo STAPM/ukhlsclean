@@ -1,5 +1,9 @@
 #' Clean Health and Caring Variables
 #'
+#' Produce clean versions of variables measuring health outcomes. Also apply the
+#' algorithm developed by Gray A, Rivero-Arias O, Clarke P (2006) to estimate
+#' EQ-5D utility values from SF-12 responses
+#'
 #' @export
 clean_health <- function(data = NULL) {
 
@@ -72,8 +76,31 @@ clean_health <- function(data = NULL) {
 
   }
 
+  ###################################
+  ##### EQ-5d mapped from SF-12 #####
+
+  ## Use the algorithm from :
+  ## https://www.herc.ox.ac.uk/downloads/downloads-supporting-material-1/sf-12-responses-and-eq-5d-utility-values
+  ##
+  ## Gray A, Rivero-Arias O, Clarke P. Estimating the association between SF-12 responses and EQ-5D utility values
+  ## by response mapping. Medical Decision Making 2006; 26(1):18-29.
+
+  ## Rename the SF-12 Variables
+
+  setnames(data,
+           c("sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7"),
+           c("sfstat","sfmode","sfstaira","sfless","sflimit","sflesse","sfcarful","sfpainb","sfcalm","sfener","sflow","sfvisit"))
+
+  eq5d_data <- ukhlsclean::eq5d(data = data,
+                                matrix = ukhlsclean::CoefficientMatrix,
+                                seed = 0)
+
+  merged_data <- merge(data, eq5d_data, by = c("pidp","wave_no"), sort = F, all.x = TRUE)
+
   ### remove raw variables
 
-  data[, c("lt_sick","caring","health_satisf","life_satisf") := NULL]
+  merged_data[, c("lt_sick","caring","health_satisf","life_satisf") := NULL]
+
+  return(merged_data)
 
 }

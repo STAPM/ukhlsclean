@@ -12,3 +12,11 @@
 #'     \item{cpi_value}{}
 #' }
 "cpi"
+
+#' EQ-5D Coefficient Matrix
+#'
+#' Matrix of coefficients used to calculate EQ-5D domains from the SF-12.
+#' \href{https://www.herc.ox.ac.uk/downloads/downloads-supporting-material-1/sf-12-responses-and-eq-5d-utility-values}{SF-12 Responses and EQ-5D Utility Values}
+#'
+"CoefficientMatrix"
+
