@@ -13,7 +13,13 @@ combine_waves <- function(
   data <- data.table::rbindlist(data_list, use.names = T, fill = T)
 
   # remove the pid and pidp identifiers
-  data <- subset(data,select = -c(pid,pidp))
+  if("pid" %in% colnames(data)) {
+
+  data[, "pid" := NULL]
+
+  }
+
+  data[, "pidp" := NULL]
 
   # order rows and columns
   data <- data[order(id,wave_no),]
