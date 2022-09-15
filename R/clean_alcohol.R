@@ -50,10 +50,16 @@ clean_alcohol <- function(data = NULL) {
 
   # remove raw variables no longer needed
 
-  data[, c("dklm", "drnk4w", "evralc", "fivealcdr",
-           "auditc1", "auditc2", "auditc3", "auditc4", "auditc5") := NULL]
+  data[, c("auditc1", "auditc2", "auditc3", "auditc4", "auditc5") := NULL]
+
+  }
+
+  if ("auditc1" %in% colnames(data)){
+
+  data[, c("dklm", "drnk4w", "evralc", "fivealcdr") := NULL]
 
   }
 
   return(data)
+
 }
