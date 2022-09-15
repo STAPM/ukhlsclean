@@ -4,12 +4,14 @@
 \alias{eq5d}
 \title{EQ-5D Algorithm}
 \usage{
-eq5d(data, matrix)
+eq5d(data, matrix = ukhlsclean::CoefficientMatrix, seed = 0)
 }
 \arguments{
 \item{data}{Data table. UKHLS data containing SF-12 variables.}
 
 \item{matrix}{Matrix. Matrix of coefficients to use in the algorithm}
+
+\item{seed}{Integer. Random number seed}
 }
 \value{
 
