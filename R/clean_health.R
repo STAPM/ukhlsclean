@@ -28,24 +28,24 @@ clean_health <- function(data = NULL) {
   ################################
   ### satisfaction with health ###
 
-  data[health_satisf == 1, satisfaction_health := "completely disatisfied"]
-  data[health_satisf == 2, satisfaction_health := "mostly disatisfied"]
-  data[health_satisf == 3, satisfaction_health := "somewhat disatisfied"]
+  data[health_satisf == 1, satisfaction_health := "completely_disatisfied"]
+  data[health_satisf == 2, satisfaction_health := "mostly_disatisfied"]
+  data[health_satisf == 3, satisfaction_health := "somewhat_disatisfied"]
   data[health_satisf == 4, satisfaction_health := "neutral"]
-  data[health_satisf == 5, satisfaction_health := "somewhat satisfied"]
-  data[health_satisf == 6, satisfaction_health := "mostly satisfied"]
-  data[health_satisf == 7, satisfaction_health := "completely satisfied"]
+  data[health_satisf == 5, satisfaction_health := "somewhat_satisfied"]
+  data[health_satisf == 6, satisfaction_health := "mostly_satisfied"]
+  data[health_satisf == 7, satisfaction_health := "completely_satisfied"]
 
   #########################################
   ### satisfaction with life in general ###
 
-  data[life_satisf == 1, satisfaction_life := "completely disatisfied"]
-  data[life_satisf == 2, satisfaction_life := "mostly disatisfied"]
-  data[life_satisf == 3, satisfaction_life := "somewhat disatisfied"]
+  data[life_satisf == 1, satisfaction_life := "completely_disatisfied"]
+  data[life_satisf == 2, satisfaction_life := "mostly_disatisfied"]
+  data[life_satisf == 3, satisfaction_life := "somewhat_disatisfied"]
   data[life_satisf == 4, satisfaction_life := "neutral"]
-  data[life_satisf == 5, satisfaction_life := "somewhat satisfied"]
-  data[life_satisf == 6, satisfaction_life := "mostly satisfied"]
-  data[life_satisf == 7, satisfaction_life := "completely satisfied"]
+  data[life_satisf == 5, satisfaction_life := "somewhat_satisfied"]
+  data[life_satisf == 6, satisfaction_life := "mostly_satisfied"]
+  data[life_satisf == 7, satisfaction_life := "completely_satisfied"]
 
   ##########################
   ### currently pregnant ###
