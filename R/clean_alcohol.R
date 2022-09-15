@@ -54,7 +54,7 @@ clean_alcohol <- function(data = NULL) {
 
   }
 
-  if ("auditc1" %in% colnames(data)){
+  if ("dklm" %in% colnames(data)){
 
   data[, c("dklm", "drnk4w", "evralc", "fivealcdr") := NULL]
 
