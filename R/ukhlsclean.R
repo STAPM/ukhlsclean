@@ -22,6 +22,8 @@ ukhlsclean <- function(root,
                        keep_vars = NULL,
                        complete_vars = c("age","sex")){
 
+cat(crayon::bgYellow("Cleaning the Understanding Society Data\n"))
+
 start_time <- Sys.time()
 
 ###############################################################################
