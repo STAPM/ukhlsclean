@@ -6,7 +6,7 @@
 #' @export
 clean_demographic <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning demographic variables\n"))
+  #cat(crayon::green("\tCleaning demographic variables\n"))
 
   ### age bands
 

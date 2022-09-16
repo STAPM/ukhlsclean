@@ -7,7 +7,7 @@
 #' @export
 clean_hours_earn <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning hours and earnings variables\n"))
+  #cat(crayon::green("\tCleaning hours and earnings variables\n"))
 
   ## merge in CPI inflation figures and deflate
 

@@ -22,53 +22,41 @@ ukhlsclean <- function(root,
                        keep_vars = NULL,
                        complete_vars = c("age","sex")){
 
+start_time <- Sys.time()
+
 ###############################################################################
 #### For each wave, wrap the reading function in the global cleaning function
 
-list <- NULL
+data_list <- list()
 
 ### Wave 1
 
 if (1 %in% waves){
 
-  wave1 <- ukhls_clean_global(ukhls_read_wave1(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave1(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave1 = wave1)
-  } else {
-    list <- c(list, wave1)
-  }
-
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 }
 
 ### Wave 2
 
 if (2 %in% waves){
 
-  wave2 <- ukhls_clean_global(ukhls_read_wave2(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave2(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave2 = wave2)
-  } else {
-    list <- c(list, list(wave2 = wave2))
-  }
-
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 }
 
 ### Wave 3
 
 if (3 %in% waves){
 
-  wave3 <- ukhls_clean_global(ukhls_read_wave3(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave3(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave3 = wave3)
-  } else {
-    list <- c(list, list(wave3 = wave3))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -76,14 +64,10 @@ if (3 %in% waves){
 
 if (4 %in% waves){
 
-  wave4 <- ukhls_clean_global(ukhls_read_wave4(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave4(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave4 = wave4)
-  } else {
-    list <- c(list, list(wave4 = wave4))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -91,14 +75,10 @@ if (4 %in% waves){
 
 if (5 %in% waves){
 
-  wave5 <- ukhls_clean_global(ukhls_read_wave5(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave5(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave5 = wave5)
-  } else {
-    list <- c(list, list(wave5 = wave5))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -106,14 +86,10 @@ if (5 %in% waves){
 
 if (6 %in% waves){
 
-  wave6 <- ukhls_clean_global(ukhls_read_wave6(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave6(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave6 = wave6)
-  } else {
-    list <- c(list, list(wave6 = wave6))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -121,14 +97,10 @@ if (6 %in% waves){
 
 if (7 %in% waves){
 
-  wave7 <- ukhls_clean_global(ukhls_read_wave7(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave7(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave7 = wave7)
-  } else {
-    list <- c(list, list(wave7 = wave7))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -136,14 +108,10 @@ if (7 %in% waves){
 
 if (8 %in% waves){
 
-  wave8 <- ukhls_clean_global(ukhls_read_wave8(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave8(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave8 = wave8)
-  } else {
-    list <- c(list, list(wave8 = wave8))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -151,14 +119,10 @@ if (8 %in% waves){
 
 if (9 %in% waves){
 
-  wave9 <- ukhls_clean_global(ukhls_read_wave9(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave9(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave9 = wave9)
-  } else {
-    list <- c(list, list(wave9 = wave9))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -166,14 +130,10 @@ if (9 %in% waves){
 
 if (10 %in% waves){
 
-  wave10 <- ukhls_clean_global(ukhls_read_wave10(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave10(root = root, file = file, full = full),
                               waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave10 = wave10)
-  } else {
-    list <- c(list, list(wave10 = wave10))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -181,14 +141,10 @@ if (10 %in% waves){
 
 if (11 %in% waves){
 
-  wave11 <- ukhls_clean_global(ukhls_read_wave11(root = root, file = file, full = full),
+  wave <- ukhls_clean_global(ukhls_read_wave11(root = root, file = file, full = full),
                                waves = waves, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
 
-  if (is.null(list)) {
-    list <- list(wave11 = wave11)
-  } else {
-    list <- c(list, list(wave11 = wave11))
-  }
+  data_list <- append(data_list, list(wave)) ; rm(wave)
 
 }
 
@@ -196,6 +152,17 @@ if (11 %in% waves){
 ### Combine all waves in the list into a single dataset
 
 data <- ukhlsclean::combine_waves(list)
+
+#######################
+## Record time taken
+
+end_time <- Sys.time()
+
+tdiff <- difftime(end_time, start_time, units = "mins")
+
+time <- paste0("Total Data reading and cleaning time: ", round(tdiff,2), " minutes")
+
+cat(crayon::bgYellow(time))
 
 return(data)
 }

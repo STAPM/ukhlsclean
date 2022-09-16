@@ -3,7 +3,7 @@
 #' @export
 clean_family <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning family background variables\n"))
+  #cat(crayon::green("\tCleaning family background variables\n"))
 
   ### number and ages of children
 

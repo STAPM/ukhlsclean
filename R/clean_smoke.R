@@ -6,7 +6,7 @@
 #' @export
 clean_smoke <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning smoking variables\n"))
+  #cat(crayon::green("\tCleaning smoking variables\n"))
 
   # ensure data is sorted
   data <- data[order(id,wave_no),]

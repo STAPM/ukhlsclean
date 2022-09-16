@@ -34,9 +34,9 @@ ukhls_read_wave7 <- function(
   full = TRUE
 ) {
 
-  cat(crayon::blue("\tReading UKHLS Wave 7"))
+  cat(crayon::magenta("\tReading UKHLS Wave 7"))
 
-  cat(crayon::cyan("\tIndividual..."))
+  cat(crayon::red("\tIndividual..."))
 
   path <- here::here(paste0(root, file))
 
@@ -123,7 +123,7 @@ ukhls_read_wave7 <- function(
   ########################################
   ######## ADD IN HOUSEHOLD DATA #########
 
-  cat(crayon::cyan("\tHousehold..."))
+  cat(crayon::red("\tHousehold..."))
 
   data.hhold <- data.table::fread(
     paste0(path, "/ukhls_w7/g_hhresp.tab"),
@@ -152,7 +152,7 @@ ukhls_read_wave7 <- function(
   #########################################
   ######## ADD IN CROSS-WAVE DATA #########
 
-  cat(crayon::cyan("\tCross-Wave..."))
+  cat(crayon::red("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
     paste0(path, "/ukhls_wx/xwavedat.tab"),
@@ -178,7 +178,7 @@ ukhls_read_wave7 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::white("\tdone\n"))
+  cat(crayon::yellow("\tdone\n"))
 
   return(data_merged)
 }

@@ -5,7 +5,7 @@
 #' @export
 clean_alcohol <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning alcohol variables\n"))
+  #cat(crayon::green("\tCleaning alcohol variables\n"))
 
   # ensure data is sorted
   data <- data[order(id, wave_no),]

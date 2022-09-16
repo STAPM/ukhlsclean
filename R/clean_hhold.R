@@ -5,7 +5,7 @@
 #' @export
 clean_hhold <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning household variables\n"))
+  #cat(crayon::green("\tCleaning household variables\n"))
 
   # generate number of adults variable from hhsize and hhkids for waves 5-9
   data[wave %in% c("UKHLS Wave 5","UKHLS Wave 6",

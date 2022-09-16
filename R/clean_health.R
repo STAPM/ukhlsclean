@@ -7,7 +7,7 @@
 #' @export
 clean_health <- function(data = NULL) {
 
-  cat(crayon::green("\tCleaning health variables\n"))
+  #cat(crayon::green("\tCleaning health variables\n"))
 
   #############################################################
   ### individual is a carer for someone in their household ####
