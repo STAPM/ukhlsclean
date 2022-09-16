@@ -33,7 +33,7 @@ ukhls_read_wave3 <- function(
   file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
   full = TRUE
 ) {
-  cat(crayon::magenta("\tReading UKHLS Wave 3"))
+  cat(crayon::magenta("\tReading UKHLS Wave 3 datasets"))
 
   cat(crayon::red("\tIndividual..."))
 
@@ -172,7 +172,7 @@ ukhls_read_wave3 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::yellow("\tdone\n"))
+  cat(crayon::magenta("\tdone\n"))
 
-  return(data_merged[])
+  return(data_merged)
 }

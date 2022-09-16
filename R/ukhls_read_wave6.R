@@ -34,7 +34,7 @@ ukhls_read_wave6 <- function(
   full = TRUE
 ) {
 
-  cat(crayon::magenta("\tReading UKHLS Wave 6"))
+  cat(crayon::magenta("\tReading UKHLS Wave 6 datasets"))
 
   cat(crayon::red("\tIndividual..."))
 
@@ -178,7 +178,7 @@ ukhls_read_wave6 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::yellow("\tdone\n"))
+  cat(crayon::magenta("\tdone\n"))
 
-  return(data_merged[])
+  return(data_merged)
 }

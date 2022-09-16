@@ -22,7 +22,7 @@ ukhlsclean <- function(root,
                        keep_vars = NULL,
                        complete_vars = c("age","sex")){
 
-cat(crayon::bgYellow("Cleaning the Understanding Society Data\n"))
+cat(crayon::bgMagenta("Cleaning the Understanding Society Data\n"))
 
 start_time <- Sys.time()
 
@@ -164,7 +164,7 @@ tdiff <- difftime(end_time, start_time, units = "mins")
 
 time <- paste0("Total Data reading and cleaning time: ", round(tdiff,2), " minutes")
 
-cat(crayon::bgYellow(time))
+cat(crayon::bgMagenta(time))
 
 return(data)
 }

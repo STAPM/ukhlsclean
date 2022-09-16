@@ -34,7 +34,7 @@ ukhls_read_wave2 <- function(
   full = TRUE
 ) {
 
-  cat(crayon::magenta("\tReading UKHLS Wave 2"))
+  cat(crayon::magenta("\tReading UKHLS Wave 2 datasets"))
 
   cat(crayon::red("\tIndividual..."))
 
@@ -153,7 +153,7 @@ ukhls_read_wave2 <- function(
   #########################################
   ######## ADD IN CROSS-WAVE DATA #########
 
-  cat(crayon::red("\tCross-Wave data..."))
+  cat(crayon::red("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
     paste0(path, "/ukhls_wx/xwavedat.tab"),
@@ -179,7 +179,7 @@ ukhls_read_wave2 <- function(
                        all.x=TRUE,
                        all.y=FALSE)
 
-  cat(crayon::yellow("\tdone\n"))
+  cat(crayon::magenta("\tdone\n"))
 
-  return(data_merged[])
+  return(data_merged)
 }
