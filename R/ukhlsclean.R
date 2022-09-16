@@ -153,7 +153,7 @@ if (11 %in% waves){
 #############################################################
 ### Combine all waves in the list into a single dataset
 
-data <- ukhlsclean::combine_waves(list)
+data <- ukhlsclean::combine_waves(data_list)
 
 #######################
 ## Record time taken
