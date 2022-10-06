@@ -2,7 +2,14 @@ Package: ukhlsclean
 Type: Package
 Title: Data Wrangling for UKHLS/BHPS data.
 Version: 0.5.6
-Author: Damon Morris
+Authors@R: 
+    c(
+    person(given = "Damon",
+           family = "Morris",
+           role = c("aut", "cre"),
+           email = "d.j.morris@sheffield.ac.uk",
+           comment = c(ORCID = "0000-0001-6757-5333"))
+    )
 Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
 Description: The package takes raw data for the UK Household Longitudinal Study
     (UKHLS) also called Understanding Society, reads in the data and performs basic 
