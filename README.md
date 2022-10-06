@@ -49,7 +49,7 @@ in a function to combine years of data.
 ### Define arguments 
 
 root <- "C:/"
-file <- "Users/damon/OneDrive/Documents/Datasets/UKHLS/tab"
+file <- "Documents/Datasets/UKHLS/tab"
 waves <- 1:11
 ages <- 16:89
 keep_vars <- NULL
