@@ -1,0 +1,77 @@
+destination: public
+home:
+  title: Understanding Society Data Cleaning
+  links:
+  - text: STAPM webpage
+    href: https://stapm.gitlab.io/
+url: https://stapm.gitlab.io/r-packages/ukhlsclean
+template:
+  params:
+    bootswatch: flatly
+authors:
+  Damon Morris:
+    href: https://www.sheffield.ac.uk/scharr/people/staff/damon-morris
+
+navbar:
+  structure:
+    left:  [home, intro, reference, articles]
+    right: [gitlab, software]
+  components:
+    home: ~
+    reference:
+     text: Functions
+     href: reference/index.html
+    gitlab:
+      icon: fab fa-gitlab fa-lg
+      href: https://gitlab.com/stapm/r-packages/ukhlsclean
+    software:
+      icon: fa-code
+      href: https://stapm.gitlab.io/software.html
+
+
+
+reference:
+- title: Wrapper function
+  contents:
+  - ukhlsclean
+
+- title: Cleaning modules
+  contents:
+  - ukhls_clean_global
+  - clean_smoke
+  - clean_hhold
+  - clean_family
+  - clean_econ_status
+  - clean_alcohol
+  - clean_demographic
+  - clean_health
+  - clean_hours_earn
+  - combine_waves
+  - select_data
+  - eq5d
+
+- title: Raw data reading functions
+  contents:
+  - ukhls_read_wave1
+  - ukhls_read_wave2
+  - ukhls_read_wave3
+  - ukhls_read_wave4
+  - ukhls_read_wave5
+  - ukhls_read_wave6
+  - ukhls_read_wave7
+  - ukhls_read_wave8
+  - ukhls_read_wave9
+  - ukhls_read_wave10
+  - ukhls_read_wave11
+  - ukhls_read_covid19_1
+  - ukhls_read_covid19_2
+
+- title: Package datasets
+  contents:
+  - cpi
+  - CoefficientMatrix
+
+
+
+
+
