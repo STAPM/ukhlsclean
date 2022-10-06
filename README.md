@@ -7,7 +7,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Understanding Society - Data Cleaning
+# Understanding Society Data Cleaning
 
 <!-- badges: start -->
 
@@ -45,28 +45,25 @@ collection of global cleaning functions for each year are then wrapped
 in a function to combine years of data.
 
 ``` r
+#####################
 ### Define arguments 
 
 root <- "C:/"
-file <- "Documents/Datasets/Labour Force Survey/tab"
-ages <- 16:65
-year <- 1993:2021
-keep_vars <- c("year","month","quarter","age","sex","region","lmstatus","sector",
-               "uwage","uwage_nom","ahours","uhours","undhrs","ovhrs","lespay2","undemp",
-               "ind_section","pwt","piwt")
-complete_vars <- c("year","age","sex")
-deflator <- "cpih"
+file <- "Users/damon/OneDrive/Documents/Datasets/UKHLS/tab"
+waves <- 1:11
+ages <- 16:89
+keep_vars <- NULL
+complete_vars <- NULL
 
-#########################################
-### Read in and combine years of data ###
+########################
+### Read in and combine waves of USoc data
 
-data <- lfsclean(root = root,
-                 file = file,
-                 ages = ages,
-                 year = year,
-                 keep_vars = keep_vars,
-                 complete_vars = complete_vars,
-                 deflator = deflator)
+data <- ukhlsclean(root = root,
+                   file = file,
+                   waves = waves,
+                   ages = ages,
+                   keep_vars = keep_vars,
+                   complete_vars = complete_vars)
 ```
 
 The **output** of these functions are a single data table of processed
