@@ -99,7 +99,7 @@ devtools::install_git(
   "https://gitlab.com/stapm/r-packages/ukhlsclean.git", 
   credentials = git2r::cred_user_pass("uname", getPass::getPass()),
   ref = "x.x.x",
-  build_vignettes = TRUE
+  build_vignettes = FALSE
 )
 
 # Where uname is your Gitlab user name.
