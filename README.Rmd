@@ -42,7 +42,7 @@ A typical workflow for using the package looks as follows, with the read data fu
 ### Define arguments 
 
 root <- "C:/"
-file <- "Users/damon/OneDrive/Documents/Datasets/UKHLS/tab"
+file <- "Documents/Datasets/UKHLS/tab"
 waves <- 1:11
 ages <- 16:89
 keep_vars <- NULL
