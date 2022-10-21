@@ -41,7 +41,7 @@ ukhls_read_wave7 <- function(
   path <- here::here(paste0(root, file))
 
   data <- data.table::fread(
-    paste0(path, "/ukhls_w7/g_indresp.tab"),
+    paste0(path, "/g_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -62,7 +62,7 @@ ukhls_read_wave7 <- function(
   preg_vars        <- Hmisc::Cs(g_pregout1,g_pregout2,g_pregout3)
   smoke_vars       <- Hmisc::Cs(g_smoker,g_ncigs)
   alc_vars         <- Hmisc::Cs(g_auditc1,g_auditc2,g_auditc3,g_auditc4,g_auditc5)
-  weight_vars      <- Hmisc::Cs(g_indinus_lw,g_indinub_xw)
+  weight_vars      <- Hmisc::Cs(g_indinus_lw,g_indinui_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
@@ -91,7 +91,7 @@ ukhls_read_wave7 <- function(
                          ## alcohol variables
                          "g_auditc1","g_auditc2","g_auditc3","g_auditc4","g_auditc5",
                          ## weight
-                         "g_indinus_lw","g_indinub_xw"),
+                         "g_indinus_lw","g_indinui_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
@@ -126,7 +126,7 @@ ukhls_read_wave7 <- function(
   cat(crayon::red("\tHousehold..."))
 
   data.hhold <- data.table::fread(
-    paste0(path, "/ukhls_w7/g_hhresp.tab"),
+    paste0(path, "/g_hhresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
@@ -155,7 +155,7 @@ ukhls_read_wave7 <- function(
   cat(crayon::red("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
-    paste0(path, "/ukhls_wx/xwavedat.tab"),
+    paste0(path, "/xwavedat.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )

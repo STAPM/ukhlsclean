@@ -41,7 +41,7 @@ ukhls_read_wave2 <- function(
   path <- here::here(paste0(root, file))
 
   data <- data.table::fread(
-    paste0(path, "/ukhls_w2/b_indresp.tab"),
+    paste0(path, "/b_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -127,7 +127,7 @@ ukhls_read_wave2 <- function(
   cat(crayon::red("\tHousehold..."))
 
   data.hhold <- data.table::fread(
-    paste0(path, "/ukhls_w2/b_hhresp.tab"),
+    paste0(path, "/b_hhresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
@@ -156,7 +156,7 @@ ukhls_read_wave2 <- function(
   cat(crayon::red("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
-    paste0(path, "/ukhls_wx/xwavedat.tab"),
+    paste0(path, "/xwavedat.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )

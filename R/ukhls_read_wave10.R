@@ -41,7 +41,7 @@ ukhls_read_wave10 <- function(
   path <- here::here(paste0(root, file))
 
   data <- data.table::fread(
-    paste0(path, "/ukhls_w10/j_indresp.tab"),
+    paste0(path, "/j_indresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-10", "-90", "-90.0", "N/A")
   )
@@ -62,7 +62,7 @@ ukhls_read_wave10 <- function(
   preg_vars        <- Hmisc::Cs(j_pregout1,j_pregout2,j_pregout3)
   smoke_vars       <- Hmisc::Cs(j_smoker,j_ncigs)
   alc_vars         <- Hmisc::Cs(NULL)
-  weight_vars      <- Hmisc::Cs(j_indinus_lw,j_indinub_xw)
+  weight_vars      <- Hmisc::Cs(j_indinus_lw,j_indinui_xw)
 
 
   names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,weight_vars)
@@ -89,7 +89,7 @@ ukhls_read_wave10 <- function(
                          ## smoke variables
                          "j_smoker", "j_ncigs",
                          ## weight
-                         "j_indinus_lw","j_indinub_xw"),
+                         "j_indinus_lw","j_indinui_xw"),
 
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
@@ -122,7 +122,7 @@ ukhls_read_wave10 <- function(
   cat(crayon::red("\tHousehold..."))
 
   data.hhold <- data.table::fread(
-    paste0(path, "/ukhls_w10/j_hhresp.tab"),
+    paste0(path, "/j_hhresp.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
@@ -151,7 +151,7 @@ ukhls_read_wave10 <- function(
   cat(crayon::red("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
-    paste0(path, "/ukhls_wx/xwavedat.tab"),
+    paste0(path, "/xwavedat.tab"),
     showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
