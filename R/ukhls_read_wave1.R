@@ -64,7 +64,7 @@ ukhls_read_wave1 <- function(
   education_vars   <- Hmisc::Cs(a_hiqual_dv)
   health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sclfsat1,a_sclfsato,a_sf12pcs_dv,a_sf12mcs_dv,
                                 a_sf1,a_sf2a,a_sf2b,a_sf3a,a_sf3b,a_sf4a,a_sf4b,a_sf5,a_sf6a,a_sf6b,a_sf6c,a_sf7)
-  employees_vars   <- Hmisc::Cs(a_paygl)
+  employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
   weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
@@ -88,7 +88,8 @@ ukhls_read_wave1 <- function(
                          "a_health","a_aidhh","a_sclfsat1","a_sclfsato","a_sf12pcs_dv","a_sf12mcs_dv",
                          "a_sf1","a_sf2a","a_sf2b","a_sf3a","a_sf3b","a_sf4a","a_sf4b","a_sf5","a_sf6a","a_sf6b","a_sf6c","a_sf7",
                          ## employees
-                         "a_paygl",
+                         "a_paygl","a_paynl","a_payu","a_payug","a_ovtpay","a_extnsa","a_extrate","a_extrest","a_basnsa","a_basrate",
+                         "a_basrest","a_ovtnsa","a_ovtrate","a_ovtrest",
                          ## weight
                          "a_indinus_xw"),
 
@@ -105,7 +106,8 @@ ukhls_read_wave1 <- function(
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## employees
-                         "last_gross_pay",
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
+                         "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
                          ## weight
                          "weight_xw"))
 
