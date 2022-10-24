@@ -64,11 +64,11 @@ ukhls_read_wave1 <- function(
   education_vars   <- Hmisc::Cs(a_hiqual_dv)
   health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sclfsat1,a_sclfsato,a_sf12pcs_dv,a_sf12mcs_dv,
                                 a_sf1,a_sf2a,a_sf2b,a_sf3a,a_sf3b,a_sf4a,a_sf4b,a_sf5,a_sf6a,a_sf6b,a_sf6c,a_sf7)
-  alc_vars         <- Hmisc::Cs(a_sceverdrnk)
+  employees_vars   <- Hmisc::Cs(a_paygl)
   weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, employees_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -87,8 +87,8 @@ ukhls_read_wave1 <- function(
                          ## health variables
                          "a_health","a_aidhh","a_sclfsat1","a_sclfsato","a_sf12pcs_dv","a_sf12mcs_dv",
                          "a_sf1","a_sf2a","a_sf2b","a_sf3a","a_sf3b","a_sf4a","a_sf4b","a_sf5","a_sf6a","a_sf6b","a_sf6c","a_sf7",
-                         ## alcohol
-                         "a_sceverdrnk",
+                         ## employees
+                         "a_paygl",
                          ## weight
                          "a_indinus_xw"),
 
@@ -104,8 +104,8 @@ ukhls_read_wave1 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
-                         ## alcohol
-                         "sceverdrnk",
+                         ## employees
+                         "last_gross_pay",
                          ## weight
                          "weight_xw"))
 
