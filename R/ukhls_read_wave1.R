@@ -61,15 +61,20 @@ ukhls_read_wave1 <- function(
   demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat)
   econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy)
   work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv)
+  employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
+  s.emp_vars       <- Hmisc::Cs(a_jshrs, a_jspayu, a_jspytx, a_jspyni)
+  non.emp_vars     <- Hmisc::Cs(a_jbhad)
+  job2_vars        <- Hmisc::Cs(a_j2has, a_j2semp, a_j2hrs, a_j2pay)
+  benefits_vars    <- Hmisc::Cs(a_btype1, a_btype2, a_btype3, a_btype4, a_btype5, a_btype6, a_btype7, a_btype8, a_btype9, a_btype96,
+                                a_benunemp1, a_benunemp2, a_benunemp96, a_bendis1, a_bendis2, a_bendis3, a_bendis4, a_bendis5, a_bendis6, a_bendis7,
+                                a_bendis8, a_bendis9, a_bendis10, a_bendis11, a_bendis96)
   education_vars   <- Hmisc::Cs(a_hiqual_dv)
   health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sclfsat1,a_sclfsato,a_sf12pcs_dv,a_sf12mcs_dv,
                                 a_sf1,a_sf2a,a_sf2b,a_sf3a,a_sf3b,a_sf4a,a_sf4b,a_sf5,a_sf6a,a_sf6b,a_sf6c,a_sf7)
-  employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
-  s.emp_vars       <- Hmisc::Cs(a_jshrs, a_jspayu, a_jspytx, a_jspyni)
   weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, employees_vars, s.emp_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, education_vars, health_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -83,16 +88,24 @@ ukhls_read_wave1 <- function(
                          "a_jbstat","a_jbhas","a_jboff","a_jboffy",
                          ## work variables
                          "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv","a_seearngrs_dv",
-                         ## education variables
-                         "a_hiqual_dv",
-                         ## health variables
-                         "a_health","a_aidhh","a_sclfsat1","a_sclfsato","a_sf12pcs_dv","a_sf12mcs_dv",
-                         "a_sf1","a_sf2a","a_sf2b","a_sf3a","a_sf3b","a_sf4a","a_sf4b","a_sf5","a_sf6a","a_sf6b","a_sf6c","a_sf7",
                          ## employees
                          "a_paygl","a_paynl","a_payu","a_payug","a_ovtpay","a_extnsa","a_extrate","a_extrest","a_basnsa","a_basrate",
                          "a_basrest","a_ovtnsa","a_ovtrate","a_ovtrest",
                          ## self-employed
                          "a_jshrs","a_jspayu","a_jspytx","a_jspyni",
+                         ## non-employed
+                         "a_jbhad",
+                         ## second job
+                         "a_j2has","a_j2semp","a_j2hrs","a_j2pay",
+                         ## benefits
+                         "a_btype1","a_btype2","a_btype3","a_btype4","a_btype5","a_btype6","a_btype7","a_btype8","a_btype9","a_btype96",
+                         "a_benunemp1","a_benunemp2","a_benunemp96","a_bendis1","a_bendis2","a_bendis3","a_bendis4","a_bendis5","a_bendis6","a_bendis7",
+                         "a_bendis8","a_bendis9","a_bendis10","a_bendis11","a_bendis96",
+                         ## education variables
+                         "a_hiqual_dv",
+                         ## health variables
+                         "a_health","a_aidhh","a_sclfsat1","a_sclfsato","a_sf12pcs_dv","a_sf12mcs_dv",
+                         "a_sf1","a_sf2a","a_sf2b","a_sf3a","a_sf3b","a_sf4a","a_sf4b","a_sf5","a_sf6a","a_sf6b","a_sf6c","a_sf7",
                          ## weight
                          "a_indinus_xw"),
 
@@ -103,16 +116,24 @@ ukhls_read_wave1 <- function(
                          "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
-                         ## education variables
-                         "highest_qual",
-                         ## health variables
-                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
-                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
                          ## self-employed
                          "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
+                         ## non-employed
+                         "jbhad",
+                         ## second job
+                         "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
+                         ## benefits
+                         "unemp_ben","income_support","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
+                         "jbseek_allowance","NI_credits","non_btype1","incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","RTW_credit","attend_allowance",
+                         "injury_ben","war_pension","sick.accident_insurance","otherdis_pay","non_bendis",
+                         ## education variables
+                         "highest_qual",
+                         ## health variables
+                         "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
+                         "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## weight
                          "weight_xw"))
 
