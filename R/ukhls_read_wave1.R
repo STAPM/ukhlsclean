@@ -65,10 +65,11 @@ ukhls_read_wave1 <- function(
   health_vars      <- Hmisc::Cs(a_health,a_aidhh,a_sclfsat1,a_sclfsato,a_sf12pcs_dv,a_sf12mcs_dv,
                                 a_sf1,a_sf2a,a_sf2b,a_sf3a,a_sf3b,a_sf4a,a_sf4b,a_sf5,a_sf6a,a_sf6b,a_sf6c,a_sf7)
   employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
+  s.emp_vars       <- Hmisc::Cs(a_jshrs, a_jspayu, a_jspytx, a_jspyni)
   weight_vars      <- Hmisc::Cs(a_indinus_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, employees_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, employees_vars, s.emp_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -90,6 +91,8 @@ ukhls_read_wave1 <- function(
                          ## employees
                          "a_paygl","a_paynl","a_payu","a_payug","a_ovtpay","a_extnsa","a_extrate","a_extrest","a_basnsa","a_basrate",
                          "a_basrest","a_ovtnsa","a_ovtrate","a_ovtrest",
+                         ## self-employed
+                         "a_jshrs","a_jspayu","a_jspytx","a_jspyni",
                          ## weight
                          "a_indinus_xw"),
 
@@ -108,6 +111,8 @@ ukhls_read_wave1 <- function(
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
+                         ## self-employed
+                         "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
                          ## weight
                          "weight_xw"))
 
