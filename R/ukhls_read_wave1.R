@@ -59,7 +59,7 @@ ukhls_read_wave1 <- function(
 
   id_vars          <- Hmisc::Cs(pidp,a_hidp,a_pno,a_psu,a_strata,a_istrtdaty,a_istrtdatm,a_istrtdatd)
   demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat)
-  econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy, a_jbterm1, a_jbterm2, a_jbsemp)
+  econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy, a_jbterm1, a_jbterm2, a_jbsemp, a_jbpen, a_jbpenm)
   work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv, a_jbot, a_jbotpd)
   employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
   s.emp_vars       <- Hmisc::Cs(a_jshrs, a_jspayu, a_jspytx, a_jspyni)
@@ -91,7 +91,7 @@ ukhls_read_wave1 <- function(
                          ## demographic
                          "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat",
                          ## economic status
-                         "a_jbstat","a_jbhas","a_jboff","a_jboffy","a_jbterm1","a_jbterm2","a_jbsemp",
+                         "a_jbstat","a_jbhas","a_jboff","a_jboffy","a_jbterm1","a_jbterm2","a_jbsemp","a_jbpen","a_jbpenm",
                          ## work variables
                          "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv","a_seearngrs_dv","a_jbot","a_jbotpd",
                          ## employees
@@ -130,7 +130,7 @@ ukhls_read_wave1 <- function(
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid","jbpen","jbpen_member",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
