@@ -59,8 +59,8 @@ ukhls_read_wave1 <- function(
 
   id_vars          <- Hmisc::Cs(pidp,a_hidp,a_pno,a_psu,a_strata,a_istrtdaty,a_istrtdatm,a_istrtdatd)
   demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat)
-  econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy)
-  work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv)
+  econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy, a_jbterm1, a_jbterm2, a_jbsemp)
+  work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv, a_jbot, a_jbotpd)
   employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
   s.emp_vars       <- Hmisc::Cs(a_jshrs, a_jspayu, a_jspytx, a_jspyni)
   non.emp_vars     <- Hmisc::Cs(a_jbhad)
@@ -91,9 +91,9 @@ ukhls_read_wave1 <- function(
                          ## demographic
                          "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat",
                          ## economic status
-                         "a_jbstat","a_jbhas","a_jboff","a_jboffy",
+                         "a_jbstat","a_jbhas","a_jboff","a_jboffy","a_jbterm1","a_jbterm2","a_jbsemp",
                          ## work variables
-                         "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv","a_seearngrs_dv",
+                         "a_paygu_dv","a_payg_dv","a_jbhrs","a_fimnlabgrs_dv","a_seearngrs_dv","a_jbot","a_jbotpd",
                          ## employees
                          "a_paygl","a_paynl","a_payu","a_payug","a_ovtpay","a_extnsa","a_extrate","a_extrest","a_basnsa","a_basrate",
                          "a_basrest","a_ovtnsa","a_ovtrate","a_ovtrest",
@@ -110,12 +110,12 @@ ukhls_read_wave1 <- function(
                          ## pensions
                          "a_benpen1","a_benpen2","a_benpen3","a_benpen4","a_benpen5","a_benpen6","a_benpen7","a_benpen8","a_benpen96",
                          ## receivables
-                         "a_niserps", "a_bencb", "a_benctc", "a_benfam1", "a_benfam2", "a_benfam3", "a_benfam4", "a_benfam5",
-                         "a_benfam96", "a_bentax1", "a_bentax2", "a_bentax3", "a_bentax4", "a_bentax5", "a_bentax96", "a_benhou1",
-                         "a_benhou2", "a_benhou3", "a_benhou4", "a_benhou96", "a_bensta1", "a_bensta2", "a_bensta3", "a_bensta4",
-                         "a_bensta5", "a_bensta6", "a_bensta7","a_bensta8", "a_bensta96",
+                         "a_niserps","a_bencb","a_benctc","a_benfam1","a_benfam2","a_benfam3","a_benfam4","a_benfam5",
+                         "a_benfam96","a_bentax1","a_bentax2","a_bentax3","a_bentax4","a_bentax5","a_bentax96","a_benhou1",
+                         "a_benhou2","a_benhou3","a_benhou4","a_benhou96","a_bensta1","a_bensta2","a_bensta3","a_bensta4",
+                         "a_bensta5","a_bensta6","a_bensta7","a_bensta8","a_bensta96",
                          ## household finance variables (interest and dividends)
-                         "a_fiyrdia", "a_fiyrdb1", "a_fiyrdb2", "a_fiyrdb3", "a_fiyrdb4", "a_fiyrdb5", "a_fiyrdb6", "a_finnow", "a_finfut",
+                         "a_fiyrdia","a_fiyrdb1","a_fiyrdb2","a_fiyrdb3","a_fiyrdb4","a_fiyrdb5","a_fiyrdb6","a_finnow","a_finfut",
                          ## education variables
                          "a_hiqual_dv",
                          ## health variables
@@ -128,9 +128,9 @@ ukhls_read_wave1 <- function(
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
@@ -147,12 +147,12 @@ ukhls_read_wave1 <- function(
                          ## pensions
                          "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
                          ## receivables
-                         "income_serps", "ben_childben", "ben_childtaxcred", "benfam_fosterguard", "benfam_mat", "benfam_alimony", "benfam_lone", "benfam_fampay",
-                         "non_benfam", "bentax_work", "bentax_council", "bentax_pencred", "bentax_childtaxcred", "bentax_rtw", "non_bentax", "benhou_house",
-                         "benhou_counciltax", "benhou_rentreb", "benhou_ratereb", "non_benhou", "bensta_prvtpen", "bensta_edugrant", "bensta_tupay", "bensta_alimony",
-                         "bensta_fampay", "bensta_rentlodge", "bensta_rentother", "bensta_other", "non_bensta",
+                         "income_serps","ben_childben","ben_childtaxcred","benfam_fosterguard","benfam_mat","benfam_alimony","benfam_lone","benfam_fampay",
+                         "non_benfam","bentax_work","bentax_council","bentax_pencred","bentax_childtaxcred","bentax_rtw","non_bentax","benhou_house",
+                         "benhou_counciltax","benhou_rentreb","benhou_ratereb","non_benhou","bensta_prvtpen","bensta_edugrant","bensta_tupay","bensta_alimony",
+                         "bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
                          ## household finance variables
-                         "fiyrdia", "fiyrdb1", "fiyrdb2", "fiyrdb3", "fiyrdb4", "fiyrdb5", "fiyrdb6", "finnow", "finfut",
+                         "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",
                          ## education variables
                          "highest_qual",
                          ## health variables
