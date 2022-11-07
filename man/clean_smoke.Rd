@@ -6,6 +6,9 @@
 \usage{
 clean_smoke(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
 Clean all variables related to smoking behaviour - current smoking status, smoking history, and
 level of cigarette consumption for current smokers.

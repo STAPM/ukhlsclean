@@ -12,17 +12,8 @@ combine_waves <- function(
   # combine all the data tables
   data <- data.table::rbindlist(data_list, use.names = T, fill = T)
 
-  # remove the pid and pidp identifiers
-  if("pid" %in% colnames(data)) {
-
-  data[, "pid" := NULL]
-
-  }
-
-  data[, "pidp" := NULL]
-
   # order rows and columns
-  data <- data[order(id,wave_no),]
+  data <- data[order(id, wave_no),]
 
   # create a year-quarter time variable
   ##data$time <- as.yearqtr(paste0(data$year, "-", data$quarter))

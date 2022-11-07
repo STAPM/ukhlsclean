@@ -4,16 +4,14 @@
 #' desired variables/observations for the analysis, and specifying complete case
 #' restrictions.
 #'
-#' @param data Data table - the combined Understanding Society dataset.
+#' @param data Data table - the combined Understanding Society dataset for one wave.
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
-#' @param waves Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).
 #' @return Returns a new set of variables
 #' @export
 ukhls_clean_global <- function(data,
                                ages = 16:89,
-                               waves = 1:11,
                                keep_vars = NULL,
                                complete_vars = c("year", "age", "sex")
 ) {
@@ -24,24 +22,69 @@ ukhls_clean_global <- function(data,
     ages = NULL
   }
 
-  ## run the cleaning functions
+  #######################################################################
+  #### Save out a dataset containing the key identifiers and weights ####
 
-  data %<>%
-    clean_demographic %>%
-    clean_health %>%
-    clean_alcohol %>%
-    clean_smoke %>%
-    clean_econ_status %>%
-    clean_hhold %>%
-    clean_hours_earn %>%
+  main_data <- data[, c("id", "hidp", "wave_no", "bhps_sample",
+                        "year", "month", "day", "weight_xw")]
 
-  ukhlsclean::select_data(
+
+  ### demographics
+
+  cat(crayon::red("\n\t\tDemographic variables module\n"))
+
+  demographics <- ukhlsclean::clean_demographic(data = data)
+
+  ### health and well-being
+
+  cat(crayon::red("\n\t\tHealth and wellbeing variables module\n"))
+
+  health <- ukhlsclean::clean_health(data = data)
+
+  ### alcohol
+
+  cat(crayon::red("\n\t\tAlcohol variables module\n"))
+
+  alcohol <- ukhlsclean::clean_alcohol(data = data)
+
+  ### smoking
+
+  cat(crayon::red("\n\t\tSmoking variables module\n"))
+
+  smoke <- ukhlsclean::clean_smoke(data = data)
+
+  ### labour market
+
+  cat(crayon::red("\n\t\tLabour market variables module\n"))
+
+  lmkt <- ukhlsclean::clean_econ_status(data = data)
+
+  ### household
+
+  cat(crayon::red("\n\t\tFamily and household variables module\n\n"))
+
+  hhold <- ukhlsclean::clean_hhold(data = data)
+
+  ######################
+  ### Merge datasets ###
+
+  merged_data <- merge(main_data, demographics, by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, health,     by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, alcohol,    by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, smoke,      by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, lmkt,       by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, hhold,      by = c("id", "hidp", "wave_no"))
+
+  ############################
+  ### Apply data filtering ###
+
+  final_data <- ukhlsclean::select_data(
+    data = merged_data,
     ages = ages,
-    waves = waves,
     keep_vars = keep_vars,
     complete_vars = complete_vars
   )
 
 
-  return(data)
+  return(final_data)
 }

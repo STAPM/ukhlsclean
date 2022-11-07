@@ -6,7 +6,10 @@
 \usage{
 clean_demographic(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
 Reads and does basic cleaning on the UKHLS demographic variables -
-age, gender, ethnicity, region and urban vs rural.
+age, sex, ethnicity, region and urban vs rural.
 }

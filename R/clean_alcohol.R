@@ -2,6 +2,8 @@
 #'
 #' Clean all alcohol related variables.
 #'
+#' @param data Data table. Understanding Society data produced using the read functions.
+#'
 #' @export
 clean_alcohol <- function(data = NULL) {
 
@@ -48,18 +50,25 @@ clean_alcohol <- function(data = NULL) {
                               labels = c("Never","Less than monthly","Monthly","Weekly","Daily")) ]
 
 
-  # remove raw variables no longer needed
+  } else {
 
-  data[, c("auditc1", "auditc2", "auditc3", "auditc4", "auditc5") := NULL]
-
-  }
-
-  if ("dklm" %in% colnames(data)){
-
-  data[, c("dklm", "drnk4w", "evralc", "fivealcdr") := NULL]
+  data[, current_abstainer := NA]
+  data[, always_abstainer := NA]
+  data[, ndrinks := NA]
+  data[, freq_binge := NA]
 
   }
 
-  return(data)
+  ##################
+  ## RETAIN THE CLEANED VARIABLES
+
+  final_data <- data[, c("id", "hidp", "wave_no",
+                         "current_abstainer", "always_abstainer", "ndrinks", "freq_binge")]
+
+  var_names <- c("current_abstainer", "always_abstainer", "ndrinks", "freq_binge")
+
+  setnames(final_data, var_names, paste0("a_", var_names))
+
+  return(final_data)
 
 }

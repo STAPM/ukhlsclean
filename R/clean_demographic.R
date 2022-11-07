@@ -1,33 +1,31 @@
 #' Clean Demographic Variables
 #'
 #' Reads and does basic cleaning on the UKHLS demographic variables -
-#' age, gender, ethnicity, region and urban vs rural.
+#' age, sex, ethnicity, region and urban vs rural.
+#'
+#' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
 clean_demographic <- function(data = NULL) {
 
-  #cat(crayon::green("\tCleaning demographic variables\n"))
-
-  ### age bands
+  #################
+  ### age bands ###
 
   data[ , ageband := c("16-19", "20-24", "25-29", "30-34", "35-39", "40-44",
                        "45-49", "50-54", "55-59", "60-64", "65-69",
                        "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
-  data$ageband <- as.factor(data$ageband)
+  data[ , ageband := as.factor(ageband)]
 
   data[ , age_cat := c("16-24", "25-34", "35-49", "50-64", "65+")[findInterval(age, c(16, 25, 35, 50, 65))]]
-  data$age_cat <- as.factor(data$age_cat)
+  data[ , age_cat := as.factor(age_cat)]
 
-  ### gender
+  ##############
+  ### sex ###
 
-  data[sex == 1, gender := "male"]
-  data[sex == 2, gender := "female"]
+  data[, sex := factor(sex, levels = 1:2, labels = c("male","female"))]
 
-  data[,gender := as.factor(gender)]
-  data <- subset(data,select = -c(sex))
-  setnames(data, "gender", "sex")
-
-  ### ethnicity
+  #################
+  ### ethnicity ###
 
   ##### 9-categories
   data[ethnicity_raw %in% c(1)        , ethnicity_9cat := "white_british"]
@@ -55,9 +53,8 @@ clean_demographic <- function(data = NULL) {
   data[,ethnicity_5cat := as.factor(ethnicity_5cat)]
   data[,ethnicity_2cat := as.factor(ethnicity_2cat)]
 
-  data <- subset(data,select = -c(ethnicity_raw))
-
-  ### region
+  ################
+  ### region #####
 
   data[region == 1  , gor := "north_east"]
   data[region == 2  , gor := "north_west"]
@@ -74,28 +71,25 @@ clean_demographic <- function(data = NULL) {
 
   data[,gor := as.factor(gor)]
 
-  data <- subset(data,select = -c(region))
-
-  ### area
+  ############################
+  ### area - rural/urban #####
 
   data[urban == 1  , area := "urban"]
   data[urban == 2  , area := "rural"]
 
   data[,area := as.factor(area)]
 
-  data <- subset(data,select = -c(urban))
+  ########################
+  ### marital status #####
 
-  ### marital status
   data[mlstat == 1         , marstat := "single"]
   data[mlstat %in% c(2,3)  , marstat := "married"]
   data[mlstat %in% c(4:9)  , marstat := "sep_div_wid"]
 
   data[,marstat := as.factor(marstat)]
 
-  data <- subset(data,select = -c(mlstat))
-
-
-  ### highest qualification
+  ###############################
+  ### highest qualification #####
 
   data[highest_qual == 1, hiqual := "degree"]
   data[highest_qual == 2, hiqual := "other_he"]
@@ -105,7 +99,19 @@ clean_demographic <- function(data = NULL) {
   data[highest_qual == 9, hiqual := "no_qual"]
 
   data[,hiqual <- as.factor(hiqual)]
-  data <- subset(data,select = -c(highest_qual))
 
-return(data)
+  ##################
+  ## RETAIN THE CLEANED VARIABLES
+
+  final_data <- data[, c("id", "hidp", "wave_no",
+                         "age", "ageband", "age_cat", "sex", "gor", "area", "marstat", "hiqual",
+                         "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
+
+
+  var_names <- c("age", "ageband", "age_cat", "sex", "gor", "area", "marstat", "hiqual",
+                 "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")
+
+  setnames(final_data, var_names, paste0("d_", var_names))
+
+return(final_data)
 }

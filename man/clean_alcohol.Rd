@@ -6,6 +6,9 @@
 \usage{
 clean_alcohol(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
 Clean all alcohol related variables.
 }

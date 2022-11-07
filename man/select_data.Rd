@@ -4,20 +4,12 @@
 \alias{select_data}
 \title{Select variables and apply filters}
 \usage{
-select_data(
-  data,
-  ages = 16:89,
-  waves = 1:11,
-  keep_vars = NULL,
-  complete_vars = c("age")
-)
+select_data(data, ages = 16:89, keep_vars = NULL, complete_vars = c("age"))
 }
 \arguments{
-\item{data}{Data table - the Health Survey for England dataset.}
+\item{data}{Data table - the cleaned Understanding Society dataset.}
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
-
-\item{waves}{Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).}
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to year and age).}
 
@@ -34,7 +26,6 @@ for specified variables.
 
 \dontrun{
 
-data <- select_data(data, keep_vars = c("age", "gender", "region"))
 
 }
 

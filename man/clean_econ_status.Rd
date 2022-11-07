@@ -2,12 +2,15 @@
 % Please edit documentation in R/clean_econ_status.R
 \name{clean_econ_status}
 \alias{clean_econ_status}
-\title{Clean Economic Status}
+\title{Clean Labour Market}
 \usage{
 clean_econ_status(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
-Generate three variables indicating economic status at different levels of detail; working vs not
-working; employed, unemployed or inactive; and employed, self-employed, unemployed, sick, retired,
-education, or other.
+Generate three variables indicating economic status at different levels of detail,
+and earnings variables. Variables with "pay" in the name relate to earnings from employment,
+"earnings" refers to employed and self employed earnings combined.
 }

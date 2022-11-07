@@ -2,12 +2,12 @@
 #'
 #' Produce clean versions of variables measuring health outcomes. Also apply the
 #' algorithm developed by Gray A, Rivero-Arias O, Clarke P (2006) to estimate
-#' EQ-5D utility values from SF-12 responses
+#' EQ-5D utility values from SF-12 responses.
+#'
+#' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
 clean_health <- function(data = NULL) {
-
-  #cat(crayon::green("\tCleaning health variables\n"))
 
   #############################################################
   ### individual is a carer for someone in their household ####
@@ -58,7 +58,12 @@ clean_health <- function(data = NULL) {
 
   data[, c("pregout1","pregout2","pregout3") := NULL]
 
+  } else {
+
+  data[, pregnant := NA]
   }
+
+
   if("pregout4" %in% colnames(data)) {
 
     data[pregout4 == 4, pregnant := 1]
@@ -95,12 +100,21 @@ clean_health <- function(data = NULL) {
                                 matrix = ukhlsclean::CoefficientMatrix,
                                 seed = 0)
 
-  merged_data <- merge(data, eq5d_data, by = c("pidp","wave_no"), sort = F, all.x = TRUE)
+  merged_data <- merge(data, eq5d_data, by = c("id","wave_no"), sort = F, all.x = TRUE)
 
-  ### remove raw variables
+  ##################
+  ## RETAIN THE CLEANED VARIABLES
 
-  merged_data[, c("lt_sick","caring","health_satisf","life_satisf") := NULL]
+  final_data <- merged_data[, c("id", "hidp", "wave_no",
+                                "eq5d_score", "pregnant", "disability", "care_hhold",
+                                "satisfaction_health", "satisfaction_life")]
 
-  return(merged_data)
+  var_names <- c("eq5d_score", "pregnant", "disability", "care_hhold",
+                 "satisfaction_health", "satisfaction_life")
+
+  setnames(final_data, var_names, paste0("h_", var_names))
+
+
+  return(final_data)
 
 }

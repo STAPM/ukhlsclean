@@ -6,8 +6,11 @@
 \usage{
 clean_health(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
 Produce clean versions of variables measuring health outcomes. Also apply the
 algorithm developed by Gray A, Rivero-Arias O, Clarke P (2006) to estimate
-EQ-5D utility values from SF-12 responses
+EQ-5D utility values from SF-12 responses.
 }

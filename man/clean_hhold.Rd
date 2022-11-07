@@ -6,6 +6,10 @@
 \usage{
 clean_hhold(data = NULL)
 }
+\arguments{
+\item{data}{Data table. Understanding Society data produced using the read functions.}
+}
 \description{
-Clean all household level variables.
+Clean all household level variables; household type (composition of adults and children),
+household size, ownership status, and age of the youngest child in the household.
 }

@@ -5,8 +5,8 @@
 \title{Read Understanding Society Wave 1}
 \usage{
 ukhls_read_wave1(
-  root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  root = c("X:/"),
+  file = "HAR_PR/PR/USoc/Data/SN6614_2022_10_20/tab/ukhls",
   full = TRUE
 )
 }

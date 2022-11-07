@@ -1,15 +1,15 @@
-#' Clean Economic Status
+#' Clean Labour Market
 #'
-#' Generate three variables indicating economic status at different levels of detail; working vs not
-#' working; employed, unemployed or inactive; and employed, self-employed, unemployed, sick, retired,
-#' education, or other.
+#' Generate three variables indicating economic status at different levels of detail,
+#' and earnings variables. Variables with "pay" in the name relate to earnings from employment,
+#' "earnings" refers to employed and self employed earnings combined.
+#'
+#' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
 clean_econ_status <- function(data = NULL) {
 
-  #cat(crayon::green("\tCleaning economic status variables\n"))
-
-  ### 2 categories - work/not work
+  ### 2 categories - work/not work #####
 
   data[econ_stat == 1 , econ_stat_2cat := "employed"]
   data[econ_stat == 2 , econ_stat_2cat := "employed"]
@@ -45,7 +45,7 @@ clean_econ_status <- function(data = NULL) {
                                  levels = c("employed","unemployed","inactive"),
                                  labels = c("employed","unemployed","inactive"))]
 
-  ### 7 categories - employed/self-employed/unemployed/sick/retired/education/other
+  ### 7 categories
 
   data[econ_stat == 1 , econ_stat_7cat := "self-employed"]
   data[econ_stat == 2 , econ_stat_7cat := "employed"]
@@ -63,9 +63,59 @@ clean_econ_status <- function(data = NULL) {
                                  levels = c("employed","self-employed","unemployed","sick","retired","education","other"),
                                  labels = c("employed","self-employed","unemployed","sick","retired","education","other"))]
 
-  # remove original variable
 
-  data <- subset(data,select = -c(econ_stat))
+  ################################################
+  ###### Hours and Earnings Variables ############
 
-  return(data)
+  ## merge in CPI inflation figures and deflate
+
+  merge <- merge.data.table(data,
+                            ukhlsclean::cpi,
+                            by = c("year","month"),
+                            all.x = TRUE)
+
+  # combine employed and self employed earnings
+  merge[is.na(grss_pay_usual)  & !is.na(grss_semp), grss_earnings_usual := grss_semp]
+  merge[!is.na(grss_pay_usual) &  is.na(grss_semp), grss_earnings_usual := grss_pay_usual]
+  merge[!is.na(grss_pay_usual) & !is.na(grss_semp), grss_earnings_usual := grss_semp+grss_pay_usual]
+
+  merge[is.na(grss_pay_last)  & !is.na(grss_semp), grss_earnings_last := grss_semp]
+  merge[!is.na(grss_pay_last) &  is.na(grss_semp), grss_earnings_last := grss_pay_last]
+  merge[!is.na(grss_pay_last) & !is.na(grss_semp), grss_earnings_last := grss_semp+grss_pay_last]
+
+  merge[is.na(grss_lab_inc)  & !is.na(grss_semp), grss_earnings_lab := grss_semp]
+  merge[!is.na(grss_lab_inc) &  is.na(grss_semp), grss_earnings_lab := grss_lab_inc]
+  merge[!is.na(grss_lab_inc) & !is.na(grss_semp), grss_earnings_lab := grss_semp+grss_lab_inc]
+
+  merge[grss_earnings_lab <= 0, grss_earnings_lab := NA]
+
+  # construct real terms variables
+  merge[ , real_grss_pay_usual      := grss_pay_usual*(100/cpi_value)]
+  merge[ , real_grss_earnings_usual := grss_pay_usual*(100/cpi_value)]
+  merge[ , real_grss_pay_last       := grss_pay_last*(100/cpi_value)]
+  merge[ , real_grss_earnings_last  := grss_pay_last*(100/cpi_value)]
+  merge[ , real_grss_semp           := grss_semp*(100/cpi_value)]
+  merge[ , real_grss_earnings_lab   := grss_earnings_lab*(100/cpi_value)]
+
+
+  ##################
+  ## RETAIN THE CLEANED VARIABLES
+
+  final_data <- merge[, c("id", "hidp", "wave_no",
+                          "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
+                          "real_grss_pay_usual", "real_grss_earnings_usual", "real_grss_pay_last", "real_grss_earnings_last",
+                          "real_grss_semp", "real_grss_earnings_lab",
+                          "grss_pay_usual", "grss_earnings_usual", "grss_pay_last", "grss_earnings_last",
+                          "grss_semp", "grss_earnings_lab")]
+
+  var_names <- c("econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
+                 "real_grss_pay_usual", "real_grss_earnings_usual", "real_grss_pay_last", "real_grss_earnings_last",
+                 "real_grss_semp", "real_grss_earnings_lab",
+                 "grss_pay_usual", "grss_earnings_usual", "grss_pay_last", "grss_earnings_last",
+                 "grss_semp", "grss_earnings_lab")
+
+  setnames(final_data, var_names, paste0("l_", var_names))
+
+
+  return(final_data)
 }
