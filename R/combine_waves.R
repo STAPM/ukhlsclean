@@ -51,7 +51,7 @@ combine_waves <- function(
   data[, wave_8  := max(wave_8) , by = "id"]
   data[, wave_9  := max(wave_9) , by = "id"]
   data[, wave_10 := max(wave_10), by = "id"]
-  data[, wave_11 := max(wave_10), by = "id"]
+  data[, wave_11 := max(wave_11), by = "id"]
 
   ## calculate number of waves each individual is in
 
