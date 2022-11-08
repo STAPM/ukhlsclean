@@ -5,7 +5,7 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-clean_alcohol <- function(data = NULL) {
+ukhls_clean_alcohol <- function(data = NULL) {
 
   #cat(crayon::green("\tCleaning alcohol variables\n"))
 

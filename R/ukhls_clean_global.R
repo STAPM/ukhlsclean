@@ -33,37 +33,37 @@ ukhls_clean_global <- function(data,
 
   cat(crayon::red("\n\t\tDemographic variables module\n"))
 
-  demographics <- ukhlsclean::clean_demographic(data = data)
+  demographics <- ukhlsclean::ukhls_clean_demographic(data = data)
 
   ### health and well-being
 
   cat(crayon::red("\n\t\tHealth and wellbeing variables module\n"))
 
-  health <- ukhlsclean::clean_health(data = data)
+  health <- ukhlsclean::ukhls_clean_health(data = data)
 
   ### alcohol
 
   cat(crayon::red("\n\t\tAlcohol variables module\n"))
 
-  alcohol <- ukhlsclean::clean_alcohol(data = data)
+  alcohol <- ukhlsclean::ukhls_clean_alcohol(data = data)
 
   ### smoking
 
   cat(crayon::red("\n\t\tSmoking variables module\n"))
 
-  smoke <- ukhlsclean::clean_smoke(data = data)
+  smoke <- ukhlsclean::ukhls_clean_smoke(data = data)
 
   ### labour market
 
   cat(crayon::red("\n\t\tLabour market variables module\n"))
 
-  lmkt <- ukhlsclean::clean_econ_status(data = data)
+  lmkt <- ukhlsclean::ukhls_clean_econstat(data = data)
 
   ### household
 
   cat(crayon::red("\n\t\tFamily and household variables module\n\n"))
 
-  hhold <- ukhlsclean::clean_hhold(data = data)
+  hhold <- ukhlsclean::ukhls_clean_hhold(data = data)
 
   ######################
   ### Merge datasets ###

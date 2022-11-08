@@ -7,7 +7,7 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-clean_health <- function(data = NULL) {
+ukhls_clean_health <- function(data = NULL) {
 
   #############################################################
   ### individual is a carer for someone in their household ####

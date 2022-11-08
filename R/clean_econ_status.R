@@ -7,7 +7,7 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-clean_econ_status <- function(data = NULL) {
+ukhls_clean_econstat <- function(data = NULL) {
 
   ### 2 categories - work/not work #####
 

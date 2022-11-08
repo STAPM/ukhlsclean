@@ -6,7 +6,7 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-clean_hhold <- function(data = NULL) {
+ukhls_clean_hhold <- function(data = NULL) {
 
 
   ############################################

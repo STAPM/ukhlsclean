@@ -5,7 +5,7 @@
 #' @param data_list List of data tables to combine.
 #'
 #' @export
-combine_waves <- function(
+ukhls_combine_waves <- function(
   data_list
 ) {
 

@@ -6,18 +6,18 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-clean_demographic <- function(data = NULL) {
+ukhls_clean_demographic <- function(data = NULL) {
 
   #################
   ### age bands ###
 
-  data[ , ageband := c("16-19", "20-24", "25-29", "30-34", "35-39", "40-44",
-                       "45-49", "50-54", "55-59", "60-64", "65-69",
-                       "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
-  data[ , ageband := as.factor(ageband)]
+  data[ , age_12cat := c("16-19", "20-24", "25-29", "30-34", "35-39", "40-44",
+                         "45-49", "50-54", "55-59", "60-64", "65-69",
+                         "70+")[findInterval(age, c(16, seq(20,65,5), 70))]]
+  data[ , age_12cat := as.factor(age_12cat)]
 
-  data[ , age_cat := c("16-24", "25-34", "35-49", "50-64", "65+")[findInterval(age, c(16, 25, 35, 50, 65))]]
-  data[ , age_cat := as.factor(age_cat)]
+  data[ , age_5cat := c("16-24", "25-34", "35-49", "50-64", "65+")[findInterval(age, c(16, 25, 35, 50, 65))]]
+  data[ , age_5cat := as.factor(age_5cat)]
 
   ##############
   ### sex ###
@@ -104,11 +104,11 @@ clean_demographic <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "age", "ageband", "age_cat", "sex", "gor", "area", "marstat", "hiqual",
+                         "age", "age_5cat", "age_12cat", "sex", "gor", "area", "marstat", "hiqual",
                          "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
 
 
-  var_names <- c("age", "ageband", "age_cat", "sex", "gor", "area", "marstat", "hiqual",
+  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "area", "marstat", "hiqual",
                  "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")
 
   setnames(final_data, var_names, paste0("d_", var_names))
