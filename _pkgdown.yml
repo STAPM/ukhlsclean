@@ -38,13 +38,13 @@ reference:
 - title: Cleaning modules
   contents:
   - ukhls_clean_global
-  - clean_smoke
-  - clean_hhold
-  - clean_econ_status
-  - clean_alcohol
-  - clean_demographic
-  - clean_health
-  - combine_waves
+  - ukhls_clean_demographic
+  - ukhls_clean_hhold
+  - ukhls_clean_econstat
+  - ukhls_clean_health
+  - ukhls_clean_alcohol
+  - ukhls_clean_smoke
+  - ukhls_combine_waves
   - select_data
   - eq5d
 

@@ -29,6 +29,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -41,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.6</span>
       </span>
     </div>
 
@@ -50,16 +52,19 @@
 <li>
   <a href="reference/index.html">Functions</a>
 </li>
+<li>
+  <a href="articles/index.html">Articles</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://gitlab.com/stapm/r-packages/ukhlsclean">
+  <a href="https://gitlab.com/stapm/r-packages/ukhlsclean" class="external-link">
     <span class="fab fa-gitlab fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://stapm.gitlab.io/software.html">
+  <a href="https://stapm.gitlab.io/software.html" class="external-link">
     <span class="fa fa-code"></span>
      
   </a>
@@ -76,21 +81,21 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="understanding-society-data-cleaning" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#understanding-society-data-cleaning" class="anchor"></a>Understanding Society Data Cleaning</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="understanding-society-data-cleaning">Understanding Society Data Cleaning<a class="anchor" aria-label="anchor" href="#understanding-society-data-cleaning"></a>
+</h1></div>
 <!-- badges: start -->
 
-<div id="motivation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#motivation" class="anchor"></a>Motivation</h2>
+<div class="section level2">
+<h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
+</h2>
 <p>The motivation for <code>ukhlsclean</code> is to develop a set of standard functions for processing raw data from the UK Household Longitudinal Study, also known as Understanding Society, which is an ongoing longitudinal survey of individuals and households representative of the UK population. The survey collects a wide variety of demographic, behavioural, health, and labour market information.</p>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>The <code>ukhlsclean</code> package contains functions which read in the raw data files, process them into clean output variables, and combines all data files into a single output data table. The functions also create real-terms values for nominally valued monetary variables (earnings and wages), allowing the user to select either the CPIH or RPI.</p>
-<p>The <strong>inputs</strong> are the raw LFS data files obtained from the <a href="https://ukdataservice.ac.uk/">UK Data Service</a>. These must be the tab delimited versions of the data, <strong>not Stata or SPSS</strong>, and must be placed together in a single directory.</p>
+<p>The <strong>inputs</strong> are the raw LFS data files obtained from the <a href="https://ukdataservice.ac.uk/" class="external-link">UK Data Service</a>. These must be the tab delimited versions of the data, <strong>not Stata or SPSS</strong>, and must be placed together in a single directory.</p>
 <p>A typical workflow for using the package looks as follows, with the read data function for each individual year contained within a global cleaning function which applies each cleaning function in turn. The collection of global cleaning functions for each year are then wrapped in a function to combine years of data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#####################</span>
@@ -113,31 +118,31 @@
                    keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,
                    complete_vars <span class="op">=</span> <span class="va">complete_vars</span><span class="op">)</span></code></pre></div>
 <p>The <strong>output</strong> of these functions are a single data table of processed LFS data</p>
-<div id="projects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#projects" class="anchor"></a>Projects</h3>
+<div class="section level3">
+<h3 id="projects">Projects<a class="anchor" aria-label="anchor" href="#projects"></a>
+</h3>
 <p>Some examples of projects making use of the <code>ukhlsclean</code> package are:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>
-<a href="https://gitlab.com/SPECTRUM_Sheffield/projects/work-productivity">Smoking, drinking, and work outcomes</a>. Here the package is used to create a clean longitudinal dataset of smoking and drinking behaviours, labour market outcomes, and the covariates needed to model labour market outcomes.</li>
+<a href="https://gitlab.com/SPECTRUM_Sheffield/projects/work-productivity" class="external-link">Smoking, drinking, and work outcomes</a>. Here the package is used to create a clean longitudinal dataset of smoking and drinking behaviours, labour market outcomes, and the covariates needed to model labour market outcomes.</li>
 </ol>
 </div>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p><code>ukhlsclean</code> is currently available only to members of the project team. To access you need to <a href="https://gitlab.com/">sign-up for a GitLab account</a>. You will then need to be added to the SPECTRUM project team to gain access. If you are on a Windows machine you will also need to <a href="https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools">install Rtools</a>.<br>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p><code>ukhlsclean</code> is currently available only to members of the project team. To access you need to <a href="https://gitlab.com/" class="external-link">sign-up for a GitLab account</a>. You will then need to be added to the SPECTRUM project team to gain access. If you are on a Windows machine you will also need to <a href="https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools" class="external-link">install Rtools</a>.<br>
 Once that is sorted, you can install the latest version or a specified version from GitLab with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#install.packages("devtools")</span>
 <span class="co">#install.packages("getPass")</span>
 <span class="co">#install.packages("git2r")</span>
 
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_git</a></span><span class="op">(</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_git</a></span><span class="op">(</span>
   <span class="st">"https://gitlab.com/stapm/r-packages/ukhlsclean.git"</span>, 
-  credentials <span class="op">=</span> <span class="fu">git2r</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/git2r/reference/cred_user_pass.html">cred_user_pass</a></span><span class="op">(</span><span class="st">"uname"</span>, <span class="fu">getPass</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/getPass/man/getPass.html">getPass</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
+  credentials <span class="op">=</span> <span class="fu">git2r</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/git2r/reference/cred_user_pass.html" class="external-link">cred_user_pass</a></span><span class="op">(</span><span class="st">"uname"</span>, <span class="fu">getPass</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/getPass/man/getPass.html" class="external-link">getPass</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
   ref <span class="op">=</span> <span class="st">"x.x.x"</span>,
-  build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>
+  build_vignettes <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="co"># Where uname is your Gitlab user name.</span>
@@ -149,42 +154,54 @@ Once that is sorted, you can install the latest version or a specified version f
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>STAPM webpage at <br><a href="https://stapm.gitlab.io/">https://​stapm.gitlab.io/​</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://www.sheffield.ac.uk/scharr/people/staff/damon-morris">Damon Morris</a> <br><small class="roles"> Maintainer </small>  </li>
+<li><a href="https://stapm.gitlab.io/" class="external-link">STAPM webpage</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing ukhlsclean</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://www.sheffield.ac.uk/scharr/people/staff/damon-morris" class="external-link">Damon Morris</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6757-5333" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://www.sheffield.ac.uk/scharr/people/staff/damon-morris">Damon Morris</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://www.sheffield.ac.uk/scharr/people/staff/damon-morris" class="external-link">Damon Morris</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -192,6 +209,8 @@ Once that is sorted, you can install the latest version or a specified version f
 
   
 
+
+  
 
   </body>
 </html>
