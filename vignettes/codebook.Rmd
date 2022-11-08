@@ -20,7 +20,7 @@ library(lfsclean)
 
 ## List of Variables
 
-This document details the cleaned variables from the Understanding Society dataset which are available through using the `ukhlsclean` package, grouped by cleaning function category.
+This document details the cleaned variables from the Understanding Society dataset which are available through using the `ukhlsclean` package, grouped by cleaning function category. Where not otherwise specified, variables are available in all waves of the data
 
 ### __Global variables__
 
@@ -131,11 +131,40 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
    - "black"
    - "other"
    
+### __Economic status variables__
+
+Variables produced by the economic status module `ukhls_clean_econstat`. Variables in this category are prefixed with an `l_`
+   
+- __l_econ_stat_2cat__ (factor) economic status, 2 category:
+  - "employed"
+  - "not_employed"
+  
+- __l_econ_stat_3cat__ (factor) economic status, 3 category:
+  - "employed"
+  - "unemployed"
+  - "inactive"
+  
+- __l_econ_stat_7cat__ (factor) economic status, 7 category:
+  - "employed"
+  - "self_employed"
+  - "unemployed"
+  - "sick"
+  - "retired"
+  - "education"
+  - "other"
+  
+- __grss_earnings_usual__ (numeric) nominal gross earnings per month from employment (usual pay) plus self-employment
+
+- __grss_earnings_last__ (numeric) nominal gross earnings per month from employment (last received payment) plus self-employment
+
+- __real_grss_earnings_usual__ (numeric) real gross earnings per month from employment (usual pay) plus self-employment
+
+- __real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment
+
    
 ### __Health and wellbeing variables__ 
 
 Variables produced by the health and wellbeing module `ukhls_clean_health`. Variables in this category are prefixed with a `h_`. 
-
 
 - __h_eq5d_score__  (numeric) EQ-5D utility score:
    - health utility mapped from the SF-12 variables in Understanding Society using the [mapping algorithm](https://www.herc.ox.ac.uk/downloads/downloads-supporting-material-1/sf-12-responses-and-eq-5d-utility-values) developed by:
