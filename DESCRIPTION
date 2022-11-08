@@ -8,7 +8,11 @@ Authors@R:
            family = "Morris",
            role = c("aut", "cre"),
            email = "d.j.morris@sheffield.ac.uk",
-           comment = c(ORCID = "0000-0001-6757-5333"))
+           comment = c(ORCID = "0000-0001-6757-5333")),
+    person(given = "Ryan",
+           family = "Kai Le Chen",
+           role = c("aut"),
+           email = "r.kailechen@sheffield.ac.uk"),       
     )
 Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
 Description: The package takes raw data for the UK Household Longitudinal Study
@@ -20,7 +24,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
 Depends: 
-    R (>= 2.10),
-    magrittr
+    R (>= 2.10)
 Imports:
-    data.table
+    data.table,
+    magrittr
