@@ -82,11 +82,11 @@ ukhls_clean_demographic <- function(data = NULL) {
   ########################
   ### marital status #####
 
-  data[mlstat == 1         , marstat := "single"]
-  data[mlstat %in% c(2,3)  , marstat := "married"]
-  data[mlstat %in% c(4:9)  , marstat := "sep_div_wid"]
+  data[marstat == 1         , marital := "single"]
+  data[marstat %in% c(2,3)  , marital := "married"]
+  data[marstat %in% c(4:9)  , marital := "sep_div_wid"]
 
-  data[,marstat := as.factor(marstat)]
+  data[, marital := factor(marital, levels = c("married","single","sep_div_wid"))]
 
   ###############################
   ### highest qualification #####
@@ -105,11 +105,11 @@ ukhls_clean_demographic <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "age", "age_5cat", "age_12cat", "sex", "gor", "area", "marstat", "hiqual",
+                         "age", "age_5cat", "age_12cat", "sex", "gor", "area", "marital", "hiqual",
                          "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
 
 
-  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "area", "marstat", "hiqual",
+  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "area", "marital", "hiqual",
                  "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")
 
   setnames(final_data, var_names, paste0("d_", var_names))

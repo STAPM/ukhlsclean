@@ -58,7 +58,7 @@ ukhls_read_wave1 <- function(
   data.table::setnames(data, names(data), tolower(names(data)))
 
   id_vars          <- Hmisc::Cs(pidp,a_hidp,a_pno,a_psu,a_strata,a_istrtdaty,a_istrtdatm,a_istrtdatd)
-  demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat)
+  demographic_vars <- Hmisc::Cs(a_sex,a_dvage,a_birthy,a_gor_dv,a_urban_dv,a_mlstat, a_marstat)
   econ_stat_vars   <- Hmisc::Cs(a_jbstat,a_jbhas,a_jboff,a_jboffy, a_jbterm1, a_jbterm2, a_jbsemp, a_jbpen, a_jbpenm)
   work_vars        <- Hmisc::Cs(a_paygu_dv,a_payg_dv,a_jbhrs,a_fimnlabgrs_dv,a_seearngrs_dv, a_jbot, a_jbotpd)
   employees_vars   <- Hmisc::Cs(a_paygl, a_paynl, a_payu, a_payug, a_ovtpay, a_extnsa, a_extrate, a_extrest, a_basnsa, a_basrate, a_basrest, a_ovtnsa, a_ovtrate, a_ovtrest)
@@ -89,7 +89,7 @@ ukhls_read_wave1 <- function(
 
                        c("pidp","a_hidp","a_pno","a_psu","a_strata","a_istrtdaty","a_istrtdatm","a_istrtdatd",
                          ## demographic
-                         "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat",
+                         "a_sex","a_dvage","a_birthy","a_gor_dv","a_urban_dv","a_mlstat","a_marstat",
                          ## economic status
                          "a_jbstat","a_jbhas","a_jboff","a_jboffy","a_jbterm1","a_jbterm2","a_jbsemp","a_jbpen","a_jbpenm",
                          ## work variables
@@ -126,7 +126,7 @@ ukhls_read_wave1 <- function(
 
                        c("pidp","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
-                         "sex","age","birth_year","region","urban","mlstat",
+                         "sex","age","birth_year","region","urban","mlstat","marstat",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables

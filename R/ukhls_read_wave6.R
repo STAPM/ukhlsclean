@@ -53,7 +53,7 @@ ukhls_read_wave6 <- function(
   data.table::setnames(data, names(data), tolower(names(data)))
 
   id_vars          <- Hmisc::Cs(pidp,pid,f_hidp,f_pno,f_psu,f_strata,f_istrtdaty,f_istrtdatm,f_istrtdatd)
-  demographic_vars <- Hmisc::Cs(f_sex,f_dvage,f_birthy,f_gor_dv,f_urban_dv,f_mlstat)
+  demographic_vars <- Hmisc::Cs(f_sex,f_dvage,f_birthy,f_gor_dv,f_urban_dv,f_mlstat, f_marstat)
   econ_stat_vars   <- Hmisc::Cs(f_jbstat,f_jbhas,f_jboff,f_jboffy)
   work_vars        <- Hmisc::Cs(f_paygu_dv,f_payg_dv,f_jbhrs,f_fimnlabgrs_dv,f_seearngrs_dv)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
@@ -74,7 +74,7 @@ ukhls_read_wave6 <- function(
 
                        c("pidp","pid","f_hidp","f_pno","f_psu","f_strata","f_istrtdaty","f_istrtdatm","f_istrtdatd",
                          ## demographic
-                         "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_mlstat",
+                         "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_mlstat","f_marstat",
                          ## economic stauts
                          "f_jbstat","f_jbhas","f_jboff","f_jboffy",
                          ## work variables
@@ -95,7 +95,7 @@ ukhls_read_wave6 <- function(
 
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
-                         "sex","age","birth_year","region","urban","mlstat",
+                         "sex","age","birth_year","region","urban","mlstat","marstat",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
