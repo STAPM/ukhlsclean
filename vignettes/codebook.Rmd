@@ -163,7 +163,7 @@ Variables produced by the household module `ukhls_clean_hhold`. Variables in thi
    
 ### __Economic status variables__
 
-Variables produced by the economic status module `ukhls_clean_econstat`. Variables in this category are prefixed with an `l_`
+Variables produced by the economic and labour market status module `ukhls_clean_econstat`. Variables in this category are prefixed with an `l_`
    
 - __l_econ_stat_2cat__ (factor) economic status, 2 category:
   - "employed"
@@ -236,11 +236,11 @@ Variables produced by the health and wellbeing module `ukhls_clean_health`. Vari
 
 Variables produced by the alcohol and drinking module `ukhls_clean_alcohol`. Variables in this category are prefixed with a `a_`. 
 
-- __a_current_abstainer__  (factor) currently an abstainer from drinking alcohol (past 12 months) __(waves 7, 9, 11)__:
+- __a_current_abstainer__  (factor) currently an abstainer from alcohol (past 12 months) __(waves 7, 9, 11)__:
   - "no"
   - "yes"
 
-- __a_always_abstainer__  (factor) has always been an abstainer from drinking alcohol __(waves 7, 9, 11)__:
+- __a_always_abstainer__  (factor) has always been an abstainer from alcohol __(waves 7, 9, 11)__:
   - "no"
   - "yes"
 
@@ -258,3 +258,22 @@ Variables produced by the alcohol and drinking module `ukhls_clean_alcohol`. Var
   - "Monthly"
   - "Weekly"
   - "Daily"
+  
+  
+### __Smoking variables__ 
+
+Variables produced by the tobacco and smoking module `ukhls_clean_smoke`. Variables in this category are prefixed with a `s_`. 
+
+- __s_current_smoker__  (factor) currently smokes __(waves 2, 5-11)__:
+  - "non_smoker"
+  - "smoker"
+
+- __s_ever_smoked__  (factor) ever smoked a cigarette, cigar, or pipe __(waves 2, 5)__:
+  - "never_smoked"
+  - "smoked"
+
+- __s_smk_age_start__  (numeric) age started smoking regularly __(waves 2, 5)__:
+  
+- __s_othersmoker_hhold__  (factor) are there other smokers in the household? __(waves 2, 5-11)__:
+  - "no"
+  - "yes"
