@@ -13,8 +13,7 @@ ukhls_clean_hhold <- function(data = NULL) {
   ### generate number of adults variable   ###
   ### from hhsize and hhkids for waves 5-9 ###
 
-  data[wave %in% c("UKHLS Wave 5","UKHLS Wave 6",
-                   "UKHLS Wave 7","UKHLS Wave 8","UKHLS Wave 9") , hh_numadult := hh_size - hh_numchild]
+  data[ , hh_numadult := hh_size - hh_numchild]
 
   ###############################################################
   ### condense the household type variable into 6 categories ###
@@ -54,17 +53,22 @@ ukhls_clean_hhold <- function(data = NULL) {
                                           "age 0-2",
                                           "age 3-4",
                                           "age 5-11",
-                                          "age 12-15"))]
+                                          "age 12-15"),
+                               labels = c("no_children",
+                                          "0-2",
+                                          "3-4",
+                                          "5-11",
+                                          "12-15"))]
   ##############
   ### tenure ###
 
-  data[hh_tenure %in% c(1,2),   hh_hometenure := "owner occupier"]
-  data[hh_tenure %in% c(3,4,8), hh_hometenure := "social renter"]
-  data[hh_tenure %in% c(5,6,7), hh_hometenure := "private renter"]
+  data[hh_tenure %in% c(1,2),   hh_hometenure := "owner_occupier"]
+  data[hh_tenure %in% c(3,4,8), hh_hometenure := "social_renter"]
+  data[hh_tenure %in% c(5,6,7), hh_hometenure := "private_renter"]
   data[, hh_hometenure := factor(hh_hometenure,
-                               levels = c("owner occupier",
-                                          "private renter",
-                                          "social renter")) ]
+                               levels = c("owner_occupier",
+                                          "private_renter",
+                                          "social_renter")) ]
 
   ##################
   ## RETAIN THE CLEANED VARIABLES

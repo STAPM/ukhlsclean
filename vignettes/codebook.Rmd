@@ -131,6 +131,36 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
    - "black"
    - "other"
    
+### __Household variables__
+
+Variables produced by the household module `ukhls_clean_hhold`. Variables in this category are prefixed with a `hh_`. 
+
+- __hh_hometenure__ (factor) household occupancy type:
+   - "owner_occupier"
+   - "private_renter"
+   - "social_renter"
+   
+- __hh_age_yngchl__ (factor) age of the youngest child in the household:
+   - "no_children"
+   - "0-2"
+   - "3-4"
+   - "5-11"
+   - "12-15"
+   
+- __hh_type_6cat__ (factor) household composition:
+   - "1 adult 0 children"
+   - "1 adult 1+ children"
+   - "2 adult 0 children"
+   - "2 adult 1+ children"
+   - "3+ adult 0 children"
+   - "3+ adult 1+ children"
+   
+- __hh_numadult__ (numeric) number of adults in the household 
+
+- __hh_numchild__ (numeric) number of children in the household 
+
+- __hh_size__ (numeric) household size (number of adults plus children) 
+   
 ### __Economic status variables__
 
 Variables produced by the economic status module `ukhls_clean_econstat`. Variables in this category are prefixed with an `l_`
@@ -153,13 +183,13 @@ Variables produced by the economic status module `ukhls_clean_econstat`. Variabl
   - "education"
   - "other"
   
-- __grss_earnings_usual__ (numeric) nominal gross earnings per month from employment (usual pay) plus self-employment
+- __l_grss_earnings_usual__ (numeric) nominal gross earnings per month from employment (usual pay) plus self-employment
 
-- __grss_earnings_last__ (numeric) nominal gross earnings per month from employment (last received payment) plus self-employment
+- __l_grss_earnings_last__ (numeric) nominal gross earnings per month from employment (last received payment) plus self-employment
 
-- __real_grss_earnings_usual__ (numeric) real gross earnings per month from employment (usual pay) plus self-employment
+- __l_real_grss_earnings_usual__ (numeric) real gross earnings per month from employment (usual pay) plus self-employment
 
-- __real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment
+- __l_real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment
 
    
 ### __Health and wellbeing variables__ 
