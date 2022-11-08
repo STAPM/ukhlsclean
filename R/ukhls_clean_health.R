@@ -12,16 +12,16 @@ ukhls_clean_health <- function(data = NULL) {
   #############################################################
   ### individual is a carer for someone in their household ####
 
-  data[caring == 1, care_hhold := "yes"]
-  data[caring != 1 | is.na(caring), care_hhold := "no"]
+  data[caring == 1, care_hhold := "carer"]
+  data[caring != 1 | is.na(caring), care_hhold := "not_carer"]
 
   data[, care_hhold := as.factor(care_hhold)]
 
   #########################################################
   ### individual has a long-standing illness/disability ###
 
-  data[lt_sick == 1, disability := "yes"]
-  data[lt_sick == 2, disability := "no"]
+  data[lt_sick == 1, disability := "disability"]
+  data[lt_sick == 2, disability := "no_disability"]
 
   data[, disability := as.factor(disability)]
 
@@ -80,6 +80,8 @@ ukhls_clean_health <- function(data = NULL) {
     data[, c("pregout5") := NULL]
 
   }
+
+  data[, pregnant := factor(pregnant, levels = 0:1, labels = c("not_pregnant","pregnant"))]
 
   ###################################
   ##### EQ-5d mapped from SF-12 #####
