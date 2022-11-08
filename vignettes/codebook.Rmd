@@ -134,3 +134,68 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
    
 ### __Health and wellbeing variables__ 
 
+Variables produced by the health and wellbeing module `ukhls_clean_health`. Variables in this category are prefixed with a `h_`. 
+
+
+- __h_eq5d_score__  (numeric) EQ-5D utility score:
+   - health utility mapped from the SF-12 variables in Understanding Society using the [mapping algorithm](https://www.herc.ox.ac.uk/downloads/downloads-supporting-material-1/sf-12-responses-and-eq-5d-utility-values) developed by:
+   - Gray A, Rivero-Arias O, and Clarke P (2006). Estimating the association between SF-12 responses and EQ-5D utility values by response mapping. *Medical Decision Making*; 26(1):18-29
+   
+- __h_pregnant__ (factor) currently pregnant:
+  - "not_pregnant"
+  - "pregnant"
+
+
+- __h_disability__  (factor) individual has a disability:
+   - "disability"
+   - "no_disability"
+
+
+- __h_care_hhold__  (factor) individual cares for someone in their household:
+   - "carer"
+   - "not_carer"
+   
+- __h_satisfaction_health__  (factor) satisfaction with health:
+   - "completely_disatisfied"
+   - "mostly_disatisfied"
+   - "somewhat_disatisfied"
+   - "neutral"
+   - "somewhat_satisfied"
+   - "mostly_satisfied"
+   - "completely_satisfied"
+   
+- __h_satisfaction_life__  (factor) satisfaction with life overall:
+   - "completely_disatisfied"
+   - "mostly_disatisfied"
+   - "somewhat_disatisfied"
+   - "neutral"
+   - "somewhat_satisfied"
+   - "mostly_satisfied"
+   - "completely_satisfied"
+
+### __Alcohol variables__ 
+
+Variables produced by the alcohol and drinking module `ukhls_clean_alcohol`. Variables in this category are prefixed with a `a_`. 
+
+- __a_current_abstainer__  (factor) currently an abstainer from drinking alcohol (past 12 months) __(waves 7, 9, 11)__:
+  - "no"
+  - "yes"
+
+- __a_always_abstainer__  (factor) has always been an abstainer from drinking alcohol __(waves 7, 9, 11)__:
+  - "no"
+  - "yes"
+
+- __a_ndrinks__  (factor) number of drinks in a typical day when drinking __(waves 7, 9, 11)__:
+  - "0"
+  - "1-2"
+  - "3-4"
+  - "5-6"
+  - "7-9"
+  - "10+"
+  
+- __a_freq_binge__  (factor) frequency binge drinks. Frequency of drinking more than 6 (female) or 8 (male) units on a single occassion in the last year __(waves 7, 9, 11)__:
+  - "Never"
+  - "Less than monthly"
+  - "Monthly"
+  - "Weekly"
+  - "Daily"
