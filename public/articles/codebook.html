@@ -203,10 +203,10 @@ categories:</p>
 </ul>
 </li>
 <li>
-<p><strong>d_marstat</strong> (factor) marital status:</p>
+<p><strong>d_marital</strong> (factor) marital status:</p>
 <ul>
-<li>“single”</li>
 <li>“married”</li>
+<li>“single”</li>
 <li>“sep_div_wid” (separated, divorced, or widowed)</li>
 </ul>
 </li>
@@ -309,7 +309,7 @@ adults plus children)</p></li>
 <h3 id="economic-status-variables">
 <strong>Economic status variables</strong><a class="anchor" aria-label="anchor" href="#economic-status-variables"></a>
 </h3>
-<p>Variables produced by the economic status module
+<p>Variables produced by the economic and labour market status module
 <code>ukhls_clean_econstat</code>. Variables in this category are
 prefixed with an <code>l_</code></p>
 <ul>
@@ -436,8 +436,7 @@ prefixed with a <code>a_</code>.</p>
 <ul>
 <li>
 <strong>a_current_abstainer</strong> (factor) currently an abstainer
-from drinking alcohol (past 12 months) <strong>(waves 7, 9,
-11)</strong>:
+from alcohol (past 12 months) <strong>(waves 7, 9, 11)</strong>:
 <ul>
 <li>“no”</li>
 <li>“yes”</li>
@@ -445,7 +444,7 @@ from drinking alcohol (past 12 months) <strong>(waves 7, 9,
 </li>
 <li>
 <strong>a_always_abstainer</strong> (factor) has always been an
-abstainer from drinking alcohol <strong>(waves 7, 9, 11)</strong>:
+abstainer from alcohol <strong>(waves 7, 9, 11)</strong>:
 <ul>
 <li>“no”</li>
 <li>“yes”</li>
@@ -473,6 +472,42 @@ occassion in the last year <strong>(waves 7, 9, 11)</strong>:
 <li>“Monthly”</li>
 <li>“Weekly”</li>
 <li>“Daily”</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="smoking-variables">
+<strong>Smoking variables</strong><a class="anchor" aria-label="anchor" href="#smoking-variables"></a>
+</h3>
+<p>Variables produced by the tobacco and smoking module
+<code>ukhls_clean_smoke</code>. Variables in this category are prefixed
+with a <code>s_</code>.</p>
+<ul>
+<li>
+<p><strong>s_current_smoker</strong> (factor) currently smokes
+<strong>(waves 2, 5-11)</strong>:</p>
+<ul>
+<li>“non_smoker”</li>
+<li>“smoker”</li>
+</ul>
+</li>
+<li>
+<p><strong>s_ever_smoked</strong> (factor) ever smoked a cigarette,
+cigar, or pipe <strong>(waves 2, 5)</strong>:</p>
+<ul>
+<li>“never_smoked”</li>
+<li>“smoked”</li>
+</ul>
+</li>
+<li><p><strong>s_smk_age_start</strong> (numeric) age started smoking
+regularly <strong>(waves 2, 5)</strong>:</p></li>
+<li>
+<p><strong>s_othersmoker_hhold</strong> (factor) are there other
+smokers in the household? <strong>(waves 2, 5-11)</strong>:</p>
+<ul>
+<li>“no”</li>
+<li>“yes”</li>
 </ul>
 </li>
 </ul>
