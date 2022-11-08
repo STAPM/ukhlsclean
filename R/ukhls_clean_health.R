@@ -36,6 +36,11 @@ ukhls_clean_health <- function(data = NULL) {
   data[health_satisf == 6, satisfaction_health := "mostly_satisfied"]
   data[health_satisf == 7, satisfaction_health := "completely_satisfied"]
 
+  data[, satisfaction_health := factor(satisfaction_health,
+                                       levels = c("completely_disatisfied", "mostly_disatisfied", "somewhat_disatisfied",
+                                                  "neutral", "somewhat_satisfied", "mostly_satisfied",
+                                                  "completely_satisfied"))]
+
   #########################################
   ### satisfaction with life in general ###
 
@@ -46,6 +51,11 @@ ukhls_clean_health <- function(data = NULL) {
   data[life_satisf == 5, satisfaction_life := "somewhat_satisfied"]
   data[life_satisf == 6, satisfaction_life := "mostly_satisfied"]
   data[life_satisf == 7, satisfaction_life := "completely_satisfied"]
+
+  data[, satisfaction_life := factor(satisfaction_life,
+                                       levels = c("completely_disatisfied", "mostly_disatisfied", "somewhat_disatisfied",
+                                                  "neutral", "somewhat_satisfied", "mostly_satisfied",
+                                                  "completely_satisfied"))]
 
   ##########################
   ### currently pregnant ###

@@ -47,7 +47,7 @@ ukhls_clean_econstat <- function(data = NULL) {
 
   ### 7 categories
 
-  data[econ_stat == 1 , econ_stat_7cat := "self-employed"]
+  data[econ_stat == 1 , econ_stat_7cat := "self_employed"]
   data[econ_stat == 2 , econ_stat_7cat := "employed"]
   data[econ_stat == 3 , econ_stat_7cat := "unemployed"]
   data[econ_stat == 4 , econ_stat_7cat := "retired"]
@@ -60,8 +60,8 @@ ukhls_clean_econstat <- function(data = NULL) {
   data[econ_stat == 11, econ_stat_7cat := "other"]
 
   data[,econ_stat_7cat := factor(econ_stat_7cat,
-                                 levels = c("employed","self-employed","unemployed","sick","retired","education","other"),
-                                 labels = c("employed","self-employed","unemployed","sick","retired","education","other"))]
+                                 levels = c("employed","self_employed","unemployed","sick","retired","education","other"),
+                                 labels = c("employed","self_employed","unemployed","sick","retired","education","other"))]
 
 
   ################################################
@@ -103,16 +103,12 @@ ukhls_clean_econstat <- function(data = NULL) {
 
   final_data <- merge[, c("id", "hidp", "wave_no",
                           "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
-                          "real_grss_pay_usual", "real_grss_earnings_usual", "real_grss_pay_last", "real_grss_earnings_last",
-                          "real_grss_semp", "real_grss_earnings_lab",
-                          "grss_pay_usual", "grss_earnings_usual", "grss_pay_last", "grss_earnings_last",
-                          "grss_semp", "grss_earnings_lab")]
+                          "grss_earnings_usual", "grss_earnings_last",
+                          "real_grss_earnings_usual", "real_grss_earnings_last")]
 
   var_names <- c("econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
-                 "real_grss_pay_usual", "real_grss_earnings_usual", "real_grss_pay_last", "real_grss_earnings_last",
-                 "real_grss_semp", "real_grss_earnings_lab",
-                 "grss_pay_usual", "grss_earnings_usual", "grss_pay_last", "grss_earnings_last",
-                 "grss_semp", "grss_earnings_lab")
+                 "grss_earnings_usual", "grss_earnings_last",
+                 "real_grss_earnings_usual", "real_grss_earnings_last")
 
   setnames(final_data, var_names, paste0("l_", var_names))
 
