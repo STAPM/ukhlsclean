@@ -40,12 +40,10 @@ reference:
   - ukhls_clean_global
   - clean_smoke
   - clean_hhold
-  - clean_family
   - clean_econ_status
   - clean_alcohol
   - clean_demographic
   - clean_health
-  - clean_hours_earn
   - combine_waves
   - select_data
   - eq5d
@@ -71,7 +69,10 @@ reference:
   - cpi
   - CoefficientMatrix
 
-
+articles:
+- title: Variable codebook
+  contents:
+  - codebook
 
 
 

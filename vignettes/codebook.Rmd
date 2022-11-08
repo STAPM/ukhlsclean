@@ -1,0 +1,136 @@
+---
+title: "Understanding Society Codebook"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Understanding Society Codebook}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(lfsclean)
+```
+
+## List of Variables
+
+This document details the cleaned variables from the Understanding Society dataset which are available through using the `ukhlsclean` package, grouped by cleaning function category.
+
+### __Global variables__
+
+These variables are identifier and weighting variables produced automatically and should not be specified in the `keep_vars` argument to the `ukhlsclean` function. 
+
+- __id__ (numeric) individual identifier. 
+    - Constructed from the `pidp` variable for individuals sampled by the UKHLS or from the `pid` variable for              individuals carried over from the British Household Panel Survey (BHPS). For those individuals, __id__ can be         linked to __pid__ in the BHPS data.
+    
+- __hidp__ (numeric) household identifier. 
+
+- __wave_no__ (numeric) wave the observation is taken from.
+
+- __bhps_sample__ (logical) if TRUE, the individual was carried over from the BHPS. 
+
+- __nwaves__ (numeric) number of waves the individual has observations for. 
+
+- __wave_(1-11)__ (numeric) individual identifier, equal to 1 if the individual was observed in the respective wave, 0 otherwise.
+
+- __year__ (numeric) interview date - year.
+
+- __month__ (numeric) interview date - month.
+
+- __day__ (numeric) interview date - day.
+
+- __weight_xw__ (numeric) cross-sectional survey weight, for weighting one wave to the population.
+
+### __Demographic variables__ 
+
+Variables produced by the demographic module `ukhls_clean_demographic`. Variables in this category are prefixed with a `d_`. 
+
+- __d_age__ (numeric) continuous, single-year of age
+
+- __d_age_5cat__ (factor) age category - 5 categories:
+    -  "16-24"
+    -  "25-34"
+    -  "35-49"
+    -  "50-64"
+    -  "65+"
+
+- __d_age_12cat__ (factor) age category - 12 categories:
+    -  "16-19"
+    -  "20-24"
+    -  "25-29"
+    -  "30-34"
+    -  "35-39"
+    -  "40-44"
+    -  "45-49"
+    -  "50-54"
+    -  "55-59"
+    -  "60-64"
+    -  "65-69"
+    -  "70+"
+
+- __d_sex__  (factor) sex:
+  - "male"
+  - "female"
+
+- __d_gor__  (factor) government office region:
+  - "north_east"
+  - "north_west"
+  - "yorkshire"
+  - "east_midlands"
+  - "west_idlands"
+  - "east"
+  - "london"
+  - "south_east"
+  - "south_west"
+  - "wales"
+  - "scotland"
+  - "northern_ireland"
+  
+- __d_area__ (factor) urban or rural area:
+  - "urban"
+  - "rural"
+  
+- __d_marstat__ (factor) marital status:
+  - "single"
+  - "married"
+  - "sep_div_wid" (separated, divorced, or widowed)
+  
+- __d_hiqual__ (factor) highest qualification level achieved:
+  - "degree"
+  - "other_he"
+  - "alevel" 
+  - "gcse"
+  - "other_qual"
+  - "no_qual"
+  
+- __d_ethnicity_2cat__  (factor) ethnicity - 2 categories:
+  - "white"
+  - "non_white"
+
+- __d_ethnicity_5cat__  (factor) ethnicity - 5 categories:
+   - "white"
+   - "black"
+   - "asian"
+   - "mixed"
+   - "other"
+   
+- __d_ethnicity_9cat__  (factor) ethnicity - 9 categories:
+   - "white_british"
+   - "white_non_british"
+   - "mixed"
+   - "indian"
+   - "pakistani"
+   - "bangladeshi"
+   - "other_asian"
+   - "black"
+   - "other"
+   
+   
+### __Health and wellbeing variables__ 
+
