@@ -96,9 +96,9 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
   - "urban"
   - "rural"
   
-- __d_marstat__ (factor) marital status:
-  - "single"
+- __d_marital__ (factor) marital status:
   - "married"
+  - "single"
   - "sep_div_wid" (separated, divorced, or widowed)
   
 - __d_hiqual__ (factor) highest qualification level achieved:
