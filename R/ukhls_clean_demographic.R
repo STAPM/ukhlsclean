@@ -98,7 +98,8 @@ ukhls_clean_demographic <- function(data = NULL) {
   data[highest_qual == 5, hiqual := "other_qual"]
   data[highest_qual == 9, hiqual := "no_qual"]
 
-  data[,hiqual <- as.factor(hiqual)]
+  data[, hiqual := factor(hiqual, levels = c("no_qual", "other_qual", "gcse",
+                                             "alevel", "other_he", "degree"))]
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
