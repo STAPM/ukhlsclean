@@ -12,7 +12,7 @@ Authors@R:
     person(given = "Ryan",
            family = "Kai Le Chen",
            role = c("aut"),
-           email = "r.kailechen@sheffield.ac.uk"),       
+           email = "r.kailechen@sheffield.ac.uk")     
     )
 Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
 Description: The package takes raw data for the UK Household Longitudinal Study
