@@ -94,8 +94,9 @@
 </h2>
 <p>This document details the cleaned variables from the Understanding
 Society dataset which are available through using the
-<code>ukhlsclean</code> package, grouped by cleaning function
-category.</p>
+<code>ukhlsclean</code> package, grouped by cleaning function category.
+Where not otherwise specified, variables are available in all waves of
+the data</p>
 <div class="section level3">
 <h3 id="global-variables">
 <strong>Global variables</strong><a class="anchor" aria-label="anchor" href="#global-variables"></a>
@@ -255,6 +256,105 @@ categories:</p>
 <li>“other”</li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="household-variables">
+<strong>Household variables</strong><a class="anchor" aria-label="anchor" href="#household-variables"></a>
+</h3>
+<p>Variables produced by the household module
+<code>ukhls_clean_hhold</code>. Variables in this category are prefixed
+with a <code>hh_</code>.</p>
+<ul>
+<li>
+<p><strong>hh_hometenure</strong> (factor) household occupancy
+type:</p>
+<ul>
+<li>“owner_occupier”</li>
+<li>“private_renter”</li>
+<li>“social_renter”</li>
+</ul>
+</li>
+<li>
+<p><strong>hh_age_yngchl</strong> (factor) age of the youngest child
+in the household:</p>
+<ul>
+<li>“no_children”</li>
+<li>“0-2”</li>
+<li>“3-4”</li>
+<li>“5-11”</li>
+<li>“12-15”</li>
+</ul>
+</li>
+<li>
+<p><strong>hh_type_6cat</strong> (factor) household composition:</p>
+<ul>
+<li>“1 adult 0 children”</li>
+<li>“1 adult 1+ children”</li>
+<li>“2 adult 0 children”</li>
+<li>“2 adult 1+ children”</li>
+<li>“3+ adult 0 children”</li>
+<li>“3+ adult 1+ children”</li>
+</ul>
+</li>
+<li><p><strong>hh_numadult</strong> (numeric) number of adults in the
+household</p></li>
+<li><p><strong>hh_numchild</strong> (numeric) number of children in the
+household</p></li>
+<li><p><strong>hh_size</strong> (numeric) household size (number of
+adults plus children)</p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="economic-status-variables">
+<strong>Economic status variables</strong><a class="anchor" aria-label="anchor" href="#economic-status-variables"></a>
+</h3>
+<p>Variables produced by the economic status module
+<code>ukhls_clean_econstat</code>. Variables in this category are
+prefixed with an <code>l_</code></p>
+<ul>
+<li>
+<p><strong>l_econ_stat_2cat</strong> (factor) economic status, 2
+category:</p>
+<ul>
+<li>“employed”</li>
+<li>“not_employed”</li>
+</ul>
+</li>
+<li>
+<p><strong>l_econ_stat_3cat</strong> (factor) economic status, 3
+category:</p>
+<ul>
+<li>“employed”</li>
+<li>“unemployed”</li>
+<li>“inactive”</li>
+</ul>
+</li>
+<li>
+<p><strong>l_econ_stat_7cat</strong> (factor) economic status, 7
+category:</p>
+<ul>
+<li>“employed”</li>
+<li>“self_employed”</li>
+<li>“unemployed”</li>
+<li>“sick”</li>
+<li>“retired”</li>
+<li>“education”</li>
+<li>“other”</li>
+</ul>
+</li>
+<li><p><strong>l_grss_earnings_usual</strong> (numeric) nominal gross
+earnings per month from employment (usual pay) plus
+self-employment</p></li>
+<li><p><strong>l_grss_earnings_last</strong> (numeric) nominal gross
+earnings per month from employment (last received payment) plus
+self-employment</p></li>
+<li><p><strong>l_real_grss_earnings_usual</strong> (numeric) real gross
+earnings per month from employment (usual pay) plus
+self-employment</p></li>
+<li><p><strong>l_real_grss_earnings_last</strong> (numeric) real gross
+earnings per month from employment (last received payment) plus
+self-employment</p></li>
 </ul>
 </div>
 <div class="section level3">
