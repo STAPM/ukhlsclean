@@ -55,8 +55,8 @@ ukhls_read_wave2 <- function(
   id_vars          <- Hmisc::Cs(pidp, pid, b_hidp, b_pno, b_psu, b_strata, b_istrtdaty, b_istrtdatm, b_istrtdatd)
   demographic_vars <- Hmisc::Cs(b_sex, b_dvage, b_birthy, b_gor_dv, b_urban_dv, b_mlstat, b_marstat)
   prev_wave_vars   <- Hmisc::Cs(b_notempchk, b_empchk)
-  econ_stat_vars   <- Hmisc::Cs(b_jbstat, b_jbhas, b_jboff, b_jboffy)
-  work_vars        <- Hmisc::Cs(b_paygu_dv, b_payg_dv, b_jbhrs, b_fimnlabgrs_dv, b_seearngrs_dv)
+  econ_stat_vars   <- Hmisc::Cs(b_jbstat, b_jbhas, b_jboff, b_jboffy, b_jbterm1, b_jbterm2, b_jbsemp, b_jbpen, b_jbpenm)
+  work_vars        <- Hmisc::Cs(b_paygu_dv, b_payg_dv, b_jbhrs, b_fimnlabgrs_dv, b_seearngrs_dv, b_jbot, b_jbotpd)
   employees_vars   <- Hmisc::Cs(b_paygl, b_paynl, b_payu, b_payug, b_ovtpay, b_extnsa, b_extrate, b_extrest, b_basnsa, b_basrate, b_basrest, b_ovtnsa, b_ovtrate, b_ovtrest)
   s.emp_vars       <- Hmisc::Cs(b_jshrs, b_jspayu, b_jspytx, b_jspyni)
   non.emp_vars     <- Hmisc::Cs(b_jbhad)
@@ -97,9 +97,9 @@ ukhls_read_wave2 <- function(
                          ## previous wave variables
                          "b_notempchk","b_empchk",
                          ## economic status
-                         "b_jbstat","b_jbhas","b_jboff","b_jboffy",
+                         "b_jbstat","b_jbhas","b_jboff","b_jboffy","b_jbterm1","b_jbterm2","b_jbsemp","b_jbpen","b_jbpenm",
                          ## work variables
-                         "b_paygu_dv","b_payg_dv","b_jbhrs","b_fimnlabgrs_dv","b_seearngrs_dv",
+                         "b_paygu_dv","b_payg_dv","b_jbhrs","b_fimnlabgrs_dv","b_seearngrs_dv","b_jbot","b_jbotpd",
                          ## employees
                          "b_paygl","b_paynl","b_payu","b_payug","b_ovtpay","b_extnsa","b_extrate","b_extrest","b_basnsa","b_basrate",
                          "b_basrest","b_ovtnsa","b_ovtrate","b_ovtrest",
@@ -146,9 +146,9 @@ ukhls_read_wave2 <- function(
                          ## previous wave variables
                          "notempchk","empchk",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp","jbpen","jbpen_member",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
