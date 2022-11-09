@@ -71,7 +71,11 @@ ukhls_read_wave3 <- function(
   education_vars   <- Hmisc::Cs(c_hiqual_dv)
   health_vars      <- Hmisc::Cs(c_health, c_aidhh, c_sclfsat1, c_sclfsato, c_sf12pcs_dv, c_sf12mcs_dv,
                                 c_scsf1, c_scsf2a, c_scsf2b, c_scsf3a, c_scsf3b, c_scsf4a, c_scsf4b, c_scsf5, c_scsf6a, c_scsf6b, c_scsf6c, c_scsf7)
-  preg_vars        <- Hmisc::Cs(c_pregout1, c_pregout2, c_pregout3)
+  preg_vars        <- Hmisc::Cs(c_preg,
+                                c_pregout1, c_pregend1, c_pregsmoke1, c_smkmnth11, c_smkmnth21, c_smkmnth31, c_pregsmk11, c_pregsmk21, c_pregsmk31,c_lchmulti1,
+                                c_pregout2, c_pregend2, c_pregsmoke2, c_smkmnth12, c_smkmnth22, c_smkmnth32, c_pregsmk12, c_pregsmk22, c_pregsmk32, c_lchmulti2,
+                                c_pregout3, c_pregend3, c_pregsmoke3, c_smkmnth13, c_smkmnth23, c_smkmnth33, c_pregsmk13, c_pregsmk23, c_pregsmk33, c_lchmulti3,
+                                c_nnewborn)
   alc_vars         <- Hmisc::Cs(c_dklm, c_drnk4w, c_evralc, c_fivealcdr)
   weight_vars      <- Hmisc::Cs(c_indinus_lw, c_indinub_xw)
 
@@ -118,7 +122,9 @@ ukhls_read_wave3 <- function(
                          "c_health","c_aidhh","c_sclfsat1","c_sclfsato","c_sf12pcs_dv","c_sf12mcs_dv",
                          "c_scsf1","c_scsf2a","c_scsf2b","c_scsf3a","c_scsf3b","c_scsf4a","c_scsf4b","c_scsf5","c_scsf6a","c_scsf6b","c_scsf6c","c_scsf7",
                          ## pregnancy variables
-                         "c_pregout1","c_pregout2","c_pregout3",
+                         "c_preg","c_pregout1","c_pregend1","c_pregsmoke1","c_smkmnth11","c_smkmnth21","c_smkmnth31","c_pregsmk11","c_pregsmk21","c_pregsmk31","c_lchmulti1",
+                         "c_pregout2","c_pregend2","c_pregsmoke2","c_smkmnth12","c_smkmnth22","c_smkmnth32","c_pregsmk12","c_pregsmk22","c_pregsmk32","c_lchmulti2",
+                         "c_pregout3","c_pregend3","c_pregsmoke3","c_smkmnth13","c_smkmnth23","c_smkmnth33","c_pregsmk13","c_pregsmk23","c_pregsmk33","c_lchmulti3","c_nnewborn",
                          ## alcohol variables
                          "c_dklm","c_drnk4w","c_evralc","c_fivealcdr",
                          ## weight
@@ -159,7 +165,11 @@ ukhls_read_wave3 <- function(
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
-                         "pregout1","pregout2","pregout3",
+                         "preg",
+                         "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","lchmulti1",
+                         "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","lchmulti2",
+                         "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","lchmulti3",
+                         "nnewborn",
                          ## alcohol variables
                          "dklm","drnk4w","evralc","fivealcdr",
                          ## weight
