@@ -56,7 +56,9 @@ ukhls_read_wave3 <- function(
   econ_stat_vars   <- Hmisc::Cs(c_jbstat, c_jbhas, c_jboff, c_jboffy, c_jbterm1, c_jbterm2, c_jbsemp)
   work_vars        <- Hmisc::Cs(c_paygu_dv, c_payg_dv, c_jbhrs, c_fimnlabgrs_dv, c_seearngrs_dv, c_jbot, c_jbotpd)
   employees_vars   <- Hmisc::Cs(c_paygl, c_paynl, c_payu, c_payug, c_ovtpay, c_extnsa, c_extrate, c_extrest, c_basnsa, c_basrate, c_basrest, c_ovtnsa, c_ovtrate, c_ovtrest)
-
+  s.emp_vars       <- Hmisc::Cs(c_jshrs, c_jspayu, c_jspytx, c_jspyni)
+  non.emp_vars     <- Hmisc::Cs(c_jbhad)
+  job2_vars        <- Hmisc::Cs(c_j2has, c_j2semp, c_j2hrs, c_j2pay)
   education_vars   <- Hmisc::Cs(c_hiqual_dv)
   health_vars      <- Hmisc::Cs(c_health, c_aidhh, c_sclfsat1, c_sclfsato, c_sf12pcs_dv, c_sf12mcs_dv,
                                 c_scsf1, c_scsf2a, c_scsf2b, c_scsf3a, c_scsf3b, c_scsf4a, c_scsf4b, c_scsf5, c_scsf6a, c_scsf6b, c_scsf6c, c_scsf7)
@@ -65,7 +67,7 @@ ukhls_read_wave3 <- function(
   weight_vars      <- Hmisc::Cs(c_indinus_lw, c_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -82,6 +84,12 @@ ukhls_read_wave3 <- function(
                          ## employees
                          "c_paygl","c_paynl","c_payu","c_payug","c_ovtpay","c_extnsa","c_extrate","c_extrest","c_basnsa","c_basrate",
                          "c_basrest","c_ovtnsa","c_ovtrate","c_ovtrest",
+                         ## self-employed
+                         "c_jshrs","c_jspayu","c_jspytx","c_jspyni",
+                         ## non-employed
+                         "c_jbhad",
+                         ## second job
+                         "c_j2has","c_j2semp","c_j2hrs","c_j2pay",
                          ## education variables
                          "c_hiqual_dv",
                          ## health variables
@@ -104,6 +112,12 @@ ukhls_read_wave3 <- function(
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
+                         ## self-employed
+                         "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
+                         ## non-employed
+                         "jbhad",
+                         ## second job
+                         "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## education variables
                          "highest_qual",
                          ## health variables
