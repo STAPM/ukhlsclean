@@ -51,19 +51,21 @@ ukhls_read_wave3 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- Hmisc::Cs(pidp,pid,c_hidp,c_pno,c_psu,c_strata,c_istrtdaty,c_istrtdatm,c_istrtdatd)
-  demographic_vars <- Hmisc::Cs(c_sex,c_dvage,c_birthy,c_gor_dv,c_urban_dv,c_mlstat, c_marstat)
-  econ_stat_vars   <- Hmisc::Cs(c_jbstat,c_jbhas,c_jboff,c_jboffy)
-  work_vars        <- Hmisc::Cs(c_paygu_dv,c_payg_dv,c_jbhrs,c_fimnlabgrs_dv,c_seearngrs_dv)
+  id_vars          <- Hmisc::Cs(pidp, pid, c_hidp, c_pno, c_psu, c_strata, c_istrtdaty, c_istrtdatm, c_istrtdatd)
+  demographic_vars <- Hmisc::Cs(c_sex, c_dvage, c_birthy, c_gor_dv, c_urban_dv, c_mlstat,  c_marstat)
+  econ_stat_vars   <- Hmisc::Cs(c_jbstat, c_jbhas, c_jboff, c_jboffy, c_jbterm1, c_jbterm2, c_jbsemp)
+  work_vars        <- Hmisc::Cs(c_paygu_dv, c_payg_dv, c_jbhrs, c_fimnlabgrs_dv, c_seearngrs_dv, c_jbot, c_jbotpd)
+  employees_vars   <- Hmisc::Cs(c_paygl, c_paynl, c_payu, c_payug, c_ovtpay, c_extnsa, c_extrate, c_extrest, c_basnsa, c_basrate, c_basrest, c_ovtnsa, c_ovtrate, c_ovtrest)
+
   education_vars   <- Hmisc::Cs(c_hiqual_dv)
-  health_vars      <- Hmisc::Cs(c_health,c_aidhh,c_sclfsat1,c_sclfsato,c_sf12pcs_dv,c_sf12mcs_dv,
-                                c_scsf1,c_scsf2a,c_scsf2b,c_scsf3a,c_scsf3b,c_scsf4a,c_scsf4b,c_scsf5,c_scsf6a,c_scsf6b,c_scsf6c,c_scsf7)
-  preg_vars        <- Hmisc::Cs(c_pregout1,c_pregout2,c_pregout3)
-  alc_vars         <- Hmisc::Cs(c_dklm,c_drnk4w,c_evralc,c_fivealcdr)
-  weight_vars      <- Hmisc::Cs(c_indinus_lw,c_indinub_xw)
+  health_vars      <- Hmisc::Cs(c_health, c_aidhh, c_sclfsat1, c_sclfsato, c_sf12pcs_dv, c_sf12mcs_dv,
+                                c_scsf1, c_scsf2a, c_scsf2b, c_scsf3a, c_scsf3b, c_scsf4a, c_scsf4b, c_scsf5, c_scsf6a, c_scsf6b, c_scsf6c, c_scsf7)
+  preg_vars        <- Hmisc::Cs(c_pregout1, c_pregout2, c_pregout3)
+  alc_vars         <- Hmisc::Cs(c_dklm, c_drnk4w, c_evralc, c_fivealcdr)
+  weight_vars      <- Hmisc::Cs(c_indinus_lw, c_indinub_xw)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,alc_vars,weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -73,10 +75,13 @@ ukhls_read_wave3 <- function(
                        c("pidp","pid","c_hidp","c_pno","c_psu","c_strata","c_istrtdaty","c_istrtdatm","c_istrtdatd",
                          ## demographic
                          "c_sex","c_dvage","c_birthy","c_gor_dv","c_urban_dv","c_mlstat","c_marstat",
-                         ## economic stauts
-                         "c_jbstat","c_jbhas","c_jboff","c_jboffy",
+                         ## economic status
+                         "c_jbstat","c_jbhas","c_jboff","c_jboffy","c_jbterm1","c_jbterm2","c_jbsemp",
                          ## work variables
-                         "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv","c_seearngrs_dv",
+                         "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv","c_seearngrs_dv","c_jbot","c_jbotpd",
+                         ## employees
+                         "c_paygl","c_paynl","c_payu","c_payug","c_ovtpay","c_extnsa","c_extrate","c_extrest","c_basnsa","c_basrate",
+                         "c_basrest","c_ovtnsa","c_ovtrate","c_ovtrest",
                          ## education variables
                          "c_hiqual_dv",
                          ## health variables
@@ -93,9 +98,12 @@ ukhls_read_wave3 <- function(
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
+                         "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
                          ## education variables
                          "highest_qual",
                          ## health variables
