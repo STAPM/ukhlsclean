@@ -54,6 +54,7 @@ ukhls_read_wave2 <- function(
 
   id_vars          <- Hmisc::Cs(pidp, pid, b_hidp, b_pno, b_psu, b_strata, b_istrtdaty, b_istrtdatm, b_istrtdatd)
   demographic_vars <- Hmisc::Cs(b_sex, b_dvage, b_birthy, b_gor_dv, b_urban_dv, b_mlstat, b_marstat)
+  prev_wave_vars   <- Hmisc::Cs(b_notempchk, b_empchk)
   econ_stat_vars   <- Hmisc::Cs(b_jbstat, b_jbhas, b_jboff, b_jboffy)
   work_vars        <- Hmisc::Cs(b_paygu_dv, b_payg_dv, b_jbhrs, b_fimnlabgrs_dv, b_seearngrs_dv)
   education_vars   <- Hmisc::Cs(b_hiqual_dv)
@@ -70,7 +71,7 @@ ukhls_read_wave2 <- function(
 
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -80,6 +81,8 @@ ukhls_read_wave2 <- function(
                        c("pidp","pid","b_hidp","b_pno","b_psu","b_strata","b_istrtdaty","b_istrtdatm","b_istrtdatd",
                          ## demographic
                          "b_sex","b_dvage","b_birthy","b_gor_dv","b_urban_dv","b_mlstat","b_marstat",
+                         ## previous wave variables
+                         "b_notempchk","b_empchk",
                          ## economic status
                          "b_jbstat","b_jbhas","b_jboff","b_jboffy",
                          ## work variables
@@ -105,6 +108,8 @@ ukhls_read_wave2 <- function(
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
+                         ## previous wave variables
+                         "notempchk","empchk",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
