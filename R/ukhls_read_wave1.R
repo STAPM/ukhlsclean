@@ -128,7 +128,7 @@ ukhls_read_wave1 <- function(
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp","jbpen","jbpenm",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid","jbpen","jbpen_member",
                          ## employees
