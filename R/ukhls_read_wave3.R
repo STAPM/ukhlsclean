@@ -62,7 +62,7 @@ ukhls_read_wave3 <- function(
   job2_vars        <- Hmisc::Cs(c_j2has, c_j2semp, c_j2hrs, c_j2pay)
   benefits_vars    <- Hmisc::Cs(c_btype1, c_btype2, c_btype3, c_btype4, c_btype5, c_btype6, c_btype7, c_btype8, c_btype9, c_btype96,
                                 c_benunemp1, c_benunemp2, c_benunemp96, c_bendis1, c_bendis2, c_bendis3, c_bendis4, c_bendis5, c_bendis6, c_bendis7,
-                                c_bendis8, c_bendis9, c_bendis10, c_bendis96, c_bendis97)
+                                c_bendis8, c_bendis9, c_bendis10, c_bendis12, c_bendis96, c_bendis97)
   pension_vars     <- Hmisc::Cs(c_benpen1, c_benpen2, c_benpen3, c_benpen4, c_benpen5, c_benpen6, c_benpen7, c_benpen8, c_benpen96)
   receivables_vars <- Hmisc::Cs(c_niserps, c_bencb, c_benctc, c_benfam1, c_benfam2, c_benfam3, c_benfam4, c_benfam5,
                                 c_benfam96, c_bentax1, c_bentax2, c_bentax3, c_bentax4, c_bentax5, c_bentax96, c_benhou1,
@@ -110,7 +110,7 @@ ukhls_read_wave3 <- function(
                          ## benefits
                          "c_btype1","c_btype2","c_btype3","c_btype4","c_btype5","c_btype6","c_btype7","c_btype8","c_btype9","c_btype96",
                          "c_benunemp1","c_benunemp2","c_benunemp96","c_bendis1","c_bendis2","c_bendis3","c_bendis4","c_bendis5","c_bendis6","c_bendis7",
-                         "c_bendis8","c_bendis9","c_bendis10","c_bendis96","c_bendis97",
+                         "c_bendis8","c_bendis9","c_bendis10","c_bendis12","c_bendis96","c_bendis97",
                          ## pensions
                          "c_benpen1","c_benpen2","c_benpen3","c_benpen4","c_benpen5","c_benpen6","c_benpen7","c_benpen8","c_benpen96",
                          ## receivables
@@ -157,7 +157,7 @@ ukhls_read_wave3 <- function(
                          ## benefits
                          "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
                          "jbseek_allowance","NI_credits","non_btype1","incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","RTW_credit","attend_allowance",
-                         "injury_ben","war_pension","sick.accident_insurance","non_bendis","otherdis_pay",
+                         "injury_ben","war_pension","sick.accident_insurance","pers.indep_pay","non_bendis","otherdis_pay",
                          ## pensions
                          "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
                          ## receivables
