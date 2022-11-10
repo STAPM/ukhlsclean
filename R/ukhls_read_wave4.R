@@ -54,8 +54,10 @@ ukhls_read_wave4 <- function(
 
   id_vars          <- Hmisc::Cs(pidp, pid, d_hidp, d_pno, d_psu, d_strata, d_istrtdaty, d_istrtdatm, d_istrtdatd)
   demographic_vars <- Hmisc::Cs(d_sex, d_dvage, d_birthy, d_gor_dv, d_urban_dv, d_mlstat,  d_marstat)
+  prev_wave_vars   <- Hmisc::Cs(d_notempchk, d_empchk)
   econ_stat_vars   <- Hmisc::Cs(d_jbstat, d_jbhas, d_jboff, d_jboffy, d_jbterm1, d_jbterm2, d_jbsemp, d_jbpen, d_jbpenm)
-  work_vars        <- Hmisc::Cs(d_paygu_dv, d_payg_dv, d_jbhrs, d_fimnlabgrs_dv, d_seearngrs_dv)
+  work_vars        <- Hmisc::Cs(d_paygu_dv, d_payg_dv, d_jbhrs, d_fimnlabgrs_dv, d_seearngrs_dv, d_jbot, d_jbotpd)
+  employees_vars   <- Hmisc::Cs(d_paygl, d_paynl, d_payu, d_payug, d_ovtpay, d_extnsa, d_extrate, d_extrest, d_basnsa, d_basrate, d_basrest, d_ovtnsa, d_ovtrate, d_ovtrest)
   education_vars   <- Hmisc::Cs(d_hiqual_dv)
   health_vars      <- Hmisc::Cs(d_health, d_aidhh, d_sclfsat1, d_sclfsato, d_sf12pcs_dv, d_sf12mcs_dv,
                                 d_scsf1, d_scsf2a, d_scsf2b, d_scsf3a, d_scsf3b, d_scsf4a, d_scsf4b, d_scsf5, d_scsf6a, d_scsf6b, d_scsf6c, d_scsf7)
@@ -64,7 +66,7 @@ ukhls_read_wave4 <- function(
   weight_vars      <- Hmisc::Cs(d_indinus_lw, d_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -74,10 +76,15 @@ ukhls_read_wave4 <- function(
                        c("pidp","pid","d_hidp","d_pno","d_psu","d_strata","d_istrtdaty","d_istrtdatm","d_istrtdatd",
                          ## demographic
                          "d_sex","d_dvage","d_birthy","d_gor_dv","d_urban_dv","d_mlstat","d_marstat",
-                         ## economic stauts
+                         ## previous wave variables
+                         "d_notempchk","d_empchk",
+                         ## economic status
                          "d_jbstat","d_jbhas","d_jboff","d_jboffy","d_jbterm1","d_jbterm2","d_jbsemp","d_jbpen","d_jbpenm",
                          ## work variables
-                         "d_paygu_dv","d_payg_dv","d_jbhrs","d_fimnlabgrs_dv","d_seearngrs_dv",
+                         "d_paygu_dv","d_payg_dv","d_jbhrs","d_fimnlabgrs_dv","d_seearngrs_dv","d_jbot","d_jbotpd",
+                         ## employees
+                         "d_paygl","d_paynl","d_payu","d_payug","d_ovtpay","d_extnsa","d_extrate","d_extrest","d_basnsa","d_basrate",
+                         "d_basrest","d_ovtnsa","d_ovtrate","d_ovtrest",
                          ## education variables
                          "d_hiqual_dv",
                          ## health variables
@@ -93,10 +100,15 @@ ukhls_read_wave4 <- function(
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
+                         ## previous wave variables
+                         "notempchk","empchk",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp","jbpen","jbpen_member",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
+                         "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
                          ## education variables
                          "highest_qual",
                          ## health variables
