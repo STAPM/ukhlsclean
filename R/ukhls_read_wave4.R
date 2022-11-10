@@ -58,6 +58,12 @@ ukhls_read_wave4 <- function(
   econ_stat_vars   <- Hmisc::Cs(d_jbstat, d_jbhas, d_jboff, d_jboffy, d_jbterm1, d_jbterm2, d_jbsemp, d_jbpen, d_jbpenm)
   work_vars        <- Hmisc::Cs(d_paygu_dv, d_payg_dv, d_jbhrs, d_fimnlabgrs_dv, d_seearngrs_dv, d_jbot, d_jbotpd)
   employees_vars   <- Hmisc::Cs(d_paygl, d_paynl, d_payu, d_payug, d_ovtpay, d_extnsa, d_extrate, d_extrest, d_basnsa, d_basrate, d_basrest, d_ovtnsa, d_ovtrate, d_ovtrest)
+  s.emp_vars       <- Hmisc::Cs(d_jshrs, d_jspayu, d_jspytx, d_jspyni)
+  non.emp_vars     <- Hmisc::Cs(d_jbhad)
+  job2_vars        <- Hmisc::Cs(d_j2has, d_j2semp, d_j2hrs, d_j2pay)
+  benefits_vars    <- Hmisc::Cs(d_btype1, d_btype2, d_btype3, d_btype4, d_btype5, d_btype6, d_btype7, d_btype8, d_btype9, d_btype96,
+                                d_benunemp1, d_benunemp2, d_benunemp96, d_bendis1, d_bendis11, d_bendis2, d_bendis3, d_bendis4, d_bendis5, d_bendis12,
+                                d_bendis6, d_bendis7, d_bendis8, d_bendis9, d_bendis10, d_bendis96, d_bendis97)
   education_vars   <- Hmisc::Cs(d_hiqual_dv)
   health_vars      <- Hmisc::Cs(d_health, d_aidhh, d_sclfsat1, d_sclfsato, d_sf12pcs_dv, d_sf12mcs_dv,
                                 d_scsf1, d_scsf2a, d_scsf2b, d_scsf3a, d_scsf3b, d_scsf4a, d_scsf4b, d_scsf5, d_scsf6a, d_scsf6b, d_scsf6c, d_scsf7)
@@ -66,7 +72,7 @@ ukhls_read_wave4 <- function(
   weight_vars      <- Hmisc::Cs(d_indinus_lw, d_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -85,6 +91,16 @@ ukhls_read_wave4 <- function(
                          ## employees
                          "d_paygl","d_paynl","d_payu","d_payug","d_ovtpay","d_extnsa","d_extrate","d_extrest","d_basnsa","d_basrate",
                          "d_basrest","d_ovtnsa","d_ovtrate","d_ovtrest",
+                         ## self-employed
+                         "d_jshrs","d_jspayu","d_jspytx","d_jspyni",
+                         ## non-employed
+                         "d_jbhad",
+                         ## second job
+                         "d_j2has","d_j2semp","d_j2hrs","d_j2pay",
+                         ## benefits
+                         "d_btype1","d_btype2","d_btype3","d_btype4","d_btype5","d_btype6","d_btype7","d_btype8","d_btype9","d_btype96",
+                         "d_benunemp1","d_benunemp2","d_benunemp96","d_bendis1","d_bendis11","d_bendis2","d_bendis3","d_bendis4","d_bendis5","d_bendis12",
+                         "d_bendis6","d_bendis7","d_bendis8","d_bendis9","d_bendis10","d_bendis96","d_bendis97",
                          ## education variables
                          "d_hiqual_dv",
                          ## health variables
@@ -109,6 +125,16 @@ ukhls_read_wave4 <- function(
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
+                         ## self-employed
+                         "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
+                         ## non-employed
+                         "jbhad",
+                         ## second job
+                         "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
+                         ## benefits
+                         "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
+                         "jbseek_allowance","NI_credits","non_btype1","incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay",
+                         "RTW_credit","attend_allowance","injury_ben","war_pension","sick.accident_insurance","non_bendis","otherdis_pay",
                          ## education variables
                          "highest_qual",
                          ## health variables
