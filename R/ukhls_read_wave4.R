@@ -52,19 +52,19 @@ ukhls_read_wave4 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- Hmisc::Cs(pidp,pid,d_hidp,d_pno,d_psu,d_strata,d_istrtdaty,d_istrtdatm,d_istrtdatd)
-  demographic_vars <- Hmisc::Cs(d_sex,d_dvage,d_birthy,d_gor_dv,d_urban_dv,d_mlstat, d_marstat)
-  econ_stat_vars   <- Hmisc::Cs(d_jbstat,d_jbhas,d_jboff,d_jboffy)
-  work_vars        <- Hmisc::Cs(d_paygu_dv,d_payg_dv,d_jbhrs,d_fimnlabgrs_dv,d_seearngrs_dv)
+  id_vars          <- Hmisc::Cs(pidp, pid, d_hidp, d_pno, d_psu, d_strata, d_istrtdaty, d_istrtdatm, d_istrtdatd)
+  demographic_vars <- Hmisc::Cs(d_sex, d_dvage, d_birthy, d_gor_dv, d_urban_dv, d_mlstat,  d_marstat)
+  econ_stat_vars   <- Hmisc::Cs(d_jbstat, d_jbhas, d_jboff, d_jboffy)
+  work_vars        <- Hmisc::Cs(d_paygu_dv, d_payg_dv, d_jbhrs, d_fimnlabgrs_dv, d_seearngrs_dv)
   education_vars   <- Hmisc::Cs(d_hiqual_dv)
-  health_vars      <- Hmisc::Cs(d_health,d_aidhh,d_sclfsat1,d_sclfsato,d_sf12pcs_dv,d_sf12mcs_dv,
-                                d_scsf1,d_scsf2a,d_scsf2b,d_scsf3a,d_scsf3b,d_scsf4a,d_scsf4b,d_scsf5,d_scsf6a,d_scsf6b,d_scsf6c,d_scsf7)
-  preg_vars        <- Hmisc::Cs(d_pregout1,d_pregout2,d_pregout3,d_pregout4)
-  alc_vars         <- Hmisc::Cs(d_dklm,d_drnk4w,d_evralc,d_fivealcdr)
-  weight_vars      <- Hmisc::Cs(d_indinus_lw,d_indinub_xw)
+  health_vars      <- Hmisc::Cs(d_health, d_aidhh, d_sclfsat1, d_sclfsato, d_sf12pcs_dv, d_sf12mcs_dv,
+                                d_scsf1, d_scsf2a, d_scsf2b, d_scsf3a, d_scsf3b, d_scsf4a, d_scsf4b, d_scsf5, d_scsf6a, d_scsf6b, d_scsf6c, d_scsf7)
+  preg_vars        <- Hmisc::Cs(d_pregout1, d_pregout2, d_pregout3, d_pregout4)
+  alc_vars         <- Hmisc::Cs(d_dklm, d_drnk4w, d_evralc, d_fivealcdr)
+  weight_vars      <- Hmisc::Cs(d_indinus_lw, d_indinub_xw)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,alc_vars,weight_vars)
+  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
