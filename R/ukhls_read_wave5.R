@@ -55,7 +55,7 @@ ukhls_read_wave5 <- function(
   id_vars          <- Hmisc::Cs(pidp, pid, e_hidp, e_pno, e_psu, e_strata, e_istrtdaty, e_istrtdatm, e_istrtdatd)
   demographic_vars <- Hmisc::Cs(e_sex, e_dvage, e_birthy, e_gor_dv, e_urban_dv, e_mlstat,  e_marstat)
   prev_wave_vars   <- Hmisc::Cs(e_notempchk, e_empchk)
-  econ_stat_vars   <- Hmisc::Cs(e_jbstat, e_jbhas, e_jboff, e_jboffy)
+  econ_stat_vars   <- Hmisc::Cs(e_jbstat, e_jbhas, e_jboff, e_jboffy, e_jbterm1, e_jbterm2, e_jbsemp)
   work_vars        <- Hmisc::Cs(e_paygu_dv, e_payg_dv, e_jbhrs, e_fimnlabgrs_dv, e_seearngrs_dv)
   education_vars   <- Hmisc::Cs(e_hiqual_dv)
   health_vars      <- Hmisc::Cs(e_health, e_aidhh, e_sclfsat1, e_sclfsato, e_sf12pcs_dv, e_sf12mcs_dv,
@@ -79,7 +79,7 @@ ukhls_read_wave5 <- function(
                          ## previous wave variables
                          "e_notempchk","e_empchk",
                          ## economic status
-                         "e_jbstat","e_jbhas","e_jboff","e_jboffy",
+                         "e_jbstat","e_jbhas","e_jboff","e_jboffy","e_jbterm1","e_jbterm2","e_jbsemp",
                          ## work variables
                          "e_paygu_dv","e_payg_dv","e_jbhrs","e_fimnlabgrs_dv","e_seearngrs_dv",
                          ## education variables
@@ -102,7 +102,7 @@ ukhls_read_wave5 <- function(
                          ## previous wave variables
                          "notempchk","empchk",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
                          ## education variables
