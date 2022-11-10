@@ -64,6 +64,11 @@ ukhls_read_wave4 <- function(
   benefits_vars    <- Hmisc::Cs(d_btype1, d_btype2, d_btype3, d_btype4, d_btype5, d_btype6, d_btype7, d_btype8, d_btype9, d_btype96,
                                 d_benunemp1, d_benunemp2, d_benunemp96, d_bendis1, d_bendis11, d_bendis2, d_bendis3, d_bendis4, d_bendis5, d_bendis12,
                                 d_bendis6, d_bendis7, d_bendis8, d_bendis9, d_bendis10, d_bendis96, d_bendis97)
+  pension_vars     <- Hmisc::Cs(d_benpen1, d_benpen2, d_benpen3, d_benpen4, d_benpen5, d_benpen6, d_benpen7, d_benpen8, d_benpen96)
+  receivables_vars <- Hmisc::Cs(d_niserps, d_bencb, d_benctc, d_benfam1, d_benfam2, d_benfam3, d_benfam4, d_benfam5,
+                                d_benfam96, d_bentax1, d_bentax2, d_bentax3, d_bentax4, d_bentax5, d_bentax96, d_benhou1,
+                                d_benhou2, d_benhou3, d_benhou4, d_benhou96, d_bensta1, d_bensta2, d_bensta3, d_bensta4,
+                                d_bensta5, d_bensta6, d_bensta7, d_bensta96, d_bensta97)
   education_vars   <- Hmisc::Cs(d_hiqual_dv)
   health_vars      <- Hmisc::Cs(d_health, d_aidhh, d_sclfsat1, d_sclfsato, d_sf12pcs_dv, d_sf12mcs_dv,
                                 d_scsf1, d_scsf2a, d_scsf2b, d_scsf3a, d_scsf3b, d_scsf4a, d_scsf4b, d_scsf5, d_scsf6a, d_scsf6b, d_scsf6c, d_scsf7)
@@ -72,7 +77,7 @@ ukhls_read_wave4 <- function(
   weight_vars      <- Hmisc::Cs(d_indinus_lw, d_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -101,6 +106,13 @@ ukhls_read_wave4 <- function(
                          "d_btype1","d_btype2","d_btype3","d_btype4","d_btype5","d_btype6","d_btype7","d_btype8","d_btype9","d_btype96",
                          "d_benunemp1","d_benunemp2","d_benunemp96","d_bendis1","d_bendis11","d_bendis2","d_bendis3","d_bendis4","d_bendis5","d_bendis12",
                          "d_bendis6","d_bendis7","d_bendis8","d_bendis9","d_bendis10","d_bendis96","d_bendis97",
+                         ## pensions
+                         "d_benpen1","d_benpen2","d_benpen3","d_benpen4","d_benpen5","d_benpen6","d_benpen7","d_benpen8","d_benpen96",
+                         ## receivables
+                         "d_niserps","d_bencb","d_benctc","d_benfam1","d_benfam2","d_benfam3","d_benfam4","d_benfam5",
+                         "d_benfam96","d_bentax1","d_bentax2","d_bentax3","d_bentax4","d_bentax5","d_bentax96","d_benhou1",
+                         "d_benhou2","d_benhou3","d_benhou4","d_benhou96","d_bensta1","d_bensta2","d_bensta3","d_bensta4",
+                         "d_bensta5","d_bensta6","d_bensta7","d_bensta96","d_bensta97",
                          ## education variables
                          "d_hiqual_dv",
                          ## health variables
@@ -135,6 +147,13 @@ ukhls_read_wave4 <- function(
                          "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
                          "jbseek_allowance","NI_credits","non_btype1","incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay",
                          "RTW_credit","attend_allowance","injury_ben","war_pension","sick.accident_insurance","non_bendis","otherdis_pay",
+                         ## pensions
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         ## receivables
+                         "income_serps","ben_childben","ben_childtaxcred","benfam_fosterguard","benfam_mat","benfam_alimony","benfam_lone","benfam_fampay",
+                         "non_benfam","bentax_work","bentax_council","bentax_pencred","bentax_childtaxcred","bentax_rtw","non_bentax","benhou_house",
+                         "benhou_counciltax","benhou_rentreb","benhou_ratereb","non_benhou","bensta_prvtpen","bensta_edugrant","bensta_tupay","bensta_alimony",
+                         "bensta_fampay","bensta_rentlodge","bensta_rentother","non_bensta","bensta_other",
                          ## education variables
                          "highest_qual",
                          ## health variables
