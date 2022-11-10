@@ -77,11 +77,12 @@ ukhls_read_wave3 <- function(
                                 c_pregout2, c_pregend2, c_pregsmoke2, c_smkmnth12, c_smkmnth22, c_smkmnth32, c_pregsmk12, c_pregsmk22, c_pregsmk32, c_aedrof2, c_aepuwk2, c_aepuda2, c_lchmulti2,
                                 c_pregout3, c_pregend3, c_pregsmoke3, c_smkmnth13, c_smkmnth23, c_smkmnth33, c_pregsmk13, c_pregsmk23, c_pregsmk33, c_aedrof3, c_aepuwk3, c_aepuda3, c_lchmulti3,
                                 c_nnewborn)
+  smoke_vars       <- Hmisc::Cs(c_evrsmo, c_smofrq)
   alc_vars         <- Hmisc::Cs(c_dklm, c_drnk4w, c_evralc, c_fivealcdr)
   weight_vars      <- Hmisc::Cs(c_indinus_lw, c_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -128,6 +129,8 @@ ukhls_read_wave3 <- function(
                          "c_preg","c_pregout1","c_pregend1","c_pregsmoke1","c_smkmnth11","c_smkmnth21","c_smkmnth31","c_pregsmk11","c_pregsmk21","c_pregsmk31","c_aedrof1","c_aepuwk1","c_aepuda1","c_lchmulti1",
                          "c_pregout2","c_pregend2","c_pregsmoke2","c_smkmnth12","c_smkmnth22","c_smkmnth32","c_pregsmk12","c_pregsmk22","c_pregsmk32","c_aedrof2","c_aepuwk2","c_aepuda2","c_lchmulti2",
                          "c_pregout3","c_pregend3","c_pregsmoke3","c_smkmnth13","c_smkmnth23","c_smkmnth33","c_pregsmk13","c_pregsmk23","c_pregsmk33","c_aedrof3","c_aepuwk3","c_aepuda3","c_lchmulti3","c_nnewborn",
+                         ## smoking variables
+                         "c_evrsmo","c_smofrq",
                          ## alcohol variables
                          "c_dklm","c_drnk4w","c_evralc","c_fivealcdr",
                          ## weight
@@ -175,6 +178,8 @@ ukhls_read_wave3 <- function(
                          "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","pregdrnk_freq2","pregdrnk_unitpw2","pregdrnk_unit2","lchmulti2",
                          "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","pregdrnk_freq3","pregdrnk_unitpw3","pregdrnk_unit3","lchmulti3",
                          "nnewborn",
+                         ## smoking variables
+                         "ever_smoked","smoke_freq",
                          ## alcohol variables
                          "dklm","drnk4w","evralc","fivealcdr",
                          ## weight
