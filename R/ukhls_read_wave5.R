@@ -56,7 +56,20 @@ ukhls_read_wave5 <- function(
   demographic_vars <- Hmisc::Cs(e_sex, e_dvage, e_birthy, e_gor_dv, e_urban_dv, e_mlstat,  e_marstat)
   prev_wave_vars   <- Hmisc::Cs(e_notempchk, e_empchk)
   econ_stat_vars   <- Hmisc::Cs(e_jbstat, e_jbhas, e_jboff, e_jboffy, e_jbterm1, e_jbterm2, e_jbsemp)
-  work_vars        <- Hmisc::Cs(e_paygu_dv, e_payg_dv, e_jbhrs, e_fimnlabgrs_dv, e_seearngrs_dv)
+  work_vars        <- Hmisc::Cs(e_paygu_dv, e_payg_dv, e_jbhrs, e_fimnlabgrs_dv, e_seearngrs_dv, e_jbot, e_jbotpd)
+  employees_vars   <- Hmisc::Cs(e_paygl, e_paynl, e_payu, e_payug, e_ovtpay, e_extnsa, e_extrate, e_extrest, e_basnsa, e_basrate, e_basrest, e_ovtnsa, e_ovtrate, e_ovtrest)
+  s.emp_vars       <- Hmisc::Cs(e_jshrs, e_jspayu, e_jspytx, e_jspyni)
+  non.emp_vars     <- Hmisc::Cs(e_jbhad)
+  job2_vars        <- Hmisc::Cs(e_j2has, e_j2semp, e_j2hrs, e_j2pay)
+  benefits_vars    <- Hmisc::Cs(e_btype1, e_btype2, e_btype3, e_btype4, e_btype5, e_btype6, e_btype7, e_btype8, e_btype9, e_btype96,
+                                e_benunemp1, e_benunemp2, e_benunemp96, e_bendis1, e_bendis11, e_bendis2, e_bendis3, e_bendis4, e_bendis5, e_bendis12,
+                                e_bendis6, e_bendis7, e_bendis8, e_bendis9, e_bendis10, e_bendis96, e_bendis97)
+  pension_vars     <- Hmisc::Cs(e_benpen1, e_benpen2, e_benpen3, e_benpen4, e_benpen5, e_benpen6, e_benpen7, e_benpen8, e_benpen96)
+  receivables_vars <- Hmisc::Cs(e_niserps, e_bencb, e_benctc, e_benfam1, e_benfam2, e_benfam3, e_benfam4, e_benfam5,
+                                e_benfam96, e_bentax1, e_bentax2, e_bentax3, e_bentax4, e_bentax5, e_bentax96, e_benhou1,
+                                e_benhou2, e_benhou3, e_benhou4, e_benhou96, e_bensta1, e_bensta2, e_bensta3, e_bensta4,
+                                e_bensta5, e_bensta6, e_bensta7, e_bensta96, e_bensta97)
+  hhfinance_vars   <- Hmisc::Cs(e_fiyrdia, e_fiyrdb1, e_fiyrdb2, e_fiyrdb3, e_fiyrdb4, e_fiyrdb5, e_fiyrdb6, e_finnow, e_finfut)
   education_vars   <- Hmisc::Cs(e_hiqual_dv)
   health_vars      <- Hmisc::Cs(e_health, e_aidhh, e_sclfsat1, e_sclfsato, e_sf12pcs_dv, e_sf12mcs_dv,
                                 e_scsf1, e_scsf2a, e_scsf2b, e_scsf3a, e_scsf3b, e_scsf4a, e_scsf4b, e_scsf5, e_scsf6a, e_scsf6b, e_scsf6c, e_scsf7)
@@ -66,7 +79,7 @@ ukhls_read_wave5 <- function(
   weight_vars      <- Hmisc::Cs(e_indinus_lw, e_indinub_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -81,7 +94,29 @@ ukhls_read_wave5 <- function(
                          ## economic status
                          "e_jbstat","e_jbhas","e_jboff","e_jboffy","e_jbterm1","e_jbterm2","e_jbsemp",
                          ## work variables
-                         "e_paygu_dv","e_payg_dv","e_jbhrs","e_fimnlabgrs_dv","e_seearngrs_dv",
+                         "e_paygu_dv","e_payg_dv","e_jbhrs","e_fimnlabgrs_dv","e_seearngrs_dv","e_jbot","e_jbotpd",
+                         ## employees
+                         "e_paygl","e_paynl","e_payu","e_payug","e_ovtpay","e_extnsa","e_extrate","e_extrest","e_basnsa","e_basrate",
+                         "e_basrest","e_ovtnsa","e_ovtrate","e_ovtrest",
+                         ## self-employed
+                         "e_jshrs","e_jspayu","e_jspytx","e_jspyni",
+                         ## non-employed
+                         "e_jbhad",
+                         ## second job
+                         "e_j2has","e_j2semp","e_j2hrs","e_j2pay",
+                         ## benefits
+                         "e_btype1","e_btype2","e_btype3","e_btype4","e_btype5","e_btype6","e_btype7","e_btype8","e_btype9","e_btype96",
+                         "e_benunemp1","e_benunemp2","e_benunemp96","e_bendis1","e_bendis11","e_bendis2","e_bendis3","e_bendis4","e_bendis5","e_bendis12",
+                         "e_bendis6","e_bendis7","e_bendis8","e_bendis9","e_bendis10","e_bendis96","e_bendis97",
+                         ## pensions
+                         "e_benpen1","e_benpen2","e_benpen3","e_benpen4","e_benpen5","e_benpen6","e_benpen7","e_benpen8","e_benpen96",
+                         ## receivables
+                         "e_niserps","e_bencb","e_benctc","e_benfam1","e_benfam2","e_benfam3","e_benfam4","e_benfam5",
+                         "e_benfam96","e_bentax1","e_bentax2","e_bentax3","e_bentax4","e_bentax5","e_bentax96","e_benhou1",
+                         "e_benhou2","e_benhou3","e_benhou4","e_benhou96","e_bensta1","e_bensta2","e_bensta3","e_bensta4",
+                         "e_bensta5","e_bensta6","e_bensta7","e_bensta96","e_bensta97",
+                         ## household finance variables (interest and dividends)
+                         "e_fiyrdia","e_fiyrdb1","e_fiyrdb2","e_fiyrdb3","e_fiyrdb4","e_fiyrdb5","e_fiyrdb6","e_finnow","e_finfut",
                          ## education variables
                          "e_hiqual_dv",
                          ## health variables
@@ -104,7 +139,29 @@ ukhls_read_wave5 <- function(
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
+                         "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
+                         ## self-employed
+                         "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
+                         ## non-employed
+                         "jbhad",
+                         ## second job
+                         "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
+                         ## benefits
+                         "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
+                         "jbseek_allowance","NI_credits","non_btype1","incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","RTW_credit","attend_allowance",
+                         "injury_ben","war_pension","sick.accident_insurance","pers.indep_pay","non_bendis","otherdis_pay",
+                         ## pensions
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         ## receivables
+                         "income_serps","ben_childben","ben_childtaxcred","benfam_fosterguard","benfam_mat","benfam_alimony","benfam_lone","benfam_fampay",
+                         "non_benfam","bentax_work","bentax_council","bentax_pencred","bentax_childtaxcred","bentax_rtw","non_bentax","benhou_house",
+                         "benhou_counciltax","benhou_rentreb","benhou_ratereb","non_benhou","bensta_prvtpen","bensta_edugrant","bensta_tupay","bensta_alimony",
+                         "bensta_fampay","bensta_rentlodge","bensta_rentother","non_bensta","bensta_other",
+                         ## household finance variables
+                         "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",
                          ## education variables
                          "highest_qual",
                          ## health variables
