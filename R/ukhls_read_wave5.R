@@ -73,9 +73,13 @@ ukhls_read_wave5 <- function(
   education_vars   <- Hmisc::Cs(e_hiqual_dv)
   health_vars      <- Hmisc::Cs(e_health, e_aidhh, e_sclfsat1, e_sclfsato, e_sf12pcs_dv, e_sf12mcs_dv,
                                 e_scsf1, e_scsf2a, e_scsf2b, e_scsf3a, e_scsf3b, e_scsf4a, e_scsf4b, e_scsf5, e_scsf6a, e_scsf6b, e_scsf6c, e_scsf7)
-  preg_vars        <- Hmisc::Cs(e_pregout1, e_pregout2, e_pregout3)
+  preg_vars        <- Hmisc::Cs(e_preg,
+                                e_pregout1, e_pregend1, e_pregsmoke1, e_smkmnth11, e_smkmnth21, e_smkmnth31, e_pregsmk11, e_pregsmk21, e_pregsmk31, e_aedrof1, e_aepuwk1, e_aepuda1, e_lchmulti1,
+                                e_pregout2, e_pregend2, e_pregsmoke2, e_smkmnth12, e_smkmnth22, e_smkmnth32, e_pregsmk12, e_pregsmk22, e_pregsmk32, e_aedrof2, e_aepuwk2, e_aepuda2, e_lchmulti2,
+                                e_pregout3, e_pregend3, e_pregsmoke3, e_smkmnth13, e_smkmnth23, e_smkmnth33, e_pregsmk13, e_pregsmk23, e_pregsmk33, e_aedrof3, e_aepuwk3, e_aepuda3, e_lchmulti3,
+                                e_nnewborn)
   smoke_vars       <- Hmisc::Cs(e_smever, e_smnow, e_ncigs, e_smcigs, e_smncigs, e_aglquit, e_smagbg)
-  alc_vars         <- Hmisc::Cs(e_sceverdrnk, e_scfalcdrnk)
+  alc_vars         <- Hmisc::Cs(e_sceverdrnk, e_scfalcdrnk, e_scalcl7d, e_scnalcl7d, e_scnalcpint, e_scnalcshot, e_scnalcwine, e_scnalcpops)
   weight_vars      <- Hmisc::Cs(e_indinus_lw, e_indinub_xw)
 
 
@@ -123,11 +127,13 @@ ukhls_read_wave5 <- function(
                          "e_health","e_aidhh","e_sclfsat1","e_sclfsato","e_sf12pcs_dv","e_sf12mcs_dv",
                          "e_scsf1","e_scsf2a","e_scsf2b","e_scsf3a","e_scsf3b","e_scsf4a","e_scsf4b","e_scsf5","e_scsf6a","e_scsf6b","e_scsf6c","e_scsf7",
                          ## pregnancy variables
-                         "e_pregout1","e_pregout2","e_pregout3",
+                         "e_preg","e_pregout1","e_pregend1","e_pregsmoke1","e_smkmnth11","e_smkmnth21","e_smkmnth31","e_pregsmk11","e_pregsmk21","e_pregsmk31","e_aedrof1","e_aepuwk1","e_aepuda1","e_lchmulti1",
+                         "e_pregout2","e_pregend2","e_pregsmoke2","e_smkmnth12","e_smkmnth22","e_smkmnth32","e_pregsmk12","e_pregsmk22","e_pregsmk32","e_aedrof2","e_aepuwk2","e_aepuda2","e_lchmulti2",
+                         "e_pregout3","e_pregend3","e_pregsmoke3","e_smkmnth13","e_smkmnth23","e_smkmnth33","e_pregsmk13","e_pregsmk23","e_pregsmk33","e_aedrof3","e_aepuwk3","e_aepuda3","e_lchmulti3","e_nnewborn",
                          ## smoking variables
                          "e_smever","e_smnow","e_ncigs","e_smcigs","e_smncigs","e_aglquit","e_smagbg",
                          ## alcohol variables
-                         "e_sceverdrnk","e_scfalcdrnk",
+                         "e_sceverdrnk","e_scfalcdrnk", "e_scalcl7d", "e_scnalcl7d", "e_scnalcpint", "e_scnalcshot", "e_scnalcwine", "e_scnalcpops",
                          ## weight
                          "e_indinus_lw","e_indinub_xw"),
 
@@ -168,11 +174,15 @@ ukhls_read_wave5 <- function(
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
-                         "pregout1","pregout2","pregout3",
+                         "preg",
+                         "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",
+                         "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","pregdrnk_freq2","pregdrnk_unitpw2","pregdrnk_unit2","lchmulti2",
+                         "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","pregdrnk_freq3","pregdrnk_unitpw3","pregdrnk_unit3","lchmulti3",
+                         "nnewborn",
                          ## smoking variables
                          "smever","smnow","ncigs","smcigs","smncigs","aglquit","smagbg",
                          ## alcohol variables
-                         "sceverdrnk","scfalcdrnk",
+                         "sceverdrnk","scfalcdrnk","scalcl7d", "scnalcl7d", "scnalcpint", "scnalcshot", "scnalcwine", "scnalcpops",
                          ## weight
                          "weight_lw","weight_xw"))
 
