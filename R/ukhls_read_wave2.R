@@ -79,7 +79,7 @@ ukhls_read_wave2 <- function(
                                 b_pregout4, b_pregend4, b_pregsmoke4, b_smkmnth14, b_smkmnth24, b_smkmnth34, b_pregsmk14, b_pregsmk24, b_pregsmk34, b_pregdrink4, b_lchmulti4,
                                 b_pregout5, b_pregend5, b_pregsmoke5, b_smkmnth15, b_smkmnth25, b_smkmnth35, b_pregsmk15, b_pregsmk25, b_pregsmk35, b_pregdrink5, b_lchmulti5, b_nnewborn)
   smoke_vars       <- Hmisc::Cs(b_smever, b_smnow, b_ncigs, b_smcigs, b_smncigs, b_aglquit, b_smagbg)
-  alc_vars         <- Hmisc::Cs(b_sceverdrnk, b_scfalcdrnk)
+  alc_vars         <- Hmisc::Cs(b_sceverdrnk, b_scfalcdrnk, b_scalcl7d, b_scnalcl7d, b_scnalcpint, b_scnalcshot, b_scnalcwine, b_scnalcpops)
   weight_vars      <- Hmisc::Cs(b_indinus_lw, b_indinub_xw)
 
 
@@ -136,7 +136,7 @@ ukhls_read_wave2 <- function(
                          ## smoking variables
                          "b_smever","b_smnow","b_ncigs","b_smcigs","b_smncigs","b_aglquit","b_smagbg",
                          ## alcohol variables
-                         "b_sceverdrnk","b_scfalcdrnk",
+                         "b_sceverdrnk","b_scfalcdrnk", "b_scalcl7d", "b_scnalcl7d", "b_scnalcpint", "b_scnalcshot", "b_scnalcwine", "b_scnalcpops",
                          ## weight
                          "b_indinus_lw","b_indinub_xw"),
 
@@ -185,7 +185,7 @@ ukhls_read_wave2 <- function(
                          ## smoking variables
                          "smever","smnow","ncigs","smcigs","smncigs","aglquit","smagbg",
                          ## alcohol variables
-                         "sceverdrnk","scfalcdrnk",
+                         "sceverdrnk","scfalcdrnk","scalcl7d", "scnalcl7d", "scnalcpint", "scnalcshot", "scnalcwine", "scnalcpops",
                          ## weight
                          "weight_lw","weight_xw"))
 
