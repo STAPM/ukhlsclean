@@ -63,6 +63,10 @@ ukhls_read_wave6 <- function(
   job2_vars        <- Hmisc::Cs(f_j2has, f_j2semp, f_j2hrs, f_j2pay)
   benefits_vars    <- Hmisc::Cs(f_bendis1, f_bendis2, f_bendis3, f_bendis4, f_bendis5, f_bendis12,
                                 f_bendis7, f_bendis8, f_bendis10, f_bendis97, f_bendis96)
+  pension_vars     <- Hmisc::Cs(f_benpen1, f_benpen2, f_benpen3, f_benpen4, f_benpen5, f_benpen6, f_benpen7, f_benpen8, f_benpen96)
+  receivables_vars <- Hmisc::Cs(f_niserps, f_benctc,
+                                f_bensta2, f_bensta3, f_bensta4, f_bensta5, f_bensta6, f_bensta7, f_bensta97, f_bensta96)
+  hhfinance_vars   <- Hmisc::Cs(f_fiyrdia, f_fiyrdb1, f_fiyrdb2, f_fiyrdb3, f_fiyrdb4, f_fiyrdb5, f_fiyrdb6, f_finnow, f_finfut)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
   health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
                                 f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7)
@@ -72,7 +76,7 @@ ukhls_read_wave6 <- function(
   weight_vars      <- Hmisc::Cs(f_indinus_lw, f_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -100,6 +104,13 @@ ukhls_read_wave6 <- function(
                          ## benefits
                          "f_bendis1","f_bendis2","f_bendis3","f_bendis4","f_bendis5","f_bendis12",
                          "f_bendis7","f_bendis8","f_bendis10","f_bendis97","f_bendis96",
+                         ## pensions
+                         "f_benpen1","f_benpen2","f_benpen3","f_benpen4","f_benpen5","f_benpen6","f_benpen7","f_benpen8","f_benpen96",
+                         ## receivables
+                         "f_niserps","f_benctc",
+                         "f_bensta2","f_bensta3","f_bensta4","f_bensta5","f_bensta6","f_bensta7","f_bensta97","f_bensta96",
+                         ## household finance variables (interest and dividends)
+                         "f_fiyrdia","f_fiyrdb1","f_fiyrdb2","f_fiyrdb3","f_fiyrdb4","f_fiyrdb5","f_fiyrdb6","f_finnow","f_finfut",
                          ## education variables
                          "f_hiqual_dv",
                          ## health variables
@@ -135,6 +146,13 @@ ukhls_read_wave6 <- function(
                          ## benefits
                          "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
                          "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
+                         ## pensions
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         ## receivables
+                         "income_serps","ben_childtaxcred",
+                         "bensta_edugrant","bensta_tupay","bensta_alimony","bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
+                         ## household finance variables
+                         "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",
                          ## education variables
                          "highest_qual",
                          ## health variables
