@@ -70,8 +70,12 @@ ukhls_read_wave7 <- function(
   education_vars   <- Hmisc::Cs(g_hiqual_dv)
   health_vars      <- Hmisc::Cs(g_health, g_aidhh, g_sclfsat1, g_sclfsato, g_sf12pcs_dv, g_sf12mcs_dv,
                                 g_scsf1, g_scsf2a, g_scsf2b, g_scsf3a, g_scsf3b, g_scsf4a, g_scsf4b, g_scsf5, g_scsf6a, g_scsf6b, g_scsf6c, g_scsf7)
-  preg_vars        <- Hmisc::Cs(g_pregout1, g_pregout2, g_pregout3)
-  smoke_vars       <- Hmisc::Cs(g_smoker, g_ncigs)
+  preg_vars        <- Hmisc::Cs(g_preg,
+                                g_pregout1, g_pregend1, g_pregsmoke1, g_smkmnth11, g_smkmnth21, g_smkmnth31, g_pregsmk11, g_pregsmk21, g_pregsmk31, g_aedrof1, g_aepuwk1, g_aepuda1, g_lchmulti1,
+                                g_pregout2, g_pregend2, g_pregsmoke2, g_smkmnth12, g_smkmnth22, g_smkmnth32, g_pregsmk12, g_pregsmk22, g_pregsmk32, g_aedrof2, g_aepuwk2, g_aepuda2, g_lchmulti2,
+                                g_pregout3, g_pregend3, g_pregsmoke3, g_smkmnth13, g_smkmnth23, g_smkmnth33, g_pregsmk13, g_pregsmk23, g_pregsmk33, g_aedrof3, g_aepuwk3, g_aepuda3, g_lchmulti3,
+                                g_nnewborn)
+  smoke_vars       <- Hmisc::Cs(g_smoker, g_ncigs, g_ecigs)
   alc_vars         <- Hmisc::Cs(g_auditc1, g_auditc2, g_auditc3, g_auditc4, g_auditc5)
   weight_vars      <- Hmisc::Cs(g_indinus_lw, g_indinui_xw)
 
@@ -117,9 +121,12 @@ ukhls_read_wave7 <- function(
                          "g_health","g_aidhh","g_sclfsat1","g_sclfsato","g_sf12pcs_dv","g_sf12mcs_dv",
                          "g_scsf1","g_scsf2a","g_scsf2b","g_scsf3a","g_scsf3b","g_scsf4a","g_scsf4b","g_scsf5","g_scsf6a","g_scsf6b","g_scsf6c","g_scsf7",
                          ## pregnancy variables
-                         "g_pregout1","g_pregout2","g_pregout3",
+                         "g_preg","g_pregout1","g_pregend1","g_pregsmoke1","g_smkmnth11","g_smkmnth21","g_smkmnth31","g_pregsmk11","g_pregsmk21","g_pregsmk31","g_aedrof1","g_aepuwk1","g_aepuda1","g_lchmulti1",
+                         "g_pregout2","g_pregend2","g_pregsmoke2","g_smkmnth12","g_smkmnth22","g_smkmnth32","g_pregsmk12","g_pregsmk22","g_pregsmk32","g_aedrof2","g_aepuwk2","g_aepuda2","g_lchmulti2",
+                         "g_pregout3","g_pregend3","g_pregsmoke3","g_smkmnth13","g_smkmnth23","g_smkmnth33","g_pregsmk13","g_pregsmk23","g_pregsmk33","g_aedrof3","g_aepuwk3","g_aepuda3","g_lchmulti3",
+                         "g_nnewborn",
                          ## smoking variables
-                         "g_smoker", "g_ncigs",
+                         "g_smoker", "g_ncigs","g_ecigs",
                          ## alcohol variables
                          "g_auditc1","g_auditc2","g_auditc3","g_auditc4","g_auditc5",
                          ## weight
@@ -159,9 +166,13 @@ ukhls_read_wave7 <- function(
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
                          ## pregnancy variables
-                         "pregout1","pregout2","pregout3",
+                         "preg",
+                         "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",
+                         "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","pregdrnk_freq2","pregdrnk_unitpw2","pregdrnk_unit2","lchmulti2",
+                         "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","pregdrnk_freq3","pregdrnk_unitpw3","pregdrnk_unit3","lchmulti3",
+                         "nnewborn",
                          ## smoking variables
-                         "smoker", "ncigs",
+                         "smoker","ncigs","ecigs",
                          ## alcohol variables
                          "auditc1","auditc2","auditc3","auditc4","auditc5",
                          ## weight
