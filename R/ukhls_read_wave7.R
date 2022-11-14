@@ -54,8 +54,10 @@ ukhls_read_wave7 <- function(
 
   id_vars          <- Hmisc::Cs(pidp, pid, g_hidp, g_pno, g_psu, g_strata, g_istrtdaty, g_istrtdatm, g_istrtdatd)
   demographic_vars <- Hmisc::Cs(g_sex, g_dvage, g_birthy, g_gor_dv, g_urban_dv, g_mlstat, g_marstat)
-  econ_stat_vars   <- Hmisc::Cs(g_jbstat, g_jbhas, g_jboff, g_jboffy)
-  work_vars        <- Hmisc::Cs(g_paygu_dv, g_payg_dv, g_jbhrs, g_fimnlabgrs_dv, g_seearngrs_dv)
+  prev_wave_vars   <- Hmisc::Cs(g_notempchk, g_empchk)
+  econ_stat_vars   <- Hmisc::Cs(g_jbstat, g_jbhas, g_jboff, g_jboffy, g_jbterm1, g_jbterm2, g_jbsemp)
+  work_vars        <- Hmisc::Cs(g_paygu_dv, g_payg_dv, g_jbhrs, g_fimnlabgrs_dv, g_seearngrs_dv, g_jbot, g_jbotpd)
+  employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_ovtpay, g_extrate, g_extrest, g_basrate, g_basrest, g_ovtrate, g_ovtrest)
   education_vars   <- Hmisc::Cs(g_hiqual_dv)
   health_vars      <- Hmisc::Cs(g_health, g_aidhh, g_sclfsat1, g_sclfsato, g_sf12pcs_dv, g_sf12mcs_dv,
                                 g_scsf1, g_scsf2a, g_scsf2b, g_scsf3a, g_scsf3b, g_scsf4a, g_scsf4b, g_scsf5, g_scsf6a, g_scsf6b, g_scsf6c, g_scsf7)
@@ -65,7 +67,7 @@ ukhls_read_wave7 <- function(
   weight_vars      <- Hmisc::Cs(g_indinus_lw, g_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -75,10 +77,15 @@ ukhls_read_wave7 <- function(
                        c("pidp","pid","g_hidp","g_pno","g_psu","g_strata","g_istrtdaty","g_istrtdatm","g_istrtdatd",
                          ## demographic
                          "g_sex","g_dvage","g_birthy","g_gor_dv","g_urban_dv","g_mlstat","g_marstat",
-                         ## economic stauts
-                         "g_jbstat","g_jbhas","g_jboff","g_jboffy",
+                         ## previous wave variables
+                         "g_notempchk","g_empchk",
+                         ## economic status
+                         "g_jbstat","g_jbhas","g_jboff","g_jboffy","g_jbterm1","g_jbterm2","g_jbsemp",
                          ## work variables
-                         "g_paygu_dv","g_payg_dv","g_jbhrs","g_fimnlabgrs_dv","g_seearngrs_dv",
+                         "g_paygu_dv","g_payg_dv","g_jbhrs","g_fimnlabgrs_dv","g_seearngrs_dv","g_jbot","g_jbotpd",
+                         ## employees
+                         "g_paygl","g_paynl","g_payu","g_payug","g_ovtpay","g_extrate","g_extrest","g_basrate",
+                         "g_basrest","g_ovtrate","g_ovtrest",
                          ## education variables
                          "g_hiqual_dv",
                          ## health variables
@@ -96,10 +103,15 @@ ukhls_read_wave7 <- function(
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
+                         ## previous wave variables
+                         "notempchk","empchk",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extrate","ext_estimate","baspay_rate",
+                         "baspay_estimate","ovtpay_rate","ovtpay_estimate",
                          ## education variables
                          "highest_qual",
                          ## health variables
