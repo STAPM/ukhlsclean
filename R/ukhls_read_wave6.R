@@ -52,20 +52,21 @@ ukhls_read_wave6 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- Hmisc::Cs(pidp,pid,f_hidp,f_pno,f_psu,f_strata,f_istrtdaty,f_istrtdatm,f_istrtdatd)
-  demographic_vars <- Hmisc::Cs(f_sex,f_dvage,f_birthy,f_gor_dv,f_urban_dv,f_mlstat, f_marstat)
-  econ_stat_vars   <- Hmisc::Cs(f_jbstat,f_jbhas,f_jboff,f_jboffy)
-  work_vars        <- Hmisc::Cs(f_paygu_dv,f_payg_dv,f_jbhrs,f_fimnlabgrs_dv,f_seearngrs_dv)
+  id_vars          <- Hmisc::Cs(pidp, pid, f_hidp,f_pno, f_psu, f_strata, f_istrtdaty, f_istrtdatm, f_istrtdatd)
+  demographic_vars <- Hmisc::Cs(f_sex, f_dvage, f_birthy, f_gor_dv, f_urban_dv, f_mlstat,  f_marstat)
+  prev_wave_vars   <- Hmisc::Cs(f_notempchk, f_empchk)
+  econ_stat_vars   <- Hmisc::Cs(f_jbstat, f_jbhas, f_jboff, f_jboffy)
+  work_vars        <- Hmisc::Cs(f_paygu_dv, f_payg_dv, f_jbhrs, f_fimnlabgrs_dv, f_seearngrs_dv)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
-  health_vars      <- Hmisc::Cs(f_health,f_aidhh,f_sclfsat1,f_sclfsato,f_sf12pcs_dv,f_sf12mcs_dv,
-                                f_scsf1,f_scsf2a,f_scsf2b,f_scsf3a,f_scsf3b,f_scsf4a,f_scsf4b,f_scsf5,f_scsf6a,f_scsf6b,f_scsf6c,f_scsf7)
-  preg_vars        <- Hmisc::Cs(f_pregout1,f_pregout2,f_pregout3,f_pregout4,f_pregout5)
+  health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
+                                f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7)
+  preg_vars        <- Hmisc::Cs(f_pregout1, f_pregout2, f_pregout3, f_pregout4, f_pregout5)
   smoke_vars       <- Hmisc::Cs(f_smoker, f_ncigs)
-  alc_vars         <- Hmisc::Cs(f_dklm,f_drnk4w,f_evralc,f_fivealcdr)
-  weight_vars      <- Hmisc::Cs(f_indinus_lw,f_indinui_xw)
+  alc_vars         <- Hmisc::Cs(f_dklm, f_drnk4w,f_evralc, f_fivealcdr)
+  weight_vars      <- Hmisc::Cs(f_indinus_lw, f_indinui_xw)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -75,7 +76,9 @@ ukhls_read_wave6 <- function(
                        c("pidp","pid","f_hidp","f_pno","f_psu","f_strata","f_istrtdaty","f_istrtdatm","f_istrtdatd",
                          ## demographic
                          "f_sex","f_dvage","f_birthy","f_gor_dv","f_urban_dv","f_mlstat","f_marstat",
-                         ## economic stauts
+                         ## previous wave variables
+                         "f_notempchk","f_empchk",
+                         ## economic status
                          "f_jbstat","f_jbhas","f_jboff","f_jboffy",
                          ## work variables
                          "f_paygu_dv","f_payg_dv","f_jbhrs","f_fimnlabgrs_dv","f_seearngrs_dv",
@@ -96,6 +99,8 @@ ukhls_read_wave6 <- function(
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
+                         ## previous wave variables
+                         "notempchk","empchk",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
