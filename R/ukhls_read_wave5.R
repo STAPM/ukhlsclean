@@ -110,7 +110,8 @@ ukhls_read_wave5 <- function(
                          "e_j2has","e_j2semp","e_j2hrs","e_j2pay",
                          ## benefits
                          "e_btype1","e_btype2","e_btype3","e_btype4","e_btype5","e_btype6","e_btype7","e_btype8","e_btype9","e_btype96",
-                         "e_benunemp1","e_benunemp2","e_benunemp96","e_bendis1","e_bendis11","e_bendis2","e_bendis3","e_bendis4","e_bendis5","e_bendis12",
+                         "e_benunemp1","e_benunemp2","e_benunemp96",
+                         "e_bendis1","e_bendis11","e_bendis2","e_bendis3","e_bendis4","e_bendis5","e_bendis12",
                          "e_bendis6","e_bendis7","e_bendis8","e_bendis9","e_bendis10","e_bendis96","e_bendis97",
                          ## pensions
                          "e_benpen1","e_benpen2","e_benpen3","e_benpen4","e_benpen5","e_benpen6","e_benpen7","e_benpen8","e_benpen96",
@@ -157,8 +158,9 @@ ukhls_read_wave5 <- function(
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
                          "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
-                         "jbseek_allowance","NI_credits","non_btype1","incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","RTW_credit","attend_allowance",
-                         "injury_ben","war_pension","sick.accident_insurance","pers.indep_pay","non_bendis","otherdis_pay",
+                         "jbseek_allowance","NI_credits","non_btype1",
+                         "incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay",
+                         "RTW_credit","attend_allowance","injury_ben","war_pension","sick.accident_insurance","non_bendis","otherdis_pay",
                          ## pensions
                          "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
                          ## receivables
