@@ -74,6 +74,8 @@ ukhls_read_wave6 <- function(
                                 f_pregout1, f_pregend1, f_pregsmoke1, f_smkmnth11, f_smkmnth21, f_smkmnth31, f_pregsmk11, f_pregsmk21, f_pregsmk31, f_aedrof1, f_aepuwk1, f_aepuda1, f_lchmulti1,
                                 f_pregout2, f_pregend2, f_pregsmoke2, f_smkmnth12, f_smkmnth22, f_smkmnth32, f_pregsmk12, f_pregsmk22, f_pregsmk32, f_aedrof2, f_aepuwk2, f_aepuda2, f_lchmulti2,
                                 f_pregout3, f_pregend3, f_pregsmoke3, f_smkmnth13, f_smkmnth23, f_smkmnth33, f_pregsmk13, f_pregsmk23, f_pregsmk33, f_aedrof3, f_aepuwk3, f_aepuda3, f_lchmulti3,
+                                f_pregout4, f_pregend4, f_pregsmoke4, f_smkmnth14, f_smkmnth24, f_smkmnth34, f_pregsmk14, f_pregsmk24, f_pregsmk34, f_aedrof4, f_aepuwk4, f_aepuda4, f_lchmulti4,
+                                f_pregout5, f_pregend5, f_pregsmoke5, f_smkmnth15, f_smkmnth25, f_smkmnth35, f_pregsmk15, f_pregsmk25, f_pregsmk35, f_aedrof5, f_aepuwk5, f_aepuda5, f_lchmulti5,
                                 f_nnewborn)
   smoke_vars       <- Hmisc::Cs(f_smoker, f_ncigs)
   alc_vars         <- Hmisc::Cs(f_dklm, f_drnk4w,f_evralc, f_fivealcdr)
