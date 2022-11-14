@@ -57,6 +57,7 @@ ukhls_read_wave6 <- function(
   prev_wave_vars   <- Hmisc::Cs(f_notempchk, f_empchk)
   econ_stat_vars   <- Hmisc::Cs(f_jbstat, f_jbhas, f_jboff, f_jboffy, f_jbterm1, f_jbterm2, f_jbsemp, f_jbpen, f_jbpenm)
   work_vars        <- Hmisc::Cs(f_paygu_dv, f_payg_dv, f_jbhrs, f_fimnlabgrs_dv, f_seearngrs_dv, f_jbot, f_jbotpd)
+  employees_vars   <- Hmisc::Cs(f_paygl, f_paynl, f_payu, f_payug, f_ovtpay, f_extnsa, f_extrate, f_extrest, f_basnsa, f_basrate, f_basrest, f_ovtnsa, f_ovtrate, f_ovtrest)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
   health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
                                 f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7)
@@ -66,7 +67,7 @@ ukhls_read_wave6 <- function(
   weight_vars      <- Hmisc::Cs(f_indinus_lw, f_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -82,6 +83,9 @@ ukhls_read_wave6 <- function(
                          "f_jbstat","f_jbhas","f_jboff","f_jboffy","f_jbterm1","f_jbterm2","f_jbsemp","f_jbpen","f_jbpenm",
                          ## work variables
                          "f_paygu_dv","f_payg_dv","f_jbhrs","f_fimnlabgrs_dv","f_seearngrs_dv","f_jbot","f_jbotpd",
+                         ## employees
+                         "f_paygl","f_paynl","f_payu","f_payug","f_ovtpay","f_extnsa","f_extrate","f_extrest","f_basnsa","f_basrate",
+                         "f_basrest","f_ovtnsa","f_ovtrate","f_ovtrest",
                          ## education variables
                          "f_hiqual_dv",
                          ## health variables
@@ -105,6 +109,9 @@ ukhls_read_wave6 <- function(
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp","jbpen","jbpen_member",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
+                         "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
                          ## education variables
                          "highest_qual",
                          ## health variables
