@@ -58,6 +58,11 @@ ukhls_read_wave6 <- function(
   econ_stat_vars   <- Hmisc::Cs(f_jbstat, f_jbhas, f_jboff, f_jboffy, f_jbterm1, f_jbterm2, f_jbsemp, f_jbpen, f_jbpenm)
   work_vars        <- Hmisc::Cs(f_paygu_dv, f_payg_dv, f_jbhrs, f_fimnlabgrs_dv, f_seearngrs_dv, f_jbot, f_jbotpd)
   employees_vars   <- Hmisc::Cs(f_paygl, f_paynl, f_payu, f_payug, f_ovtpay, f_extnsa, f_extrate, f_extrest, f_basnsa, f_basrate, f_basrest, f_ovtnsa, f_ovtrate, f_ovtrest)
+  s.emp_vars       <- Hmisc::Cs(f_jshrs, f_jspayu, f_jspytx, f_jspyni)
+  non.emp_vars     <- Hmisc::Cs(f_jbhad)
+  job2_vars        <- Hmisc::Cs(f_j2has, f_j2semp, f_j2hrs, f_j2pay)
+  benefits_vars    <- Hmisc::Cs(f_bendis1, f_bendis2, f_bendis3, f_bendis4, f_bendis5, f_bendis12,
+                                f_bendis7, f_bendis8, f_bendis10, f_bendis97, f_bendis96)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
   health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
                                 f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7)
@@ -67,7 +72,7 @@ ukhls_read_wave6 <- function(
   weight_vars      <- Hmisc::Cs(f_indinus_lw, f_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -86,6 +91,15 @@ ukhls_read_wave6 <- function(
                          ## employees
                          "f_paygl","f_paynl","f_payu","f_payug","f_ovtpay","f_extnsa","f_extrate","f_extrest","f_basnsa","f_basrate",
                          "f_basrest","f_ovtnsa","f_ovtrate","f_ovtrest",
+                         ## self-employed
+                         "f_jshrs","f_jspayu","f_jspytx","f_jspyni",
+                         ## non-employed
+                         "f_jbhad",
+                         ## second job
+                         "f_j2has","f_j2semp","f_j2hrs","f_j2pay",
+                         ## benefits
+                         "f_bendis1","f_bendis2","f_bendis3","f_bendis4","f_bendis5","f_bendis12",
+                         "f_bendis7","f_bendis8","f_bendis10","f_bendis97","f_bendis96",
                          ## education variables
                          "f_hiqual_dv",
                          ## health variables
@@ -112,6 +126,15 @@ ukhls_read_wave6 <- function(
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
+                         ## self-employed
+                         "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
+                         ## non-employed
+                         "jbhad",
+                         ## second job
+                         "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
+                         ## benefits
+                         "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
+                         "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
                          ## education variables
                          "highest_qual",
                          ## health variables
