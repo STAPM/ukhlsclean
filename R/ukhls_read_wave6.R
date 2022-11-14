@@ -74,6 +74,8 @@ ukhls_read_wave6 <- function(
                                 f_pregout1, f_pregend1, f_pregsmoke1, f_smkmnth11, f_smkmnth21, f_smkmnth31, f_pregsmk11, f_pregsmk21, f_pregsmk31, f_aedrof1, f_aepuwk1, f_aepuda1, f_lchmulti1,
                                 f_pregout2, f_pregend2, f_pregsmoke2, f_smkmnth12, f_smkmnth22, f_smkmnth32, f_pregsmk12, f_pregsmk22, f_pregsmk32, f_aedrof2, f_aepuwk2, f_aepuda2, f_lchmulti2,
                                 f_pregout3, f_pregend3, f_pregsmoke3, f_smkmnth13, f_smkmnth23, f_smkmnth33, f_pregsmk13, f_pregsmk23, f_pregsmk33, f_aedrof3, f_aepuwk3, f_aepuda3, f_lchmulti3,
+                                f_pregout4, f_pregend4, f_pregsmoke4, f_smkmnth14, f_smkmnth24, f_smkmnth34, f_pregsmk14, f_pregsmk24, f_pregsmk34, f_aedrof4, f_aepuwk4, f_aepuda4, f_lchmulti4,
+                                f_pregout5, f_pregend5, f_pregsmoke5, f_smkmnth15, f_smkmnth25, f_smkmnth35, f_pregsmk15, f_pregsmk25, f_pregsmk35, f_aedrof5, f_aepuwk5, f_aepuda5, f_lchmulti5,
                                 f_nnewborn)
   smoke_vars       <- Hmisc::Cs(f_smoker, f_ncigs)
   alc_vars         <- Hmisc::Cs(f_dklm, f_drnk4w,f_evralc, f_fivealcdr)
@@ -123,7 +125,10 @@ ukhls_read_wave6 <- function(
                          ## pregnancy variables
                          "f_preg","f_pregout1","f_pregend1","f_pregsmoke1","f_smkmnth11","f_smkmnth21","f_smkmnth31","f_pregsmk11","f_pregsmk21","f_pregsmk31","f_aedrof1","f_aepuwk1","f_aepuda1","f_lchmulti1",
                          "f_pregout2","f_pregend2","f_pregsmoke2","f_smkmnth12","f_smkmnth22","f_smkmnth32","f_pregsmk12","f_pregsmk22","f_pregsmk32","f_aedrof2","f_aepuwk2","f_aepuda2","f_lchmulti2",
-                         "f_pregout3","f_pregend3","f_pregsmoke3","f_smkmnth13","f_smkmnth23","f_smkmnth33","f_pregsmk13","f_pregsmk23","f_pregsmk33","f_aedrof3","f_aepuwk3","f_aepuda3","f_lchmulti3","f_nnewborn",
+                         "f_pregout3","f_pregend3","f_pregsmoke3","f_smkmnth13","f_smkmnth23","f_smkmnth33","f_pregsmk13","f_pregsmk23","f_pregsmk33","f_aedrof3","f_aepuwk3","f_aepuda3","f_lchmulti3",
+                         "f_pregout4","f_pregend4","f_pregsmoke4","f_smkmnth14","f_smkmnth24","f_smkmnth34","f_pregsmk14","f_pregsmk24","f_pregsmk34","f_aedrof4","f_aepuwk4","f_aepuda4","f_lchmulti4",
+                         "f_pregout5","f_pregend5","f_pregsmoke5","f_smkmnth15","f_smkmnth25","f_smkmnth35","f_pregsmk15","f_pregsmk25","f_pregsmk35","f_aedrof5","f_aepuwk5","f_aepuda5","f_lchmulti5",
+                         "f_nnewborn",
                          ## smoking variables
                          "f_smoker", "f_ncigs",
                          ## alcohol variables
@@ -169,6 +174,8 @@ ukhls_read_wave6 <- function(
                          "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",
                          "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","pregdrnk_freq2","pregdrnk_unitpw2","pregdrnk_unit2","lchmulti2",
                          "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","pregdrnk_freq3","pregdrnk_unitpw3","pregdrnk_unit3","lchmulti3",
+                         "pregout4","pregend4","pregsmoke4","smkmnth14","smkmnth24","smkmnth34","pregsmk_ncigs14","pregsmk_ncigs24","pregsmk_ncigs34","pregdrnk_freq4","pregdrnk_unitpw4","pregdrnk_unit4","lchmulti4",
+                         "pregout5","pregend5","pregsmoke5","smkmnth15","smkmnth25","smkmnth35","pregsmk_ncigs15","pregsmk_ncigs25","pregsmk_ncigs35","pregdrnk_freq5","pregdrnk_unitpw5","pregdrnk_unit5","lchmulti5",
                          "nnewborn",
                          ## smoking variables
                          "smoker", "ncigs",
