@@ -55,7 +55,7 @@ ukhls_read_wave9 <- function(
   id_vars          <- Hmisc::Cs(pidp,pid,i_hidp,i_pno,i_psu,i_strata,i_istrtdaty,i_istrtdatm,i_istrtdatd)
   demographic_vars <- Hmisc::Cs(i_sex,i_dvage,i_birthy,i_gor_dv,i_urban_dv,i_mlstat, i_marstat)
   econ_stat_vars   <- Hmisc::Cs(i_jbstat,i_jbhas,i_jboff,i_jboffy)
-  work_vars        <- Hmisc::Cs(i_paygu_dv,i_payg_dv,i_jbhrs,i_fimnlabgrs_dv,i_seearngrs_dv)
+  work_vars        <- Hmisc::Cs(i_paygu_dv, i_payg_dv, i_jbhrs, i_fimnlabgrs_dv, i_seearngrs_dv, i_jbsic07_cc)
   education_vars   <- Hmisc::Cs(i_hiqual_dv)
   health_vars      <- Hmisc::Cs(i_health,i_aidhh,i_sclfsat1,i_sclfsato,i_sf12pcs_dv,i_sf12mcs_dv,
                                 i_scsf1,i_scsf2a,i_scsf2b,i_scsf3a,i_scsf3b,i_scsf4a,i_scsf4b,i_scsf5,i_scsf6a,i_scsf6b,i_scsf6c,i_scsf7)
@@ -78,7 +78,7 @@ ukhls_read_wave9 <- function(
                          ## economic status
                          "i_jbstat","i_jbhas","i_jboff","i_jboffy",
                          ## work variables
-                         "i_paygu_dv","i_payg_dv","i_jbhrs","i_fimnlabgrs_dv","i_seearngrs_dv",
+                         "i_paygu_dv","i_payg_dv","i_jbhrs","i_fimnlabgrs_dv","i_seearngrs_dv","i_jbsic07_cc",
                          ## education variables
                          "i_hiqual_dv",
                          ## health variables
@@ -99,7 +99,7 @@ ukhls_read_wave9 <- function(
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07",
                          ## education variables
                          "highest_qual",
                          ## health variables
