@@ -191,7 +191,20 @@ Variables produced by the economic and labour market status module `ukhls_clean_
 
 - __l_real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment
 
+### __Work variables__
+
+Variables produced by the work module `ukhls_clean_work`. Variables in this category are prefixed with a `w_`
+
+- __w_hours_emp__ (numeric) usual weekly hours worked in employment. 
    
+- __w_hours_semp__ (numeric) usual weekly hours worked in self-employment. 
+
+- __w_hours__  (numeric) usual weekly hours worked - employment plus self-employment.
+
+- __w_sic_1dig__ (factor) industry of main employment (based mainly on 1-digit SIC-2007, with some differences).
+
+- __w_sic_2dig__ (factor) industry of main employment (2-digit SIC-2007).
+
 ### __Health and wellbeing variables__ 
 
 Variables produced by the health and wellbeing module `ukhls_clean_health`. Variables in this category are prefixed with a `h_`. 
