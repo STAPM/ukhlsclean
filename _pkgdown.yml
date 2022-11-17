@@ -44,6 +44,7 @@ reference:
   - ukhls_clean_health
   - ukhls_clean_alcohol
   - ukhls_clean_smoke
+  - ukhls_clean_work
   - ukhls_combine_waves
   - select_data
   - eq5d
@@ -61,6 +62,7 @@ reference:
   - ukhls_read_wave9
   - ukhls_read_wave10
   - ukhls_read_wave11
+  - ukhls_read_wave12
   - ukhls_read_covid19_1
   - ukhls_read_covid19_2
 
