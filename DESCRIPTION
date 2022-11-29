@@ -1,7 +1,7 @@
 Package: ukhlsclean
 Type: Package
 Title: Data Wrangling for UKHLS/BHPS data.
-Version: 0.6.1
+Version: 0.6.2
 Authors@R: 
     c(
     person(given = "Damon",
