@@ -57,7 +57,7 @@ ukhls_read_wave7 <- function(
   prev_wave_vars   <- Hmisc::Cs(g_notempchk, g_empchk)
   econ_stat_vars   <- Hmisc::Cs(g_jbstat, g_jbhas, g_jboff, g_jboffy, g_jbterm1, g_jbterm2, g_jbsemp)
   work_vars        <- Hmisc::Cs(g_paygu_dv, g_payg_dv, g_jbhrs, g_fimnlabgrs_dv, g_seearngrs_dv, g_jbsic07_cc, g_jbot, g_jbotpd)
-  employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_ovtpay, g_extrate, g_extrest, g_basrate, g_basrest, g_ovtrate, g_ovtrest)
+  employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_paytyp, g_ovtpay, g_pvtpyset, g_extrate, g_extrest, g_basnset, g_basrate, g_basrest, g_ovtnset, g_ovtrate, g_ovtrest)
   s.emp_vars       <- Hmisc::Cs(g_jshrs, g_jspayu, g_jspytx, g_jspyni)
   non.emp_vars     <- Hmisc::Cs(g_jbhad)
   job2_vars        <- Hmisc::Cs(g_j2has, g_j2semp, g_j2hrs, g_j2pay)
@@ -97,8 +97,8 @@ ukhls_read_wave7 <- function(
                          ## work variables
                          "g_paygu_dv","g_payg_dv","g_jbhrs","g_fimnlabgrs_dv","g_seearngrs_dv","g_jbsic07_cc","g_jbot","g_jbotpd",
                          ## employees
-                         "g_paygl","g_paynl","g_payu","g_payug","g_ovtpay","g_extrate","g_extrest","g_basrate",
-                         "g_basrest","g_ovtrate","g_ovtrest",
+                         "g_paygl","g_paynl","g_payu","g_payug","g_paytyp","g_ovtpay","g_pvtpyset","g_extrate","g_extrest","g_basnset","g_basrate",
+                         "g_basrest","g_ovtnset","g_ovtrate","g_ovtrest",
                          ## self-employed
                          "g_jshrs","g_jspayu","g_jspytx","g_jspyni",
                          ## non-employed
@@ -143,8 +143,8 @@ ukhls_read_wave7 <- function(
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
                          ## employees
-                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extrate","ext_estimate","baspay_rate",
-                         "baspay_estimate","ovtpay_rate","ovtpay_estimate",
+                         "last_gross_pay","last_net_pay","usual_pay","payug","pay_type","ovtpay","additional.pay_set","extrate","ext_estimate","basic.pay_set","baspay_rate",
+                         "baspay_estimate","ovt.pay_set","ovtpay_rate","ovtpay_estimate",
                          ## self-employed
                          "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
                          ## non-employed
