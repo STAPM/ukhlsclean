@@ -157,8 +157,8 @@ ukhlsclean_2020 <- function(
   ####################################
   ### Apply all cleaning functions ###
 
-  data_merged[, bhps_sample := NA]
-  data_merged[, wave_no := NA]
+  data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
+  data_merged[, wave_no := 2020]
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
   data_merged[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
