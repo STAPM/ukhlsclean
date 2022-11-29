@@ -4,6 +4,11 @@
 #' desired variables/observations for the analysis, and specifying complete case
 #' restrictions.
 #'
+#' UKDS Study Number: \href{https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6614}{Understanding Society: Waves 1-12, 2009-2021 and Harmonised BHPS: Waves 1-18, 1991-2009}
+#'
+#' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021 and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK Data Service. SN: 6614, \href{https://doi.org/10.5255/UKDA-SN-6614-18}{DOI: 10.5255/UKDA-SN-6614-18}
+#'
+#'
 #' @param root Character - the root directory.
 #' @param file Character - the file path and name.
 #' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)
@@ -14,10 +19,10 @@
 #' @return Returns a new set of variables
 #' @export
 
-ukhlsclean <- function(root,
-                       file,
+ukhlsclean <- function(root = "X:/",
+                       file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
                        full = TRUE,
-                       waves = 1:11,
+                       waves = 1:12,
                        ages = 16:89,
                        keep_vars = NULL,
                        complete_vars = c("d_age","d_sex")){
