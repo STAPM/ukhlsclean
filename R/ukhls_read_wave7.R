@@ -121,7 +121,8 @@ ukhls_read_wave7 <- function(
                          "g_health","g_aidhh","g_sclfsat1","g_sclfsato","g_sf12pcs_dv","g_sf12mcs_dv",
                          "g_scsf1","g_scsf2a","g_scsf2b","g_scsf3a","g_scsf3b","g_scsf4a","g_scsf4b","g_scsf5","g_scsf6a","g_scsf6b","g_scsf6c","g_scsf7",
                          ## pregnancy variables
-                         "g_preg","g_pregout1","g_pregend1","g_pregsmoke1","g_smkmnth11","g_smkmnth21","g_smkmnth31","g_pregsmk11","g_pregsmk21","g_pregsmk31","g_aedrof1","g_aepuwk1","g_aepuda1","g_lchmulti1",
+                         "g_preg",
+                         "g_pregout1","g_pregend1","g_pregsmoke1","g_smkmnth11","g_smkmnth21","g_smkmnth31","g_pregsmk11","g_pregsmk21","g_pregsmk31","g_aedrof1","g_aepuwk1","g_aepuda1","g_lchmulti1",
                          "g_pregout2","g_pregend2","g_pregsmoke2","g_smkmnth12","g_smkmnth22","g_smkmnth32","g_pregsmk12","g_pregsmk22","g_pregsmk32","g_aedrof2","g_aepuwk2","g_aepuda2","g_lchmulti2",
                          "g_pregout3","g_pregend3","g_pregsmoke3","g_smkmnth13","g_smkmnth23","g_smkmnth33","g_pregsmk13","g_pregsmk23","g_pregsmk33","g_aedrof3","g_aepuwk3","g_aepuda3","g_lchmulti3",
                          "g_nnewborn",
