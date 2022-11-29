@@ -150,6 +150,18 @@ if (11 %in% waves){
 
 }
 
+### Wave 12
+
+if (12 %in% waves){
+
+  wave <- ukhls_clean_global(ukhls_read_wave12(root = root, file = file, full = full),
+                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+
+  data_list <- append(data_list, list(wave)) ; rm(wave)
+
+}
+
+
 #############################################################
 ### Combine all waves in the list into a single dataset
 
