@@ -37,8 +37,8 @@ ukhls_clean_smoke <- function(data = NULL) {
 
   if ("smoker" %in% colnames(data)) {
 
-  data[wave_no %in% c(6:11) & smoker == 1, current_smoker := "smoker"]
-  data[wave_no %in% c(6:11) & smoker == 2, current_smoker := "non_smoker"]
+  data[smoker == 1, current_smoker := "smoker"]
+  data[smoker == 2, current_smoker := "non_smoker"]
 
   data[, current_smoker := as.factor(current_smoker)]
 
@@ -71,7 +71,7 @@ ukhls_clean_smoke <- function(data = NULL) {
   # indicator for any other household smokers
   data[!(wave_no %in% c(1,3,4)) & current_smoker == "smoker", smoke := 1]
   data[!(wave_no %in% c(1,3,4)) & current_smoker == "non_smoker", smoke := 0]
-  data[!(wave_no %in% c(1,3,4)), num_smoker_hhold := sum(smoke, na.rm=TRUE), by = c("wave","hidp")]
+  data[!(wave_no %in% c(1,3,4)), num_smoker_hhold := sum(smoke, na.rm=TRUE), by = c("wave_no","hidp")]
       # number of other smokers = number of smokers - respondent
   data[!(wave_no %in% c(1,3,4)), num_othersmoker_hhold := num_smoker_hhold - smoke]
       # create a binary indicator

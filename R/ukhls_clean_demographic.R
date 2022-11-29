@@ -27,6 +27,7 @@ ukhls_clean_demographic <- function(data = NULL) {
   #################
   ### ethnicity ###
 
+  if ("ethnicity_raw" %in% colnames(data)){
   ##### 9-categories
   data[ethnicity_raw %in% c(1)        , ethnicity_9cat := "white_british"]
   data[ethnicity_raw %in% c(2:4)      , ethnicity_9cat := "white_non_british"]
@@ -46,12 +47,46 @@ ukhls_clean_demographic <- function(data = NULL) {
   data[ethnicity_raw %in% c(17,97)   , ethnicity_5cat := "other"]
 
   ##### 2-categories
-  data[ethnicity_raw %in% c(1,2,3,4) , ethnicity_2cat := "white"]
+  data[ethnicity_raw %in% c(1:4) , ethnicity_2cat := "white"]
   data[ethnicity_raw %in% c(5:97) , ethnicity_2cat := "non_white"]
 
   data[,ethnicity_9cat := as.factor(ethnicity_9cat)]
   data[,ethnicity_5cat := as.factor(ethnicity_5cat)]
   data[,ethnicity_2cat := as.factor(ethnicity_2cat)]
+
+  } else if ("ethn_dv" %in% colnames(data)) {
+  ##### 9-categories
+  data[ethn_dv %in% c(1)        , ethnicity_9cat := "white_british"]
+  data[ethn_dv %in% c(2:4)      , ethnicity_9cat := "white_non_british"]
+  data[ethn_dv %in% c(5:8)      , ethnicity_9cat := "mixed"]
+  data[ethn_dv %in% c(9)        , ethnicity_9cat := "indian"]
+  data[ethn_dv %in% c(10)       , ethnicity_9cat := "pakistani"]
+  data[ethn_dv %in% c(11)       , ethnicity_9cat := "bangladeshi"]
+  data[ethn_dv %in% c(12:13,17) , ethnicity_9cat := "other_asian"]
+  data[ethn_dv %in% c(14:16)    , ethnicity_9cat := "black"]
+  data[ethn_dv %in% c(17,97)    , ethnicity_9cat := "other"]
+
+  ##### 5-categories
+  data[ethn_dv %in% c(1:4)     , ethnicity_5cat := "white"]
+  data[ethn_dv %in% c(14:16)   , ethnicity_5cat := "black"]
+  data[ethn_dv %in% c(9:13)    , ethnicity_5cat := "asian"]
+  data[ethn_dv %in% c(5:8)     , ethnicity_5cat := "mixed"]
+  data[ethn_dv %in% c(17,97)   , ethnicity_5cat := "other"]
+
+  ##### 2-categories
+  data[ethn_dv %in% c(1:4) , ethnicity_2cat := "white"]
+  data[ethn_dv %in% c(5:97) , ethnicity_2cat := "non_white"]
+
+  data[,ethnicity_9cat := as.factor(ethnicity_9cat)]
+  data[,ethnicity_5cat := as.factor(ethnicity_5cat)]
+  data[,ethnicity_2cat := as.factor(ethnicity_2cat)]
+
+  } else {
+
+  data[,ethnicity_9cat := NA]
+  data[,ethnicity_5cat := NA]
+  data[,ethnicity_2cat := NA]
+  }
 
   ################
   ### region #####

@@ -10,7 +10,7 @@
 #' @param waves Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
-#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).
+#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).
 #' @return Returns a new set of variables
 #' @export
 
@@ -20,7 +20,7 @@ ukhlsclean <- function(root,
                        waves = 1:11,
                        ages = 16:89,
                        keep_vars = NULL,
-                       complete_vars = c("age","sex")){
+                       complete_vars = c("d_age","d_sex")){
 
 cat(crayon::bgMagenta("Cleaning the Understanding Society Data\n\n"))
 

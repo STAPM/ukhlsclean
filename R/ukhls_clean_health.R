@@ -62,15 +62,23 @@ ukhls_clean_health <- function(data = NULL) {
 
   if("pregout1" %in% colnames(data)) {
 
-  data[pregout1 == 4 | pregout2 == 4 |
-       pregout3 == 4 , pregnant := 1]
+  data[pregout1 == 4 | pregout2 == 4 , pregnant := 1]
   data[is.na(pregnant) , pregnant := 0]
 
-  data[, c("pregout1","pregout2","pregout3") := NULL]
+  data[, c("pregout1","pregout2") := NULL]
 
   } else {
 
   data[, pregnant := NA]
+  }
+
+  if("pregout3" %in% colnames(data)) {
+
+    data[pregout3 == 4, pregnant := 1]
+    data[is.na(pregnant) , pregnant := 0]
+
+    data[, c("pregout3") := NULL]
+
   }
 
 

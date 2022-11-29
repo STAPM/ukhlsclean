@@ -11,7 +11,7 @@ ukhlsclean(
   waves = 1:11,
   ages = 16:89,
   keep_vars = NULL,
-  complete_vars = c("age", "sex")
+  complete_vars = c("d_age", "d_sex")
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ ukhlsclean(
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
-\item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).}
+\item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).}
 }
 \value{
 Returns a new set of variables
