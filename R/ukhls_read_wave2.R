@@ -207,7 +207,7 @@ ukhls_read_wave2 <- function(
   )
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
 
-  hhold_vars          <- Hmisc::Cs(b_hidp, b_tenure_dv, b_nkids_dv, b_hhsize, b_hhtype_dv,
+  hhold_vars          <- Hmisc::Cs(b_hidp, b_tenure_dv, b_numadult, b_nkids015, b_hhsize, b_hhtype_dv,
                                    b_nch02_dv, b_nch34_dv, b_nch511_dv, b_nch1215_dv)
 
   data.hhold <- data.hhold[ , hhold_vars, with = F]
