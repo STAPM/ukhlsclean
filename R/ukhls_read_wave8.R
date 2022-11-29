@@ -52,20 +52,22 @@ ukhls_read_wave8 <- function(
 
   data.table::setnames(data, names(data), tolower(names(data)))
 
-  id_vars          <- Hmisc::Cs(pidp,pid,h_hidp,h_pno,h_psu,h_strata,h_istrtdaty,h_istrtdatm,h_istrtdatd)
-  demographic_vars <- Hmisc::Cs(h_sex,h_dvage,h_birthy,h_gor_dv,h_urban_dv,h_mlstat, h_marstat)
-  econ_stat_vars   <- Hmisc::Cs(h_jbstat,h_jbhas,h_jboff,h_jboffy)
-  work_vars        <- Hmisc::Cs(h_paygu_dv, h_payg_dv, h_jbhrs, h_fimnlabgrs_dv, h_seearngrs_dv, h_jbsic07_cc)
+  id_vars          <- Hmisc::Cs(pidp,pid, h_hidp, h_pno, h_psu, h_strata, h_istrtdaty, h_istrtdatm,h_istrtdatd)
+  demographic_vars <- Hmisc::Cs(h_sex, h_dvage, h_birthy, h_gor_dv, h_urban_dv, h_mlstat, h_marstat)
+  prev_wave_vars   <- Hmisc::Cs(h_notempchk, h_empchk)
+  econ_stat_vars   <- Hmisc::Cs(h_jbstat, h_jbhas, h_jboff, h_jboffy, h_jbterm1, h_jbterm2, h_jbsemp, h_jbpen, h_jbpenm)
+  work_vars        <- Hmisc::Cs(h_paygu_dv, h_payg_dv, h_jbhrs, h_fimnlabgrs_dv, h_seearngrs_dv, h_jbsic07_cc, h_jbot, h_jbotpd)
+  employees_vars   <- Hmisc::Cs(h_paygl, h_paynl, h_payu, h_payug, h_ovtpay, h_extrate, h_extrest, h_basrate, h_basrest, h_ovtrate, h_ovtrest)
   education_vars   <- Hmisc::Cs(h_hiqual_dv)
-  health_vars      <- Hmisc::Cs(h_health,h_aidhh,h_sclfsat1,h_sclfsato,h_sf12pcs_dv,h_sf12mcs_dv,
-                                h_scsf1,h_scsf2a,h_scsf2b,h_scsf3a,h_scsf3b,h_scsf4a,h_scsf4b,h_scsf5,h_scsf6a,h_scsf6b,h_scsf6c,h_scsf7)
-  preg_vars        <- Hmisc::Cs(h_pregout1,h_pregout2,h_pregout3,h_pregout4)
-  smoke_vars       <- Hmisc::Cs(h_smoker,h_ncigs)
-  alc_vars         <- Hmisc::Cs(h_dklm,h_drnk4w,h_evralc,h_fivealcdr)
-  weight_vars      <- Hmisc::Cs(h_indinus_lw,h_indinui_xw)
+  health_vars      <- Hmisc::Cs(h_health, h_aidhh, h_sclfsat1, h_sclfsato, h_sf12pcs_dv, h_sf12mcs_dv,
+                                h_scsf1, h_scsf2a, h_scsf2b, h_scsf3a, h_scsf3b, h_scsf4a, h_scsf4b, h_scsf5, h_scsf6a, h_scsf6b,h_scsf6c, h_scsf7)
+  preg_vars        <- Hmisc::Cs(h_pregout1, h_pregout2, h_pregout3, h_pregout4)
+  smoke_vars       <- Hmisc::Cs(h_smoker, h_ncigs)
+  alc_vars         <- Hmisc::Cs(h_dklm, h_drnk4w, h_evralc, h_fivealcdr)
+  weight_vars      <- Hmisc::Cs(h_indinus_lw, h_indinui_xw)
 
 
-  names <- c(id_vars,demographic_vars,econ_stat_vars,work_vars,education_vars,health_vars,preg_vars,smoke_vars,alc_vars,weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -75,10 +77,16 @@ ukhls_read_wave8 <- function(
                        c("pidp","pid","h_hidp","h_pno","h_psu","h_strata","h_istrtdaty","h_istrtdatm","h_istrtdatd",
                          ## demographic
                          "h_sex","h_dvage","h_birthy","h_gor_dv","h_urban_dv","h_mlstat","h_marstat",
+                         ## previous wave variables
+                         "h_notempchk","h_empchk",
                          ## economic status
-                         "h_jbstat","h_jbhas","h_jboff","h_jboffy",
+                         "h_jbstat","h_jbhas","h_jboff","h_jboffy","h_jbterm1","h_jbterm2","h_jbsemp","h_jbpen","h_jbpenm",
                          ## work variables
-                         "h_paygu_dv","h_payg_dv","h_jbhrs","h_fimnlabgrs_dv","h_seearngrs_dv","h_jbsic07_cc",
+                         "h_paygu_dv","h_payg_dv","h_jbhrs","h_fimnlabgrs_dv","h_seearngrs_dv","h_jbsic07_cc","h_jbot","h_jbotpd",
+                         ## employees
+                         "h_paygl","h_paynl","h_payu","h_payug","h_ovtpay","h_extrate","h_extrest","h_basrate",
+                         "h_basrest","h_ovtrate","h_ovtrest",
+                         ## self-employed
                          ## education variables
                          "h_hiqual_dv",
                          ## health variables
@@ -96,10 +104,15 @@ ukhls_read_wave8 <- function(
                        c("pidp","pid","hidp","person_number","psu","strata","year","month","day",
                          ## demographic
                          "sex","age","birth_year","region","urban","mlstat","marstat",
+                         ## previous wave variables
+                         "notempchk","empchk",
                          ## economic status
-                         "econ_stat","jbhas","jboff","jboffy",
+                         "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp","jbpen","jbpen_member",
                          ## work variables
-                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07",
+                         "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
+                         ## employees
+                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extrate","ext_estimate","baspay_rate",
+                         "baspay_estimate","ovtpay_rate","ovtpay_estimate",
                          ## education variables
                          "highest_qual",
                          ## health variables
