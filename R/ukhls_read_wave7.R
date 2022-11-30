@@ -57,7 +57,7 @@ ukhls_read_wave7 <- function(
   prev_wave_vars   <- Hmisc::Cs(g_notempchk, g_empchk)
   econ_stat_vars   <- Hmisc::Cs(g_jbstat, g_jbhas, g_jboff, g_jboffy, g_jbterm1, g_jbterm2, g_jbsemp)
   work_vars        <- Hmisc::Cs(g_paygu_dv, g_payg_dv, g_jbhrs, g_fimnlabgrs_dv, g_seearngrs_dv, g_jbsic07_cc, g_jbot, g_jbotpd)
-  employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_ovtpay, g_extrate, g_extrest, g_basrate, g_basrest, g_ovtrate, g_ovtrest)
+  employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_paytyp, g_ovtpay, g_pvtpyset, g_extrate, g_extrest, g_basnset, g_basrate, g_basrest, g_ovtnset, g_ovtrate, g_ovtrest)
   s.emp_vars       <- Hmisc::Cs(g_jshrs, g_jspayu, g_jspytx, g_jspyni)
   non.emp_vars     <- Hmisc::Cs(g_jbhad)
   job2_vars        <- Hmisc::Cs(g_j2has, g_j2semp, g_j2hrs, g_j2pay)
@@ -97,8 +97,8 @@ ukhls_read_wave7 <- function(
                          ## work variables
                          "g_paygu_dv","g_payg_dv","g_jbhrs","g_fimnlabgrs_dv","g_seearngrs_dv","g_jbsic07_cc","g_jbot","g_jbotpd",
                          ## employees
-                         "g_paygl","g_paynl","g_payu","g_payug","g_ovtpay","g_extrate","g_extrest","g_basrate",
-                         "g_basrest","g_ovtrate","g_ovtrest",
+                         "g_paygl","g_paynl","g_payu","g_payug","g_paytyp","g_ovtpay","g_pvtpyset","g_extrate","g_extrest","g_basnset","g_basrate",
+                         "g_basrest","g_ovtnset","g_ovtrate","g_ovtrest",
                          ## self-employed
                          "g_jshrs","g_jspayu","g_jspytx","g_jspyni",
                          ## non-employed
@@ -121,7 +121,8 @@ ukhls_read_wave7 <- function(
                          "g_health","g_aidhh","g_sclfsat1","g_sclfsato","g_sf12pcs_dv","g_sf12mcs_dv",
                          "g_scsf1","g_scsf2a","g_scsf2b","g_scsf3a","g_scsf3b","g_scsf4a","g_scsf4b","g_scsf5","g_scsf6a","g_scsf6b","g_scsf6c","g_scsf7",
                          ## pregnancy variables
-                         "g_preg","g_pregout1","g_pregend1","g_pregsmoke1","g_smkmnth11","g_smkmnth21","g_smkmnth31","g_pregsmk11","g_pregsmk21","g_pregsmk31","g_aedrof1","g_aepuwk1","g_aepuda1","g_lchmulti1",
+                         "g_preg",
+                         "g_pregout1","g_pregend1","g_pregsmoke1","g_smkmnth11","g_smkmnth21","g_smkmnth31","g_pregsmk11","g_pregsmk21","g_pregsmk31","g_aedrof1","g_aepuwk1","g_aepuda1","g_lchmulti1",
                          "g_pregout2","g_pregend2","g_pregsmoke2","g_smkmnth12","g_smkmnth22","g_smkmnth32","g_pregsmk12","g_pregsmk22","g_pregsmk32","g_aedrof2","g_aepuwk2","g_aepuda2","g_lchmulti2",
                          "g_pregout3","g_pregend3","g_pregsmoke3","g_smkmnth13","g_smkmnth23","g_smkmnth33","g_pregsmk13","g_pregsmk23","g_pregsmk33","g_aedrof3","g_aepuwk3","g_aepuda3","g_lchmulti3",
                          "g_nnewborn",
@@ -142,8 +143,8 @@ ukhls_read_wave7 <- function(
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
                          ## employees
-                         "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extrate","ext_estimate","baspay_rate",
-                         "baspay_estimate","ovtpay_rate","ovtpay_estimate",
+                         "last_gross_pay","last_net_pay","usual_pay","payug","pay_type","ovtpay","additional.pay_set","extrate","ext_estimate","basic.pay_set","baspay_rate",
+                         "baspay_estimate","ovt.pay_set","ovtpay_rate","ovtpay_estimate",
                          ## self-employed
                          "s.emp_hours","s.emp_pay","s.emp_pay_pretax","s.emp_pay_preNI",
                          ## non-employed
