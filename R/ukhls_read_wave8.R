@@ -61,11 +61,15 @@ ukhls_read_wave8 <- function(
   s.emp_vars       <- Hmisc::Cs(h_jshrs, h_jspayu, h_jspytx, h_jspyni)
   non.emp_vars     <- Hmisc::Cs(h_jbhad)
   job2_vars        <- Hmisc::Cs(h_j2has, h_j2semp, h_j2hrs, h_j2pay)
-  benefits_vars    <- Hmisc::Cs(h_bendis1, h_bendis2, h_bendis3, h_bendis4, h_bendis5, h_bendis12,
+  benefits_vars    <- Hmisc::Cs(h_benbase1, h_benbase2, h_benbase3, h_benbase4, h_benbase96,
+                                h_benctc)
+  pension_vars     <- Hmisc::Cs(h_benpen1, h_benpen2, h_benpen3, h_benpen4, h_benpen5, h_benpen6, h_benpen7, h_benpen8, h_benpen96,
+                                h_niserps)
+  bendis_vars      <- Hmisc::Cs(h_bendis1, h_bendis2, h_bendis3, h_bendis4, h_bendis5, h_bendis12,
                                 h_bendis7, h_bendis8, h_bendis10, h_bendis97, h_bendis96)
-  pension_vars     <- Hmisc::Cs(h_benpen1, h_benpen2, h_benpen3, h_benpen4, h_benpen5, h_benpen6, h_benpen7, h_benpen8, h_benpen96)
-  receivables_vars <- Hmisc::Cs(h_niserps, h_benctc,
-                                h_bensta2, h_bensta3, h_bensta4, h_bensta5, h_bensta6, h_bensta7, h_bensta97, h_bensta96)
+  otherben_vars    <- Hmisc::Cs(h_benesa,
+                                h_othben1, h_othben2, h_othben3, h_othben4, h_othben5, h_othben6, h_othben7, h_othben8, h_othben9, h_othben97, h_othben96)
+  benincome_vars   <- Hmisc::Cs(h_bensta2, h_bensta3, h_bensta4, h_bensta5, h_bensta6, h_bensta7, h_bensta97, h_bensta96)
   hhfinance_vars   <- Hmisc::Cs(h_fiyrdia, h_fiyrdb1, h_fiyrdb2, h_fiyrdb3, h_fiyrdb4, h_fiyrdb5, h_fiyrdb6, h_finnow, h_finfut)
   education_vars   <- Hmisc::Cs(h_hiqual_dv)
   health_vars      <- Hmisc::Cs(h_health, h_aidhh, h_sclfsat1, h_sclfsato, h_sf12pcs_dv, h_sf12mcs_dv,
@@ -81,7 +85,7 @@ ukhls_read_wave8 <- function(
   weight_vars      <- Hmisc::Cs(h_indinus_lw, h_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, bendis_vars, otherben_vars, benincome_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -107,12 +111,18 @@ ukhls_read_wave8 <- function(
                          ## second job
                          "h_j2has","h_j2semp","h_j2hrs","h_j2pay",
                          ## benefits
-                         "h_bendis1","h_bendis2","h_bendis3","h_bendis4","h_bendis5","h_bendis12",
-                         "h_bendis7","h_bendis8","h_bendis10","h_bendis97","h_bendis96",
+                         "h_benbase1","h_benbase2","h_benbase3","h_benbase4","h_benbase96",
+                         "h_benctc",
                          ## pensions
                          "h_benpen1","h_benpen2","h_benpen3","h_benpen4","h_benpen5","h_benpen6","h_benpen7","h_benpen8","h_benpen96",
-                         ## receivables
-                         "h_niserps","h_benctc",
+                         "h_niserps",
+                         ## disability benefits
+                         "h_bendis1","h_bendis2","h_bendis3","h_bendis4","h_bendis5","h_bendis12",
+                         "h_bendis7","h_bendis8","h_bendis10","h_bendis97","h_bendis96",
+                         ## other benefits
+                         "h_benesa",
+                         "h_othben1","h_othben2","h_othben3","h_othben4","h_othben5","h_othben6","h_othben7","h_othben8","h_othben9","h_othben97","h_othben96",
+                         ## benefit income variables (formerly receivables)
                          "h_bensta2","h_bensta3","h_bensta4","h_bensta5","h_bensta6","h_bensta7","h_bensta97","h_bensta96",
                          ## household finance variables (interest and dividends)
                          "h_fiyrdia","h_fiyrdb1","h_fiyrdb2","h_fiyrdb3","h_fiyrdb4","h_fiyrdb5","h_fiyrdb6","h_finnow","h_finfut",
@@ -154,12 +164,18 @@ ukhls_read_wave8 <- function(
                          ## second job
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
-                         "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
-                         "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
+                         "incomesupp_ben","jbseek_allowance","ben_childben","universal_credit","no_benbase",
+                         "ben_childtaxcred",
                          ## pensions
                          "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
-                         ## receivables
-                         "income_serps","ben_childtaxcred",
+                         "income_serps",
+                         ## disability benefits
+                         "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
+                         "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
+                         ## other benefits
+                         "employ_supp_allowance",
+                         "foster_allowance","mat_allowance","inwork_cred","RTW_cred","workingtax_cred","counciltax_ben","rate_rebate","housing_ben","rent_rebate","othben_other","non_othben",
+                         ## benefit income variables (formerly receivables)
                          "bensta_edugrant","bensta_tupay","bensta_alimony","bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
                          ## household finance variables
                          "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",
