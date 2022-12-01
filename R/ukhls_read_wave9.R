@@ -79,7 +79,7 @@ ukhls_read_wave9 <- function(
                                 i_pregout2, i_pregend2, i_pregsmoke2, i_smkmnth12, i_smkmnth22, i_smkmnth32, i_pregsmk12, i_pregsmk22, i_pregsmk32, i_aedrof2, i_aepuwk2, i_aepuda2, i_lchmulti2,
                                 i_pregout3, i_pregend3, i_pregsmoke3, i_smkmnth13, i_smkmnth23, i_smkmnth33, i_pregsmk13, i_pregsmk23, i_pregsmk33, i_aedrof3, i_aepuwk3, i_aepuda3, i_lchmulti3,
                                 i_nnewborn)
-  smoke_vars       <- Hmisc::Cs(i_smoker, i_ncigs)
+  smoke_vars       <- Hmisc::Cs(i_smoker, i_ncigs, i_giveup, i_gvupreas1, i_gvupreas2, i_gvupreas3, i_gvupreas4, i_gvupreas5, i_gvupreas6, i_gvupreas7, i_gvupreas8, i_gvupreas9, i_ecigs1)
   alc_vars         <- Hmisc::Cs(i_auditc1, i_auditc2, i_auditc3, i_auditc4, i_auditc5)
   weight_vars      <- Hmisc::Cs(i_indinus_lw, i_indinui_xw)
 
@@ -137,7 +137,8 @@ ukhls_read_wave9 <- function(
                          "i_pregout3","i_pregend3","i_pregsmoke3","i_smkmnth13","i_smkmnth23","i_smkmnth33","i_pregsmk13","i_pregsmk23","i_pregsmk33","i_aedrof3","i_aepuwk3","i_aepuda3","i_lchmulti3",
                          "i_nnewborn",
                          ## smoke variables
-                         "i_smoker", "i_ncigs",
+                         "i_smoker", "i_ncigs", "i_giveup", "i_gvupreas1", "i_gvupreas2", "i_gvupreas3",
+                         "i_gvupreas4", "i_gvupreas5", "i_gvupreas6", "i_gvupreas7", "i_gvupreas8", "i_gvupreas9", "i_ecigs1",
                          ## alcohol variables
                          "i_auditc1","i_auditc2","i_auditc3","i_auditc4","i_auditc5",
                          ## weight
@@ -189,7 +190,8 @@ ukhls_read_wave9 <- function(
                          "pregout3","pregend3","pregsmoke3","smkmnth13","smkmnth23","smkmnth33","pregsmk_ncigs13","pregsmk_ncigs23","pregsmk_ncigs33","pregdrnk_freq3","pregdrnk_unitpw3","pregdrnk_unit3","lchmulti3",
                          "nnewborn",
                          ## smoke variables
-                         "smoker", "ncigs",
+                         "smoker", "ncigs", "giveup_smk", "gvupsmk_curr_health_prblm", "gvupsmk_general_better_health", "gvupsmk_risk_down_smk_illness",
+                         "gvupsmk_public_work_smk_ban", "gvupsmk_fam&frnds", "gvupsmk_finances", "gvupsmk_chld_effect", "gvupsmk_fam_effect", "gvupsmk_other_reason", "ecigs",
                          ## alcohol variables
                          "auditc1","auditc2","auditc3","auditc4","auditc5",
                          ## weight
