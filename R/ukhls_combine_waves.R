@@ -53,7 +53,8 @@ ukhls_combine_waves <- function(
   # order columns
   setcolorder(data, c("id","hidp","wave_no","bhps_sample","nwaves",
                       "wave_1","wave_2","wave_3","wave_4","wave_5","wave_6",
-                      "wave_7","wave_8","wave_9","wave_10","wave_11","wave_12"))
+                      "wave_7","wave_8","wave_9","wave_10","wave_11","wave_12",
+                      "year","month","day","weight_xw"))
 
 
   return(data)

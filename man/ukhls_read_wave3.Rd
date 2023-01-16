@@ -3,6 +3,11 @@
 \name{ukhls_read_wave3}
 \alias{ukhls_read_wave3}
 \title{Read Understanding Society Wave 3}
+\source{
+University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
+and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK Data Service. SN: 6614,
+\href{https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6614}{DOI: 10.5255/UKDA-SN-6614-18}
+}
 \usage{
 ukhls_read_wave3(
   root = c("C:/"),

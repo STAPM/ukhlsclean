@@ -13,9 +13,6 @@ eq5d(data, matrix = ukhlsclean::CoefficientMatrix, seed = 0)
 
 \item{seed}{Integer. Random number seed}
 }
-\value{
-
-}
 \description{
 Apply the algorithm developed by Gray A, Rivero-Arias O, Clarke P (2006) to estimate
 EQ-5D utility values from SF-12 responses. Algorithm materials obtained from

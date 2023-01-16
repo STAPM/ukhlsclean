@@ -14,6 +14,10 @@
 #' \item -9 Missing
 #' }
 #'
+#' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
+#' and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK Data Service. SN: 6614,
+#' \href{https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6614}{DOI: 10.5255/UKDA-SN-6614-18}
+#'
 #' @param root Character - the root directory.
 #' @param file Character - the file path and name.
 #' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)

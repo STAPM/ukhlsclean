@@ -42,6 +42,10 @@ select_data <- function(
   if (is.null(keep_vars)) {
 
     keep_vars <- names(data)
+  } else {
+
+    keep_vars <- union(c("id","wave_no","bhps_sample",
+                         "year","month","day","weight_xw"), keep_vars)
   }
 
   keep_vars <- intersect(names(data), keep_vars)

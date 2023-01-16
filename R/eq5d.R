@@ -8,10 +8,8 @@
 #' @param matrix Matrix. Matrix of coefficients to use in the algorithm
 #' @param seed Integer. Random number seed
 #'
-#' @return
+#'
 #' @export
-#'
-#'
 #'
 #' @examples
 #'
