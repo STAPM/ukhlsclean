@@ -44,7 +44,7 @@ select_data <- function(
     keep_vars <- names(data)
   } else {
 
-    keep_vars <- union(c("id","wave_no","bhps_sample",
+    keep_vars <- union(c("id","hidp","wave_no","bhps_sample",
                          "year","month","day","weight_xw"), keep_vars)
   }
 
