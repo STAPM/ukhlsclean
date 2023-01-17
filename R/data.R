@@ -20,3 +20,12 @@
 #'
 "CoefficientMatrix"
 
+#' Population Counts
+#'
+#' Understanding Society weights are scaled to a mean of 1 among the relevant sample. Population count data can be used with the
+#' calendar year datasets to scale up totals to the population. Data are obtained from the Office for National Statistics
+#' mid-year population estimates. Stratified by UK nation, single year of age, and sex.
+#'
+#' @source \href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland}{ONS mid-year population estimates}
+#'
+"PopulationCounts"

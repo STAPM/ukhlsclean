@@ -106,6 +106,13 @@ ukhls_clean_demographic <- function(data = NULL) {
 
   data[,gor := as.factor(gor)]
 
+  data[region == 1:9, country := "england"]
+  data[region == 10 , country := "wales"]
+  data[region == 11 , country := "scotland"]
+  data[region == 12 , country := "northern_ireland"]
+
+  data[,coutry := factor(country, levels = c("england","wales","scotland","northern_ireland"))]
+
   ############################
   ### area - rural/urban #####
 
@@ -140,11 +147,11 @@ ukhls_clean_demographic <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "age", "age_5cat", "age_12cat", "sex", "gor", "area", "marital", "hiqual",
+                         "age", "age_5cat", "age_12cat", "sex", "gor", "country", "area", "marital", "hiqual",
                          "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
 
 
-  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "area", "marital", "hiqual",
+  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "country", "area", "marital", "hiqual",
                  "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")
 
   setnames(final_data, var_names, paste0("d_", var_names))
