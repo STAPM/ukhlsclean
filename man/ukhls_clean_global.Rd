@@ -8,7 +8,8 @@ ukhls_clean_global(
   data,
   ages = 16:89,
   keep_vars = NULL,
-  complete_vars = c("year", "age", "sex")
+  complete_vars = c("year", "age", "sex"),
+  calendar_year
 )
 }
 \arguments{
@@ -18,7 +19,10 @@ ukhls_clean_global(
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
-\item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).}
+\item{complete_vars}{Character vector - the names of the variables on which the selection of
+complete cases will be based (defaults to year, age and gender).}
+
+\item{calendar_year}{Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.}
 }
 \value{
 Returns a new set of variables

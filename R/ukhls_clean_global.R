@@ -7,13 +7,16 @@
 #' @param data Data table - the combined Understanding Society dataset for one wave.
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
-#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).
+#' @param complete_vars Character vector - the names of the variables on which the selection of
+#' complete cases will be based (defaults to year, age and gender).
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.
 #' @return Returns a new set of variables
 #' @export
 ukhls_clean_global <- function(data,
                                ages = 16:89,
                                keep_vars = NULL,
-                               complete_vars = c("year", "age", "sex")
+                               complete_vars = c("year", "age", "sex"),
+                               calendar_year
 ) {
 
   ## fix bug that occurs if age is not in keep_vars
@@ -81,6 +84,19 @@ ukhls_clean_global <- function(data,
   merged_data <- merge(merged_data, lmkt,       by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, work,       by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, hhold,      by = c("id", "hidp", "wave_no"))
+
+  ######################
+  ### Merge in the population counts data
+
+  #if (calendar_year == TRUE){
+
+  #pop_counts_merged <- merge(merged_data,
+  #                           ukhlsclean::PopulationCounts,
+  #                           by = c("year","d_age","d_sex","d_country"),
+  #                           sort = FALSE, all.x = TRUE, all.y = FALSE)
+
+  #merged_data <- copy(pop_counts_merged)
+  #}
 
   ############################
   ### Apply data filtering ###

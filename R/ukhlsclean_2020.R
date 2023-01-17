@@ -162,9 +162,13 @@ ukhlsclean_2020 <- function(
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
   data_merged[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
+  ## identify if running the calendar year code
+  calendar_year <- TRUE
+
   cleaned <- ukhls_clean_global(data = data_merged,
                                 ages = ages,
                                 keep_vars = keep_vars,
-                                complete_vars = complete_vars)
+                                complete_vars = complete_vars,
+                                calendar_year = calendar_year)
   return(cleaned)
 }

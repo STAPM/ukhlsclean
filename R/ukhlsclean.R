@@ -36,12 +36,15 @@ start_time <- Sys.time()
 
 data_list <- list()
 
+## identify if running the calendar year code
+calendar_year <- FALSE
+
 ### Wave 1
 
 if (1 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave1(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 }
@@ -51,7 +54,7 @@ if (1 %in% waves){
 if (2 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave2(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 }
@@ -61,7 +64,7 @@ if (2 %in% waves){
 if (3 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave3(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -72,7 +75,7 @@ if (3 %in% waves){
 if (4 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave4(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -83,7 +86,7 @@ if (4 %in% waves){
 if (5 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave5(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -94,7 +97,7 @@ if (5 %in% waves){
 if (6 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave6(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -105,7 +108,7 @@ if (6 %in% waves){
 if (7 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave7(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -116,7 +119,7 @@ if (7 %in% waves){
 if (8 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave8(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -127,7 +130,7 @@ if (8 %in% waves){
 if (9 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave9(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -138,7 +141,7 @@ if (9 %in% waves){
 if (10 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave10(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -149,7 +152,7 @@ if (10 %in% waves){
 if (11 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave11(root = root, file = file, full = full),
-                               ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                               ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -160,7 +163,7 @@ if (11 %in% waves){
 if (12 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave12(root = root, file = file, full = full),
-                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars)
+                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
