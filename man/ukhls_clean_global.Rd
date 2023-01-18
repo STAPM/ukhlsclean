@@ -7,6 +7,7 @@
 ukhls_clean_global(
   data,
   ages = 16:89,
+  country = "UK",
   keep_vars = NULL,
   complete_vars = c("year", "age", "sex"),
   calendar_year
@@ -16,6 +17,8 @@ ukhls_clean_global(
 \item{data}{Data table - the combined Understanding Society dataset for one wave.}
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
+
+\item{country}{Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.}
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 

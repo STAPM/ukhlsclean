@@ -13,8 +13,9 @@ ukhlsclean_2020(
   file = "HAR_PR/PR/USoc/Data/Calendar Year Datasets/SN8988_2022_11_29/tab",
   full = TRUE,
   ages = 16:89,
+  country = "UK",
   keep_vars = NULL,
-  complete_vars = c("d_age", "d_sex")
+  complete_vars = c("d_age", "d_sex", "d_country")
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ ukhlsclean_2020(
 \item{full}{Logical - TRUE if restricting the sample to full interviews only (excluding proxies)}
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
+
+\item{country}{Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.}
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 

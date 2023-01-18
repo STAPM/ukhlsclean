@@ -4,12 +4,20 @@
 \alias{select_data}
 \title{Select variables and apply filters}
 \usage{
-select_data(data, ages = 16:89, keep_vars = NULL, complete_vars = c("age"))
+select_data(
+  data,
+  ages = 16:89,
+  country = "UK",
+  keep_vars = NULL,
+  complete_vars = c("age")
+)
 }
 \arguments{
 \item{data}{Data table - the cleaned Understanding Society dataset.}
 
 \item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
+
+\item{country}{Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.}
 
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to year and age).}
 
