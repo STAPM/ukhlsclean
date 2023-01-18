@@ -106,7 +106,7 @@ ukhls_clean_demographic <- function(data = NULL) {
 
   data[,gor := as.factor(gor)]
 
-  data[region == 1:9, country := "england"]
+  data[region %in% 1:9, country := "england"]
   data[region == 10 , country := "wales"]
   data[region == 11 , country := "scotland"]
   data[region == 12 , country := "northern_ireland"]
