@@ -8,6 +8,7 @@
 #' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to year and age).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year and age).
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.
 #' @importFrom data.table :=
 #' @return Returns a reduced version of data
 #' @export
@@ -24,7 +25,8 @@ select_data <- function(
   ages = 16:89,
   country = "UK",
   keep_vars = NULL,
-  complete_vars = c("age")
+  complete_vars = c("age"),
+  calendar_year
 ) {
 
   ### apply age and country filters
@@ -33,10 +35,26 @@ select_data <- function(
 
   if (country == "UK"){
 
-  } else {
-
-  data <- data[d_country == country,]
   }
+  if (country == "england") {
+
+    data <- data[d_country == "england",]
+  }
+  if (country == "scotland") {
+
+    data <- data[d_country == "scotland",]
+  }
+  if (country == "wales") {
+
+    data <- data[d_country == "wales",]
+  }
+  if (country == "northern_ireland") {
+
+    data <- data[d_country == "northern_ireland",]
+  }
+
+
+
 
   ## keep only complete cases of variables named in complete_vars
 
@@ -46,12 +64,20 @@ select_data <- function(
 
   }
 
-  ## only keep variables named in keep_vars
+  #########################################################################
+  ## only keep variables named in keep_vars plus mandatory identifier and
+  ## weight variables
 
   if (is.null(keep_vars)) {
 
     keep_vars <- names(data)
-  } else {
+  }
+  if (!is.null(keep_vars) & calendar_year == TRUE) {
+
+    keep_vars <- union(c("id","hidp","wave_no","bhps_sample",
+                         "year","month","day","weight_xw","pop_factor"), keep_vars)
+  }
+  if (!is.null(keep_vars) & calendar_year == FALSE) {
 
     keep_vars <- union(c("id","hidp","wave_no","bhps_sample",
                          "year","month","day","weight_xw"), keep_vars)

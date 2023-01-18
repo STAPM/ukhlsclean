@@ -23,7 +23,7 @@ ukhls_clean_global(
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of
-complete cases will be based (defaults to year, age and gender).}
+complete cases will be based (defaults to year, age and sex).}
 
 \item{calendar_year}{Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.}
 }

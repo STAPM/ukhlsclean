@@ -9,8 +9,9 @@
 #' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of
-#' complete cases will be based (defaults to year, age and gender).
+#' complete cases will be based (defaults to year, age and sex).
 #' @param calendar_year Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.
+#'
 #' @return Returns a new set of variables
 #' @export
 ukhls_clean_global <- function(data,
@@ -108,7 +109,8 @@ ukhls_clean_global <- function(data,
     ages = ages,
     country = country,
     keep_vars = keep_vars,
-    complete_vars = complete_vars
+    complete_vars = complete_vars,
+    calendar_year = calendar_year
   )
 
 

@@ -173,6 +173,7 @@ ukhlsclean_2020 <- function(
 
   cleaned <- ukhls_clean_global(data = data_merged,
                                 ages = ages,
+                                country = country,
                                 keep_vars = keep_vars,
                                 complete_vars = complete_vars,
                                 calendar_year = calendar_year)
