@@ -6,6 +6,7 @@
 #'
 #' @param data Data table - the combined Understanding Society dataset for one wave.
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
+#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of
 #' complete cases will be based (defaults to year, age and gender).
@@ -14,6 +15,7 @@
 #' @export
 ukhls_clean_global <- function(data,
                                ages = 16:89,
+                               country = "UK",
                                keep_vars = NULL,
                                complete_vars = c("year", "age", "sex"),
                                calendar_year
@@ -88,15 +90,15 @@ ukhls_clean_global <- function(data,
   ######################
   ### Merge in the population counts data
 
-  #if (calendar_year == TRUE){
+  if (calendar_year == TRUE){
 
-  #pop_counts_merged <- merge(merged_data,
-  #                           ukhlsclean::PopulationCounts,
-  #                           by = c("year","d_age","d_sex","d_country"),
-  #                           sort = FALSE, all.x = TRUE, all.y = FALSE)
+    pop_counts <- gen_scaling_factor(data = merged_data,
+                                     pop_data = ukhlsclean::PopulationCounts)
 
-  #merged_data <- copy(pop_counts_merged)
-  #}
+    merged_data <- merge(merged_data, pop_counts, by = c("year","d_age","d_sex","d_country"), all.x = TRUE, sort = FALSE)
+
+    setcolorder(merged_data, c("id","hidp","wave_no","bhps_sample","year","month","day","weight_xw","pop_factor"))
+  }
 
   ############################
   ### Apply data filtering ###
@@ -104,6 +106,7 @@ ukhls_clean_global <- function(data,
   final_data <- ukhlsclean::select_data(
     data = merged_data,
     ages = ages,
+    country = country,
     keep_vars = keep_vars,
     complete_vars = complete_vars
   )

@@ -14,6 +14,7 @@
 #' @param file Character - the file path and name.
 #' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
+#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).
 #' @importFrom data.table :=
@@ -32,8 +33,9 @@ ukhlsclean_2020 <- function(
     file = "HAR_PR/PR/USoc/Data/Calendar Year Datasets/SN8988_2022_11_29/tab",
     full = TRUE,
     ages = 16:89,
+    country = "UK",
     keep_vars = NULL,
-    complete_vars = c("d_age","d_sex")
+    complete_vars = c("d_age","d_sex","d_country")
 ) {
 
   cat(crayon::magenta("\tReading UKHLS Calendar Year 2020 datasets"))

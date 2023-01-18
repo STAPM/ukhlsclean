@@ -5,6 +5,7 @@
 #'
 #' @param data Data table - the cleaned Understanding Society dataset.
 #' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
+#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to year and age).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year and age).
 #' @importFrom data.table :=
@@ -21,13 +22,21 @@
 select_data <- function(
   data,
   ages = 16:89,
+  country = "UK",
   keep_vars = NULL,
   complete_vars = c("age")
 ) {
 
-  ### apply age and wave filters
+  ### apply age and country filters
 
   data <- data[d_age %in% ages]
+
+  if (country == "UK"){
+
+  } else {
+
+  data <- data[d_country == country,]
+  }
 
   ## keep only complete cases of variables named in complete_vars
 
