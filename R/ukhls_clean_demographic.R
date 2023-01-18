@@ -111,7 +111,7 @@ ukhls_clean_demographic <- function(data = NULL) {
   data[region == 11 , country := "scotland"]
   data[region == 12 , country := "northern_ireland"]
 
-  data[,coutry := factor(country, levels = c("england","wales","scotland","northern_ireland"))]
+  data[,country := factor(country, levels = c("england","wales","scotland","northern_ireland"))]
 
   ############################
   ### area - rural/urban #####

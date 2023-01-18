@@ -165,6 +165,10 @@ ukhlsclean_2020 <- function(
   ## identify if running the calendar year code
   calendar_year <- TRUE
 
+  ## drop small number (643) of 2021 observations
+  data_merged <- data_merged[year == 2020,]
+
+
   cleaned <- ukhls_clean_global(data = data_merged,
                                 ages = ages,
                                 keep_vars = keep_vars,
