@@ -184,7 +184,7 @@ end_time <- Sys.time()
 
 tdiff <- difftime(end_time, start_time, units = "mins")
 
-time <- paste0("Total Data reading and cleaning time: ", round(tdiff,2), " minutes")
+time <- paste0("Total Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
 
 cat(crayon::bgWhite(time))
 
