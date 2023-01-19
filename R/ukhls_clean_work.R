@@ -12,10 +12,10 @@ ukhls_clean_work <- function(data = NULL) {
   ## Hours, separated by employment / self-employment
 
   if ("hours" %in% colnames(data)){
-  data[, hours_emp := hours]
+  data[, hours_empl := hours]
 
   } else {
-  data[, hours_emp := NA]
+  data[, hours_empl := NA]
 
   }
 
@@ -28,7 +28,7 @@ ukhls_clean_work <- function(data = NULL) {
   }
 
   if ( all(c("hours_semp","hours_emp") %in% colnames(data)) ){
-  data[is.na(hours_semp) & !is.na(hours_emp), hours := hours_emp]
+  data[is.na(hours_semp) & !is.na(hours_emp), hours := hours_empl]
   data[is.na(hours_emp) & !is.na(hours_semp), hours := hours_semp]
   data[!is.na(hours_emp) & !is.na(hours_semp), hours := hours_semp + hours_emp]
 
@@ -194,9 +194,9 @@ ukhls_clean_work <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "hours_emp", "hours_semp", "hours", "sic_1dig", "sic_2dig")]
+                         "hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig")]
 
-  var_names <- c("hours_emp", "hours_semp", "hours", "sic_1dig", "sic_2dig")
+  var_names <- c("hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig")
 
   setnames(final_data, var_names, paste0("w_", var_names))
 

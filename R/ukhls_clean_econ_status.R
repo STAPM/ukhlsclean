@@ -74,29 +74,38 @@ ukhls_clean_econstat <- function(data = NULL) {
                             by = c("year","month"),
                             all.x = TRUE)
 
+  ####################################################
   # combine employed and self employed earnings
+
+  ## usual monthly pay
   merge[is.na(grss_pay_usual)  & !is.na(grss_semp), grss_earnings_usual := grss_semp]
   merge[!is.na(grss_pay_usual) &  is.na(grss_semp), grss_earnings_usual := grss_pay_usual]
   merge[!is.na(grss_pay_usual) & !is.na(grss_semp), grss_earnings_usual := grss_semp+grss_pay_usual]
 
+  ## last monthly pay
   merge[is.na(grss_pay_last)  & !is.na(grss_semp), grss_earnings_last := grss_semp]
   merge[!is.na(grss_pay_last) &  is.na(grss_semp), grss_earnings_last := grss_pay_last]
   merge[!is.na(grss_pay_last) & !is.na(grss_semp), grss_earnings_last := grss_semp+grss_pay_last]
 
-  merge[is.na(grss_lab_inc)  & !is.na(grss_semp), grss_earnings_lab := grss_semp]
-  merge[!is.na(grss_lab_inc) &  is.na(grss_semp), grss_earnings_lab := grss_lab_inc]
-  merge[!is.na(grss_lab_inc) & !is.na(grss_semp), grss_earnings_lab := grss_semp+grss_lab_inc]
+  #####################################################
+  # separate employment and self-employment earnings
 
-  merge[grss_earnings_lab <= 0, grss_earnings_lab := NA]
+  ## usual monthly pay
+  merge[, grss_earnings_usual_empl := grss_pay_usual]
+  merge[, grss_earnings_last_empl := grss_pay_last]
+
+  ## usual monthly pay
+  merge[, grss_earnings_usual_semp := grss_semp]
+
+  #####################################################
+
 
   # construct real terms variables
-  merge[ , real_grss_pay_usual      := grss_pay_usual*(100/cpi_value)]
-  merge[ , real_grss_earnings_usual := grss_pay_usual*(100/cpi_value)]
-  merge[ , real_grss_pay_last       := grss_pay_last*(100/cpi_value)]
-  merge[ , real_grss_earnings_last  := grss_pay_last*(100/cpi_value)]
-  merge[ , real_grss_semp           := grss_semp*(100/cpi_value)]
-  merge[ , real_grss_earnings_lab   := grss_earnings_lab*(100/cpi_value)]
-
+  merge[ , real_grss_earnings_usual_empl := grss_earnings_usual_empl*(100/cpi_value)]
+  merge[ , real_grss_earnings_usual      := grss_pay_usual*(100/cpi_value)]
+  merge[ , real_grss_earnings_last_empl  := grss_earnings_last_empl*(100/cpi_value)]
+  merge[ , real_grss_earnings_last       := grss_pay_last*(100/cpi_value)]
+  merge[ , real_grss_earnings_usual_semp := grss_earnings_usual_semp*(100/cpi_value)]
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
@@ -104,11 +113,17 @@ ukhls_clean_econstat <- function(data = NULL) {
   final_data <- merge[, c("id", "hidp", "wave_no",
                           "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
                           "grss_earnings_usual", "grss_earnings_last",
-                          "real_grss_earnings_usual", "real_grss_earnings_last")]
+                          "grss_earnings_usual_empl", "grss_earnings_last_empl",
+                          "real_grss_earnings_usual", "real_grss_earnings_last",
+                          "real_grss_earnings_usual_empl", "real_grss_earnings_last_empl",
+                          "real_grss_earnings_usual_semp")]
 
   var_names <- c("econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
                  "grss_earnings_usual", "grss_earnings_last",
-                 "real_grss_earnings_usual", "real_grss_earnings_last")
+                 "grss_earnings_usual_empl", "grss_earnings_last_empl",
+                 "real_grss_earnings_usual", "real_grss_earnings_last",
+                 "real_grss_earnings_usual_empl", "real_grss_earnings_last_empl",
+                 "real_grss_earnings_usual_semp")
 
   setnames(final_data, var_names, paste0("l_", var_names))
 

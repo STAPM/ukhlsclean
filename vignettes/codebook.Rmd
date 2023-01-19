@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, echo = FALSE}
-library(lfsclean)
+library(ukhlsclean)
 ```
 
 ## List of Variables
@@ -27,7 +27,7 @@ This document details the cleaned variables from the Understanding Society datas
 These variables are identifier and weighting variables produced automatically and should not be specified in the `keep_vars` argument to the `ukhlsclean` function. 
 
 - __id__ (numeric) individual identifier. 
-    - Constructed from the `pidp` variable for individuals sampled by the UKHLS or from the `pid` variable for              individuals carried over from the British Household Panel Survey (BHPS). For those individuals, __id__ can be         linked to __pid__ in the BHPS data.
+    - Constructed from the `pidp` variable for individuals sampled by the UKHLS or from the `pid` variable for              individuals carried over from the British Household Panel Survey (BHPS). For those individuals, __id__ can be linked to __pid__ in the BHPS data.
     
 - __hidp__ (numeric) household identifier. 
 
@@ -47,6 +47,8 @@ These variables are identifier and weighting variables produced automatically an
 
 - __weight_xw__ (numeric) cross-sectional survey weight, for weighting one wave to the population.
 
+- __pop_factor__ (numeric) **CALENDAR YEAR DATA ONLY**. Population scaling factor. The number of individuals in the total population represented by each observation.
+ 
 ### __Demographic variables__ 
 
 Variables produced by the demographic module `ukhls_clean_demographic`. Variables in this category are prefixed with a `d_`. 
@@ -88,6 +90,12 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
   - "london"
   - "south_east"
   - "south_west"
+  - "wales"
+  - "scotland"
+  - "northern_ireland"
+  
+- __d_country__ (factor) country:
+  - "england"
   - "wales"
   - "scotland"
   - "northern_ireland"
@@ -183,19 +191,30 @@ Variables produced by the economic and labour market status module `ukhls_clean_
   - "education"
   - "other"
   
-- __l_grss_earnings_usual__ (numeric) nominal gross earnings per month from employment (usual pay) plus self-employment
+- __l_grss_earnings_usual__ (numeric) nominal gross earnings per month from employment (usual pay) plus self-employment earnings.
 
-- __l_grss_earnings_last__ (numeric) nominal gross earnings per month from employment (last received payment) plus self-employment
+- __l_grss_earnings_last__ (numeric) nominal gross earnings per month from employment (last received payment) plus self-employment earnings.
 
-- __l_real_grss_earnings_usual__ (numeric) real gross earnings per month from employment (usual pay) plus self-employment
+- __l_grss_earnings_usual_empl__ (numeric) nominal gross earnings per month from employment (usual pay).
 
-- __l_real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment
+- __l_grss_earnings_last_empl__ (numeric) nominal gross earnings per month from employment (last received payment).
+
+- __l_real_grss_earnings_usual__ (numeric) real gross earnings per month from employment (usual pay) plus self-employment earnings.
+
+- __l_real_grss_earnings_last__ (numeric) real gross earnings per month from employment (last received payment) plus self-employment earnings.
+
+- __l_real_grss_earnings_usual_empl__ (numeric) real gross earnings per month from employment (usual pay).
+
+- __l_real_grss_earnings_last_empl__ (numeric) real gross earnings per month from employment (last received payment). 
+
+- __l_real_grss_earnings_usual_semp__ (numeric) real gross earnings per month from self-employment.
+
 
 ### __Work variables__
 
 Variables produced by the work module `ukhls_clean_work`. Variables in this category are prefixed with a `w_`
 
-- __w_hours_emp__ (numeric) usual weekly hours worked in employment. 
+- __w_hours_empl__ (numeric) usual weekly hours worked in employment. 
    
 - __w_hours_semp__ (numeric) usual weekly hours worked in self-employment. 
 
