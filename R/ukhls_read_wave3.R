@@ -34,7 +34,7 @@
 #' @export
 ukhls_read_wave3 <- function(
   root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
   full = TRUE
 ) {
   cat(crayon::magenta("\tReading UKHLS Wave 3 datasets"))
@@ -99,9 +99,9 @@ ukhls_read_wave3 <- function(
                          ## previous wave variables
                          "c_notempchk","c_empchk",
                          ## economic status
-                         "c_jbstat","c_jbhas","c_jboff","c_jboffy","c_jbterm1","c_jbsic07_cc","c_jbterm2","c_jbsemp",
+                         "c_jbstat","c_jbhas","c_jboff","c_jboffy","c_jbterm1","c_jbterm2","c_jbsemp",
                          ## work variables
-                         "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv","c_seearngrs_dv","c_jbot","c_jbotpd",
+                         "c_paygu_dv","c_payg_dv","c_jbhrs","c_fimnlabgrs_dv","c_seearngrs_dv","c_jbsic07_cc","c_jbot","c_jbotpd",
                          ## employees
                          "c_paygl","c_paynl","c_payu","c_payug","c_ovtpay","c_extnsa","c_extrate","c_extrest","c_basnsa","c_basrate",
                          "c_basrest","c_ovtnsa","c_ovtrate","c_ovtrest",
