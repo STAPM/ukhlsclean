@@ -31,9 +31,10 @@ navbar:
 
 
 reference:
-- title: Wrapper function
+- title: Wrapper functions
   contents:
   - ukhlsclean
+  - ukhlsclean_2020
 
 - title: Cleaning modules
   contents:
@@ -48,6 +49,7 @@ reference:
   - ukhls_combine_waves
   - select_data
   - eq5d
+  - gen_scaling_factor
 
 - title: Raw data reading functions
   contents:
@@ -70,6 +72,7 @@ reference:
   contents:
   - cpi
   - CoefficientMatrix
+  - PopulationCounts
 
 articles:
 - title: Variable codebook

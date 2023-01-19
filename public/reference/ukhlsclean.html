@@ -19,7 +19,7 @@ restrictions."><meta property="og:image" content="https://stapm.gitlab.io/r-pack
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -63,37 +63,65 @@ restrictions.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ukhlsclean</span><span class="op">(</span>
-  <span class="va">root</span>,
-  <span class="va">file</span>,
-  full <span class="op">=</span> <span class="cn">TRUE</span>,
-  waves <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span>,
-  ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>,
-  keep_vars <span class="op">=</span> <span class="cn">NULL</span>,
-  complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sex"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ukhlsclean</span><span class="op">(</span></span>
+<span>  root <span class="op">=</span> <span class="st">"X:/"</span>,</span>
+<span>  file <span class="op">=</span> <span class="st">"HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls"</span>,</span>
+<span>  full <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  waves <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>,</span>
+<span>  ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>,</span>
+<span>  country <span class="op">=</span> <span class="st">"UK"</span>,</span>
+<span>  keep_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>, <span class="st">"d_sex"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
+    <div id="source">
+    <h2>Source</h2>
+    <p>University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021 and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK Data Service. SN: 6614, <a href="https://doi.org/10.5255/UKDA-SN-6614-18" class="external-link">DOI: 10.5255/UKDA-SN-6614-18</a></p>
+    </div>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>root</dt>
 <dd><p>Character - the root directory.</p></dd>
+
+
 <dt>file</dt>
 <dd><p>Character - the file path and name.</p></dd>
+
+
 <dt>full</dt>
 <dd><p>Logical - TRUE if restricting the sample to full interviews only (excluding proxies)</p></dd>
+
+
 <dt>waves</dt>
 <dd><p>Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).</p></dd>
+
+
 <dt>ages</dt>
 <dd><p>Integer vector - the ages in single years to retain (defaults to 16 to 89 years).</p></dd>
+
+
+<dt>country</dt>
+<dd><p>Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.</p></dd>
+
+
 <dt>keep_vars</dt>
 <dd><p>Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).</p></dd>
+
+
 <dt>complete_vars</dt>
-<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and gender).</p></dd>
+<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a new set of variables</p>
+    
+
+<p>Returns a new set of variables</p>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>UKDS Study Number: <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6614" class="external-link">Understanding Society: Waves 1-12, 2009-2021 and Harmonised BHPS: Waves 1-18, 1991-2009</a></p>
     </div>
 
   </div>
@@ -108,7 +136,7 @@ restrictions.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

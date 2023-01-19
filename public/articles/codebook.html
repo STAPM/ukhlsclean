@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -130,6 +130,9 @@ otherwise.</p></li>
 <li><p><strong>day</strong> (numeric) interview date - day.</p></li>
 <li><p><strong>weight_xw</strong> (numeric) cross-sectional survey
 weight, for weighting one wave to the population.</p></li>
+<li><p><strong>pop_factor</strong> (numeric) <strong>CALENDAR YEAR DATA
+ONLY</strong>. Population scaling factor. The number of individuals in
+the total population represented by each observation.</p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -190,6 +193,15 @@ categories:</p>
 <li>“london”</li>
 <li>“south_east”</li>
 <li>“south_west”</li>
+<li>“wales”</li>
+<li>“scotland”</li>
+<li>“northern_ireland”</li>
+</ul>
+</li>
+<li>
+<p><strong>d_country</strong> (factor) country:</p>
+<ul>
+<li>“england”</li>
 <li>“wales”</li>
 <li>“scotland”</li>
 <li>“northern_ireland”</li>
@@ -344,17 +356,29 @@ category:</p>
 </ul>
 </li>
 <li><p><strong>l_grss_earnings_usual</strong> (numeric) nominal gross
-earnings per month from employment (usual pay) plus
-self-employment</p></li>
+earnings per month from employment (usual pay) plus self-employment
+earnings.</p></li>
 <li><p><strong>l_grss_earnings_last</strong> (numeric) nominal gross
 earnings per month from employment (last received payment) plus
-self-employment</p></li>
+self-employment earnings.</p></li>
+<li><p><strong>l_grss_earnings_usual_empl</strong> (numeric) nominal
+gross earnings per month from employment (usual pay).</p></li>
+<li><p><strong>l_grss_earnings_last_empl</strong> (numeric) nominal
+gross earnings per month from employment (last received
+payment).</p></li>
 <li><p><strong>l_real_grss_earnings_usual</strong> (numeric) real gross
-earnings per month from employment (usual pay) plus
-self-employment</p></li>
+earnings per month from employment (usual pay) plus self-employment
+earnings.</p></li>
 <li><p><strong>l_real_grss_earnings_last</strong> (numeric) real gross
 earnings per month from employment (last received payment) plus
-self-employment</p></li>
+self-employment earnings.</p></li>
+<li><p><strong>l_real_grss_earnings_usual_empl</strong> (numeric) real
+gross earnings per month from employment (usual pay).</p></li>
+<li><p><strong>l_real_grss_earnings_last_empl</strong> (numeric) real
+gross earnings per month from employment (last received
+payment).</p></li>
+<li><p><strong>l_real_grss_earnings_usual_semp</strong> (numeric) real
+gross earnings per month from self-employment.</p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -364,7 +388,7 @@ self-employment</p></li>
 <p>Variables produced by the work module <code>ukhls_clean_work</code>.
 Variables in this category are prefixed with a <code>w_</code></p>
 <ul>
-<li><p><strong>w_hours_emp</strong> (numeric) usual weekly hours worked
+<li><p><strong>w_hours_empl</strong> (numeric) usual weekly hours worked
 in employment.</p></li>
 <li><p><strong>w_hours_semp</strong> (numeric) usual weekly hours worked
 in self-employment.</p></li>
@@ -551,7 +575,7 @@ smokers in the household? <strong>(waves 2, 5-11)</strong>:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

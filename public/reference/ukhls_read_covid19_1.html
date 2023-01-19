@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -59,22 +59,27 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ukhls_read_covid19_1</span><span class="op">(</span>
-  root <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C:/"</span><span class="op">)</span>,
-  path <span class="op">=</span> <span class="st">"Users/User/Documents/Datasets/UKHLS/tab/"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ukhls_read_covid19_1</span><span class="op">(</span></span>
+<span>  root <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C:/"</span><span class="op">)</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"Users/User/Documents/Datasets/UKHLS/tab/"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>root</dt>
 <dd><p>Character - the root directory.</p></dd>
+
+
 <dt>path</dt>
 <dd><p>Character - the file path and name.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a data table. Note that:</p><ul><li><p>Missing data ("NA", "", "-1", "-2", "-6", "-7", "-9", "-90", "-90.0", "N/A") is replace with NA,
+    
+
+<p>Returns a data table. Note that:</p><ul><li><p>Missing data ("NA", "", "-1", "-2", "-6", "-7", "-9", "-90", "-90.0", "N/A") is replace with NA,
 except -8 ("don't know") as this is data.</p></li>
 <li><p>All variable names are converted to lower case.</p></li>
 <li><p>Each data point is assigned a weight of 1 as there is no weight variable supplied.</p></li>
@@ -106,7 +111,7 @@ usually because of internal routing. For example, men in women only questions.</
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -4,7 +4,10 @@
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/404.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/LICENSE-text.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/index.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/authors.html</loc>
@@ -13,7 +16,7 @@
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/index.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/CoefficientMatrix.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/LICENSE-text.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/clean_alcohol.html</loc>
@@ -40,6 +43,9 @@
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/clean_smoke.html</loc>
   </url>
   <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/CoefficientMatrix.html</loc>
+  </url>
+  <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/combine_waves.html</loc>
   </url>
   <url>
@@ -49,13 +55,49 @@
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/eq5d.html</loc>
   </url>
   <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/gen_scaling_factor.html</loc>
+  </url>
+  <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/PopulationCounts.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/select_data.html</loc>
   </url>
   <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhlsclean.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhlsclean_2020.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_alcohol.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_demographic.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_econstat.html</loc>
+  </url>
+  <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_global.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_health.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_hhold.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_smoke.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_work.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_combine_waves.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_covid19_1.html</loc>
@@ -71,6 +113,9 @@
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_wave11.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_wave12.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_wave2.html</loc>
@@ -95,41 +140,5 @@
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_wave9.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhlsclean.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_alcohol.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_demographic.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_econstat.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_health.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_hhold.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_smoke.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_combine_waves.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_read_wave12.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_work.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html</loc>
   </url>
 </urlset>

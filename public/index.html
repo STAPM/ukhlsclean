@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -97,20 +97,20 @@
 <p><code>ukhlsclean</code> is currently available only to members of the project team. To access you need to <a href="https://gitlab.com/" class="external-link">sign-up for a GitLab account</a>. You will then need to be added to the SPECTRUM project team to gain access. If you are on a Windows machine you will also need to <a href="https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools" class="external-link">install Rtools</a>.<br>
 Once that is sorted, you can install the latest version or a specified version from GitLab with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#install.packages("devtools")</span>
-<span class="co">#install.packages("getPass")</span>
-<span class="co">#install.packages("git2r")</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_git</a></span><span class="op">(</span>
-  <span class="st">"https://gitlab.com/stapm/r-packages/ukhlsclean.git"</span>, 
-  credentials <span class="op">=</span> <span class="fu">git2r</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/git2r/reference/cred_user_pass.html" class="external-link">cred_user_pass</a></span><span class="op">(</span><span class="st">"uname"</span>, <span class="fu">getPass</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/getPass/man/getPass.html" class="external-link">getPass</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-  ref <span class="op">=</span> <span class="st">"x.x.x"</span>,
-  build_vignettes <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="co"># Where uname is your Gitlab user name.</span>
-<span class="co"># ref is the version you want to install - remove for the latest version</span>
-<span class="co"># this should make a box pop up where you enter your GitLab password</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#install.packages("devtools")</span></span>
+<span><span class="co">#install.packages("getPass")</span></span>
+<span><span class="co">#install.packages("git2r")</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://gitlab.com/stapm/r-packages/ukhlsclean.git"</span>, </span>
+<span>  credentials <span class="op">=</span> <span class="fu">git2r</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/git2r/reference/cred_user_pass.html" class="external-link">cred_user_pass</a></span><span class="op">(</span><span class="st">"uname"</span>, <span class="fu">getPass</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/getPass/man/getPass.html" class="external-link">getPass</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  ref <span class="op">=</span> <span class="st">"x.x.x"</span>,</span>
+<span>  build_vignettes <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Where uname is your Gitlab user name.</span></span>
+<span><span class="co"># ref is the version you want to install - remove for the latest version</span></span>
+<span><span class="co"># this should make a box pop up where you enter your GitLab password</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -120,26 +120,26 @@ Once that is sorted, you can install the latest version or a specified version f
 <p>A typical workflow for using the package looks as follows. The package consists of a number of subfunctions, all of which are subsumed by a single global function <code>ukhlsclean</code>, and the behaviour of the sub-functions governed by the arguments to this global function.</p>
 <p>For a comprehensive list of the variables which are currently produced by the package, see the <a href="https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html">online variable codebook</a></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#####################</span>
-<span class="co">### Define arguments </span>
-
-<span class="va">root</span> <span class="op">&lt;-</span> <span class="st">"C:/"</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="st">"Documents/Datasets/UKHLS/tab"</span>
-<span class="va">waves</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span>
-<span class="va">ages</span> <span class="op">&lt;-</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>
-<span class="va">keep_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-<span class="va">complete_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-
-<span class="co">########################</span>
-<span class="co">### Read in and combine waves of USoc data</span>
-
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ukhlsclean.html">ukhlsclean</a></span><span class="op">(</span>root <span class="op">=</span> <span class="va">root</span>,
-                   file <span class="op">=</span> <span class="va">file</span>,
-                   waves <span class="op">=</span> <span class="va">waves</span>,
-                   ages <span class="op">=</span> <span class="va">ages</span>,
-                   keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,
-                   complete_vars <span class="op">=</span> <span class="va">complete_vars</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co">#####################</span></span>
+<span><span class="co">### Define arguments </span></span>
+<span></span>
+<span><span class="va">root</span> <span class="op">&lt;-</span> <span class="st">"C:/"</span></span>
+<span><span class="va">file</span> <span class="op">&lt;-</span> <span class="st">"Documents/Datasets/UKHLS/tab"</span></span>
+<span><span class="va">waves</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span></span>
+<span><span class="va">ages</span> <span class="op">&lt;-</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span></span>
+<span><span class="va">keep_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="va">complete_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span><span class="co">########################</span></span>
+<span><span class="co">### Read in and combine waves of USoc data</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ukhlsclean.html">ukhlsclean</a></span><span class="op">(</span>root <span class="op">=</span> <span class="va">root</span>,</span>
+<span>                   file <span class="op">=</span> <span class="va">file</span>,</span>
+<span>                   waves <span class="op">=</span> <span class="va">waves</span>,</span>
+<span>                   ages <span class="op">=</span> <span class="va">ages</span>,</span>
+<span>                   keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,</span>
+<span>                   complete_vars <span class="op">=</span> <span class="va">complete_vars</span><span class="op">)</span></span></code></pre></div>
 <p>The <strong>output</strong> of these functions are a single data table of processed Understanding Society data, sorted by individual and wave</p>
 <div class="section level3">
 <h3 id="projects">Projects<a class="anchor" aria-label="anchor" href="#projects"></a>
@@ -204,7 +204,7 @@ Once that is sorted, you can install the latest version or a specified version f
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

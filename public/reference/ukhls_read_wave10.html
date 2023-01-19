@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -59,25 +59,38 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ukhls_read_wave10</span><span class="op">(</span>
-  root <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C:/"</span><span class="op">)</span>,
-  file <span class="op">=</span> <span class="st">"Users/cm1djm/Documents/Datasets/UKHLS/tab/"</span>,
-  full <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ukhls_read_wave10</span><span class="op">(</span></span>
+<span>  root <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C:/"</span><span class="op">)</span>,</span>
+<span>  file <span class="op">=</span> <span class="st">"Users/cm1djm/Documents/Datasets/UKHLS/tab/"</span>,</span>
+<span>  full <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
+    <div id="source">
+    <h2>Source</h2>
+    <p>University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
+and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK Data Service. SN: 6614,
+<a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6614" class="external-link">DOI: 10.5255/UKDA-SN-6614-18</a></p>
+    </div>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>root</dt>
 <dd><p>Character - the root directory.</p></dd>
+
+
 <dt>file</dt>
 <dd><p>Character - the file path and name.</p></dd>
+
+
 <dt>full</dt>
 <dd><p>Logical - TRUE if restricting the sample to full interviews only (excluding proxies)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a data table. Note that:</p><ul><li><p>Missing data ("NA", "", "-1", "-2", "-6", "-7", "-9", "-90", "-90.0", "N/A") is replace with NA,
+    
+
+<p>Returns a data table. Note that:</p><ul><li><p>Missing data ("NA", "", "-1", "-2", "-6", "-7", "-9", "-90", "-90.0", "N/A") is replace with NA,
 except -8 ("don't know") as this is data.</p></li>
 <li><p>All variable names are converted to lower case.</p></li>
 <li><p>Each data point is assigned a weight of 1 as there is no weight variable supplied.</p></li>
@@ -108,7 +121,7 @@ usually because of internal routing. For example, men in women only questions.</
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

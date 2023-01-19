@@ -18,7 +18,7 @@ for specified variables."><meta property="og:image" content="https://stapm.gitla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.2</span>
       </span>
     </div>
 
@@ -61,33 +61,57 @@ for specified variables.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">select_data</span><span class="op">(</span><span class="va">data</span>, ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>, keep_vars <span class="op">=</span> <span class="cn">NULL</span>, complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">select_data</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>,</span>
+<span>  country <span class="op">=</span> <span class="st">"UK"</span>,</span>
+<span>  keep_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span><span class="op">)</span>,</span>
+<span>  <span class="va">calendar_year</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data table - the cleaned Understanding Society dataset.</p></dd>
+
+
 <dt>ages</dt>
 <dd><p>Integer vector - the ages in single years to retain (defaults to 16 to 89 years).</p></dd>
+
+
+<dt>country</dt>
+<dd><p>Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.</p></dd>
+
+
 <dt>keep_vars</dt>
 <dd><p>Character vector - the names of the variables to keep (defaults to year and age).</p></dd>
+
+
 <dt>complete_vars</dt>
 <dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year and age).</p></dd>
+
+
+<dt>calendar_year</dt>
+<dd><p>Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a reduced version of data</p>
+    
+
+<p>Returns a reduced version of data</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -102,7 +126,7 @@ for specified variables.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
