@@ -71,6 +71,12 @@ ukhls_clean_global <- function(data,
 
   work <- ukhlsclean::ukhls_clean_work(data = data)
 
+  ### benefits
+
+  cat(crayon::red("\n\t\tBenefits variables module\n"))
+
+  benefit <- ukhlsclean:::ukhls_clean_benefit(data = data)
+
   ### household
 
   cat(crayon::red("\n\t\tFamily and household variables module\n\n"))
@@ -86,6 +92,7 @@ ukhls_clean_global <- function(data,
   merged_data <- merge(merged_data, smoke,      by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, lmkt,       by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, work,       by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, benefit,    by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, hhold,      by = c("id", "hidp", "wave_no"))
 
   ######################
