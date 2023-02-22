@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+*.tab
+test_code/build_script.R
