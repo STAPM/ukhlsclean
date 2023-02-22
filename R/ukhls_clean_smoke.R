@@ -85,14 +85,53 @@ ukhls_clean_smoke <- function(data = NULL) {
   data[, othersmoker_hhold := NA]
   }
 
+  #######################################################
+  #### Number of cigarettes smoked by current smokers
+
+  if ("ncigs" %in% colnames(data)) {
+
+  data[, ncigs := ncigs]
+
+  } else {
+
+    data[, ncigs := NA]
+  }
+
+  #######################################################
+  #### e-cigarette use (WAVES 7 - 12)
+
+  if ("ecigs" %in% colnames(data)){
+    data[ecigs %in% 1, ecig := "never_used_ecig"]
+    data[ecigs %in% 2:3, ecig := "not_currently_using_ecig"]
+    data[ecigs %in% 4:5, ecig := "infrequent_ecig_use"]
+    data[ecigs %in% 6, ecig := "frequent_ecig_use"]
+
+  } else {
+
+    data[, ecig := NA]
+  }
+
+
+
+  if ("ecigs" %in% colnames(data)){
+    data[ecigs %in% 1:3, ecig_current := "non_ecig_user"]
+    data[ecigs %in% 4:6, ecig_current := "ecig_user"]
+
+  } else {
+
+    data[, ecig_current := NA]
+  }
+
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "current_smoker", "ever_smoked", "smk_age_start", "othersmoker_hhold")]
+                         "current_smoker", "ncigs", "ever_smoked", "smk_age_start", "othersmoker_hhold",
+                         "ecig", "ecig_current")]
 
-  var_names <- c("current_smoker", "ever_smoked", "smk_age_start", "othersmoker_hhold")
+  var_names <- c("current_smoker", "ncigs", "ever_smoked", "smk_age_start", "othersmoker_hhold",
+                 "ecig", "ecig_current")
 
   setnames(final_data, var_names, paste0("s_", var_names))
 
