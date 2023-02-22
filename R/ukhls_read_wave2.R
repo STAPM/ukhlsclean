@@ -1,17 +1,17 @@
 #' Read Understanding Society Wave 2
 #'
-#' Reads and does basic cleaning on the UKHLS second wave.
+#' Reads and performs basic cleaning operations on the UKHLS second wave. Missing values as detailed below are all set to NA.
 #'
 #' MISSING VALUES
 #'
 #' \itemize{
-#' \item -1 Don't know.
-#' \item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-#' respondent refused a particular measurement or test or the measurement was attempted but not
+#' \item -1 Don't know. When the respondent does not know the answer to a question.
+#' \item -2 Refused: When the respondent refuses to answer a question.
+#' \item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 #' obtained or not attempted.
 #' \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 #' usually because of internal routing. For example, men in women only questions.
-#' \item -9 Missing
+#' \item -9 Missing by error or implausible answer.
 #' }
 #'
 #' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
@@ -163,11 +163,11 @@ ukhls_read_wave2 <- function(
                          ## second job
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
-                         "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
-                         "jbseek_allowance","NI_credits","non_btype1","incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","RTW_credit","attend_allowance",
-                         "injury_ben","war_pension","sick.accident_insurance","otherdis_pay","non_bendis",
+                         "btype1","btype2","btype3","btype4","btype5","btype6","btype7","btype8","btype9","btype96",
+                         "benunemp1","benunemp2","benunemp96","bendis1","bendis2","bendis3","bendis4","bendis5","bendis6","bendis7",
+                         "bendis8","bendis9","bendis10","bendis11","bendis96",
                          ## pensions
-                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","benpen8","non_benpen",
                          ## receivables
                          "income_serps","ben_childben","ben_childtaxcred","benfam_fosterguard","benfam_mat","benfam_alimony","benfam_lone","benfam_fampay",
                          "non_benfam","bentax_work","bentax_council","bentax_pencred","bentax_childtaxcred","bentax_rtw","non_bentax","benhou_house",

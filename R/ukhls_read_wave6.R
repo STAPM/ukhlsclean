@@ -1,17 +1,17 @@
 #' Read Understanding Society Wave 6
 #'
-#' Reads and does basic cleaning on the UKHLS sixth wave.
+#' Reads and performs basic cleaning operations on the UKHLS sixth wave. Missing values as detailed below are all set to NA.
 #'
 #' MISSING VALUES
 #'
 #' \itemize{
-#' \item -1 Don't know.
-#' \item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-#' respondent refused a particular measurement or test or the measurement was attempted but not
+#' \item -1 Don't know. When the respondent does not know the answer to a question.
+#' \item -2 Refused: When the respondent refuses to answer a question.
+#' \item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 #' obtained or not attempted.
 #' \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 #' usually because of internal routing. For example, men in women only questions.
-#' \item -9 Missing
+#' \item -9 Missing by error or implausible answer.
 #' }
 #'
 #' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
@@ -65,11 +65,15 @@ ukhls_read_wave6 <- function(
   s.emp_vars       <- Hmisc::Cs(f_jshrs, f_jspayu, f_jspytx, f_jspyni)
   non.emp_vars     <- Hmisc::Cs(f_jbhad)
   job2_vars        <- Hmisc::Cs(f_j2has, f_j2semp, f_j2hrs, f_j2pay)
-  benefits_vars    <- Hmisc::Cs(f_bendis1, f_bendis2, f_bendis3, f_bendis4, f_bendis5, f_bendis12,
+  benefits_vars    <- Hmisc::Cs(f_benbase1, f_benbase2, f_benbase3, f_benbase4, f_benbase96,
+                                f_benctc)
+  pension_vars     <- Hmisc::Cs(f_benpen1, f_benpen2, f_benpen3, f_benpen4, f_benpen5, f_benpen6, f_benpen7, f_benpen8, f_benpen96,
+                                f_niserps)
+  bendis_vars      <- Hmisc::Cs(f_bendis1, f_bendis2, f_bendis3, f_bendis4, f_bendis5, f_bendis12,
                                 f_bendis7, f_bendis8, f_bendis10, f_bendis97, f_bendis96)
-  pension_vars     <- Hmisc::Cs(f_benpen1, f_benpen2, f_benpen3, f_benpen4, f_benpen5, f_benpen6, f_benpen7, f_benpen8, f_benpen96)
-  receivables_vars <- Hmisc::Cs(f_niserps, f_benctc,
-                                f_bensta2, f_bensta3, f_bensta4, f_bensta5, f_bensta6, f_bensta7, f_bensta97, f_bensta96)
+  otherben_vars    <- Hmisc::Cs(f_benesa,
+                                f_othben1, f_othben2, f_othben3, f_othben4, f_othben5, f_othben6, f_othben7, f_othben8, f_othben9, f_othben97, f_othben96)
+  benincome_vars   <- Hmisc::Cs(f_bensta2, f_bensta3, f_bensta4, f_bensta5, f_bensta6, f_bensta7, f_bensta97, f_bensta96)
   hhfinance_vars   <- Hmisc::Cs(f_fiyrdia, f_fiyrdb1, f_fiyrdb2, f_fiyrdb3, f_fiyrdb4, f_fiyrdb5, f_fiyrdb6, f_finnow, f_finfut)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
   health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
@@ -86,7 +90,8 @@ ukhls_read_wave6 <- function(
   weight_vars      <- Hmisc::Cs(f_indinus_lw, f_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, receivables_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars,
+             benefits_vars, pension_vars, bendis_vars, otherben_vars, benincome_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -112,12 +117,18 @@ ukhls_read_wave6 <- function(
                          ## second job
                          "f_j2has","f_j2semp","f_j2hrs","f_j2pay",
                          ## benefits
-                         "f_bendis1","f_bendis2","f_bendis3","f_bendis4","f_bendis5","f_bendis12",
-                         "f_bendis7","f_bendis8","f_bendis10","f_bendis97","f_bendis96",
+                         "f_benbase1","f_benbase2","f_benbase3","f_benbase4","f_benbase96",
+                         "f_benctc",
                          ## pensions
                          "f_benpen1","f_benpen2","f_benpen3","f_benpen4","f_benpen5","f_benpen6","f_benpen7","f_benpen8","f_benpen96",
-                         ## receivables
-                         "f_niserps","f_benctc",
+                         "f_niserps",
+                         ## disability benefits
+                         "f_bendis1","f_bendis2","f_bendis3","f_bendis4","f_bendis5","f_bendis12",
+                         "f_bendis7","f_bendis8","f_bendis10","f_bendis97","f_bendis96",
+                         ## other benefits
+                         "f_benesa","f_othben1","f_othben2","f_othben3","f_othben4","f_othben5","f_othben6",
+                         "f_othben7","f_othben8","f_othben9","f_othben97","f_othben96",
+                         ## benefit income variables
                          "f_bensta2","f_bensta3","f_bensta4","f_bensta5","f_bensta6","f_bensta7","f_bensta97","f_bensta96",
                          ## household finance variables (interest and dividends)
                          "f_fiyrdia","f_fiyrdb1","f_fiyrdb2","f_fiyrdb3","f_fiyrdb4","f_fiyrdb5","f_fiyrdb6","f_finnow","f_finfut",
@@ -159,12 +170,18 @@ ukhls_read_wave6 <- function(
                          ## second job
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
-                         "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
-                         "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
+                         "benbase1","benbase2","benbase3","benbase4","benbase96",
+                         "benctc",
                          ## pensions
-                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
-                         ## receivables
-                         "income_serps","ben_childtaxcred",
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","benpen8","non_benpen",
+                         "income_serps",
+                         ## disability benefits
+                         "bendis1","bendis2","bendis3","bendis4","bendis5","bendis12",
+                         "bendis7","bendis8","bendis10","bendis97","bendis96",
+                         ## other benefits
+                         "benesa","othben1","othben2","othben3","othben4","othben5","othben6",
+                         "othben7","othben8","othben9","othben97","othben96",
+                         ## benefit income variables
                          "bensta_edugrant","bensta_tupay","bensta_alimony","bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
                          ## household finance variables
                          "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",

@@ -1,17 +1,17 @@
 #' Read Understanding Society Wave 11
 #'
-#' Reads and does basic cleaning on the UKHLS eleventh wave.
+#' Reads and performs basic cleaning operations on the UKHLS eleventh wave. Missing values as detailed below are all set to NA.
 #'
 #' MISSING VALUES
 #'
 #' \itemize{
-#' \item -1 Don't know.
-#' \item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-#' respondent refused a particular measurement or test or the measurement was attempted but not
+#' \item -1 Don't know. When the respondent does not know the answer to a question.
+#' \item -2 Refused: When the respondent refuses to answer a question.
+#' \item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 #' obtained or not attempted.
 #' \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 #' usually because of internal routing. For example, men in women only questions.
-#' \item -9 Missing
+#' \item -9 Missing by error or implausible answer.
 #' }
 #'
 #' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
@@ -168,17 +168,17 @@ ukhls_read_wave11 <- function(
                          ## second job
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
-                         "incomesupp_ben","jbseek_allowance","ben_childben","universal_credit","no_benbase",
-                         "ben_childtaxcred",
+                         "benbase1","benbase2","benbase3","benbase4","benbase96",
+                         "benctc",
                          ## pensions
-                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","benpen8","non_benpen",
                          "income_serps",
                          ## disability benefits
-                         "incap_ben","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay","attend_allowance",
-                         "injury_ben","sick.accident_insurance","otherdis_pay","non_bendis",
+                         "bendis1","bendis2","bendis3","bendis4","bendis5","bendis12",
+                         "bendis7","bendis8","bendis10","bendis97","bendis96",
                          ## other benefits
-                         "employ_supp_allowance",
-                         "foster_allowance","mat_allowance","inwork_cred","RTW_cred","workingtax_cred","counciltax_ben","rate_rebate","housing_ben","rent_rebate","othben_other","non_othben",
+                         "benesa","othben1","othben2","othben3","othben4","othben5","othben6",
+                         "othben7","othben8","othben9","othben97","othben96",
                          ## benefit income variables (formerly receivables)
                          "bensta_edugrant","bensta_tupay","bensta_alimony","bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
                          ## household finance variables

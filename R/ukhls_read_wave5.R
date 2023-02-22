@@ -1,17 +1,17 @@
 #' Read Understanding Society Wave 5
 #'
-#' Reads and does basic cleaning on the UKHLS fifth wave.
+#' Reads and performs basic cleaning operations on the UKHLS fifth wave. Missing values as detailed below are all set to NA.
 #'
 #' MISSING VALUES
 #'
 #' \itemize{
-#' \item -1 Don't know.
-#' \item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-#' respondent refused a particular measurement or test or the measurement was attempted but not
+#' \item -1 Don't know. When the respondent does not know the answer to a question.
+#' \item -2 Refused: When the respondent refuses to answer a question.
+#' \item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 #' obtained or not attempted.
 #' \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 #' usually because of internal routing. For example, men in women only questions.
-#' \item -9 Missing
+#' \item -9 Missing by error or implausible answer.
 #' }
 #'
 #' @source University of Essex, Institute for Social and Economic Research. (2022). Understanding Society: Waves 1-12, 2009-2021
@@ -66,12 +66,12 @@ ukhls_read_wave5 <- function(
   non.emp_vars     <- Hmisc::Cs(e_jbhad)
   job2_vars        <- Hmisc::Cs(e_j2has, e_j2semp, e_j2hrs, e_j2pay)
   benefits_vars    <- Hmisc::Cs(e_btype1, e_btype2, e_btype3, e_btype4, e_btype5, e_btype6, e_btype7, e_btype8, e_btype9, e_btype96,
-                                e_benunemp1, e_benunemp2, e_benunemp96, e_bendis1, e_bendis11, e_bendis2, e_bendis3, e_bendis4, e_bendis5, e_bendis12,
+                                e_benunemp1, e_benunemp2, e_benunemp3, e_benunemp96, e_bendis1, e_bendis11, e_bendis2, e_bendis3, e_bendis4, e_bendis5, e_bendis12,
                                 e_bendis6, e_bendis7, e_bendis8, e_bendis9, e_bendis10, e_bendis96, e_bendis97)
   pension_vars     <- Hmisc::Cs(e_benpen1, e_benpen2, e_benpen3, e_benpen4, e_benpen5, e_benpen6, e_benpen7, e_benpen8, e_benpen96)
   receivables_vars <- Hmisc::Cs(e_niserps, e_bencb, e_benctc, e_benfam1, e_benfam2, e_benfam3, e_benfam4, e_benfam5,
                                 e_benfam96, e_bentax1, e_bentax2, e_bentax3, e_bentax4, e_bentax5, e_bentax96, e_benhou1,
-                                e_benhou2, e_benhou3, e_benhou4, e_benhou96, e_bensta1, e_bensta2, e_bensta3, e_bensta4,
+                                e_benhou2, e_benhou3, e_benhou4, e_benhou5, e_benhou96, e_bensta1, e_bensta2, e_bensta3, e_bensta4,
                                 e_bensta5, e_bensta6, e_bensta7, e_bensta96, e_bensta97)
   hhfinance_vars   <- Hmisc::Cs(e_fiyrdia, e_fiyrdb1, e_fiyrdb2, e_fiyrdb3, e_fiyrdb4, e_fiyrdb5, e_fiyrdb6, e_finnow, e_finfut)
   education_vars   <- Hmisc::Cs(e_hiqual_dv)
@@ -114,7 +114,7 @@ ukhls_read_wave5 <- function(
                          "e_j2has","e_j2semp","e_j2hrs","e_j2pay",
                          ## benefits
                          "e_btype1","e_btype2","e_btype3","e_btype4","e_btype5","e_btype6","e_btype7","e_btype8","e_btype9","e_btype96",
-                         "e_benunemp1","e_benunemp2","e_benunemp96",
+                         "e_benunemp1","e_benunemp2","e_benunemp3","e_benunemp96",
                          "e_bendis1","e_bendis11","e_bendis2","e_bendis3","e_bendis4","e_bendis5","e_bendis12",
                          "e_bendis6","e_bendis7","e_bendis8","e_bendis9","e_bendis10","e_bendis96","e_bendis97",
                          ## pensions
@@ -122,7 +122,7 @@ ukhls_read_wave5 <- function(
                          ## receivables
                          "e_niserps","e_bencb","e_benctc","e_benfam1","e_benfam2","e_benfam3","e_benfam4","e_benfam5",
                          "e_benfam96","e_bentax1","e_bentax2","e_bentax3","e_bentax4","e_bentax5","e_bentax96","e_benhou1",
-                         "e_benhou2","e_benhou3","e_benhou4","e_benhou96","e_bensta1","e_bensta2","e_bensta3","e_bensta4",
+                         "e_benhou2","e_benhou3","e_benhou4","e_benhou5","e_benhou96","e_bensta1","e_bensta2","e_bensta3","e_bensta4",
                          "e_bensta5","e_bensta6","e_bensta7","e_bensta96","e_bensta97",
                          ## household finance variables (interest and dividends)
                          "e_fiyrdia","e_fiyrdb1","e_fiyrdb2","e_fiyrdb3","e_fiyrdb4","e_fiyrdb5","e_fiyrdb6","e_finnow","e_finfut",
@@ -161,16 +161,16 @@ ukhls_read_wave5 <- function(
                          ## second job
                          "2ndjb","2ndjb_s.emp","2ndjb_hours","2ndjob_pay",
                          ## benefits
-                         "unemp_ben","incomesupp_ben","sickdis_ben","pension_ben","child_ben","taxcred_ben","family_ben","counciltax_ben","otherstate_ben","no_ben",
-                         "jbseek_allowance","NI_credits","non_btype1",
-                         "incap_ben","universal_cred","empsupport_allowance","severedisab_allowance","carers_allowance","disliving_allowance","pers.indep_pay",
-                         "RTW_credit","attend_allowance","injury_ben","war_pension","sick.accident_insurance","non_bendis","otherdis_pay",
+                         "btype1","btype2","btype3","btype4","btype5","btype6","btype7","btype8","btype9","btype96",
+                         "benunemp1","benunemp2","benunemp3","benunemp96",
+                         "bendis1","bendis11","bendis2","bendis3","bendis4","bendis5","bendis12",
+                         "bendis6","bendis7","bendis8","bendis9","bendis10","bendis96","bendis97",
                          ## pensions
-                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","war_pen","non_benpen",
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","benpen8","non_benpen",
                          ## receivables
                          "income_serps","ben_childben","ben_childtaxcred","benfam_fosterguard","benfam_mat","benfam_alimony","benfam_lone","benfam_fampay",
                          "non_benfam","bentax_work","bentax_council","bentax_pencred","bentax_childtaxcred","bentax_rtw","non_bentax","benhou_house",
-                         "benhou_counciltax","benhou_rentreb","benhou_ratereb","non_benhou","bensta_prvtpen","bensta_edugrant","bensta_tupay","bensta_alimony",
+                         "benhou_counciltax","benhou_rentreb","benhou_ratereb","benhou5","non_benhou","bensta_prvtpen","bensta_edugrant","bensta_tupay","bensta_alimony",
                          "bensta_fampay","bensta_rentlodge","bensta_rentother","non_bensta","bensta_other",
                          ## household finance variables
                          "fiyrdia","fiyrdb1","fiyrdb2","fiyrdb3","fiyrdb4","fiyrdb5","fiyrdb6","finnow","finfut",

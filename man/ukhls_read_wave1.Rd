@@ -34,10 +34,10 @@ except -8 ("don't know") as this is data.
 }
 }
 \description{
-Reads and does basic cleaning on the UKHLS first wave.
+Reads and performs basic cleaning operations on the UKHLS first wave. Missing values as detailed below are all set to NA.
 }
 \details{
-A sample of the population living in private households. All persons living in the house, including those
+A sample of the population living in private households. All persons living in the household, including those
 under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
 two children were selected at random. Information was obtained directly from persons aged 13 and
 over. Information about children aged 0-12 was obtained from a parent, with the child present.
@@ -45,12 +45,12 @@ over. Information about children aged 0-12 was obtained from a parent, with the 
 MISSING VALUES
 
 \itemize{
-\item -1 Don't know.
-\item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-respondent refused a particular measurement or test or the measurement was attempted but not
+\item -1 Don't know. When the respondent does not know the answer to a question.
+\item -2 Refused: When the respondent refuses to answer a question.
+\item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 obtained or not attempted.
 \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 usually because of internal routing. For example, men in women only questions.
-\item -9 Missing
+\item -9 Missing by error or implausible answer.
 }
 }

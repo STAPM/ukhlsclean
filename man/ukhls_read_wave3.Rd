@@ -11,7 +11,7 @@ and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK 
 \usage{
 ukhls_read_wave3(
   root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
   full = TRUE
 )
 }
@@ -34,18 +34,18 @@ except -8 ("don't know") as this is data.
 }
 }
 \description{
-Reads and does basic cleaning on the UKHLS third wave.
+Reads and performs basic cleaning operations on the UKHLS third wave. Missing values as detailed below are all set to NA.
 }
 \details{
 MISSING VALUES
 
 \itemize{
-\item -1 Don't know.
-\item -2 Refused: Used only for variables on the nurse schedules, this code indicates that a
-respondent refused a particular measurement or test or the measurement was attempted but not
+\item -1 Don't know. When the respondent does not know the answer to a question.
+\item -2 Refused: When the respondent refuses to answer a question.
+\item -7 Proxy: A question not included in the subset of questions asked of proxy respondents.
 obtained or not attempted.
 \item -8 Not applicable: Used to signify that a particular variable did not apply to a given respondent
 usually because of internal routing. For example, men in women only questions.
-\item -9 Missing
+\item -9 Missing by error or implausible answer.
 }
 }
