@@ -296,7 +296,7 @@ Variables produced by the alcohol and drinking module `ukhls_clean_alcohol`. Var
 
 Variables produced by the tobacco and smoking module `ukhls_clean_smoke`. Variables in this category are prefixed with a `s_`. 
 
-- __s_current_smoker__  (factor) currently smokes __(waves 2, 5-11)__:
+- __s_current_smoker__  (factor) currently smokes __(waves 2, 5-12)__:
   - "non_smoker"
   - "smoker"
 
@@ -306,6 +306,17 @@ Variables produced by the tobacco and smoking module `ukhls_clean_smoke`. Variab
 
 - __s_smk_age_start__  (numeric) age started smoking regularly __(waves 2, 5)__:
   
-- __s_othersmoker_hhold__  (factor) are there other smokers in the household? __(waves 2, 5-11)__:
+- __s_othersmoker_hhold__  (factor) are there other smokers in the household? __(waves 2, 5-12)__:
   - "no"
   - "yes"
+  
+- __s_ecig__ (factor) e-cigarette user __(waves 7-12)__;
+  - "never_used_ecig" - has never tried an e-cigarette.
+  - "not_currently_using_ecig" - has used or tried e-cigarettes in the past but not a current user.
+  - "infrequent_ecig_use" - uses e-cigarettes but less than once a week.
+  - "frequent_ecig_use" - uses e-cigarettes at least once a week. 
+  
+- __s_ecig_current__ (factor) e-cigarette user __(waves 7-12)__;
+  - "non_ecig_user" - not a current user of e-cigarettes.
+  - "ecig_user" - currently uses e-cigarettes (including infrequent use as defined in __s_ecig__).
+
