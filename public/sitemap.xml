@@ -10,6 +10,9 @@
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/articles/USoc_calendar_year_data_check.html</loc>
+  </url>
+  <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/authors.html</loc>
   </url>
   <url>
@@ -17,6 +20,9 @@
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/bhps_read_all.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/clean_alcohol.html</loc>
@@ -74,6 +80,9 @@
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_alcohol.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_benefit.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/ukhlsclean/reference/ukhls_clean_demographic.html</loc>

@@ -46,6 +46,7 @@ reference:
   - ukhls_clean_alcohol
   - ukhls_clean_smoke
   - ukhls_clean_work
+  - ukhls_clean_benefit
   - ukhls_combine_waves
   - select_data
   - eq5d
@@ -53,6 +54,7 @@ reference:
 
 - title: Raw data reading functions
   contents:
+  - bhps_read_all
   - ukhls_read_wave1
   - ukhls_read_wave2
   - ukhls_read_wave3
@@ -75,9 +77,9 @@ reference:
   - PopulationCounts
 
 articles:
-- title: Variable codebook
+- title: Variables and Data Checks
   contents:
   - codebook
-
+  - USoc_calendar_year_data_check
 
 
