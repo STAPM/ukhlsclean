@@ -47,7 +47,7 @@ version from GitLab with:
 #install.packages("git2r")
 
 devtools::install_git(
-  "https://gitlab.com/stapm/r-packages/ukhlsclean.git", 
+  "https://github.com/STAPM/ukhlsclean", 
   credentials = git2r::cred_user_pass("uname", getPass::getPass()),
   ref = "x.x.x",
   build_vignettes = FALSE
@@ -60,9 +60,10 @@ devtools::install_git(
 
 ## Citation
 
-Morris D, Kai Le Chen, R (2023). ukhlsclean: An R Package for Health
+Morris D, and Kai Le Chen, R (2023). ukhlsclean: An R Package for Health
 Survey Data Wrangling. R package version \[x.x.x\]. University of
-Sheffield. doi: <https://doi.org/10.17605/OSF.IO/6K9NV>
+Sheffield. <https://github.com/STAPM/ukhlsclean> . doi:
+<https://doi.org/10.17605/OSF.IO/6K9NV>
 
 ## Projects
 
