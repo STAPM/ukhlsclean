@@ -67,12 +67,22 @@ ukhlsclean_2020 <- function(
                                 jkl_scsf6b, jkl_scsf6c, jkl_scsf7)
   preg_vars        <- Hmisc::Cs(jkl_pregout1, jkl_pregout2)
   smoke_vars       <- Hmisc::Cs(jkl_smoker, jkl_ncigs)
+  benefits_vars    <- Hmisc::Cs(jkl_benbase1, jkl_benbase2, jkl_benbase3, jkl_benbase4, jkl_benbase96,
+                                jkl_benctc)
+  pension_vars     <- Hmisc::Cs(jkl_benpen1, jkl_benpen2, jkl_benpen3, jkl_benpen4, jkl_benpen5, jkl_benpen6, jkl_benpen7, jkl_benpen8, jkl_benpen96)
+  bendis_vars      <- Hmisc::Cs(jkl_bendis1, jkl_bendis2, jkl_bendis3, jkl_bendis4, jkl_bendis5, jkl_bendis12,
+                                jkl_bendis7, jkl_bendis8, jkl_bendis10, jkl_bendis97, jkl_bendis96)
+  otherben_vars    <- Hmisc::Cs(jkl_benesa,
+                                jkl_othben1, jkl_othben2,                           jkl_othben5, jkl_othben6, jkl_othben7, jkl_othben8, jkl_othben9, jkl_othben97, jkl_othben96)
+  benincome_vars   <- Hmisc::Cs(jkl_bensta2, jkl_bensta3, jkl_bensta4, jkl_bensta5, jkl_bensta6, jkl_bensta7, jkl_bensta97, jkl_bensta96)
   weight_vars      <- Hmisc::Cs(jkl_indinui_xw)
 
   s2020_vars       <- Hmisc::Cs(jkl_ethn_dv)
 
   names <- c(id_vars, demographic_vars, econ_stat_vars, work_vars, education_vars,
-             health_vars, preg_vars, smoke_vars, weight_vars, s2020_vars)
+             health_vars, preg_vars, smoke_vars,
+             benefits_vars, pension_vars, bendis_vars, otherben_vars, benincome_vars,
+             weight_vars, s2020_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -95,6 +105,19 @@ ukhlsclean_2020 <- function(
                          "jkl_pregout1","jkl_pregout2",
                          ## smoke variables
                          "jkl_smoker", "jkl_ncigs",
+                         ## benefits
+                         "jkl_benbase1","jkl_benbase2","jkl_benbase3","jkl_benbase4","jkl_benbase96",
+                         "jkl_benctc",
+                         ## pensions
+                         "jkl_benpen1","jkl_benpen2","jkl_benpen3","jkl_benpen4","jkl_benpen5","jkl_benpen6","jkl_benpen7","jkl_benpen8","jkl_benpen96",
+                         ## disability benefits
+                         "jkl_bendis1","jkl_bendis2","jkl_bendis3","jkl_bendis4","jkl_bendis5","jkl_bendis12",
+                         "jkl_bendis7","jkl_bendis8","jkl_bendis10","jkl_bendis97","jkl_bendis96",
+                         ## other benefits
+                         "jkl_benesa",
+                         "jkl_othben1","jkl_othben2"                            ,"jkl_othben5","jkl_othben6","jkl_othben7","jkl_othben8","jkl_othben9","jkl_othben97","jkl_othben96",
+                         ## benefit income variables (formerly receivables)
+                         "jkl_bensta2","jkl_bensta3","jkl_bensta4","jkl_bensta5","jkl_bensta6","jkl_bensta7","jkl_bensta97","jkl_bensta96",
                          ## weight
                          "jkl_indinui_xw",
                          ## 2020 specific variables
@@ -117,10 +140,27 @@ ukhlsclean_2020 <- function(
                          "pregout1","pregout2",
                          ## smoke variables
                          "smoker", "ncigs",
+                         ## benefits
+                         "benbase1","benbase2","benbase3","benbase4","benbase96",
+                         "benctc",
+                         ## pensions
+                         "NI.state_pen","employer_pen","spouse.emp_pen","pencred_pen","prvt_pen","widow_pen","parent_pen","benpen8","non_benpen",
+                         ## disability benefits
+                         "bendis1","bendis2","bendis3","bendis4","bendis5","bendis12",
+                         "bendis7","bendis8","bendis10","bendis97","bendis96",
+                         ## other benefits
+                         "benesa","othben1","othben2","othben5","othben6",
+                         "othben7","othben8","othben9","othben97","othben96",
+                         ## benefit income variables (formerly receivables)
+                         "bensta_edugrant","bensta_tupay","bensta_alimony","bensta_fampay","bensta_rentlodge","bensta_rentother","bensta_other","non_bensta",
                          ## weight
                          "weight_xw",
                          ## 2020 specific variables
                          "ethn_dv"))
+
+  #data[, income_serps := NA]
+  #data[, othben3 := NA]
+  #data[, othben4 := NA]
 
   ########################################
   ######## ADD IN HOUSEHOLD DATA #########
@@ -160,7 +200,7 @@ ukhlsclean_2020 <- function(
   ### Apply all cleaning functions ###
 
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
-  data_merged[, wave_no := 2020]
+  data_merged[, wave_no := 12]
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
   data_merged[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
