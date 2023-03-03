@@ -33,8 +33,8 @@ knitr::opts_chunk$set(
 The motivation for `ukhlsclean` is to develop a set of standard functions for processing raw data from the UK Household Longitudinal Study, also known as Understanding Society, which is an ongoing longitudinal survey of individuals and households representative of the UK population. The survey collects a wide variety of demographic, behavioural, health, and labour market information.
 
 ## Installation
-`ukhlsclean` is currently available only to members of the project team. To access you need to [sign-up for a GitLab account](https://gitlab.com/). You will then need to be added to the SPECTRUM project team to gain access. If you are on a Windows machine you will also need to [install Rtools](https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools).   
-Once that is sorted, you can install the latest version or a specified version from GitLab with:     
+`ukhlsclean` is open source and [available on GitHub](https://github.com/STAPM/ukhlsclean). If you are on a Windows machine you will need to [install Rtools](https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools).   
+Once that is sorted, you can install the latest version or a specified version from GitHub with:     
 
 ```{r gh_installation, message=FALSE, eval = FALSE}
 #install.packages("devtools")

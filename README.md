@@ -32,14 +32,12 @@ behavioural, health, and labour market information.
 
 ## Installation
 
-`ukhlsclean` is currently available only to members of the project team.
-To access you need to [sign-up for a GitLab
-account](https://gitlab.com/). You will then need to be added to the
-SPECTRUM project team to gain access. If you are on a Windows machine
-you will also need to [install
+`ukhlsclean` is open source and [available on
+GitHub](https://github.com/STAPM/ukhlsclean). If you are on a Windows
+machine you will need to [install
 Rtools](https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools).  
 Once that is sorted, you can install the latest version or a specified
-version from GitLab with:
+version from GitHub with:
 
 ``` r
 #install.packages("devtools")
