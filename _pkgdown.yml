@@ -17,7 +17,7 @@ authors:
 navbar:
   structure:
     left:  [home, intro, reference, articles]
-    right: [gitlab, software]
+    right: [github, gitlab, software]
   components:
     home: ~
     intro:
@@ -26,6 +26,9 @@ navbar:
     reference:
      text: Functions
      href: reference/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/STAPM/ukhlsclean
     gitlab:
       icon: fab fa-gitlab fa-lg
       href: https://gitlab.com/stapm/r-packages/ukhlsclean
