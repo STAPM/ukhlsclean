@@ -1,0 +1,55 @@
+---
+title: "Get started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+## Reading the Understanding Society data files
+There are separate functions in `ukhlsclean` to read each wave of the longitudinal Understanding Society data, and modules for cleaning groups of variables (e.g. health, work). You must specify the link to where the data is stored, which must be a single directory containing all data files and this must be in tab delimited format. The functions read in a number of socio-demographic, health, and economic variables detailed in the codebook. 
+
+All of the functions for reading and cleaning data are called by a single wrapper function. There is a single wrapper function for the longitudinal data - `ukhlsclean`, and one for each calendar year dataset - `ukhlsclean_2020`. 
+
+Both wrapper functions have the arguments `root` and `file` which together give the file path to the directory where the tab delimited data files are stored. The argument `full` is logical and if set to `TRUE` will exclude proxy interviews. Other arguments allow the user to filter the data based on age, wave, and country. 
+
+The `keep_vars` argument allows the specification of a vector of variables to retain in the cleaned data (in addition to identifier and time variables, which are always kept) with the default option of NULL returning all clean variables produced by the functions. The `complete_vars` argument specifies a vector of variables which must be complete (i.e. no missing values) and removes observations which has missing values for any of the variables specified in the vector. 
+
+```{r ukhlsclean, eval = F}
+library(ukhlsclean)
+library(data.table)
+
+## input arguments
+
+root  <- "X:/"
+file  <- "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls"
+full  <- TRUE # full interviews (no proxies) only
+waves <- 1:12
+ages  <- 16:89
+country <- "UK"
+keep_vars <- NULL
+complete_vars <- c("d_age","d_sex","d_country","l_econ_stat_3cat")
+
+
+##########################
+### Full UKHLS panel data
+
+fulldata <- ukhlsclean(root = root,
+                       file = file,
+                       full = full,
+                       waves = waves,
+                       ages = ages,
+                       country = country,
+                       keep_vars = keep_vars,
+                       complete_vars = complete_vars)
+)
+```
+
+---
+
+
+
+See `vignette("USoc_longitudinal_data_check")` and `vignette("USoc_calendar_year_2020_check")` for summary statistics and plots which describe the variables produced by the package functions.
+

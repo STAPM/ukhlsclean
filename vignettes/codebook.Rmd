@@ -224,6 +224,81 @@ Variables produced by the work module `ukhls_clean_work`. Variables in this cate
 
 - __w_sic_2dig__ (factor) industry of main employment (2-digit SIC-2007).
 
+
+### __Benefits, pension and credits variables__
+
+Variables produced by the benefits module `ukhls_clean_benefit`. All variables indicate a tick determining whether respondents are in receipt, with the possible following outputs:
+
+- "receipt"
+- "non_receipt"
+
+Variables in this category are prefixed with a `b_`. 
+
+- __b_income_support__ (factor) currently in receipt of Income Support:
+
+- __b_jbseek_allowance__ (factor) currently in receipt of Job Seeker's Allowance:
+
+- __b_national_pen_cred__ (factor) currently in receipt of any State pension or credit:
+
+- __b_child_benefit__ (factor) currently in receipt of Child Benefit:
+
+- __b_child_tax_credit__ (factor) currently in receipt of Child Tax Credits:
+
+- __b_other_family_benefit__ (factor) currently in receipt of any other family related benefit or payment ():
+
+- __b_housing_council_rent_rate__ (factor) currently in receipt of any of - housing benefit; council tax benefit/reduction; rent rebate; rate rebate:
+
+- __b_other_ben_cred__ (factor) currently in receipt of any other benefit or credit:
+
+- __b_incap_ben__ (factor) currently in receipt of Incapacity Benefit:
+
+- __b_ES_Allowance__ (factor) currently in receipt of Employment and Support Allowance:
+
+- __b_sev_disab_allowance__ (factor) currently in receipt of Severe Disablement Allowance:
+
+- __b_carers_allowance__ (factor) currently in receipt of Carer's Allowance:
+
+- __b_disliving_allowance__ (factor) currently in receipt of Disability Living Allowance:
+
+- __b_pers.indep_pay__ (factor) currently in receipt of Personal Independence Payments __(waves 3-12)__:
+
+- __b_attend_allowance__ (factor) currently in receipt of Attendance Allowance:
+
+- __b_industry_inj_ben__ (factor) currently in receipt of Industrial Injury Disablement Benefit:
+
+- __b_sick.accident_insurance__ (factor) currently in receipt of Sickness and Accidence Insurance:
+
+- __b_oth_disab_ben__ (factor) currently in receipt of any other disability related benefit or payment:
+
+- __b_war_pen__ (factor) currently in receipt of War Disablement Pension:
+
+- __b_SERPs__ (factor) currently in receipt of National Insurance State Earnings-Related Pension Scheme (NI SERPS) __(waves 1-11)__:
+
+- __b_NI_state_pension__ (factor) currently in receipt of National Insurance Pension or State Retirement (Old Age) Pension:
+
+- __b_pension_credit__ (factor) currently in receipt of Pension Credit including Guarantee Credits & Savings Credit:
+
+- __b_NI_credit__ (factor) currently in receipt of National Insurance credits __(waves 1-5)__:
+
+- __b_council_tax_benefit__ (factor) currently in receipt of Council Tax Benefits/Reduction: 
+
+- __b_housing_benefit__ (factor) currently in receipt of Housing Benefit:
+
+- __b_rate_rebate__ (factor) currently in receipt of a Rate Rebate (GB-NIR only):
+
+- __b_rent_rebate__ (factor) currently in receipt of a Rent Rebate (GB-NIR only):
+
+- __b_iw_lone_cred__ (factor) currently in receipt of In-Work Credit for Lone Parents __(waves 1-11)__:
+
+- __b_RTW_cred__ (factor) currently in receipt of Return-to-work Credit __(waves 1-11)__:
+
+- __b_work_tax_cred__ (factor) currently in receipt of Working Tax Credits:
+
+- __b_universal_cred__ (factor) currently in receipt of Universal Credit:
+
+- __b_UniCred__ (factor) proxy for Universal Credit, given that respondent is in receipt of a related benefit *(child tax credits; housing benefit; income support; income-related job seeker's allowance; income-related ESA; working tax credits)*:
+
+
 ### __Health and wellbeing variables__ 
 
 Variables produced by the health and wellbeing module `ukhls_clean_health`. Variables in this category are prefixed with a `h_`. 

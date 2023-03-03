@@ -28,9 +28,11 @@ To plot the data processed using functions in the [ukhlsclean](https://stapm.git
 # Background
 The [Understanding Society - the UK Household Longitudinal Study (UKHLS)](https://www.understandingsociety.ac.uk/) (USoc hereafter) is a longitudinal survey of households and individuals representative of the UK population based at the Institute for Social and Economic Research (ISER). It is a successor to the British Household Panel Survey (BHPS) which ran for 18 waves between 1991-2008. USoc covers a wide range of topics including health and work.  
 
+This document refers to the Calendar Year 2020 data. This is a dataset derived from the main longitudinal dataset, designed to be representative of the UK population for the single year of 2020 in order to facilitate specific year cross-sectional analyses. Calendar year 2020 draws on data from the 10th, 11th, and 12th waves of Understanding Society, and contains only variables which were included in all three waves. 
+
 # Data checks conducted
 
-Data checks are conducted on a pooled sample of all calendar-year datasets of the UKHLS from 2020 onwards, currently including 2020 only. Most checks make use of the most recently available data release, currently 2020. The plots below make use of the survey weights in the data, and so are adjusted for survey design and non-response. Totals are further adjusted using a scaling factor to gross the totals up to the full UK population aged 16-89.    
+Data checks are conducted on the UKHLS 2020 data, making use of the survey weights in the data to adjust for survey design and non-response. Totals are further adjusted using a scaling factor to gross the totals up to the full UK population aged 16-89, based on ONS mid-year estimates of the total population size by age and sex.    
 
 **Distribution of educational attainment**   
 
