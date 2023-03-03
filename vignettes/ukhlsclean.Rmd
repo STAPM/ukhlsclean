@@ -9,7 +9,7 @@ vignette: >
 
 
 ## Reading the Understanding Society data files
-There are separate functions in `ukhlsclean` to read each wave of the longitudinal Understanding Society data, and modules for cleaning groups of variables (e.g. health, work). You must specify the link to where the data is stored, which must be a single directory containing all data files and this must be in tab delimited format. The functions read in a number of socio-demographic, health, and economic variables detailed in the codebook. 
+There are separate functions in `ukhlsclean` to read each wave of the longitudinal Understanding Society data, and modules for cleaning groups of variables (e.g. health, work). You must specify the link to where the data is stored, which must be a single directory containing all data files and this must be in tab delimited format. The functions read in a number of socio-demographic, health, and economic variables. A full list and description of the available variables can be found in the [variable codebook](https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html). 
 
 All of the functions for reading and cleaning data are called by a single wrapper function. There is a single wrapper function for the longitudinal data - `ukhlsclean`, and one for each calendar year dataset - `ukhlsclean_2020`. 
 
