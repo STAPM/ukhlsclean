@@ -48,7 +48,6 @@ version from GitLab with:
 
 devtools::install_git(
   "https://github.com/STAPM/ukhlsclean", 
-  credentials = git2r::cred_user_pass("uname", getPass::getPass()),
   ref = "x.x.x",
   build_vignettes = FALSE
 )
