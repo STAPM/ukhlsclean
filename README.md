@@ -54,7 +54,6 @@ devtools::install_git(
 
 # Where uname is your Gitlab user name.
 # ref is the version you want to install - remove for the latest version
-# this should make a box pop up where you enter your GitLab password
 ```
 
 ## Citation
