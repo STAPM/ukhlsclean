@@ -1,0 +1,327 @@
+---
+title: "Data check: Understanding Society"
+subtitle: "Sheffield Tobacco and Alcohol Policy Modelling"
+link-citations: yes
+bibliography: refs/stapm_refs.bib
+always_allow_html: yes
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+<style>
+
+body{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+}
+
+.container { width: 1000px; }
+h3 {
+  background-color: #D4DAEC;
+  #text-indent: 100px; 
+}
+h4 {
+  text-indent: 100px;
+}
+
+
+g-table-intro h4 {
+  text-indent: 0px;
+}
+</style>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(here))
+suppressPackageStartupMessages(library(hseclean))
+```
+
+[Click here to go to the STAPM website](https://stapm.gitlab.io/Scottish_Health_Survey.html)
+
+# The purpose of this document
+To plot the data processed using functions in the [ukhlsclean](https://stapm.gitlab.io/r-packages/ukhlsclean/) package as part of the process of quality assurance of the preparation of input data used in the alcohol component of the STAPM modelling for Scotland. This document comprises exploratory plots to illustrate the SHeS data on alcohol consumption and plots that we use to check the processing of the data using hseclean.   
+
+# Background
+The [Understanding Society - the UK Household Longitudinal Study (UKHLS)](https://www.understandingsociety.ac.uk/) (USoc hereafter) is a survey of the health and health-related behaviours of private households in Scotland that has been carried out annually since 2008. It is the source of data on alcohol consumption used to inform the alcohol component of the Sheffield Tobacco and Alcohol Policy Modelling. The survey asks repondents about the volume of certain types of drinks bought or consumed over a certain time period. These volumes are then standardised by converting them into alcohol units (one UK standard unit = 10ml of pure ethanol). The conversion of reported volumes to units is based on assumptions about the average alcohol content (ABV) of different types of drink.   
+
+It is generally accepted that this self-reported data underestimates actual consumption by as much as 50\% [@stockwell2004under]. This data check does not investigate the magnitude of such underestimation or the potential biases introduced.   
+
+The Scottish Health Survey estimates alcohol consumption for people age 16 and over. Participants who reported that they drank were asked how often during the past 12 months they had drink each of six different types of alcoholic drink:  
+
+- normal beer, lager, stout, cider and shandy
+- strong beer, lager, stout and cider
+- sherry and martini
+- spirits and liqueurs
+- wine
+- alcoholic soft drinks (alcopops)   
+
+From these questions, the average number of days per week the participant had drunk was estimated. A further question then asks how much of each drink type they had usually drunk on each occasion.  
+
+The main report for the Scottish Health Survey 2018 volume 1 [@mclean2018scottish] gives the conversion factors used to convert the quantity-frequency survey questions into estimated units of average weekly alcohol consumption.   
+
+<br/>  
+
+```{r shesconv, echo = F, out.width = "60%", fig.cap="Table 1. Excerpt from Section 3.2.3 p 78 of the main report volume 1 of the Scottish Health Survey 2018."}
+include_graphics(here::here("30_reports/inst/SHeS_2018_alcohol_conversion_factors.png"))
+```
+
+<br/>  
+
+
+The SHeS data is processed for use in the STAPM modelling by standardised and version controlled R code functions in the [hseclean](https://stapm.github.io/hseclean/) R package. Project specific code draws on these functions to process the SHeS data into STAPM inputs.    
+
+The hseclean method applies different assumptions to those used by the providers of the SHeS data to convert the quantity-frequency survey questions into estimated units of average weekly alcohol consumption. The method in hseclean is based on the method used in the 2014 report by the Sheffield Alcohol Research Group on the potential impacts of alcohol minimum unit pricing in Scotland [@angus2016model]. One of the jobs of this data check is to compare between the hseclean and SHeS methods.     
+
+In the current version of hseclean, the percentage alcohol by volume (ABV) estimates used are:   
+
+- 4.4\% for normal beer, lager, stout, cider and shandy
+- 8.4\% for strong beer, lager, stout and cider
+- 17\% for sherry and martini
+- 38\% for spirits and liqueurs
+- 12.5\% for wine
+- 4.5\% for alcoholic soft drinks (alcopops)   
+
+These assumptions are used in conjunction with the following assumptions about the volumes (ml) of different types of alcoholic drink:  
+
+- normal beer, lager, stout, cider and shandy: half pint 284ml, small can 330ml, large can 440ml, bottle 330ml
+- strong beer, lager, stout and cider: half pint 284ml, small can 330ml, large can 440ml, bottle 330ml
+- sherry and martini: serving 50ml
+- spirits and liqueurs: serving 25ml
+- wine: small glass 125ml, standard glass 175ml, large glass 250ml, bottle 750ml
+- alcoholic soft drinks (alcopops): small can 250ml, small bottle 275ml, large bottle 700ml
+
+
+# Data checks conducted
+
+Data checks are conducted on a pooled sample of all calendar years of the SHeS data from 2008 to 2019. Survey weights are not applied, i.e. the plots show the distribution of alcohol consumption in the survey sample rather than applying weights to adjust for survey design or non-response rates.    
+
+**Distribution of average weekly alcohol consumption**   
+
+- Distribution of average weekly alcohol consumption (UK standard units) calculated from hseclean for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+- Plot of the hseclean version of average weekly alcohol consumption compared to the version provided with the SHeS data (based on different assumptions)
+
+**Calendar year trends in average weekly alcohol consumption**   
+
+- Calendar year trend in the proportion of people who consume alcohol for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+- Calendar year trend in average weekly alcohol consumption by people who consume alcohol for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+
+**Age trends in average weekly alcohol consumption**   
+
+- Age trend in the proportion of people who consume alcohol for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+- Age trend in average weekly alcohol consumption for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+
+**Alcohol beverage preferences**  
+
+- Preferences for beer, wine, spirits and alcopops for (a) the overall population aged 16 to 89 years, (b) by sex, (c) by Scottish Index of Multiple Deprivation quintiles
+- Calendar year trend in preferences for beer, wine, spirits and alcopops for the overall population aged 16 to 89 years
+- Age trend in preferences for beer, wine, spirits and alcopops for the overall population aged 16 to 89 years
+
+
+# Distribution of average weekly alcohol consumption
+
+## Histograms
+
+These plots show average weekly alcohol consumption in UK standard units of ethanol. They are based on the pooled SHeS sample from 2008 to 2018. For the purposes of these histograms, the upper limit for the amount consumed is set at 100 units/week.   
+
+```{r hsecleanalcdist, echo = F, out.width = "80%", fig.cap="Figure 1. Distribution of average weekly alcohol consumption calculated from hseclean."}
+#include_graphics(here::here("25_plots/check/01_drink_amount.png"))
+```
+
+
+```{r hsecleanalcdistimd, echo = F, out.width = "100%", fig.cap="Figure 2. Index of Multiple Deprivation quintile specific distribution of average weekly alcohol consumption calculated from hseclean."}
+#include_graphics(here::here("25_plots/check/01_drink_amount_imd.png"))
+```
+
+```{r hsecleanalcdistsex, echo = F, out.width = "90%", fig.cap="Figure 3. Sex specific distribution of average weekly alcohol consumption calculated from hseclean."}
+#include_graphics(here::here("25_plots/check/01_drink_amount_sex.png"))
+```
+
+<br/>  
+
+## SHeS vs. hseclean calculation of average weekly alcohol consumption
+
+The plots below investigate the differences between two different versions of the calculations of the average weekly alcohol consumption variable. The check uses the pooled data from 2008 to 2019.   
+
+The SHeS and hseclean methods use different assumptions about the volume of alcoholic beverages and the percentage alcohol by volume - see details above. Despite the different assumptions used, the validation check should confirm that the two methods produce approximately the same estimates of the average weekly amount of alcohol consumed.  
+
+```{r amountsheshseclean, echo = F, out.width = "60%", fig.cap="Figure 4. Average weekly alcohol consumption calculated from hseclean vs. that supplied with the SHeS data for the pooled sample of 2008 to 2019."}
+#include_graphics(here::here("25_plots/check/01_drink_amount_shes_vs_hseclean.png"))
+```
+
+# Calendar year trends in average weekly alcohol consumption
+
+## Proportion of people who drink alcohol
+
+The plots below show trends in the proportion of people who drink alcohol between ages 16 and 89 years old. Someone is classed as drinking alcohol even if they drink alcohol only once or twice a year.   
+
+For the general population age 16 to 89 years old, the proportion of people who drink alcohol ranges from 0.87 in 2008 to 0.82 in 2019.   
+
+```{r propdrinkers, echo = F, out.width = "57%", fig.cap="Figure 5. Proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/02_drink_prop.png"))
+```
+
+
+```{r propdrinkerssex, echo = F, out.width = "72%", fig.cap="Figure 6. Sex specific proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/02_drink_prop_sex.png"))
+```
+
+```{r propdrinkersimd, echo = F, out.width = "80%", fig.cap="Figure 7. Index of Multiple Deprivation specific proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/02_drink_prop_imd.png"))
+```
+
+## Average weekly alcohol consumption by people who consume some alcohol
+
+The average weekly alcohol consumption by people who consume alcohol considers all alcohol consumed by people who drink who drink as little as once or twice a year to people who drink every day. No upper limit is applied to the amount of alcohol consumed.  
+
+For the general population age 16 to 89 years old, the average UK standard units of ethanol consumed per week by drinkers ranges from 12.57 units in 2008 to 10.25 units in 2019.  
+
+```{r amountdrunk, echo = F, out.width = "57%", fig.cap="Figure 8. Average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/03_weekdrnk.png"))
+```
+
+```{r amountdrunksex, echo = F, out.width = "72%", fig.cap="Figure 9. Sex specific average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/03_weekdrnk_sex.png"))
+```
+
+```{r amountdrunkimd, echo = F, out.width = "80%", fig.cap="Figure 10. Index of Multiple Deprivation specific average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/03_weekdrnk_imd.png"))
+```
+
+# Age trends in average weekly alcohol consumption  
+
+## Proportion of people who drink alcohol
+
+The proportion of people aged 16 to 89 years who drink alcohol at least once or twice a year peaks at 0.92 at age 19 and falls to 0.61 at age 89.  
+
+```{r propdrinkage, echo = F, out.width = "57%", fig.cap="Figure 11. Age trends in the proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/04_agetrend_prop.png"))
+```
+
+```{r propdrinkagesex, echo = F, out.width = "72%", fig.cap="Figure 12. Sex specific age trends in the proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/04_agetrend_prop_sex.png"))
+```
+
+```{r propdrinkageimd, echo = F, out.width = "80%", fig.cap="Figure 13. Index of Multiple Deprivation specific age trends in the proportion of people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/04_agetrend_prop_imd.png"))
+```
+
+## Average weekly alcohol consumption by people who consume some alcohol
+
+In the general population, the average number of UK standard units of alcohol consumed by people who drink at least once or twice a year peaked at 17.35 units at age 19 and fell to 3.59 units at age 89.  
+
+```{r amountdrinkage, echo = F, out.width = "57%", fig.cap="Figure 14. Age trends in the average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/05_agetrend_mean.png"))
+```
+
+```{r amountdrinkagesex, echo = F, out.width = "72%", fig.cap="Figure 15. Sex specific age trends in the average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/05_agetrend_mean_sex.png"))
+```
+
+```{r amountdrinkageimd, echo = F, out.width = "80%", fig.cap="Figure 16. Index of Multiple Deprivation specific age trends in the average amount drunk per week by people who drink alcohol."}
+#include_graphics(here::here("25_plots/check/05_agetrend_mean_imd.png"))
+```
+
+# Alcohol beverage preferences
+
+The plots below show the proportions of people who drink each type of alcoholic drink. The types of alcoholic drink considered has been reduced to four by combining 'normal beer' and 'strong beer' into a single 'beer' category, and by adding 'sherry' into the 'wine' category.  
+
+## Preferences for beer, wine, spirits and alcopops
+
+```{r drinkprefs, echo = F, out.width = "80%", fig.cap="Figure 17. Proportions of people who drink each type of alcoholic drink."}
+#include_graphics(here::here("25_plots/check/06_drink_prefs.png"))
+```
+
+```{r drinkprefssex, echo = F, out.width = "95%", fig.cap="Figure 18. Sex specific proportions of people who drink each type of alcoholic drink."}
+#include_graphics(here::here("25_plots/check/06_drink_prefs_sex.png"))
+```
+
+```{r drinkprefsimd, echo = F, out.width = "100%", fig.cap="Figure 19. Index of Multiple Deprivation quintile specific proportions of people who drink each type of alcoholic drink."}
+#include_graphics(here::here("25_plots/check/06_drink_prefs_imd.png"))
+```
+
+## Trends in beverage preferences
+
+```{r drinkprefstrend, echo = F, out.width = "80%", fig.cap="Figure 20. Calendar year trends in the proportions of people who drink each type of alcoholic drink."}
+#include_graphics(here::here("25_plots/check/07_drink_prefs_trend.png"))
+```
+
+```{r drinkprefsage, echo = F, out.width = "80%", fig.cap="Figure 21. Age trends in the proportions of people who drink each type of alcoholic drink."}
+#include_graphics(here::here("25_plots/check/08_drink_prefs_agetrend.png"))
+```
+
+
+
+# Reproducibility notes
+
+- Data processed using [hseclean](https://stapm.github.io/hseclean/) version `r packageDescription("hseclean", fields = "Version")` (open access)
+- Code to clean the data using hseclean and to make these plots is in the repository https://gitlab.com/stapm/model-inputs/scot_nat_alc_data (accessible only to the project team)
+
+
+# References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

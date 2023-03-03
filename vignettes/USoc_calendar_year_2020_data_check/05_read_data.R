@@ -1,0 +1,32 @@
+
+#### read raw data using the package and save to a version-labelled dataset in the
+#### intermediate data folder
+
+library(ukhlsclean)
+library(data.table)
+
+## input arguments
+
+root  <- "X:/"
+file  <- "HAR_PR/PR/USoc/Data/Calendar Year Datasets/SN8988_2022_11_29/tab"
+full  <- TRUE # full interviews (no proxies) only
+waves <- 1:12
+ages  <- 16:89
+country <- "UK"
+keep_vars <- NULL
+complete_vars <- c("d_age","d_sex","d_country","l_econ_stat_3cat")
+
+
+############################################
+### UKHLS Calendar Year 2020 cross-section
+
+data2020 <- ukhlsclean_2020(root = root,
+                            file = file,
+                            full = full,
+                            ages = ages,
+                            country = country,
+                            keep_vars = keep_vars,
+                            complete_vars = complete_vars)
+
+
+
