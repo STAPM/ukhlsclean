@@ -55,8 +55,23 @@
 <li>
   <a href="reference/index.html">Functions</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="articles/index.html">Articles</a>
+      <a href="articles/codebook.html">Understanding Society Codebook</a>
+    </li>
+    <li>
+      <a href="articles/USoc_calendar_year_2020_data_check.html">Data check: Understanding Society calendar year 2020 data</a>
+    </li>
+    <li>
+      <a href="articles/USoc_longitudinal_data_check.html">Data check: Understanding Society</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -89,6 +104,8 @@
 </h1></div>
 <!-- badges: start -->
 
+<!-- badger::badge_doi("10.17605/OSF.IO/43N7P", "green") -->
+<p><a href="https://doi.org/10.17605/OSF.IO/6K9NV" class="external-link"><img src="https://img.shields.io/badge/doi-10.17605/OSF.IO/6K9NV-green.svg"></a> <!-- badges: end --></p>
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
@@ -116,43 +133,18 @@ Once that is sorted, you can install the latest version or a specified version f
 <span><span class="co"># this should make a box pop up where you enter your GitLab password</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>The <code>ukhlsclean</code> package contains functions which read in the raw data files, process them into clean output variables, and combines all data files into a single output data table. The functions also create real-terms values for nominally valued monetary variables (earnings and wages), allowing the user to select either the CPIH or RPI.</p>
-<p>The <strong>inputs</strong> are the raw LFS data files obtained from the <a href="https://ukdataservice.ac.uk/" class="external-link">UK Data Service</a>. These must be the tab delimited versions of the data, <strong>not Stata or SPSS</strong>, and all data files must be placed together in a single directory i.e. not split into separate directories by wave.</p>
-<p>A typical workflow for using the package looks as follows. The package consists of a number of subfunctions, all of which are subsumed by a single global function <code>ukhlsclean</code>, and the behaviour of the sub-functions governed by the arguments to this global function.</p>
-<p>For a comprehensive list of the variables which are currently produced by the package, see the <a href="https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html">online variable codebook</a></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co">#####################</span></span>
-<span><span class="co">### Define arguments </span></span>
-<span></span>
-<span><span class="va">root</span> <span class="op">&lt;-</span> <span class="st">"C:/"</span></span>
-<span><span class="va">file</span> <span class="op">&lt;-</span> <span class="st">"Documents/Datasets/UKHLS/tab"</span></span>
-<span><span class="va">waves</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">11</span></span>
-<span><span class="va">ages</span> <span class="op">&lt;-</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span></span>
-<span><span class="va">keep_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span><span class="va">complete_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span></span>
-<span><span class="co">########################</span></span>
-<span><span class="co">### Read in and combine waves of USoc data</span></span>
-<span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ukhlsclean.html">ukhlsclean</a></span><span class="op">(</span>root <span class="op">=</span> <span class="va">root</span>,</span>
-<span>                   file <span class="op">=</span> <span class="va">file</span>,</span>
-<span>                   waves <span class="op">=</span> <span class="va">waves</span>,</span>
-<span>                   ages <span class="op">=</span> <span class="va">ages</span>,</span>
-<span>                   keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,</span>
-<span>                   complete_vars <span class="op">=</span> <span class="va">complete_vars</span><span class="op">)</span></span></code></pre></div>
-<p>The <strong>output</strong> of these functions are a single data table of processed Understanding Society data, sorted by individual and wave</p>
-<div class="section level3">
-<h3 id="projects">Projects<a class="anchor" aria-label="anchor" href="#projects"></a>
-</h3>
+<p>Morris D, Kai Le Chen, R (2023). ukhlsclean: An R Package for Health Survey Data Wrangling. R package version [x.x.x]. University of Sheffield. doi: <a href="https://doi.org/10.17605/OSF.IO/6K9NV" class="external-link uri">https://doi.org/10.17605/OSF.IO/6K9NV</a></p>
+</div>
+<div class="section level2">
+<h2 id="projects">Projects<a class="anchor" aria-label="anchor" href="#projects"></a>
+</h2>
 <p>Some examples of projects making use of the <code>ukhlsclean</code> package are:</p>
 <ol style="list-style-type: decimal">
 <li>
 <a href="https://gitlab.com/SPECTRUM_Sheffield/projects/work-productivity" class="external-link">Smoking, drinking, and work outcomes</a>. Here the package is used to create a clean longitudinal dataset of smoking and drinking behaviours, labour market outcomes, and the covariates needed to model labour market outcomes.</li>
 </ol>
-</div>
 </div>
 </div>
   </div>

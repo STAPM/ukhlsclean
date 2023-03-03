@@ -82,10 +82,13 @@ reference:
   - PopulationCounts
 
 articles:
-- title: Variables and Data Checks
-  contents:
-  - codebook
-  - USoc_calendar_year_2020_data_check
-  - USoc_longitudinal_data_check
+text:
+  menu:
+  - text: Variable codebook
+    href: articles/codebook.html
+  - text: Longitudinal data check
+    href: articles/USoc_longitudinal_data_check.html
+  - text: Calendar year_2020 data check
+    href: articles/USoc_calendar_year_2020_data_check.html
 
 

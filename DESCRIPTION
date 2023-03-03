@@ -1,6 +1,6 @@
 Package: ukhlsclean
 Type: Package
-Title: Data Wrangling for UKHLS/BHPS data.
+Title: Data Wrangling for Understanding Society: The UK Household Longitudinal Study.
 Version: 0.9.0
 Authors@R: 
     c(

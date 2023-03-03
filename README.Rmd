@@ -25,6 +25,10 @@ knitr::opts_chunk$set(
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
+<!-- badger::badge_doi("10.17605/OSF.IO/43N7P", "green") -->
+[![](https://img.shields.io/badge/doi-10.17605/OSF.IO/6K9NV-green.svg)](https://doi.org/10.17605/OSF.IO/6K9NV)
+<!-- badges: end -->
+
 ## Motivation
 The motivation for `ukhlsclean` is to develop a set of standard functions for processing raw data from the UK Household Longitudinal Study, also known as Understanding Society, which is an ongoing longitudinal survey of individuals and households representative of the UK population. The survey collects a wide variety of demographic, behavioural, health, and labour market information.
 
@@ -50,43 +54,11 @@ devtools::install_git(
 ```
 
 
-## Usage
+## Citation
 
-The `ukhlsclean` package contains functions which read in the raw data files, process them into clean output variables, and combines all data files into a single output data table. The functions also create real-terms values for nominally valued monetary variables (earnings and wages), allowing the user to select either the CPIH or RPI.
+Morris D, and Kai Le Chen, R (2023). ukhlsclean: An R Package for Health Survey Data Wrangling. R package version [x.x.x]. University of Sheffield. doi: https://doi.org/10.17605/OSF.IO/6K9NV
 
-The **inputs** are the raw LFS data files obtained from the [UK Data Service](https://ukdataservice.ac.uk/). These must be the tab delimited versions of the data, __not Stata or SPSS__, and all data files must be placed together in a single directory i.e. not split into separate directories by wave. 
-
-A typical workflow for using the package looks as follows. The package consists of a number of sub-functions, all of which are subsumed by a single global function `ukhlsclean`, and the behaviour of the sub-functions governed by the arguments to this global function. 
-
-For a comprehensive list of the variables which are currently produced by the package, see the [online variable codebook](https://stapm.gitlab.io/r-packages/ukhlsclean/articles/codebook.html)
-
-```{r workflow, message = FALSE, eval = FALSE}
-
-#####################
-### Define arguments 
-
-root <- "C:/"
-file <- "Documents/Datasets/UKHLS/tab"
-waves <- 1:11
-ages <- 16:89
-keep_vars <- NULL
-complete_vars <- NULL
-
-########################
-### Read in and combine waves of USoc data
-
-data <- ukhlsclean(root = root,
-                   file = file,
-                   waves = waves,
-                   ages = ages,
-                   keep_vars = keep_vars,
-                   complete_vars = complete_vars)
-
-```
-
-The **output** of these functions are a single data table of processed Understanding Society data, sorted by individual and wave
-
-### Projects 
+## Projects 
 
 Some examples of projects making use of the `ukhlsclean` package are:
 

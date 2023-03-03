@@ -1,0 +1,11 @@
+citHeader("To cite ukhlsclean in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "ukhlsclean: Data Wrangling for Understanding Society - The UK Household Longitudinal Study",
+  author   = "Damon Morris and Ryan Kai Le Chen",
+  year     = "2023",
+  note   = "R package version x.x.x [replace with version used]",
+  doi = "10.17605/OSF.IO/6K9NV",
+  textVersion = "Morris D, and Kai Le Chen, R (2023). Data Wrangling for Understanding Society - The UK Household Longitudinal Study. R package version [x.x.x]. University of Sheffield. doi: https://doi.org/10.17605/OSF.IO/6K9NV"
+)
