@@ -177,6 +177,14 @@ if (12 %in% waves){
 
 data <- ukhlsclean::ukhls_combine_waves(data_list)
 
+###################################
+### Combine youth data (here?)
+
+cat(crayon::red("\n\t\tYouth data combined\n"))
+
+youth_data <- ukhlsclean::ukhls_clean_youth(ukhlsclean::ukhls_read_youth(root = root, file = file)) # change :::
+data <- merge(data, youth_data, by = "id", all.x = TRUE)
+
 #######################
 ## Record time taken
 

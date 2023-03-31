@@ -284,21 +284,40 @@ ukhls_clean_benefit <- function(data = NULL) {
   ######################################
   #### Universal Credit - All waves ####
 
-  data[, UniCred := "non_receipt"]
+  ### Non-receipt of Universal Credit
+  data[universal_credit == "non_receipt", UniCred := "non_receipt"]
+  data[income_support == "non_receipt", UniCred := "non_receipt"]
+  data[child_tax_credit == "non_receipt", UniCred := "non_receipt"]
+  data[work_tax_cred == "non_receipt", UniCred := "non_receipt"]
+  data[ES_Allowance == "non_receipt", UniCred := "non_receipt"]
+  data[jbseek_allowance == "non_receipt", UniCred := "non_receipt"]
+  data[housing_benefit == "non_receipt", UniCred := "non_receipt"]
+  data[rate_rebate == "non_receipt", UniCred := "non_receipt"]
+  data[rent_rebate == "non_receipt", UniCred := "non_receipt"]
+
+  # data[, UniCred := "non_receipt"]
   data[universal_credit == "receipt", UniCred := "receipt"]
   data[income_support == "receipt", UniCred := "receipt"]
   data[child_tax_credit == "receipt", UniCred := "receipt"]
   data[work_tax_cred == "receipt", UniCred := "receipt"]
-  data[ES_Allowance == "receipt", UniCred := "receipt"] #### https://www.gov.uk/employment-support-allowance/eligibility ## income vs support ?
+  data[ES_Allowance == "receipt", UniCred := "receipt"] #### https://www.gov.uk/employment-support-allowance/eligibility ## income vs support ? ### only UC when conditions: not claiming UC (or any qualifying benefit) AND not income related (contributory style)
+  # UniCred := "receipt" ~ ESA == "receipt" & benesa == "income related"
+  # UniCred := "receipt" ~ ESA == "receipt" & benesa == "support related" & legacyBenefit == "receipt" - might be worth creating dummy variable to show if ANY legacy benefit is in receipt
   data[jbseek_allowance == "receipt", UniCred := "receipt"]
+  # # jbseek_allowance == "receipt" & (income_support == "receipt" | universal_credit == "recept") := UniCred == "receipt"
+  # jbseek_allowance == "receipt" & (legacyBenefit == "receipt" | income_support == "receipt"):= UniCred == "receipt"
+  # jbseek_allowance == "receipt" & legacyBenefit != "receipt" := UniCred == NA
   data[housing_benefit == "receipt", UniCred := "receipt"] ## Only housing benefit falls under Universal Credit in GB, council tax benefit does not
   data[rate_rebate == "receipt", UniCred := "receipt"] ## Rate and rent rebate in NI falls under Universal Credit
   data[rent_rebate == "receipt", UniCred := "receipt"]
 
+  # legacyBenefit
+  # income_support == "receipt" | child_tax_credit == "receipt" | work_tax_cred == "receipt" | benesa == "income-related" !! | jbseek_allowance == "income-related" ?? | housing_benefit == "receipt" | rent_rebate == "receipt" | rate_rebate == "receipt"
+
   # data[, ]
 
 
-  ##################
+  ##################me_
   ## RETAIN THE CLEANED VARIABLES
 
   legacy    <- c("income_support","jbseek_allowance","national_pen_cred","child_benefit","child_tax_credit","other_family_benefit","housing_council_rent_rate","other_ben_cred")

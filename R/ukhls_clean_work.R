@@ -28,9 +28,9 @@ ukhls_clean_work <- function(data = NULL) {
   }
 
   if ( all(c("hours_semp","hours_emp") %in% colnames(data)) ){
-  data[is.na(hours_semp) & !is.na(hours_emp), hours := hours_empl]
-  data[is.na(hours_emp) & !is.na(hours_semp), hours := hours_semp]
-  data[!is.na(hours_emp) & !is.na(hours_semp), hours := hours_semp + hours_emp]
+  data[is.na(hours_semp) & !is.na(hours_empl), hours := hours_empl]
+  data[is.na(hours_empl) & !is.na(hours_semp), hours := hours_semp]
+  data[!is.na(hours_empl) & !is.na(hours_semp), hours := hours_semp + hours_empl] # this is broken ? summation involving NA returns NA
 
   } else {
 
