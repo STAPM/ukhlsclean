@@ -34,15 +34,17 @@ ukhls_clean_smoke <- function(data = NULL) {
 
   ###########################################
   #### Wave 3 and 4, current smoker status ##
+#
+#   if("smoke_freq" %in% colnames(data)) {
+#
+#     data[wave_no %in% c(3,4) & (smoke_freq == 4 | smoke_freq == 5), current_smoker := "smoker"]
+#     data[wave_no %in% c(3,4) & ! (smoke_freq == 4 | smoke_freq == 5), current_smoker := "non_smoker"]
+#     data[wave_no %in% c(3,4) & is.na(smoke_freq), current_smoker := NA]
+#
+#     ### Cannot do ever_smoked because no way of determining if they have never smoked before on a wave-by-wave basis
+#   }
 
-  if("smoke_freq" %in% colnames(data)) {
-
-    data[wave_no %in% c(3,4) & (smoke_freq == 4 | smoke_freq == 5), current_smoker := "smoker"]
-    data[wave_no %in% c(3,4) & ! (smoke_freq == 4 | smoke_freq == 5), current_smoker := "non_smoker"]
-    data[wave_no %in% c(3,4) & is.na(smoke_freq), current_smoker := NA]
-
-    ### Cannot do ever_smoked because no way of determining if they have never smoked before on a wave-by-wave basis
-  }
+  ### Dropped because waves 3 and 4 only include responses age cat 16-21
 
   ###########################################
   ##### Waves 6 - 11 current smoker status ##
