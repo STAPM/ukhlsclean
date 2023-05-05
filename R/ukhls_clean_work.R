@@ -237,10 +237,10 @@ ukhls_clean_work <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig",
+                         "hours_empl", "hours_semp", "hours", "nssec", "nssec_3cat", "nssec_5cat", "nssec_8cat", "sic_1dig", "sic_2dig",
                          "absent_sick","absent_matleave","absent_annualleave","absent_other")]
 
-  var_names <- c("hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig",
+  var_names <- c("hours_empl", "hours_semp", "hours", "nssec_3cat", "nssec_5cat", "nssec_8cat", "sic_1dig", "sic_2dig",
                  "absent_sick", "absent_matleave", "absent_annualleave", "absent_other")
 
   setnames(final_data, var_names, paste0("w_", var_names))
