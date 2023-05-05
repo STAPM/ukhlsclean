@@ -63,6 +63,18 @@ ukhls_clean_econstat <- function(data = NULL) {
                                  levels = c("employed","self_employed","unemployed","sick","retired","education","other"),
                                  labels = c("employed","self_employed","unemployed","sick","retired","education","other"))]
 
+  ######################################
+  ### Ever-employment ##################
+
+  # data[jbhas == 1, ever_empl := 1] # currently working
+  # data[is.na(jbhas), ever_empl := NA]
+  # data[jbhas == 2 & jboff == 1, ever_empl := 1] # not currently working, has job
+  # data[jbhas == 2 & is.na(jboff), ever_empl := NA]
+  # data[jbhas == 2 & jboff == 3, ever_empl := 1] # currently not working, on wat list
+  # data[jbhas == 2 & jboff == 2, ever_empl := 0] # not currently working and not working because no job|
+  # data[jbhad == 1, ever_empl := 1] # not currently working, not working because no job, and had job
+  # data[jbhad == 2, ever_empl := 0] # not currently working, not working because no job and never worked
+
 
   ################################################
   ###### Hours and Earnings Variables ############

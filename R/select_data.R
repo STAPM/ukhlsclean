@@ -74,12 +74,12 @@ select_data <- function(
   }
   if (!is.null(keep_vars) & calendar_year == TRUE) {
 
-    keep_vars <- union(c("id","hidp","wave_no","bhps_sample",
+    keep_vars <- union(c("id","hidp","wave","wave_no","bhps_sample",
                          "year","month","day","weight_xw","pop_factor"), keep_vars)
   }
   if (!is.null(keep_vars) & calendar_year == FALSE) {
 
-    keep_vars <- union(c("id","hidp","wave_no","bhps_sample",
+    keep_vars <- union(c("id","hidp","wave","wave_no","bhps_sample",
                          "year","month","day","weight_xw"), keep_vars)
   }
 

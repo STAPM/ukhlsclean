@@ -37,6 +37,49 @@ ukhls_clean_work <- function(data = NULL) {
   data[, hours := NA]
   }
 
+  ##########################
+  ## SICKNESS ABSENCE ######
+
+  data[jbhas == 1, absent := 0]
+
+  # data[jbhas == 1, absent_sick := 0]
+  # data[jbhas == 1, absent_matleave := 0]
+  # data[jbhas == 1, absent_annualleave := 0]
+  # data[jbhas == 1, absent_other := 0]
+
+  # data[is.na(jbhas), absent_sick := NA]
+  # data[is.na(jbhas), absent_matleave := NA]
+  # data[is.na(jbhas), absent_annualleave := NA]
+  # data[is.na(jbhas), absent_other := NA]
+
+  # data[jbhas == 2 & jboff != 1, absent_sick := 0]
+  # data[jbhas == 2 & jboff != 1, absent_matleave := 0]
+  # data[jbhas == 2 & jboff != 1, absent_annualleave := 0]
+  # data[jbhas == 2 & jboff != 1, absent_other := 0]
+
+  data[jbhas == 2 & jboff == 1, absent := 1]
+
+  data[, absent_sick := absent]
+  data[!is.na(absent) & jboffy != 3, absent_sick := 0]
+  data[, absent_matleave := absent]
+  data[!is.na(absent) & jboffy != 1, absent_matleave := 0]
+  data[, absent_annualleave := absent]
+  data[!is.na(absent) & jboffy != 2, absent_annualleave := 0]
+  data[, absent_other := absent]
+  data[!is.na(absent) & jboffy == 3, absent_other := 0] ## this makes absent other equal to NOT absent because of sick
+  # data[!is.na(absent) & (jboffy != 1 | jboffy != 2 | jboffy != 3), absent_other := 0] ## this makes absent other equal to NOT absent because of sick
+
+  #
+  # data[jbhas == 2 & jboffy == 1, absent_matleave := 1]
+  # data[jbhas == 2 & jboffy == 2, absent_annualleave := 1]
+  # data[jbhas == 2 & (jboffy == 1 | jboffy == 2 | jboffy == 3), absent_other := 0]
+  #
+  # data[jbhas == 2 & (jboffy != 1 & jboffy != 2 & jboffy != 3), absent_sick := 0]
+  # data[jbhas == 2 & (jboffy != 1 & jboffy != 2 & jboffy != 3), absent_matleave := 0]
+  # data[jbhas == 2 & (jboffy != 1 & jboffy != 2 & jboffy != 3), absent_annualleave := 0]
+  # data[jbhas == 2 & (jboffy != 1 & jboffy != 2 & jboffy != 3), absent_other := 1]
+
+
   ##################
   ## INDUSTRY ######
 
@@ -194,9 +237,11 @@ ukhls_clean_work <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
-                         "hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig")]
+                         "hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig",
+                         "absent_sick","absent_matleave","absent_annualleave","absent_other")]
 
-  var_names <- c("hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig")
+  var_names <- c("hours_empl", "hours_semp", "hours", "sic_1dig", "sic_2dig",
+                 "absent_sick", "absent_matleave", "absent_annualleave", "absent_other")
 
   setnames(final_data, var_names, paste0("w_", var_names))
 

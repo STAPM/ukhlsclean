@@ -60,7 +60,8 @@ ukhls_read_wave5 <- function(
   demographic_vars <- Hmisc::Cs(e_sex, e_dvage, e_birthy, e_gor_dv, e_urban_dv, e_mlstat,  e_marstat)
   prev_wave_vars   <- Hmisc::Cs(e_notempchk, e_empchk)
   econ_stat_vars   <- Hmisc::Cs(e_jbstat, e_jbhas, e_jboff, e_jboffy, e_jbterm1, e_jbterm2, e_jbsemp)
-  work_vars        <- Hmisc::Cs(e_paygu_dv, e_payg_dv, e_jbhrs, e_fimnlabgrs_dv, e_seearngrs_dv, e_jbsic07_cc, e_jbot, e_jbotpd)
+  work_vars        <- Hmisc::Cs(e_paygu_dv, e_payg_dv, e_jbhrs, e_fimnlabgrs_dv, e_seearngrs_dv, e_jbsic07_cc, e_jbot, e_jbotpd,
+                                e_jbnssec_dv, e_jbnssec3_dv, e_jbnssec5_dv, e_jbnssec8_dv)
   employees_vars   <- Hmisc::Cs(e_paygl, e_paynl, e_payu, e_payug, e_ovtpay, e_extnsa, e_extrate, e_extrest, e_basnsa, e_basrate, e_basrest, e_ovtnsa, e_ovtrate, e_ovtrest)
   s.emp_vars       <- Hmisc::Cs(e_jshrs, e_jspayu, e_jspytx, e_jspyni)
   non.emp_vars     <- Hmisc::Cs(e_jbhad)
@@ -103,6 +104,7 @@ ukhls_read_wave5 <- function(
                          "e_jbstat","e_jbhas","e_jboff","e_jboffy","e_jbterm1","e_jbterm2","e_jbsemp",
                          ## work variables
                          "e_paygu_dv","e_payg_dv","e_jbhrs","e_fimnlabgrs_dv","e_seearngrs_dv","e_jbsic07_cc","e_jbot","e_jbotpd",
+                         "e_jbnssec_dv","e_jbnssec3_dv","e_jbnssec5_dv","e_jbnssec8_dv",
                          ## employees
                          "e_paygl","e_paynl","e_payu","e_payug","e_ovtpay","e_extnsa","e_extrate","e_extrest","e_basnsa","e_basrate",
                          "e_basrest","e_ovtnsa","e_ovtrate","e_ovtrest",
@@ -151,6 +153,7 @@ ukhls_read_wave5 <- function(
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
+                         "nssec","nssec_3cat","nssec_5cat","nssec_8cat",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","ovtpay","extnsa","extrate","ext_estimate","baspay_amount","baspay_rate",
                          "baspay_estimate","ovtpay_amount","ovtpay_rate","ovtpay_estimate",
@@ -211,16 +214,22 @@ ukhls_read_wave5 <- function(
   data.table::setnames(data.hhold, names(data.hhold), tolower(names(data.hhold)))
 
   hhold_vars          <- Hmisc::Cs(e_hidp, e_tenure_dv, e_nkids_dv, e_hhsize, e_hhtype_dv,
-                                   e_nch02_dv, e_nch34_dv, e_nch511_dv, e_nch1215_dv)
+                                   e_nch02_dv, e_nch34_dv, e_nch511_dv, e_nch1215_dv,
+                                   e_fihhmngrs1_dv, e_fihhmnlabgrs_dv,
+                                   e_fihhmnnet1_dv, e_fihhmnlabnet_dv, e_fihhmnsben_dv)
 
   data.hhold <- data.hhold[ , hhold_vars, with = F]
   data.table::setnames(data.hhold,
                        # old names
                        c("e_hidp","e_tenure_dv","e_nkids_dv","e_hhsize","e_hhtype_dv",
-                         "e_nch02_dv","e_nch34_dv","e_nch511_dv","e_nch1215_dv"),
+                         "e_nch02_dv","e_nch34_dv","e_nch511_dv","e_nch1215_dv",
+                         "e_fihhmngrs1_dv", "e_fihhmnlabgrs_dv",
+                         "e_fihhmnnet1_dv", "e_fihhmnlabnet_dv", "e_fihhmnsben_dv"),
                        # new names
                        c("hidp","hh_tenure","hh_numchild","hh_size","hh_type",
-                         "hh_numchild02","hh_numchild34","hh_numchild511","hh_numchild1215"))
+                         "hh_numchild02","hh_numchild34","hh_numchild511","hh_numchild1215",
+                         "hh_fihhmngrs1_dv", "hh_fihhmnlabgrs_dv",
+                         "hh_fihhmnnet1_dv", "hh_fihhmnlabnet_dv", "hh_fihhmnsben_dv"))
 
   hhold_merged <- merge(x = data,
                         y = data.hhold,
@@ -240,12 +249,12 @@ ukhls_read_wave5 <- function(
   )
   data.table::setnames(data.xwave, names(data.xwave), tolower(names(data.xwave)))
 
-  xwave_vars  <- colnames(data.xwave[ , c(1,34,17,18)])
+  xwave_vars  <- colnames(data.xwave[ , c("pidp","ethn_dv","dcsedfl_dv","dcsedw_dv")])
 
   data.xwave <- data.xwave[ , xwave_vars, with = F]
   data.table::setnames(data.xwave,
                        # old names
-                       c("pidp","racel_dv","dcsedfl_dv","dcsedw_dv"),
+                       c("pidp","ethn_dv","dcsedfl_dv","dcsedw_dv"),
                        # new names
                        c("pidp","ethnicity_raw","deceased","deceased_when"))
 

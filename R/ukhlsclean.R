@@ -180,10 +180,57 @@ data <- ukhlsclean::ukhls_combine_waves(data_list)
 ###################################
 ### Combine youth data (here?)
 
-cat(crayon::red("\n\t\tYouth data combined\n"))
+cat(crayon::red("\n\t\tYouth data... \n"))
 
-youth_data <- ukhlsclean::ukhls_clean_youth(ukhlsclean::ukhls_read_youth(root = root, file = file)) # change :::
-data <- merge(data, youth_data, by = "id", all.x = TRUE)
+youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # change :::
+
+# ## Other smokers in hh
+# if ("current_smoker" %in% colnames(data)) {
+#
+#   # indicator for any other household smokers
+#   data[!(wave_no %in% c(1,3,4)) & current_smoker == "smoker", smoke := 1]
+#   data[!(wave_no %in% c(1,3,4)) & current_smoker == "non_smoker", smoke := 0]
+#   data[!(wave_no %in% c(1,3,4)), num_smoker_hhold := sum(smoke, na.rm=TRUE), by = c("wave_no","hidp")]
+#   # number of other smokers = number of smokers - respondent
+#   data[!(wave_no %in% c(1,3,4)), num_othersmoker_hhold := num_smoker_hhold - smoke]
+#   # create a binary indicator
+#   data[!(wave_no %in% c(1,3,4)) & num_othersmoker_hhold > 0, othersmoker_hhold := "yes"]
+#   data[!(wave_no %in% c(1,3,4)) & num_othersmoker_hhold == 0, othersmoker_hhold := "no"]
+#
+#   data[, othersmoker_hhold := as.factor(othersmoker_hhold)]
+#
+#   data[, othersmoker_hhold := NA]
+# }
+
+##########################################################
+### Merging other smokers in household to youth data
+data_hholdsmoke <- data.table::copy(data[, c("hidp","wave","s_othersmoker_hhold")])
+youth_data <- merge(youth_data, data_hholdsmoke, by = c("hidp","wave"), all.x=TRUE) ##### ???
+### if na, does this mean youth taken survey with adult ? or other ?
+
+#
+# hh_smk_data <- data[s_current_smoker == "smoker", ]
+# hh_smk_data <- data[, .N, by = c("hidp","wave")]
+# hh_smk_data <- hh_smk_data[N >= 1, s_othersmoker_hhold := "yes"]
+# hh_smk_data <- hh_smk_data[N == 0, s_othersmoker_hhold := "no"]
+# hh_smk_data[, N := NULL]
+# youth_data <- merge(youth_data, hh_smk_data, by = c("hidp","wave"), all.x = TRUE)
+# }
+
+data <- rbind(data, youth_data, use.names = TRUE, fill = TRUE)
+
+data <- data[, wave := factor(wave, levels = c("UKHLS Wave 1", "UKHLS Wave 2", "UKHLS Wave 3",
+                                               "UKHLS Wave 4", "UKHLS Wave 5", "UKHLS Wave 6",
+                                               "UKHLS Wave 7", "UKHLS Wave 8", "UKHLS Wave 9",
+                                               "UKHLS Wave 10", "UKHLS Wave 11", "UKHLS Wave 12",
+                                               "UKHLS Youth Wave 1", "UKHLS Youth Wave 2", "UKHLS Youth Wave 3",
+                                               "UKHLS Youth Wave 4", "UKHLS Youth Wave 5", "UKHLS Youth Wave 6",
+                                               "UKHLS Youth Wave 7", "UKHLS Youth Wave 8", "UKHLS Youth Wave 9",
+                                               "UKHLS Youth Wave 10", "UKHLS Youth Wave 11", "UKHLS Youth Wave 12"
+                                               ))]
+
+cat(crayon::magenta("\nUKHLS Youth dataset appended"))
+
 
 #######################
 ## Record time taken
@@ -192,7 +239,7 @@ end_time <- Sys.time()
 
 tdiff <- difftime(end_time, start_time, units = "mins")
 
-time <- paste0("Total Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
+time <- paste0("\nTotal Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
 
 cat(crayon::bgWhite(time))
 

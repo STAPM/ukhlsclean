@@ -70,12 +70,27 @@ ukhls_clean_hhold <- function(data = NULL) {
                                           "private_renter",
                                           "social_renter")) ]
 
+  #################################
+  ### income and social benefit ###
+  # notes: potential for sorting into income groups?
+
+  #gross
+  data[, hh_fi_mo_grss := hh_fihhmngrs1_dv]
+  data[, hh_fi_mo_grsslabour := hh_fihhmnlabgrs_dv]
+
+  #net
+  data[, hh_fi_mo_net := hh_fihhmnnet1_dv]
+  data[, hh_fi_mo_netlabour := hh_fihhmnlabnet_dv, ]
+  data[, hh_fi_mo_socben := hh_fihhmnsben_dv]
+
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("id", "hidp", "wave_no",
                          "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
-                         "hh_numadult", "hh_numchild", "hh_size")]
+                         "hh_numadult", "hh_numchild", "hh_size",
+                         "hh_fi_mo_grss", "hh_fi_mo_grsslabour",
+                         "hh_fi_mo_net", "hh_fi_mo_netlabour", "hh_fi_mo_socben")]
 
   return(final_data)
 }
