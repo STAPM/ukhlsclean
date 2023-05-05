@@ -9,8 +9,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "d.j.morris@sheffield.ac.uk",
            comment = c(ORCID = "0000-0001-6757-5333")),
-    person(given = "Ryan",
-           family = "Kai Le Chen",
+    person(given = "Ryan Kai Le",
+           family = "Chen",
            role = c("aut"),
            email = "r.kailechen@sheffield.ac.uk")     
     )
