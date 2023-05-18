@@ -157,7 +157,7 @@ ukhls_clean_youth <- function(youth_data = NULL) {
   youth_data[, s_ncigs := NA_integer_]
 
   # s_ever_smoked (ypevrsmo)
-  setnames(youth_data, "ypevrsmo", "s_ever_smoked")
+  data.table::setnames(youth_data, "ypevrsmo", "s_ever_smoked")
 
   # s_othersmoker_hhold
   #pending
@@ -255,7 +255,7 @@ ukhls_clean_youth <- function(youth_data = NULL) {
 
   # order columns
 
-  setcolorder(youth_data,c("id","hidp","wave","wave_no","bhps_sample", ### dataset variable dropped here
+  data.table::setcolorder(youth_data,c("id","hidp","wave","wave_no","bhps_sample", ### dataset variable dropped here
                            "nwaves",
                            "wave_1","wave_2","wave_3","wave_4","wave_5","wave_6",
                            "wave_7","wave_8","wave_9","wave_10","wave_11","wave_12",
@@ -268,7 +268,7 @@ ukhls_clean_youth <- function(youth_data = NULL) {
                            "s_ecig","s_ecig_current",
                            "deceased","deceased_when"))
 
-  setnames(youth_data,
+  data.table::setnames(youth_data,
            c("id","age","sex","region","country","area"),
            c("id","d_age","d_sex","d_gor","d_country","d_area"))
 

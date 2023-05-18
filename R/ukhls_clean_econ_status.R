@@ -64,6 +64,21 @@ ukhls_clean_econstat <- function(data = NULL) {
                                  labels = c("employed","self_employed","unemployed","sick","retired","education","other"))]
 
   ######################################
+  ### Constructing NS-SEC ##############
+
+  data[nssec_5cat == 1, ns_sec := "Management & professional"]
+  data[nssec_5cat == 2, ns_sec := "Intermediate"]
+  data[nssec_5cat == 3, ns_sec := "Small employers & own account"]
+  data[nssec_5cat == 4, ns_sec := "Lower supervisory & technical"]
+  data[nssec_5cat == 5, ns_sec := "Semi-routine & routine"]
+  data[econ_stat_2cat == "not_employed", ns_sec := "Not employed"]#
+
+  data[, ns_sec := factor(ns_sec,
+                         levels = c("Management & professional","Intermediate","Small employers & own account","Lower supervisory & technical","Semi-routine & routine","Not employed"),
+                         labels = c("Management & professional","Intermediate","Small employers & own account","Lower supervisory & technical","Semi-routine & routine","Not employed"))]
+
+
+  ######################################
   ### Ever-employment ##################
 
   # data[jbhas == 1, ever_empl := 1] # currently working
@@ -123,14 +138,14 @@ ukhls_clean_econstat <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- merge[, c("id", "hidp", "wave_no",
-                          "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
+                          "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat", "ns_sec",
                           "grss_earnings_usual", "grss_earnings_last",
                           "grss_earnings_usual_empl", "grss_earnings_last_empl",
                           "real_grss_earnings_usual", "real_grss_earnings_last",
                           "real_grss_earnings_usual_empl", "real_grss_earnings_last_empl",
                           "real_grss_earnings_usual_semp")]
 
-  var_names <- c("econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat",
+  var_names <- c("econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat", "ns_sec",
                  "grss_earnings_usual", "grss_earnings_last",
                  "grss_earnings_usual_empl", "grss_earnings_last_empl",
                  "real_grss_earnings_usual", "real_grss_earnings_last",
