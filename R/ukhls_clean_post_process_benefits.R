@@ -29,4 +29,5 @@ ukhls_post_clean_benefit <- function(data = NULL) {
   data[(b_income_support != "receipt" & b_ES_Allowance != "receipt" & b_incap_ben != "receipt" & b_sev_disab_allowance != "receipt") & b_UniCred == "receipt" & l_econ_stat_3cat != "inactive", econ_inactive_benefits := "non_receipt"]
   data[is.na(b_income_support) & is.na(b_ES_Allowance) & is.na(b_incap_ben) & is.na(b_sev_disab_allowance) & is.na(b_UniCred), econ_inactive_benefits := NA]
 
+  return(data)
 }
