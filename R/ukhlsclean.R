@@ -17,6 +17,7 @@
 #' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).
+#' @param youth. Logical - TRUE if also processing the youth data files
 #' @return Returns a new set of variables
 #' @export
 
@@ -27,9 +28,10 @@ ukhlsclean <- function(root = "X:/",
                        ages = 16:89,
                        country = "UK",
                        keep_vars = NULL,
-                       complete_vars = c("d_age","d_sex")){
+                       complete_vars = c("d_age","d_sex"),
+                       youth = FALSE){
 
-cat(crayon::bgWhite("Cleaning the Understanding Society Data\n\n"))
+cat(crayon::red("Cleaning the Understanding Society Data\n\n"))
 
 start_time <- Sys.time()
 
@@ -173,13 +175,22 @@ if (12 %in% waves){
 
 
 #############################################################
-### Combine all waves in the list into a single dataset
+### Combine all waves in the list into a single dataset and
+### apply filters
 
 data <- ukhlsclean::ukhls_combine_waves(data_list)
 
-###################################
-### Combine youth data (here?)
+data <- ukhlsclean::select_data(data = data,
+                                ages = ages,
+                                country = country,
+                                keep_vars = keep_vars,
+                                complete_vars = complete_vars,
+                                calendar_year = calendar_year)
 
+###################################
+### Combine youth data
+
+if (youth == TRUE){
 cat(crayon::red("\n\t\tYouth data... \n"))
 
 youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # change :::
@@ -202,7 +213,6 @@ youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # ch
 #   data[, othersmoker_hhold := NA]
 # }
 
-##########################################################
 ### Merging other smokers in household to youth data
 data_hholdsmoke <- data.table::copy(data[, c("hidp","wave","s_othersmoker_hhold")])
 youth_data <- merge(youth_data, data_hholdsmoke, by = c("hidp","wave"), all.x=TRUE) ##### ???
@@ -231,7 +241,7 @@ data <- data[, wave := factor(wave, levels = c("UKHLS Wave 1", "UKHLS Wave 2", "
 
 cat(crayon::magenta("\nUKHLS Youth dataset appended"))
 
-
+}
 #######################
 ## Record time taken
 
@@ -241,7 +251,7 @@ tdiff <- difftime(end_time, start_time, units = "mins")
 
 time <- paste0("\nTotal Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
 
-cat(crayon::bgWhite(time))
+cat(crayon::red(time))
 
 return(data)
 }

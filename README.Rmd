@@ -54,7 +54,7 @@ devtools::install_git(
 
 ## Citation
 
-Morris D, and Kai Le Chen, R (2023). ukhlsclean: An R Package for Health Survey Data Wrangling. R package version [x.x.x]. University of Sheffield. https://github.com/STAPM/ukhlsclean . doi: https://doi.org/10.17605/OSF.IO/6K9NV
+Morris, D and Chen, RKL (2023). ukhlsclean: An R Package for Health Survey Data Wrangling. R package version [x.x.x]. University of Sheffield. https://github.com/STAPM/ukhlsclean . doi: https://doi.org/10.17605/OSF.IO/6K9NV
 
 ## Projects 
 

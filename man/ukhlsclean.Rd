@@ -15,7 +15,8 @@ ukhlsclean(
   ages = 16:89,
   country = "UK",
   keep_vars = NULL,
-  complete_vars = c("d_age", "d_sex")
+  complete_vars = c("d_age", "d_sex"),
+  youth = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ ukhlsclean(
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).}
+
+\item{youth.}{Logical - TRUE if also processing the youth data files}
 }
 \value{
 Returns a new set of variables
