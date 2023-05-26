@@ -95,6 +95,10 @@ ukhls_clean_global <- function(data,
   merged_data <- merge(merged_data, benefit,    by = c("id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, hhold,      by = c("id", "hidp", "wave_no"))
 
+  ####################################################
+  ### Post process benefits by employment activity ###
+
+  merged_data <- ukhls_post_clean_benefit(data = merged_data)
 
   ######################
   ### Merge in the population counts data
