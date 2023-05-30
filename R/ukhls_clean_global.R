@@ -30,7 +30,7 @@ ukhls_clean_global <- function(data,
   #######################################################################
   #### Save out a dataset containing the key identifiers and weights ####
 
-  main_data <- data[, c("id", "hidp", "wave", "wave_no", "bhps_sample", ## Added wave (identifier)
+  main_data <- data[, c("pidp", "id", "hidp", "wave", "wave_no", "bhps_sample", ## Added wave (identifier)
                         "year", "month", "day", "weight_xw")]
 
 
@@ -85,14 +85,14 @@ ukhls_clean_global <- function(data,
   ######################
   ### Merge datasets ###
 
-  merged_data <- merge(main_data, demographics, by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, health,     by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, alcohol,    by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, smoke,      by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, lmkt,       by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, work,       by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, benefit,    by = c("id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, hhold,      by = c("id", "hidp", "wave_no"))
+  merged_data <- merge(main_data, demographics, by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, health,     by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, alcohol,    by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, smoke,      by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, lmkt,       by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, work,       by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, benefit,    by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, hhold,      by = c("pidp", "id", "hidp", "wave_no"))
 
   ####################################################
   ### Post process benefits by employment activity ###
@@ -109,7 +109,7 @@ ukhls_clean_global <- function(data,
 
     merged_data <- merge(merged_data, pop_counts, by = c("year","d_age","d_sex","d_country"), all.x = TRUE, sort = FALSE)
 
-    setcolorder(merged_data, c("id","hidp","wave","wave_no","bhps_sample","year","month","day","weight_xw","pop_factor")) ## added wave identifier
+    setcolorder(merged_data, c("pidp", "id","hidp","wave","wave_no","bhps_sample","year","month","day","weight_xw","pop_factor")) ## added wave identifier
   }
 
   ############################
