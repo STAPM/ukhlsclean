@@ -12,10 +12,10 @@ ukhlsclean(
   file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
   full = TRUE,
   waves = 1:12,
-  ages = 16:89,
-  country = "UK",
+  ages = NULL,
+  country = NULL,
   keep_vars = NULL,
-  complete_vars = c("d_age", "d_sex"),
+  complete_vars = NULL,
   youth = FALSE
 )
 }
@@ -28,13 +28,13 @@ ukhlsclean(
 
 \item{waves}{Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).}
 
-\item{ages}{Integer vector - the ages in single years to retain (defaults to 16 to 89 years).}
+\item{ages}{Integer vector - the ages in single years to retain (defaults to NULL - all ages).}
 
-\item{country}{Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.}
+\item{country}{Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.}
 
-\item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
+\item{keep_vars}{Character vector - the names of the variables to keep (defaults NULL - keep all variables).}
 
-\item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).}
+\item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).}
 
 \item{youth.}{Logical - TRUE if also processing the youth data files}
 }

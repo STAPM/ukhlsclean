@@ -13,10 +13,10 @@
 #' @param file Character - the file path and name.
 #' @param full Logical - TRUE if restricting the sample to full interviews only (excluding proxies)
 #' @param waves Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).
-#' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
-#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
-#' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
-#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).
+#' @param ages Integer vector - the ages in single years to retain (defaults to NULL - all ages).
+#' @param country Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.
+#' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
+#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
 #' @param youth. Logical - TRUE if also processing the youth data files
 #' @return Returns a new set of variables
 #' @export
@@ -25,10 +25,10 @@ ukhlsclean <- function(root = "X:/",
                        file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
                        full = TRUE,
                        waves = 1:12,
-                       ages = 16:89,
-                       country = "UK",
+                       ages = NULL,
+                       country = NULL,
                        keep_vars = NULL,
-                       complete_vars = c("d_age","d_sex"),
+                       complete_vars = NULL,
                        youth = FALSE){
 
 cat(crayon::red("Cleaning the Understanding Society Data\n\n"))

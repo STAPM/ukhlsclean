@@ -4,11 +4,11 @@
 #' for specified variables.
 #'
 #' @param data Data table - the cleaned Understanding Society dataset.
-#' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
-#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
-#' @param keep_vars Character vector - the names of the variables to keep (defaults to year and age).
-#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year and age).
-#' @param calendar_year Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.
+#' @param ages Integer vector - the ages in single years to retain (defaults to NULL - all ages).
+#' @param country Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.
+#' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
+#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
 #' @importFrom data.table :=
 #' @return Returns a reduced version of data
 #' @export
@@ -22,20 +22,23 @@
 #'
 select_data <- function(
   data,
-  ages = 16:89,
-  country = "UK",
+  ages = NULL,
+  country = NULL,
   keep_vars = NULL,
-  complete_vars = c("age"),
-  calendar_year
+  complete_vars = NULL,
+  calendar_year = FALSE
 ) {
 
-  ### apply age and country filters
+  ### apply age filter if specified
 
-  data <- data[d_age %in% ages]
+  if (!is.null(ages)) {
 
-  if (country == "UK"){
+    data <- data[d_age %in% ages]
 
   }
+
+  ### apply country filter if specified
+
   if (country == "england") {
 
     data <- data[d_country == "england",]
@@ -52,9 +55,6 @@ select_data <- function(
 
     data <- data[d_country == "northern_ireland",]
   }
-
-
-
 
   ## keep only complete cases of variables named in complete_vars
 

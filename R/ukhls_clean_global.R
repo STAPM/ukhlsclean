@@ -5,21 +5,20 @@
 #' restrictions.
 #'
 #' @param data Data table - the combined Understanding Society dataset for one wave.
-#' @param ages Integer vector - the ages in single years to retain (defaults to 16 to 89 years).
-#' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
-#' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
-#' @param complete_vars Character vector - the names of the variables on which the selection of
-#' complete cases will be based (defaults to year, age and sex).
-#' @param calendar_year Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.
+#' @param ages Integer vector - the ages in single years to retain (defaults to NULL - all ages).
+#' @param country Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.
+#' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
+#' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
 #'
 #' @return Returns a new set of variables
 #' @export
 ukhls_clean_global <- function(data,
                                ages = 16:89,
-                               country = "UK",
+                               country = NULL,
                                keep_vars = NULL,
-                               complete_vars = c("year", "age", "sex"),
-                               calendar_year
+                               complete_vars = NULL,
+                               calendar_year = FALSE
 ) {
 
   ## fix bug that occurs if age is not in keep_vars
