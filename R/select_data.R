@@ -39,6 +39,8 @@ select_data <- function(
 
   ### apply country filter if specified
 
+  if(!is.null(country)){
+
   if (country == "england") {
 
     data <- data[d_country == "england",]
@@ -55,7 +57,7 @@ select_data <- function(
 
     data <- data[d_country == "northern_ireland",]
   }
-
+}
   ## keep only complete cases of variables named in complete_vars
 
   for(cv in complete_vars) {
