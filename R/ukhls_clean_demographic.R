@@ -146,7 +146,7 @@ ukhls_clean_demographic <- function(data = NULL) {
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- data[, c("id", "hidp", "wave_no",
+  final_data <- data[, c("pidp", "id", "hidp", "wave_no",
                          "age", "age_5cat", "age_12cat", "sex", "gor", "country", "area", "marital", "hiqual",
                          "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
 

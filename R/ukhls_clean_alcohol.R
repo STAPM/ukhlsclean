@@ -62,7 +62,7 @@ ukhls_clean_alcohol <- function(data = NULL) {
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- data[, c("id", "hidp", "wave_no",
+  final_data <- data[, c("pidp", "id", "hidp", "wave_no",
                          "current_abstainer", "always_abstainer", "ndrinks", "freq_binge")]
 
   var_names <- c("current_abstainer", "always_abstainer", "ndrinks", "freq_binge")

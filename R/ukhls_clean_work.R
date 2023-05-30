@@ -243,7 +243,7 @@ ukhls_clean_work <- function(data = NULL) {
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- data[, c("id", "hidp", "wave_no",
+  final_data <- data[, c("pidp", "id", "hidp", "wave_no",
                          "hours_empl", "hours_semp", "hours", "nssec", "nssec_3cat", "nssec_5cat", "nssec_8cat", "sic_1dig", "sic_2dig",
                          "absent_sick","absent_matleave","absent_annualleave","absent_other")]
 

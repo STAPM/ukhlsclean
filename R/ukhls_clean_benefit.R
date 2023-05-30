@@ -320,9 +320,10 @@ ukhls_clean_benefit <- function(data = NULL) {
   ##################me_
   ## RETAIN THE CLEANED VARIABLES
 
-  legacy    <- c("income_support","jbseek_allowance","national_pen_cred","child_benefit","child_tax_credit","other_family_benefit","housing_council_rent_rate","other_ben_cred")
-  bendis    <- c("incap_ben","ES_Allowance","sev_disab_allowance","carers_allowance","disliving_allowance","pers.indep_pay",
-                 "attend_allowance","industry_inj_ben","sick.accident_insurance","oth_disab_ben")
+  legacy    <- c("income_support","jbseek_allowance","national_pen_cred","child_benefit",
+                 "child_tax_credit","other_family_benefit","housing_council_rent_rate","other_ben_cred")
+  bendis    <- c("incap_ben","ES_Allowance","sev_disab_allowance","carers_allowance","disliving_allowance",
+                 "pers.indep_pay", "attend_allowance","industry_inj_ben","sick.accident_insurance","oth_disab_ben")
   pension   <- c("war_pen","SERPs")
   national  <- c("NI_state_pension","pension_credit","NI_credit")
   housing   <- c("council_tax_benefit","housing_benefit","rate_rebate","rent_rebate")
@@ -350,7 +351,7 @@ ukhls_clean_benefit <- function(data = NULL) {
   #
   data[, (paste0(var_names)) := lapply(.SD, as.factor), .SDcols = paste0(var_names)]
 
-  final_data <- data[, c("id", "hidp", "wave_no", ..var_names)]
+  final_data <- data[, c("pidp", "id", "hidp", "wave_no", ..var_names)]
 
 
   setnames(final_data, var_names, paste0("b_", var_names))

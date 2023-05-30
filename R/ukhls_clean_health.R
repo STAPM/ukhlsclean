@@ -120,12 +120,12 @@ ukhls_clean_health <- function(data = NULL) {
                                 matrix = ukhlsclean::CoefficientMatrix,
                                 seed = 0)
 
-  merged_data <- merge(data, eq5d_data, by = c("id","wave_no"), sort = F, all.x = TRUE)
+  merged_data <- merge(data, eq5d_data, by = c("pidp","id","wave_no"), sort = F, all.x = TRUE)
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- merged_data[, c("id", "hidp", "wave_no",
+  final_data <- merged_data[, c("pidp", "id", "hidp", "wave_no",
                                 "eq5d_score", "pregnant", "disability", "care_hhold",
                                 "satisfaction_health", "satisfaction_life")]
 

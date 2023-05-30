@@ -137,7 +137,7 @@ ukhls_clean_econstat <- function(data = NULL) {
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- merge[, c("id", "hidp", "wave_no",
+  final_data <- merge[, c("pidp", "id", "hidp", "wave_no",
                           "econ_stat_2cat", "econ_stat_3cat", "econ_stat_7cat", "ns_sec",
                           "grss_earnings_usual", "grss_earnings_last",
                           "grss_earnings_usual_empl", "grss_earnings_last_empl",

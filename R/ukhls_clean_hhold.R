@@ -86,7 +86,7 @@ ukhls_clean_hhold <- function(data = NULL) {
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- data[, c("id", "hidp", "wave_no",
+  final_data <- data[, c("pidp", "id", "hidp", "wave_no",
                          "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
                          "hh_numadult", "hh_numchild", "hh_size",
                          "hh_fi_mo_grss", "hh_fi_mo_grsslabour",
