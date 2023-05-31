@@ -9,7 +9,7 @@ ukhls_clean_youth <- function(youth_data = NULL) {
 
   # youth_data <- ukhls_read_youth()
 
-  cat(crayon::magenta("\nCleaning UKHLS Youth datasets"))
+  cat(crayon::red("\nCleaning UKHLS Youth datasets:"))
 
   youth_data <- youth_data[order(id), ]
 

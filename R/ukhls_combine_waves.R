@@ -9,6 +9,8 @@ ukhls_combine_waves <- function(
   data_list
 ) {
 
+  cat(crayon::magenta("\tCombining waves\n"))
+
   # combine all the data tables
   data <- data.table::rbindlist(data_list, use.names = T, fill = T)
 

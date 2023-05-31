@@ -31,7 +31,7 @@ ukhlsclean <- function(root = "X:/",
                        complete_vars = NULL,
                        youth = FALSE){
 
-cat(crayon::red("Cleaning the Understanding Society Data\n\n"))
+cat(crayon::red("Cleaning the Understanding Society Longitudinal Data\n\n"))
 
 start_time <- Sys.time()
 
@@ -191,7 +191,7 @@ data <- ukhlsclean::select_data(data = data,
 ### Combine youth data
 
 if (youth == TRUE){
-cat(crayon::red("\n\t\tYouth data... \n"))
+cat(crayon::magenta("\n\t\tYouth data... \n"))
 
 youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # change :::
 
@@ -239,7 +239,7 @@ data <- data[, wave := factor(wave, levels = c("UKHLS Wave 1", "UKHLS Wave 2", "
                                                "UKHLS Youth Wave 10", "UKHLS Youth Wave 11", "UKHLS Youth Wave 12"
                                                ))]
 
-cat(crayon::magenta("\nUKHLS Youth dataset appended"))
+cat(crayon::red("\tUKHLS Youth dataset appended"))
 
 }
 #######################

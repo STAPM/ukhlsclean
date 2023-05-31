@@ -45,7 +45,7 @@ ukhls_read_youth <- function(
 
   cat(crayon::magenta("\nReading UKHLS Youth datasets"))
 
-  cat(crayon::red("\nWave 1..."))
+  cat(crayon::red("\nWave 1 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -134,7 +134,7 @@ ukhls_read_youth <- function(
 
   #### Wave 2
 
-  cat(crayon::red("\nWave 2..."))
+  cat(crayon::red("\nWave 2 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -224,7 +224,7 @@ ukhls_read_youth <- function(
 
   #### Wave 3
 
-  cat(crayon::red("\nWave 3..."))
+  cat(crayon::red("\nWave 3 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -313,7 +313,7 @@ ukhls_read_youth <- function(
 
   #### Wave 4
 
-  cat(crayon::red("\nWave 4..."))
+  cat(crayon::red("\nWave 4 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -402,7 +402,7 @@ ukhls_read_youth <- function(
 
   #### Wave 5
 
-  cat(crayon::red("\nWave 5..."))
+  cat(crayon::red("\nWave 5 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -491,7 +491,7 @@ ukhls_read_youth <- function(
 
   #### Wave 6
 
-  cat(crayon::red("\nWave 6..."))
+  cat(crayon::red("\nWave 6 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -580,7 +580,7 @@ ukhls_read_youth <- function(
 
   #### Wave 7
 
-  cat(crayon::red("\nWave 7..."))
+  cat(crayon::red("\nWave 7 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -669,7 +669,7 @@ ukhls_read_youth <- function(
 
   #### Wave 8
 
-  cat(crayon::red("\nWave 8..."))
+  cat(crayon::red("\nWave 8 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -758,7 +758,7 @@ ukhls_read_youth <- function(
 
   #### Wave 9
 
-  cat(crayon::red("\nWave 9..."))
+  cat(crayon::red("\nWave 9 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -847,7 +847,7 @@ ukhls_read_youth <- function(
 
   #### Wave 10
 
-  cat(crayon::red("\nWave 10..."))
+  cat(crayon::red("\nWave 10 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -936,7 +936,7 @@ ukhls_read_youth <- function(
 
   #### Wave 11
 
-  cat(crayon::red("\nWave 11..."))
+  cat(crayon::red("\nWave 11 youth data..."))
 
   path <- here::here(paste0(root, file))
 
@@ -1025,7 +1025,7 @@ ukhls_read_youth <- function(
 
   #### Wave 12
 
-  cat(crayon::red("\nWave 12..."))
+  cat(crayon::red("\nWave 12 youth data..."))
 
   path <- here::here(paste0(root, file))
 
