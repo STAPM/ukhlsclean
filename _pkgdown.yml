@@ -55,6 +55,8 @@ reference:
   - ukhls_clean_smoke
   - ukhls_clean_work
   - ukhls_clean_benefit
+  - ukhls_clean_youth
+  - ukhls_post_clean_benefit
   - ukhls_combine_waves
   - select_data
   - eq5d
@@ -77,6 +79,7 @@ reference:
   - ukhls_read_wave12
   - ukhls_read_covid19_1
   - ukhls_read_covid19_2
+  - ukhls_read_youth
 
 - title: Package datasets
   contents:

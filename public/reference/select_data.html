@@ -18,7 +18,7 @@ for specified variables."><meta property="og:image" content="https://stapm.gitla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.8</span>
       </span>
     </div>
 
@@ -85,11 +85,11 @@ for specified variables.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">select_data</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
-<span>  ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>,</span>
-<span>  country <span class="op">=</span> <span class="st">"UK"</span>,</span>
+<span>  ages <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  country <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  keep_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span><span class="op">)</span>,</span>
-<span>  <span class="va">calendar_year</span></span>
+<span>  complete_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  calendar_year <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -100,23 +100,23 @@ for specified variables.</p>
 
 
 <dt>ages</dt>
-<dd><p>Integer vector - the ages in single years to retain (defaults to 16 to 89 years).</p></dd>
+<dd><p>Integer vector - the ages in single years to retain (defaults to NULL - all ages).</p></dd>
 
 
 <dt>country</dt>
-<dd><p>Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.</p></dd>
+<dd><p>Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.</p></dd>
 
 
 <dt>keep_vars</dt>
-<dd><p>Character vector - the names of the variables to keep (defaults to year and age).</p></dd>
+<dd><p>Character vector - the names of the variables to keep (defaults NULL - keep all variables).</p></dd>
 
 
 <dt>complete_vars</dt>
-<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year and age).</p></dd>
+<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).</p></dd>
 
 
 <dt>calendar_year</dt>
-<dd><p>Logical - TRUE when the code is processing calendar year data and merges in ONS population counts data.</p></dd>
+<dd><p>Logical - TRUE when the code is processing calendar year data (defaults to FALSE).</p></dd>
 
 </dl></div>
     <div id="value">

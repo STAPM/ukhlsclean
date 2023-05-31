@@ -19,7 +19,7 @@ restrictions."><meta property="og:image" content="https://stapm.gitlab.io/r-pack
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.8</span>
       </span>
     </div>
 
@@ -90,10 +90,11 @@ restrictions.</p>
 <span>  file <span class="op">=</span> <span class="st">"HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls"</span>,</span>
 <span>  full <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  waves <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>,</span>
-<span>  ages <span class="op">=</span> <span class="fl">16</span><span class="op">:</span><span class="fl">89</span>,</span>
-<span>  country <span class="op">=</span> <span class="st">"UK"</span>,</span>
+<span>  ages <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  country <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  keep_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  complete_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>, <span class="st">"d_sex"</span><span class="op">)</span></span>
+<span>  complete_vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  youth <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -120,19 +121,23 @@ restrictions.</p>
 
 
 <dt>ages</dt>
-<dd><p>Integer vector - the ages in single years to retain (defaults to 16 to 89 years).</p></dd>
+<dd><p>Integer vector - the ages in single years to retain (defaults to NULL - all ages).</p></dd>
 
 
 <dt>country</dt>
-<dd><p>Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.</p></dd>
+<dd><p>Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.</p></dd>
 
 
 <dt>keep_vars</dt>
-<dd><p>Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).</p></dd>
+<dd><p>Character vector - the names of the variables to keep (defaults NULL - keep all variables).</p></dd>
 
 
 <dt>complete_vars</dt>
-<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).</p></dd>
+<dd><p>Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).</p></dd>
+
+
+<dt>youth.</dt>
+<dd><p>Logical - TRUE if also processing the youth data files</p></dd>
 
 </dl></div>
     <div id="value">

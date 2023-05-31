@@ -47,14 +47,14 @@ devtools::install_git(
   build_vignettes = FALSE
 )
 
-# Where uname is your Gitlab user name.
+# Where uname is your GitHub user name.
 # ref is the version you want to install - remove for the latest version
 ```
 
 
 ## Citation
 
-Morris, D and Chen, RKL (2023). ukhlsclean: An R Package for Health Survey Data Wrangling. R package version [x.x.x]. University of Sheffield. https://github.com/STAPM/ukhlsclean . doi: https://doi.org/10.17605/OSF.IO/6K9NV
+Morris, D and Chen, RKL (2023). ukhlsclean: Data Wrangling for Understanding Society - The UK Household Longitudinal Study. R package version [x.x.x]. University of Sheffield. https://github.com/STAPM/ukhlsclean . doi: https://doi.org/10.17605/OSF.IO/6K9NV
 
 ## Projects 
 
