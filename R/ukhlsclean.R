@@ -180,12 +180,14 @@ if (12 %in% waves){
 
 data <- ukhlsclean::ukhls_combine_waves(data_list)
 
-data <- ukhlsclean::select_data(data = data,
-                                ages = ages,
-                                country = country,
-                                keep_vars = keep_vars,
-                                complete_vars = complete_vars,
-                                calendar_year = calendar_year)
+### commenting out - this function is called in the global cleaning function
+
+#data <- ukhlsclean::select_data(data = data,
+#                                ages = ages,
+#                                country = country,
+#                                keep_vars = keep_vars,
+#                                complete_vars = complete_vars,
+#                                calendar_year = calendar_year)
 
 ###################################
 ### Combine youth data
