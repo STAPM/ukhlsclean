@@ -17,7 +17,7 @@ ukhls_post_clean_benefit <- function(data = NULL) {
   data[b_jbseek_allowance != "receipt" & b_UniCred == "receipt" & l_econ_stat_3cat != "unemployed", unemployment_benefits := "non_receipt"] # receipt of UniCred but not the relevant employment status
   data[is.na(b_jbseek_allowance) & is.na(b_UniCred), unemployment_benefits := NA] # generate NA values if ALL are missing
 
-  ### In-Work benefits
+  ### In-Work benefits (can use b_housing_council_rent_rate instead)
   data[(b_iw_lone_cred == "receipt" | b_RTW_cred == "receipt" | b_work_tax_cred == "receipt" | b_council_tax_benefit == "receipt" | b_rate_rebate == "receipt" | b_housing_benefit == "receipt" | b_rent_rebate == "receipt") | (b_UniCred == "receipt" & l_econ_stat_3cat == "employed"), in_work_benefits := "receipt"]
   data[b_iw_lone_cred != "receipt" & b_RTW_cred != "receipt" & b_work_tax_cred != "receipt" | b_council_tax_benefit != "receipt" | b_rate_rebate != "receipt" | b_housing_benefit != "receipt" | b_rent_rebate != "receipt" & b_UniCred == "non_receipt", in_work_benefits := "non_receipt"]
   data[(b_iw_lone_cred != "receipt" & b_RTW_cred != "receipt" & b_work_tax_cred != "receipt" | b_council_tax_benefit != "receipt" | b_rate_rebate != "receipt" | b_housing_benefit != "receipt" | b_rent_rebate != "receipt") & b_UniCred == "receipt" & l_econ_stat_3cat != "employed", in_work_benefits := "non_receipt"]

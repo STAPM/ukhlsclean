@@ -129,9 +129,9 @@ ukhls_clean_econstat <- function(data = NULL) {
 
   # construct real terms variables
   merge[ , real_grss_earnings_usual_empl := grss_earnings_usual_empl*(100/cpi_value)]
-  merge[ , real_grss_earnings_usual      := grss_pay_usual*(100/cpi_value)]
+  merge[ , real_grss_earnings_usual      := grss_earnings_usual*(100/cpi_value)] ## should this be grss_earnings_usual? # changed from grss_pay_usual
   merge[ , real_grss_earnings_last_empl  := grss_earnings_last_empl*(100/cpi_value)]
-  merge[ , real_grss_earnings_last       := grss_pay_last*(100/cpi_value)]
+  merge[ , real_grss_earnings_last       := grss_earnings_last*(100/cpi_value)] ## should this be grss_earnings_last? # changed from grss_pay_last
   merge[ , real_grss_earnings_usual_semp := grss_earnings_usual_semp*(100/cpi_value)]
 
   ##################
