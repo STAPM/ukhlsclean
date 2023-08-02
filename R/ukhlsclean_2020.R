@@ -38,9 +38,9 @@ ukhlsclean_2020 <- function(
     complete_vars = c("d_age","d_sex","d_country")
 ) {
 
-  cat(crayon::magenta("\tReading UKHLS Calendar Year 2020 datasets"))
+  cat(crayon::blue(crayon::underline("\tReading UKHLS Calendar Year 2020 datasets")))
 
-  cat(crayon::red("\tIndividual..."))
+  cat(crayon::green("\tIndividual..."))
 
   path <- here::here(paste0(root, file))
 
@@ -165,7 +165,7 @@ ukhlsclean_2020 <- function(
   ########################################
   ######## ADD IN HOUSEHOLD DATA #########
 
-  cat(crayon::red("\tHousehold..."))
+  cat(crayon::green("\tHousehold..."))
 
   data.hhold <- data.table::fread(
     paste0(path, "/jkl_hhresp.tab"),
@@ -194,7 +194,7 @@ ukhlsclean_2020 <- function(
 
   rm(data, data.hhold); gc()
 
-  cat(crayon::magenta("\tdone\n"))
+  cat(crayon::blue(crayon::bold("\tdone\n")))
 
   ####################################
   ### Apply all cleaning functions ###
