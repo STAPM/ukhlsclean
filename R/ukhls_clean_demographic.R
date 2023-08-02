@@ -113,6 +113,20 @@ ukhls_clean_demographic <- function(data = NULL) {
 
   data[,country := factor(country, levels = c("england","wales","scotland","northern_ireland"))]
 
+  #####################################
+  ### index of multiple deprivation ###
+
+  ## USoc codes 1 as most deprived. reverse.
+
+  data[country == "england",          imd_quintile := imdq_e]
+  data[country == "wales",            imd_quintile := imdq_w]
+  data[country == "scotland",         imd_quintile := imdq_s]
+  data[country == "northern_ireland", imd_quintile := imdq_ni]
+
+  data[,imd_quintile := factor(imd_quintile,
+                               levels = rev(1:5),
+                               labels = c("1_least_deprived","2","3","4","5_most_deprived")) ]
+
   ############################
   ### area - rural/urban #####
 
@@ -147,11 +161,13 @@ ukhls_clean_demographic <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("pidp", "id", "hidp", "wave_no",
-                         "age", "age_5cat", "age_12cat", "sex", "gor", "country", "area", "marital", "hiqual",
+                         "age", "age_5cat", "age_12cat", "sex", "imd_quintile",
+                         "gor", "country", "area", "marital", "hiqual",
                          "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")]
 
 
-  var_names <- c("age", "age_5cat", "age_12cat", "sex", "gor", "country", "area", "marital", "hiqual",
+  var_names <- c("age", "age_5cat", "age_12cat", "sex", "imd_quintile",
+                 "gor", "country", "area", "marital", "hiqual",
                  "ethnicity_2cat", "ethnicity_5cat", "ethnicity_9cat")
 
   setnames(final_data, var_names, paste0("d_", var_names))
