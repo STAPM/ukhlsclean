@@ -186,11 +186,50 @@ ukhlsclean_2020 <- function(
                        c("hidp", "hh_tenure", "hh_numchild", "hh_size", "hh_type",
                          "hh_numchild02", "hh_numchild34", "hh_numchild511", "hh_numchild1215"))
 
-  data_merged <- merge(x = data,
-                       y = data.hhold,
-                       by="hidp",
-                       all.x=TRUE,
-                       all.y=FALSE)
+  hhold_merged <- merge(x = data,
+                        y = data.hhold,
+                        by = "hidp",
+                        all.x = TRUE,
+                        all.y = FALSE)
+
+  ####################################################
+  #### ADD IN THE INDALL DATA ########################
+
+  cat(crayon::green("\tIndall..."))
+
+  data.indall <- data.table::fread(
+    paste0(path, "/jkl_indall.tab"),
+    showProgress = FALSE,
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
+  data.table::setnames(data.indall, names(data.indall), tolower(names(data.indall)))
+
+  indall_vars  <- colnames(data.indall[ , c("pidp","jkl_hidp",
+                                            "jkl_imd2019qe_dv","jkl_imd2017qni_dv",
+                                            "jkl_imd2020qs_dv","jkl_imd2019qw_dv")])
+
+  data.indall <- data.indall[ , indall_vars, with = F]
+  data.table::setnames(data.indall,
+                       # old names
+                       c("pidp","jkl_hidp",
+                         "jkl_imd2019qe_dv","jkl_imd2017qni_dv",
+                         "jkl_imd2020qs_dv","jkl_imd2019qw_dv"),
+                       # new names
+                       c("pidp","hidp",
+                         "imdq_e","imdq_ni",
+                         "imdq_s","imdq_w"))
+
+  ## Combine - keep all observations in the main data and drop excess xwave observations
+
+  data_merged <- merge(x = hhold_merged,
+                       y = data.indall,
+                       by = c("pidp","hidp"),
+                       all.x = TRUE,
+                       all.y = FALSE)
+
+  ##########################################################################
+
+
 
   rm(data, data.hhold); gc()
 
