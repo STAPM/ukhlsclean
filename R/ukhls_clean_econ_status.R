@@ -66,6 +66,7 @@ ukhls_clean_econstat <- function(data = NULL) {
   ######################################
   ### Constructing NS-SEC ##############
 
+  if ("nssec_5cat" %in% colnames(data)){
   data[nssec_5cat == 1, ns_sec := "Management & professional"]
   data[nssec_5cat == 2, ns_sec := "Intermediate"]
   data[nssec_5cat == 3, ns_sec := "Small employers & own account"]
@@ -77,7 +78,9 @@ ukhls_clean_econstat <- function(data = NULL) {
                          levels = c("Management & professional","Intermediate","Small employers & own account","Lower supervisory & technical","Semi-routine & routine","Not employed"),
                          labels = c("Management & professional","Intermediate","Small employers & own account","Lower supervisory & technical","Semi-routine & routine","Not employed"))]
 
-
+  } else {
+    data[,ns_sec := NA]
+  }
   ######################################
   ### Ever-employment ##################
 

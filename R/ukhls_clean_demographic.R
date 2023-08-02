@@ -118,6 +118,7 @@ ukhls_clean_demographic <- function(data = NULL) {
 
   ## USoc codes 1 as most deprived. reverse.
 
+  if ("imdq_e" %in% colnames(data)){
   data[country == "england",          imd_quintile := imdq_e]
   data[country == "wales",            imd_quintile := imdq_w]
   data[country == "scotland",         imd_quintile := imdq_s]
@@ -126,7 +127,9 @@ ukhls_clean_demographic <- function(data = NULL) {
   data[,imd_quintile := factor(imd_quintile,
                                levels = rev(1:5),
                                labels = c("1_least_deprived","2","3","4","5_most_deprived")) ]
-
+  } else {
+  data[,imd_quintile := NA]
+  }
   ############################
   ### area - rural/urban #####
 
