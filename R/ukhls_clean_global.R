@@ -36,49 +36,49 @@ ukhls_clean_global <- function(data,
 
   ### demographics
 
-  cat(crayon::red("\n\t\tDemographic variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tDemographic variables module\n")))
 
   demographics <- ukhlsclean::ukhls_clean_demographic(data = data)
 
   ### health and well-being
 
-  cat(crayon::red("\n\t\tHealth and wellbeing variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tHealth and wellbeing variables module\n")))
 
   health <- ukhlsclean::ukhls_clean_health(data = data)
 
   ### alcohol
 
-  cat(crayon::red("\n\t\tAlcohol variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tAlcohol variables module\n")))
 
   alcohol <- ukhlsclean::ukhls_clean_alcohol(data = data)
 
   ### smoking
 
-  cat(crayon::red("\n\t\tSmoking variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tSmoking variables module\n")))
 
   smoke <- ukhlsclean::ukhls_clean_smoke(data = data)
 
   ### labour market
 
-  cat(crayon::red("\n\t\tLabour market variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tLabour market variables module\n")))
 
   lmkt <- ukhlsclean::ukhls_clean_econstat(data = data) ### :::
 
   ### work
 
-  cat(crayon::red("\n\t\tWork variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tWork variables module\n")))
 
   work <- ukhlsclean::ukhls_clean_work(data = data)
 
   ### benefits
 
-  cat(crayon::red("\n\t\tBenefits variables module\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tBenefits variables module\n")))
 
   benefit <- ukhlsclean:::ukhls_clean_benefit(data = data)
 
   ### household
 
-  cat(crayon::red("\n\t\tFamily and household variables module\n\n"))
+  #cat(crayon::bold(crayon::green("\n\t\tFamily and household variables module\n\n")))
 
   hhold <- ukhlsclean::ukhls_clean_hhold(data = data)
 

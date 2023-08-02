@@ -29,8 +29,6 @@ select_data <- function(
   calendar_year = FALSE
 ) {
 
-  cat(crayon::red("\t\tApplying filters\n\n"))
-
   ### apply age filter if specified
 
   if (!is.null(ages)) {

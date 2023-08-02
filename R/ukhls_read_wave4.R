@@ -38,9 +38,9 @@ ukhls_read_wave4 <- function(
   full = TRUE
 ) {
 
-  cat(crayon::magenta("\tReading UKHLS Wave 4 datasets"))
+  cat(crayon::blue(crayon::underline("\tReading UKHLS Wave 4 datasets")))
 
-  cat(crayon::red("\tIndividual..."))
+  cat(crayon::green("\tIndividual..."))
 
   path <- here::here(paste0(root, file))
 
@@ -208,7 +208,7 @@ ukhls_read_wave4 <- function(
   ########################################
   ######## ADD IN HOUSEHOLD DATA #########
 
-  cat(crayon::red("\tHousehold..."))
+  cat(crayon::green("\tHousehold..."))
 
   data.hhold <- data.table::fread(
     paste0(path, "/d_hhresp.tab"),
@@ -244,7 +244,7 @@ ukhls_read_wave4 <- function(
   #########################################
   ######## ADD IN CROSS-WAVE DATA #########
 
-  cat(crayon::red("\tCross-Wave..."))
+  cat(crayon::green("\tCross-Wave..."))
 
   data.xwave <- data.table::fread(
     paste0(path, "/xwavedat.tab"),
@@ -273,7 +273,7 @@ ukhls_read_wave4 <- function(
   ####################################################
   #### ADD IN THE INDALL DATA ########################
 
-  cat(crayon::red("\tIndall..."))
+  cat(crayon::green("\tIndall..."))
 
   data.indall <- data.table::fread(
     paste0(path, "/d_indall.tab"),
@@ -307,7 +307,7 @@ ukhls_read_wave4 <- function(
 
   ##########################################################################
 
-  cat(crayon::magenta("\tdone\n"))
+  cat(crayon::blue(crayon::bold("\tdone\n")))
 
   return(data_merged)
 }

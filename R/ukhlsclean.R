@@ -31,7 +31,7 @@ ukhlsclean <- function(root = "X:/",
                        complete_vars = NULL,
                        youth = FALSE){
 
-cat(crayon::red("Cleaning the Understanding Society Longitudinal Data\n\n"))
+cat(crayon::bold(crayon::underline(crayon::green("Cleaning the Understanding Society Longitudinal Data\n\n"))))
 
 start_time <- Sys.time()
 
@@ -193,7 +193,7 @@ data <- ukhlsclean::ukhls_combine_waves(data_list)
 ### Combine youth data
 
 if (youth == TRUE){
-cat(crayon::magenta("\n\t\tYouth data... \n"))
+cat(crayon::blue("\n\t\tYouth data... \n"))
 
 youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # change :::
 
@@ -241,7 +241,7 @@ data <- data[, wave := factor(wave, levels = c("UKHLS Wave 1", "UKHLS Wave 2", "
                                                "UKHLS Youth Wave 10", "UKHLS Youth Wave 11", "UKHLS Youth Wave 12"
                                                ))]
 
-cat(crayon::red("\tUKHLS Youth dataset appended"))
+cat(crayon::bold(crayon::green("\tUKHLS Youth dataset appended")))
 
 }
 #######################
@@ -251,9 +251,9 @@ end_time <- Sys.time()
 
 tdiff <- difftime(end_time, start_time, units = "mins")
 
-time <- paste0("\nTotal Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
+time <- paste0("\nComplete.\n\nTotal Data reading and cleaning time: ", round(tdiff,2), " minutes\n")
 
-cat(crayon::red(time))
+cat(crayon::bold(crayon::underline(crayon::green(time))))
 
 return(data)
 }
