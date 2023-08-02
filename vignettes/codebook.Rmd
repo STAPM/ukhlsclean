@@ -79,6 +79,13 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
 - __d_sex__  (factor) sex:
   - "male"
   - "female"
+  
+- __d_imd_quintile__ (factor) Index of Multiple Deprivation (IMD) quintile:
+  - "1_least_deprived"
+  - "2"
+  - "3"
+  - "4"
+  - "5_most_deprived"
 
 - __d_gor__  (factor) government office region:
   - "north_east"

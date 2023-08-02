@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ukhlsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.11.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.12.0</span>
       </span>
     </div>
 
@@ -143,33 +143,33 @@ The <code>complete_vars</code> argument specifies a vector of variables
 which must be complete (i.e. no missing values) and removes observations
 which has missing values for any of the variables specified in the
 vector.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ukhlsclean)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## input arguments</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>root  <span class="ot">&lt;-</span> <span class="st">"X:/"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>file  <span class="ot">&lt;-</span> <span class="st">"HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>full  <span class="ot">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># full interviews (no proxies) only</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>waves <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ages  <span class="ot">&lt;-</span> <span class="dv">16</span><span class="sc">:</span><span class="dv">89</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="st">"UK"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>keep_vars <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>complete_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"d_age"</span>,<span class="st">"d_sex"</span>,<span class="st">"d_country"</span>,<span class="st">"l_econ_stat_3cat"</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">##########################</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">### Full UKHLS panel data</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>fulldata <span class="ot">&lt;-</span> <span class="fu">ukhlsclean</span>(<span class="at">root =</span> root,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                       <span class="at">file =</span> file,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">full =</span> full,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">waves =</span> waves,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ages =</span> ages,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                       <span class="at">country =</span> country,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                       <span class="at">keep_vars =</span> keep_vars,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                       <span class="at">complete_vars =</span> complete_vars)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(ukhlsclean)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="do">## input arguments</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>root  <span class="ot">&lt;-</span> <span class="st">"X:/"</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>file  <span class="ot">&lt;-</span> <span class="st">"HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls"</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>full  <span class="ot">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># full interviews (no proxies) only</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>waves <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>ages  <span class="ot">&lt;-</span> <span class="dv">16</span><span class="sc">:</span><span class="dv">89</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="st">"UK"</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>keep_vars <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>complete_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"d_age"</span>,<span class="st">"d_sex"</span>,<span class="st">"d_country"</span>,<span class="st">"l_econ_stat_3cat"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="do">##########################</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="do">### Full UKHLS panel data</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>fulldata <span class="ot">&lt;-</span> <span class="fu">ukhlsclean</span>(<span class="at">root =</span> root,</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>                       <span class="at">file =</span> file,</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>                       <span class="at">full =</span> full,</span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>                       <span class="at">waves =</span> waves,</span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>                       <span class="at">ages =</span> ages,</span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>                       <span class="at">country =</span> country,</span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>                       <span class="at">keep_vars =</span> keep_vars,</span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>                       <span class="at">complete_vars =</span> complete_vars)</span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="er">)</span></span></code></pre></div>
 <hr>
 <p>See <code><a href="../articles/USoc_longitudinal_data_check.html">vignette("USoc_longitudinal_data_check")</a></code> and
 <code>vignette("USoc_calendar_year_2020_check")</code> for summary

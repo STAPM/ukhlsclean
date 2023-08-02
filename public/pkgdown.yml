@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   ukhlsclean: ukhlsclean.html
   USoc_calendar_year_2020_data_check: USoc_calendar_year_2020_data_check.html
   USoc_longitudinal_data_check: USoc_longitudinal_data_check.html
-last_built: 2023-05-31T10:43Z
+last_built: 2023-08-02T16:27Z
 urls:
   reference: https://stapm.gitlab.io/r-packages/ukhlsclean/reference
   article: https://stapm.gitlab.io/r-packages/ukhlsclean/articles

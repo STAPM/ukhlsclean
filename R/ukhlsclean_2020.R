@@ -204,20 +204,14 @@ ukhlsclean_2020 <- function(
   )
   data.table::setnames(data.indall, names(data.indall), tolower(names(data.indall)))
 
-  indall_vars  <- colnames(data.indall[ , c("pidp","jkl_hidp",
-                                            "jkl_imd2019qe_dv","jkl_imd2017qni_dv",
-                                            "jkl_imd2020qs_dv","jkl_imd2019qw_dv")])
+  indall_vars  <- colnames(data.indall[ , c("pidp","jkl_hidp")])
 
   data.indall <- data.indall[ , indall_vars, with = F]
   data.table::setnames(data.indall,
                        # old names
-                       c("pidp","jkl_hidp",
-                         "jkl_imd2019qe_dv","jkl_imd2017qni_dv",
-                         "jkl_imd2020qs_dv","jkl_imd2019qw_dv"),
+                       c("pidp","jkl_hidp"),
                        # new names
-                       c("pidp","hidp",
-                         "imdq_e","imdq_ni",
-                         "imdq_s","imdq_w"))
+                       c("pidp","hidp"))
 
   ## Combine - keep all observations in the main data and drop excess xwave observations
 
@@ -239,7 +233,8 @@ ukhlsclean_2020 <- function(
   ### Apply all cleaning functions ###
 
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
-  data_merged[, wave_no := 12]
+  data_merged[, wave_no := NA]
+  data_merged[, wave := " "]
   data_merged[, bhps_sample := ifelse(!is.na(pid),TRUE,FALSE)]
   data_merged[, id := ifelse(bhps_sample==FALSE, pidp, pid)]
 
