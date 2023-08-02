@@ -270,11 +270,48 @@ ukhls_read_wave11 <- function(
 
   ####### Combine - keep all observations in the main data and drop excess xwave observations
 
-  data_merged <- merge(x = hhold_merged,
-                       y = data.xwave,
-                       by="pidp",
-                       all.x=TRUE,
-                       all.y=FALSE)
+  xwave_merged <- merge(x = hhold_merged,
+                        y = data.xwave,
+                        by="pidp",
+                        all.x=TRUE,
+                        all.y=FALSE)
+
+  ####################################################
+  #### ADD IN THE INDALL DATA ########################
+
+  cat(crayon::red("\tIndall..."))
+
+  data.indall <- data.table::fread(
+    paste0(path, "/k_indall.tab"),
+    showProgress = FALSE,
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
+  data.table::setnames(data.indall, names(data.indall), tolower(names(data.indall)))
+
+  indall_vars  <- colnames(data.indall[ , c("pidp","k_hidp",
+                                            "k_imd2019qe_dv","k_imd2017qni_dv",
+                                            "k_imd2020qs_dv","k_imd2019qw_dv")])
+
+  data.indall <- data.indall[ , indall_vars, with = F]
+  data.table::setnames(data.indall,
+                       # old names
+                       c("pidp","k_hidp",
+                         "k_imd2019qe_dv","k_imd2017qni_dv",
+                         "k_imd2020qs_dv","k_imd2019qw_dv"),
+                       # new names
+                       c("pidp","hidp",
+                         "imdq_e","imdq_ni",
+                         "imdq_s","imdq_w"))
+
+  ## Combine - keep all observations in the main data and drop excess xwave observations
+
+  data_merged <- merge(x = xwave_merged,
+                       y = data.indall,
+                       by = c("pidp","hidp"),
+                       all.x = TRUE,
+                       all.y = FALSE)
+
+  ##########################################################################
 
   cat(crayon::magenta("\tdone\n"))
 
