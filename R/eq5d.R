@@ -17,9 +17,9 @@
 #'
 #' }
 #'
-eq5d <- function(data,
-                 matrix = ukhlsclean::CoefficientMatrix,
-                 seed = 0) {
+MapEQ5D <- function(data,
+                    matrix = ukhlsclean::CoefficientMatrix,
+                    seed = 0) {
 
   health_util_data <- copy(data)
 

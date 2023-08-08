@@ -116,9 +116,9 @@ ukhls_clean_health <- function(data = NULL) {
            c("sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7"),
            c("sfstat","sfmode","sfstaira","sfless","sflimit","sflesse","sfcarful","sfpainb","sfcalm","sfener","sflow","sfvisit"))
 
-  eq5d_data <- ukhlsclean::eq5d(data = data,
-                                matrix = ukhlsclean::CoefficientMatrix,
-                                seed = 0)
+  eq5d_data <- ukhlsclean::MapEQ5D(data = data,
+                                   matrix = ukhlsclean::CoefficientMatrix,
+                                   seed = 0)
 
   merged_data <- merge(data, eq5d_data, by = c("pidp","id","wave_no"), sort = F, all.x = TRUE)
 
