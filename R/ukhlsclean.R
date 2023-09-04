@@ -192,7 +192,7 @@ data <- ukhlsclean::ukhls_combine_waves(data_list)
 
 ########################################
 ### Summation of smokers in household
-data <- ukhlsclean::ukhls_combine_hhold_smokers(data)
+data <- ukhls_combine_hhold_smokers(data)
 
 ###################################
 ### Combine youth data
