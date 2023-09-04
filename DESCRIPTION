@@ -1,7 +1,7 @@
 Package: ukhlsclean
 Type: Package
 Title: Data Wrangling for Understanding Society: The UK Household Longitudinal Study.
-Version: 0.12.1
+Version: 0.12.2
 Authors@R: 
     c(
     person(given = "Damon",
