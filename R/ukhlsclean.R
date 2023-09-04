@@ -180,6 +180,7 @@ if (12 %in% waves){
 
 data <- ukhlsclean::ukhls_combine_waves(data_list)
 
+
 ### commenting out - this function is called in the global cleaning function
 
 #data <- ukhlsclean::select_data(data = data,
@@ -188,6 +189,10 @@ data <- ukhlsclean::ukhls_combine_waves(data_list)
 #                                keep_vars = keep_vars,
 #                                complete_vars = complete_vars,
 #                                calendar_year = calendar_year)
+
+########################################
+### Summation of smokers in household
+data <- ukhlsclean::ukhls_combine_hhold_smokers(data)
 
 ###################################
 ### Combine youth data
