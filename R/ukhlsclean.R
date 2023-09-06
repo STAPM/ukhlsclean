@@ -194,6 +194,10 @@ data <- ukhlsclean::ukhls_combine_waves(data_list)
 ### Summation of smokers in household
 data <- ukhls_combine_hhold_smokers(data)
 
+#####################################
+### Lag household smokers to (t-1)
+data <- data[order(pidp, wave_no), lag.s_hhold_smokers := data.table::shift(s_hhold_smokers, n=1, type="lag"), by=pidp]
+
 ###################################
 ### Combine youth data
 

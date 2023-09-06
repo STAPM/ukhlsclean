@@ -22,7 +22,7 @@ ukhls_combine_hhold_smokers <- function(data = NULL) {
   hhold <- hhold[, `NA` := NULL]
   hhold <- hhold[, non_smoker := NULL]
   hhold <- hhold[, smoker := NULL]
-  data <- merge(data, hhold, by = "hidp")
+  data <- suppressWarnings(suppressMessages(merge(data, hhold, by = "hidp")))
 
   return(data)
 }
