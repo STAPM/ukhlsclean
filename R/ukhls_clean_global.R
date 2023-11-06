@@ -62,7 +62,7 @@ ukhls_clean_global <- function(data,
 
   #cat(crayon::bold(crayon::green("\n\t\tLabour market variables module\n")))
 
-  lmkt <- ukhlsclean::ukhls_clean_econstat(data = data) ### :::
+  lmkt <- ukhlsclean::ukhls_clean_econ_status(data = data) ### :::
 
   ### work
 
