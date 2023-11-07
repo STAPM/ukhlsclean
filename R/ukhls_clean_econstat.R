@@ -72,7 +72,7 @@ ukhls_clean_econstat <- function(data = NULL) {
   data[nssec_5cat == 3, ns_sec := "Small employers & own account"]
   data[nssec_5cat == 4, ns_sec := "Lower supervisory & technical"]
   data[nssec_5cat == 5, ns_sec := "Semi-routine & routine"]
-  data[econ_stat_2cat == "not_employed", ns_sec := "Not employed"]#
+  data[econ_stat_2cat == "not_employed", ns_sec := "Not employed"]##
 
   data[, ns_sec := factor(ns_sec,
                          levels = c("Management & professional","Intermediate","Small employers & own account","Lower supervisory & technical","Semi-routine & routine","Not employed"),
