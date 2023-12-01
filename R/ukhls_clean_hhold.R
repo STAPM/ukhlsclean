@@ -6,7 +6,8 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-ukhls_clean_hhold <- function(data = NULL) {
+ukhls_clean_hhold <- function(data = NULL,
+                              inflation = ukhlsclean::cpih) {
 
 
   ############################################
@@ -83,6 +84,13 @@ ukhls_clean_hhold <- function(data = NULL) {
   data[, hh_fi_mo_netlabour := hh_fihhmnlabnet_dv, ]
   data[, hh_fi_mo_socben := hh_fihhmnsben_dv]
 
+  #construct real term
+  merge[ , hh_fi_real_mo_grss       := hh_fi_mo_grss*(100/index)]
+  merge[ , hh_fi_real_mo_grsslabour := hh_fi_mo_grsslabour*(100/index)]
+  merge[ , hh_fi_real_mo_net        := hh_fi_mo_net*(100/index)]
+  merge[ , hh_fi_real_mo_netlabour  := hh_fi_mo_netlabour*(100/index)]
+  merge[ , hh_fi_real_mo_socben     := hh_fi_mo_socben*(100/index)]
+
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
@@ -90,7 +98,9 @@ ukhls_clean_hhold <- function(data = NULL) {
                          "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
                          "hh_numadult", "hh_numchild", "hh_size",
                          "hh_fi_mo_grss", "hh_fi_mo_grsslabour",
-                         "hh_fi_mo_net", "hh_fi_mo_netlabour", "hh_fi_mo_socben")]
+                         "hh_fi_mo_net", "hh_fi_mo_netlabour", "hh_fi_mo_socben",
+                         "hh_fi_real_mo_grss","hh_fi_real_mo_grsslabour",
+                         "hh_fi_real_mo_net","hh_fi_real_mo_netlabour","hh_fi_real_mo_socben")]
 
   return(final_data)
 }
