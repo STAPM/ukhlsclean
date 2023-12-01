@@ -16,13 +16,22 @@
 ukhls_combine_hhold_smokers <- function(data = NULL) {
 
   hhold <- copy(data)
-  hhold <- hhold[, c("hidp", "id","s_current_smoker")]
-  hhold <- dcast(hhold, hidp ~ s_current_smoker)
-  hhold <- hhold[, s_hhold_smokers := smoker]
-  hhold <- hhold[, `NA` := NULL]
-  hhold <- hhold[, non_smoker := NULL]
-  hhold <- hhold[, smoker := NULL]
-  data <- suppressWarnings(suppressMessages(merge(data, hhold, by = "hidp")))
+  hhold <- hhold[, c("hidp", "id","s_current_smoker","wave_no")]
+  hhold[, curr_smoker := ifelse(s_current_smoker == "smoker", 1, 0)]
+
+  ## create total number of smokers per household per wave
+
+  hhold[, tot_smoker_hhold := sum(curr_smoker), by = c("hidp","wave_no")]
+  hhold <- hhold[order(hidp),]
+
+  hhold[, s_hhold_smokers := NA_real_ ]
+  hhold[tot_smoker_hhold == 0, s_hhold_smokers := 0]
+  hhold[curr_smoker == 0 & tot_smoker_hhold > 0, s_hhold_smokers := 1]
+  hhold[curr_smoker == 1 & tot_smoker_hhold > 1, s_hhold_smokers := 1]
+  hhold[curr_smoker == 1 & tot_smoker_hhold == 1, s_hhold_smokers := 0]
+  hhold[, c("s_current_smoker","curr_smoker","tot_smoker_hhold") := NULL]
+
+  data <- merge(data, hhold, by = c("id","hidp","wave_no"))
 
   return(data)
 }

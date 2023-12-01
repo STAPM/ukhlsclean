@@ -141,10 +141,10 @@ ukhls_clean_smoke <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("pidp", "id", "hidp", "wave_no",
-                         "current_smoker", "ncigs", "ever_smoked", "smk_age_start", "othersmoker_hhold",
+                         "current_smoker", "ncigs", "ever_smoked", "smk_age_start",
                          "ecig", "ecig_current")]
 
-  var_names <- c("current_smoker", "ncigs", "ever_smoked", "smk_age_start", "othersmoker_hhold",
+  var_names <- c("current_smoker", "ncigs", "ever_smoked", "smk_age_start",
                  "ecig", "ecig_current")
 
   setnames(final_data, var_names, paste0("s_", var_names))
