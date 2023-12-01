@@ -16,7 +16,8 @@ ukhlsclean(
   country = NULL,
   keep_vars = NULL,
   complete_vars = NULL,
-  youth = FALSE
+  youth = FALSE,
+  inflation_index = "cpih"
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ ukhlsclean(
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults NULL - keep all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).}
+
+\item{inflation_index}{Character - one of c("cpih","rpi"). Default option is CPIH}
 
 \item{youth.}{Logical - TRUE if also processing the youth data files}
 }

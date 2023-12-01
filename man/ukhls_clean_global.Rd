@@ -10,7 +10,8 @@ ukhls_clean_global(
   country = NULL,
   keep_vars = NULL,
   complete_vars = NULL,
-  calendar_year = FALSE
+  calendar_year = FALSE,
+  inflation = ukhlsclean::cpih
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ ukhls_clean_global(
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).}
 
 \item{calendar_year}{Logical - TRUE when the code is processing calendar year data (defaults to FALSE).}
+
+\item{inflation}{Data table. CPIH inflation data input for real-terms adjustments.}
 }
 \value{
 Returns a new set of variables

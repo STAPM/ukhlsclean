@@ -10,6 +10,7 @@
 #' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
 #' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
+#' @param inflation Data table. CPIH inflation data input for real-terms adjustments.
 #'
 #' @return Returns a new set of variables
 #' @export
@@ -18,7 +19,8 @@ ukhls_clean_global <- function(data,
                                country = NULL,
                                keep_vars = NULL,
                                complete_vars = NULL,
-                               calendar_year = FALSE
+                               calendar_year = FALSE,
+                               inflation = ukhlsclean::cpih
 ) {
 
   ## fix bug that occurs if age is not in keep_vars
@@ -62,7 +64,8 @@ ukhls_clean_global <- function(data,
 
   #cat(crayon::bold(crayon::green("\n\t\tLabour market variables module\n")))
 
-  lmkt <- ukhlsclean::ukhls_clean_econstat(data = data) ### :::
+  lmkt <- ukhlsclean::ukhls_clean_econstat(data = data,
+                                           inflation = inflation) ### :::
 
   ### work
 

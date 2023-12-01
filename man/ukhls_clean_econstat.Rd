@@ -4,10 +4,12 @@
 \alias{ukhls_clean_econstat}
 \title{Clean Labour Market}
 \usage{
-ukhls_clean_econstat(data = NULL)
+ukhls_clean_econstat(data = NULL, inflation = ukhlsclean::cpih)
 }
 \arguments{
 \item{data}{Data table. Understanding Society data produced using the read functions.}
+
+\item{inflation}{Data table. CPIH inflation data input for real-terms adjustments.}
 }
 \description{
 Generate three variables indicating economic status at different levels of detail,

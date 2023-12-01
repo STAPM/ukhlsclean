@@ -5,9 +5,11 @@
 #' "earnings" refers to employed and self employed earnings combined.
 #'
 #' @param data Data table. Understanding Society data produced using the read functions.
+#' @param inflation Data table. CPIH inflation data input for real-terms adjustments.
 #'
 #' @export
-ukhls_clean_econstat <- function(data = NULL) {
+ukhls_clean_econstat <- function(data = NULL,
+                                 inflation = ukhlsclean::cpih) {
 
   ### 2 categories - work/not work #####
 
@@ -100,7 +102,7 @@ ukhls_clean_econstat <- function(data = NULL) {
   ## merge in CPI inflation figures and deflate
 
   merge <- merge.data.table(data,
-                            ukhlsclean::cpi,
+                            inflation,
                             by = c("year","month"),
                             all.x = TRUE)
 
@@ -131,11 +133,11 @@ ukhls_clean_econstat <- function(data = NULL) {
 
 
   # construct real terms variables
-  merge[ , real_grss_earnings_usual_empl := grss_earnings_usual_empl*(100/cpi_value)]
-  merge[ , real_grss_earnings_usual      := grss_earnings_usual*(100/cpi_value)] ## should this be grss_earnings_usual? # changed from grss_pay_usual
-  merge[ , real_grss_earnings_last_empl  := grss_earnings_last_empl*(100/cpi_value)]
-  merge[ , real_grss_earnings_last       := grss_earnings_last*(100/cpi_value)] ## should this be grss_earnings_last? # changed from grss_pay_last
-  merge[ , real_grss_earnings_usual_semp := grss_earnings_usual_semp*(100/cpi_value)]
+  merge[ , real_grss_earnings_usual_empl := grss_earnings_usual_empl*(100/index)]
+  merge[ , real_grss_earnings_usual      := grss_earnings_usual*(100/index)] ## should this be grss_earnings_usual? # changed from grss_pay_usual
+  merge[ , real_grss_earnings_last_empl  := grss_earnings_last_empl*(100/index)]
+  merge[ , real_grss_earnings_last       := grss_earnings_last*(100/index)] ## should this be grss_earnings_last? # changed from grss_pay_last
+  merge[ , real_grss_earnings_usual_semp := grss_earnings_usual_semp*(100/index)]
 
   ##################
   ## RETAIN THE CLEANED VARIABLES

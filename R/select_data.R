@@ -70,6 +70,12 @@ select_data <- function(
   ## only keep variables named in keep_vars plus mandatory identifier and
   ## weight variables
 
+  ## DM edit 01-Dec-23: need to take variable selection out of this bit because it
+  ## impacts later on in the workflow. May remove the keep_vars argument from the
+  ## workflow entirely
+
+  keep_vars <- NULL
+
   if (is.null(keep_vars)) {
 
     keep_vars <- names(data)
