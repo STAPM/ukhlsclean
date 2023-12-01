@@ -253,7 +253,11 @@ youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # ch
 # }
 
 ### Merging other smokers in household to youth data
-data_hholdsmoke <- data.table::copy(data[, c("hidp","wave","s_othersmoker_hhold")])
+data_hholdsmoke <- data.table::copy(main[, c("hidp","wave","s_current_smoker")])
+data_hholdsmoke <- data_hholdsmoke[, s_current_smoker := ifelse(s_current_smoker == "non_smoker", 0, ifelse(s_current_smoker == "smoker", 1, NA_real_))]
+data_hholdsmoke <- data_hholdsmoke[, .SD[which.max(s_current_smoker)], by = c("hidp")]
+data_hholdsmoke <- data_hholdsmoke[, s_hhold_smokers := s_current_smoker]
+data_hholdsmoke <- data_hholdsmoke[, s_current_smoker := NULL]
 youth_data <- merge(youth_data, data_hholdsmoke, by = c("hidp","wave"), all.x=TRUE) ##### ???
 ### if na, does this mean youth taken survey with adult ? or other ?
 
