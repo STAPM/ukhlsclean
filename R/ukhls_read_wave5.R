@@ -33,8 +33,8 @@
 #' }
 #' @export
 ukhls_read_wave5 <- function(
-  root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  root = c("X:/"),
+  file = "HAR_PR/PR/USoc/Data/SN6614_2023_11_24/tab/ukhls/",
   full = TRUE
 ) {
 

@@ -11,7 +11,7 @@ and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK 
 \usage{
 ukhls_read_wave10(
   root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/UKHLS/tab/",
+  file = "HAR_PR/PR/USoc/Data/SN6614_2023_11_24/tab/ukhls/",
   full = TRUE
 )
 }
