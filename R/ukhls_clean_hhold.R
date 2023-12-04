@@ -84,6 +84,11 @@ ukhls_clean_hhold <- function(data = NULL,
   data[, hh_fi_mo_netlabour := hh_fihhmnlabnet_dv, ]
   data[, hh_fi_mo_socben := hh_fihhmnsben_dv]
 
+  ## merge in CPI inflation figures and deflate
+  merge <- merge.data.table(data,
+                            inflation,
+                            by = c("year","month"),
+                            all.x = TRUE)
   #construct real term
   merge[ , hh_fi_real_mo_grss       := hh_fi_mo_grss*(100/index)]
   merge[ , hh_fi_real_mo_grsslabour := hh_fi_mo_grsslabour*(100/index)]
@@ -94,7 +99,7 @@ ukhls_clean_hhold <- function(data = NULL,
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
-  final_data <- data[, c("pidp", "id", "hidp", "wave_no",
+  final_data <- merge[, c("pidp", "id", "hidp", "wave_no",
                          "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
                          "hh_numadult", "hh_numchild", "hh_size",
                          "hh_fi_mo_grss", "hh_fi_mo_grsslabour",
