@@ -1,5 +1,5 @@
 ---
-title: "Data check: Understanding Society calendar year 2020 data"
+title: "Data check: Understanding Society calendar year 2021 data"
 link-citations: yes
 bibliography: inst/stapm_refs.bib
 always_allow_html: yes
@@ -23,7 +23,7 @@ suppressPackageStartupMessages(library(ukhlsclean))
 [Click here to go to the STAPM website](https://stapm.gitlab.io/Understanding_Society.html)
 
 ```{r, include = FALSE}
-data_yr <- 2020
+data_yr <- 2021
 
 ```
 
@@ -101,3 +101,5 @@ include_graphics(paste0("USoc_calendar_year_",data_yr,"_data_check/25_plots/03_e
 
 - Data processed using [ukhlsclean](https://stapm.gitlab.io/r-packages/ukhlsclean/) version `r packageDescription("ukhlsclean", fields = "Version")`
 - Code to clean the data using `ukhslcean` and to make these plots is in the repository https://gitlab.com/stapm/model-inputs/usoc_data (accessible only to the project team)
+
+
