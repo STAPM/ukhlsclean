@@ -17,6 +17,8 @@
 #' @param country Character - country to produce data for. One of c("UK","england","wales","scotland","northern_ireland"). Defaults to all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).
+#' @param inflation_index Character - one of c("cpih","rpi"). Default option is CPIH.
+#'
 #' @importFrom data.table :=
 #' @return Returns a data table. Note that:
 #' \itemize{
@@ -35,7 +37,8 @@ ukhlsclean_2021 <- function(
     ages = 16:89,
     country = "UK",
     keep_vars = NULL,
-    complete_vars = NULL
+    complete_vars = NULL,
+    inflation_index = "cpih"
 ) {
 
   cat(crayon::blue(crayon::underline("\tReading UKHLS Calendar Year 2021 datasets")))
@@ -244,6 +247,12 @@ ukhlsclean_2021 <- function(
   ## drop small number (643) of 2021 observations
   data_merged <- data_merged[year == 2021,]
 
+  if (inflation_index == "cpih"){
+    inflation <- ukhlsclean::cpih
+  }
+  if (inflation_index == "rpi"){
+    inflation <- ukhlsclean::rpi
+  }
 
   cleaned <- ukhls_clean_global(data = data_merged,
                                 ages = ages,

@@ -10,7 +10,7 @@
 #' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
 #' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
-#' @param inflation Data table. CPIH inflation data input for real-terms adjustments.
+#' @param inflation Data table. Inflation data input for real-terms adjustments. Defaults to CPIH.
 #'
 #' @return Returns a new set of variables
 #' @export
