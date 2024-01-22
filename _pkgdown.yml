@@ -43,6 +43,7 @@ reference:
   contents:
   - ukhlsclean
   - ukhlsclean_2020
+  - ukhlsclean_2021
 
 - title: Cleaning modules
   contents:
@@ -77,13 +78,15 @@ reference:
   - ukhls_read_wave10
   - ukhls_read_wave11
   - ukhls_read_wave12
+  - ukhls_read_wave13
   - ukhls_read_covid19_1
   - ukhls_read_covid19_2
   - ukhls_read_youth
 
 - title: Package datasets
   contents:
-  - cpi
+  - cpih
+  - rpi
   - CoefficientMatrix
   - PopulationCounts
 
@@ -96,5 +99,6 @@ text:
     href: articles/USoc_longitudinal_data_check.html
   - text: Calendar year_2020 data check
     href: articles/USoc_calendar_year_2020_data_check.html
-
+  - text: Calendar year_2021 data check
+    href: articles/USoc_calendar_year_2021_data_check.html
 
