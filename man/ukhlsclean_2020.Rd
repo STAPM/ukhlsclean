@@ -15,7 +15,8 @@ ukhlsclean_2020(
   ages = 16:89,
   country = "UK",
   keep_vars = NULL,
-  complete_vars = c("d_age", "d_sex", "d_country")
+  complete_vars = NULL,
+  inflation_index = "cpih"
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ ukhlsclean_2020(
 \item{keep_vars}{Character vector - the names of the variables to keep (defaults to NULL - retaining all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to year, age and sex).}
+
+\item{inflation_index}{Character - one of c("cpih","rpi"). Default option is CPIH.}
 }
 \value{
 Returns a data table. Note that:

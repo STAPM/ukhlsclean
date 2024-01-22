@@ -27,7 +27,7 @@ ukhls_clean_global(
 
 \item{calendar_year}{Logical - TRUE when the code is processing calendar year data (defaults to FALSE).}
 
-\item{inflation}{Data table. CPIH inflation data input for real-terms adjustments.}
+\item{inflation}{Data table. Inflation data input for real-terms adjustments. Defaults to CPIH.}
 }
 \value{
 Returns a new set of variables
