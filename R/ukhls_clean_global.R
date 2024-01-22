@@ -65,13 +65,13 @@ ukhls_clean_global <- function(data,
   #cat(crayon::bold(crayon::green("\n\t\tLabour market variables module\n")))
 
   lmkt <- ukhlsclean::ukhls_clean_econstat(data = data,
-                                           inflation = inflation) ### :::
+                                           inflation = inflation)
 
   ### work
 
   #cat(crayon::bold(crayon::green("\n\t\tWork variables module\n")))
 
-  work <- ukhlsclean::ukhls_clean_work(data = data)
+  work <- ukhlsclean::ukhls_clean_work(data = data, calendar_year = calendar_year)
 
   ### benefits
 
@@ -83,7 +83,7 @@ ukhls_clean_global <- function(data,
 
   #cat(crayon::bold(crayon::green("\n\t\tFamily and household variables module\n\n")))
 
-  hhold <- ukhlsclean::ukhls_clean_hhold(data = data)
+  hhold <- ukhlsclean::ukhls_clean_hhold(data = data, calendar_year = calendar_year, inflation = inflation)
 
   ######################
   ### Merge datasets ###

@@ -4,10 +4,18 @@
 \alias{ukhls_clean_hhold}
 \title{Clean Household Variables}
 \usage{
-ukhls_clean_hhold(data = NULL, inflation = ukhlsclean::cpih)
+ukhls_clean_hhold(
+  data = NULL,
+  calendar_year = FALSE,
+  inflation = ukhlsclean::cpih
+)
 }
 \arguments{
 \item{data}{Data table. Understanding Society data produced using the read functions.}
+
+\item{calendar_year}{Logical - TRUE when the code is processing calendar year data (defaults to FALSE).}
+
+\item{inflation}{Data table. Inflation data input for real-terms adjustments. Defaults to CPIH.}
 }
 \description{
 Clean all household level variables; household type (composition of adults and children),

@@ -259,6 +259,7 @@ ukhlsclean_2021 <- function(
                                 country = country,
                                 keep_vars = keep_vars,
                                 complete_vars = complete_vars,
-                                calendar_year = calendar_year)
+                                calendar_year = TRUE,
+                                inflation = inflation)
   return(cleaned)
 }

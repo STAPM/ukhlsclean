@@ -4,10 +4,12 @@
 \alias{ukhls_clean_work}
 \title{Clean Work}
 \usage{
-ukhls_clean_work(data = NULL)
+ukhls_clean_work(data = NULL, calendar_year = FALSE)
 }
 \arguments{
 \item{data}{Data table. Understanding Society data produced using the read functions.}
+
+\item{calendar_year}{Logical - TRUE when the code is processing calendar year data (defaults to FALSE).}
 }
 \description{
 Generate variables (other than pay) relating to work, including hours of work for both

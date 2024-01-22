@@ -4,9 +4,11 @@
 #' employed and self-employed, and industry / occupation.
 #'
 #' @param data Data table. Understanding Society data produced using the read functions.
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
 #'
 #' @export
-ukhls_clean_work <- function(data = NULL) {
+ukhls_clean_work <- function(data = NULL,
+                             calendar_year = FALSE) {
 
   ##################
   ## Hours, separated by employment / self-employment
@@ -37,8 +39,15 @@ ukhls_clean_work <- function(data = NULL) {
   # data[, hours := NA]
   # }
 
+  ## self employed hours not in calendar year data, so set to zero and only include employed hours
+
   data[, hours_empl := hours]
+
+  if (calendar_year == TRUE){
+  data[, hours_semp := 0]
+  } else {
   data[, hours_semp := s.emp_hours]
+  }
   data[!is.na(hours_empl), hours := hours_empl]
   data[!is.na(hours_semp), hours := hours_semp]
   data[!is.na(hours_empl) & !is.na(hours_semp), hours := hours_empl+hours_semp]
@@ -238,7 +247,15 @@ ukhls_clean_work <- function(data = NULL) {
                                   "Undifferentiated goods- and services-producing activities of private households for own use",
                                   "Activities of extraterritorial organisations and bodies"
                                   )) ]
+  ##################
+  ## NSSEC not in calendar year data
 
+  if (calendar_year == TRUE){
+  data[, nssec := NA]
+  data[, nssec_3cat := NA]
+  data[, nssec_5cat := NA]
+  data[, nssec_8cat := NA]
+  }
 
   ##################
   ## RETAIN THE CLEANED VARIABLES

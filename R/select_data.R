@@ -41,19 +41,19 @@ select_data <- function(
 
   if(!is.null(country)){
 
-  if (country == "england") {
+  if (country %in% c("england","England")) {
 
     data <- data[d_country == "england",]
   }
-  if (country == "scotland") {
+  if (country %in% c("scotland","Scotland")) {
 
     data <- data[d_country == "scotland",]
   }
-  if (country == "wales") {
+  if (country %in% c("wales","Wales")) {
 
     data <- data[d_country == "wales",]
   }
-  if (country == "northern_ireland") {
+  if (country %in% c("northern_ireland","Northern_Ireland")) {
 
     data <- data[d_country == "northern_ireland",]
   }

@@ -4,9 +4,12 @@
 #' household size, ownership status, and age of the youngest child in the household.
 #'
 #' @param data Data table. Understanding Society data produced using the read functions.
+#' @param calendar_year Logical - TRUE when the code is processing calendar year data (defaults to FALSE).
+#' @param inflation Data table. Inflation data input for real-terms adjustments. Defaults to CPIH.
 #'
 #' @export
 ukhls_clean_hhold <- function(data = NULL,
+                              calendar_year = FALSE,
                               inflation = ukhlsclean::cpih) {
 
 
@@ -75,6 +78,8 @@ ukhls_clean_hhold <- function(data = NULL,
   ### income and social benefit ###
   # notes: potential for sorting into income groups?
 
+  ### NOT IN THE CALENDAR YEAR DATA
+  if (calendar_year == FALSE){
   #gross
   data[, hh_fi_mo_grss := hh_fihhmngrs1_dv]
   data[, hh_fi_mo_grsslabour := hh_fihhmnlabgrs_dv]
@@ -95,10 +100,18 @@ ukhls_clean_hhold <- function(data = NULL,
   merge[ , hh_fi_real_mo_net        := hh_fi_mo_net*(100/index)]
   merge[ , hh_fi_real_mo_netlabour  := hh_fi_mo_netlabour*(100/index)]
   merge[ , hh_fi_real_mo_socben     := hh_fi_mo_socben*(100/index)]
+  }
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
+  if (calendar_year == TRUE){
+    final_data <- data[, c("pidp", "id", "hidp", "wave_no",
+                            "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
+                            "hh_numadult", "hh_numchild", "hh_size")]
+  }
+
+  if (calendar_year == FALSE){
   final_data <- merge[, c("pidp", "id", "hidp", "wave_no",
                          "hh_hometenure", "hh_age_yngchl", "hh_type_6cat",
                          "hh_numadult", "hh_numchild", "hh_size",
@@ -106,6 +119,8 @@ ukhls_clean_hhold <- function(data = NULL,
                          "hh_fi_mo_net", "hh_fi_mo_netlabour", "hh_fi_mo_socben",
                          "hh_fi_real_mo_grss","hh_fi_real_mo_grsslabour",
                          "hh_fi_real_mo_net","hh_fi_real_mo_netlabour","hh_fi_real_mo_socben")]
+  }
+
 
   return(final_data)
 }
