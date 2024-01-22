@@ -4,7 +4,7 @@
 \alias{ukhls_clean_hhold}
 \title{Clean Household Variables}
 \usage{
-ukhls_clean_hhold(data = NULL)
+ukhls_clean_hhold(data = NULL, inflation = ukhlsclean::cpih)
 }
 \arguments{
 \item{data}{Data table. Understanding Society data produced using the read functions.}
