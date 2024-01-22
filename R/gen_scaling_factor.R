@@ -23,7 +23,8 @@ gen_scaling_factor <- function(data,
   ### keep only non-missing age, country, and sex from the main data and
   ### drop 90+
 
-  data <- data[d_age < 90 & year == 2020,]
+  #data <- data[d_age < 90 & year == 2020,]
+  data <- data[d_age < 90,]
 
   for(c in c("d_age","d_sex","d_country")) {
 

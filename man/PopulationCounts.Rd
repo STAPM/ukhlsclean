@@ -5,7 +5,7 @@
 \alias{PopulationCounts}
 \title{Population Counts}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 720 rows and 5 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 1440 rows and 5 columns.
 }
 \source{
 \href{https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland}{ONS mid-year population estimates}
@@ -16,6 +16,6 @@ PopulationCounts
 \description{
 Understanding Society weights are scaled to a mean of 1 among the relevant sample. Population count data can be used with the
 calendar year datasets to scale up totals to the population. Data are obtained from the Office for National Statistics
-mid-year population estimates. Stratified by UK nation, single year of age, and sex.
+mid-year population estimates. Stratified by calendar year (2020 and 2021) UK nation, single year of age, and sex.
 }
 \keyword{datasets}
