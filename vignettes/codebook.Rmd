@@ -80,7 +80,7 @@ Variables produced by the demographic module `ukhls_clean_demographic`. Variable
   - "male"
   - "female"
   
-- __d_imd_quintile__ (factor) Index of Multiple Deprivation (IMD) quintile:
+- __d_imd_quintile__ (factor) Index of Multiple Deprivation (IMD) quintile **(not available in calendar year data)**:
   - "1_least_deprived"
   - "2"
   - "3"
