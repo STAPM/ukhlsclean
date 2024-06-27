@@ -17,7 +17,8 @@
 #' @param country Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.
 #' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
-#' @param youth. Logical - TRUE if also processing the youth data files
+#' @param youth. Logical - TRUE if also processing the youth data files.
+#' @param child. Logical - TRUE if also processing the child data files.
 #' @param inflation_index Character - one of c("cpih","rpi"). Default option is CPIH
 #' @return Returns a new set of variables
 #' @export
@@ -31,6 +32,7 @@ ukhlsclean <- function(root = "X:/",
                        keep_vars = NULL,
                        complete_vars = NULL,
                        youth = FALSE,
+                       child = FALSE,
                        inflation_index = "cpih"){
 
 cat(crayon::bold(crayon::underline(crayon::green("Cleaning the Understanding Society Longitudinal Data\n\n"))))

@@ -17,6 +17,7 @@ ukhlsclean(
   keep_vars = NULL,
   complete_vars = NULL,
   youth = FALSE,
+  child = FALSE,
   inflation_index = "cpih"
 )
 }
@@ -39,7 +40,9 @@ ukhlsclean(
 
 \item{inflation_index}{Character - one of c("cpih","rpi"). Default option is CPIH}
 
-\item{youth.}{Logical - TRUE if also processing the youth data files}
+\item{youth.}{Logical - TRUE if also processing the youth data files.}
+
+\item{child.}{Logical - TRUE if also processing the child data files.}
 }
 \value{
 Returns a new set of variables

@@ -1,6 +1,7 @@
-#' Read Understanding Society Wave 1
+#' Read Understanding Society Youth Data
 #'
-#' Reads and performs basic cleaning operations on all waves of the UKHLS Youth data. Missing values as detailed below are all set to NA.
+#' Reads and performs basic cleaning operations on all waves of the UKHLS Youth data.
+#' Missing values as detailed below are all set to NA.
 #'
 #' A sample of the population living in private households. All persons living in the household, including those
 #' under 2 years were eligible for inclusion. At addresses where there were more than two children under 16,
