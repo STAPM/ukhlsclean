@@ -24,6 +24,10 @@ ukhls_clean_econstat <- function(data = NULL,
   data[econ_stat == 9 , econ_stat_2cat := "not_employed"]
   data[econ_stat == 10, econ_stat_2cat := "not_employed"]
   data[econ_stat == 11, econ_stat_2cat := "not_employed"]
+  data[econ_stat == 12, econ_stat_7cat := "not_employed"]
+  data[econ_stat == 13, econ_stat_7cat := "not_employed"]
+  data[econ_stat == 14, econ_stat_7cat := "not_employed"]
+  data[econ_stat == 97, econ_stat_7cat := "not_employed"]
 
   data[,econ_stat_2cat := factor(econ_stat_2cat,
                                  levels = c("employed","not_employed"),
@@ -42,6 +46,10 @@ ukhls_clean_econstat <- function(data = NULL,
   data[econ_stat == 9 , econ_stat_3cat := "inactive"]
   data[econ_stat == 10, econ_stat_3cat := "inactive"]
   data[econ_stat == 11, econ_stat_3cat := "inactive"]
+  data[econ_stat == 12, econ_stat_7cat := "inactive"]
+  data[econ_stat == 13, econ_stat_7cat := "inactive"]
+  data[econ_stat == 14, econ_stat_7cat := "inactive"]
+  data[econ_stat == 97, econ_stat_7cat := "inactive"]
 
   data[,econ_stat_3cat := factor(econ_stat_3cat,
                                  levels = c("employed","unemployed","inactive"),
@@ -60,6 +68,10 @@ ukhls_clean_econstat <- function(data = NULL,
   data[econ_stat == 9 , econ_stat_7cat := "other"]
   data[econ_stat == 10, econ_stat_7cat := "other"]
   data[econ_stat == 11, econ_stat_7cat := "other"]
+  data[econ_stat == 12, econ_stat_7cat := "other"]
+  data[econ_stat == 13, econ_stat_7cat := "other"]
+  data[econ_stat == 14, econ_stat_7cat := "other"]
+  data[econ_stat == 97, econ_stat_7cat := "other"]
 
   data[,econ_stat_7cat := factor(econ_stat_7cat,
                                  levels = c("employed","self_employed","unemployed","sick","retired","education","other"),
