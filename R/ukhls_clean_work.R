@@ -248,13 +248,59 @@ ukhls_clean_work <- function(data = NULL,
                                   "Activities of extraterritorial organisations and bodies"
                                   )) ]
   ##################
+  ## Firm size
+
+  if ("jbsize" %in% colnames(data)){
+
+  data[jbsize %in% c(1:3,10), firm_size := "1-24"]
+  data[jbsize %in% c(4:7), firm_size := "25-499"]
+  data[jbsize %in% c(8:9), firm_size := "500+"]
+  data[jbsize %in% c(11), firm_size := "Don't know (more than 24)"]
+
+  data[, firm_size := factor(firm_size, levels = c("1-24","25-499","500+","Don't know (more than 24)"))]
+
+  } else {
+
+  data[, firm_size := NA]
+  }
+
+
+  ##################
   ## NSSEC not in calendar year data
 
   if (calendar_year == TRUE){
+
   data[, nssec := NA]
   data[, nssec_3cat := NA]
   data[, nssec_5cat := NA]
   data[, nssec_8cat := NA]
+  } else {
+
+  data[, nssec_8cat := factor(nssec_8cat,
+                              levels = 1:8,
+                              labels = c("large employers & higher management",
+                                         "higher professional",
+                                         "lower management & professional",
+                                         "intermediate",
+                                         "small employers",
+                                         "lower supervisory & technical",
+                                         "semi-routine",
+                                         "routine"))]
+
+  data[, nssec_5cat := factor(nssec_5cat,
+                              levels = 1:5,
+                              labels = c("management and professional",
+                                         "intermediate",
+                                         "small employers",
+                                         "lower supervisory and technical",
+                                         "semi-routine & routine"))]
+
+  data[, nssec_3cat := factor(nssec_3cat,
+                              levels = 1:3,
+                              labels = c("management and professional",
+                                         "intermediate",
+                                         "routine"))]
+
   }
 
   ##################
@@ -262,10 +308,10 @@ ukhls_clean_work <- function(data = NULL,
 
   final_data <- data[, c("pidp", "id", "hidp", "wave_no",
                          "hours_empl", "hours_semp", "hours", "nssec", "nssec_3cat", "nssec_5cat", "nssec_8cat", "sic_1dig", "sic_2dig",
-                         "absent_sick","absent_matleave","absent_annualleave","absent_other")]
+                         "absent_sick","absent_matleave","absent_annualleave","absent_other", "firm_size")]
 
   var_names <- c("hours_empl", "hours_semp", "hours", "nssec_3cat", "nssec_5cat", "nssec_8cat", "sic_1dig", "sic_2dig",
-                 "absent_sick", "absent_matleave", "absent_annualleave", "absent_other")
+                 "absent_sick", "absent_matleave", "absent_annualleave", "absent_other", "firm_size")
 
   setnames(final_data, var_names, paste0("w_", var_names))
 

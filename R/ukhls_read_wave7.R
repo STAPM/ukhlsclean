@@ -61,7 +61,7 @@ ukhls_read_wave7 <- function(
   prev_wave_vars   <- Hmisc::Cs(g_notempchk, g_empchk)
   econ_stat_vars   <- Hmisc::Cs(g_jbstat, g_jbhas, g_jboff, g_jboffy, g_jbterm1, g_jbterm2, g_jbsemp)
   work_vars        <- Hmisc::Cs(g_paygu_dv, g_payg_dv, g_jbhrs, g_fimnlabgrs_dv, g_seearngrs_dv, g_jbsic07_cc, g_jbot, g_jbotpd,
-                                g_jbnssec_dv, g_jbnssec3_dv, g_jbnssec5_dv, g_jbnssec8_dv)
+                                g_jbnssec_dv, g_jbnssec3_dv, g_jbnssec5_dv, g_jbnssec8_dv, g_jbsize)
   employees_vars   <- Hmisc::Cs(g_paygl, g_paynl, g_payu, g_payug, g_paytyp, g_ovtpay, g_pvtpyset, g_extrate, g_extrest, g_basnset, g_basrate, g_basrest, g_ovtnset, g_ovtrate, g_ovtrest)
   s.emp_vars       <- Hmisc::Cs(g_jshrs, g_jspayu, g_jspytx, g_jspyni)
   non.emp_vars     <- Hmisc::Cs(g_jbhad)
@@ -105,7 +105,7 @@ ukhls_read_wave7 <- function(
                          "g_jbstat","g_jbhas","g_jboff","g_jboffy","g_jbterm1","g_jbterm2","g_jbsemp",
                          ## work variables
                          "g_paygu_dv","g_payg_dv","g_jbhrs","g_fimnlabgrs_dv","g_seearngrs_dv","g_jbsic07_cc","g_jbot","g_jbotpd",
-                         "g_jbnssec_dv","g_jbnssec3_dv","g_jbnssec5_dv","g_jbnssec8_dv",
+                         "g_jbnssec_dv","g_jbnssec3_dv","g_jbnssec5_dv","g_jbnssec8_dv", "g_jbsize",
                          ## employees
                          "g_paygl","g_paynl","g_payu","g_payug","g_paytyp","g_ovtpay","g_pvtpyset","g_extrate","g_extrest","g_basnset","g_basrate",
                          "g_basrest","g_ovtnset","g_ovtrate","g_ovtrest",
@@ -158,7 +158,7 @@ ukhls_read_wave7 <- function(
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
-                         "nssec","nssec_3cat","nssec_5cat","nssec_8cat",
+                         "nssec","nssec_3cat","nssec_5cat","nssec_8cat", "jbsize",
                          ## employees
                          "last_gross_pay","last_net_pay","usual_pay","payug","pay_type","ovtpay","additional.pay_set","extrate","ext_estimate","basic.pay_set","baspay_rate",
                          "baspay_estimate","ovt.pay_set","ovtpay_rate","ovtpay_estimate",
