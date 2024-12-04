@@ -15,7 +15,6 @@
 #' @param waves Integer vector - the waves of the UKHLS to retain (defaults to all - 1 to 11).
 #' @param ages Integer vector - the ages in single years to retain (defaults to NULL - all ages).
 #' @param country Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.
-#' @param keep_vars Character vector - the names of the variables to keep (defaults NULL - keep all variables).
 #' @param complete_vars Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).
 #' @param youth. Logical - TRUE if also processing the youth data files.
 #' @param child. Logical - TRUE if also processing the child data files.
@@ -29,7 +28,6 @@ ukhlsclean <- function(root = "X:/",
                        waves = 1:12,
                        ages = NULL,
                        country = NULL,
-                       keep_vars = NULL,
                        complete_vars = NULL,
                        youth = FALSE,
                        child = FALSE,
@@ -67,7 +65,7 @@ calendar_year <- FALSE
 if (1 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave1(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 }
@@ -77,7 +75,7 @@ if (1 %in% waves){
 if (2 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave2(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 }
@@ -87,7 +85,7 @@ if (2 %in% waves){
 if (3 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave3(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -98,7 +96,7 @@ if (3 %in% waves){
 if (4 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave4(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -109,7 +107,7 @@ if (4 %in% waves){
 if (5 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave5(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -120,7 +118,7 @@ if (5 %in% waves){
 if (6 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave6(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -131,7 +129,7 @@ if (6 %in% waves){
 if (7 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave7(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -142,7 +140,7 @@ if (7 %in% waves){
 if (8 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave8(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -153,7 +151,7 @@ if (8 %in% waves){
 if (9 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave9(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -164,7 +162,7 @@ if (9 %in% waves){
 if (10 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave10(root = root, file = file, full = full),
-                              ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                              ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -175,7 +173,7 @@ if (10 %in% waves){
 if (11 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave11(root = root, file = file, full = full),
-                               ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                               ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -186,7 +184,7 @@ if (11 %in% waves){
 if (12 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave12(root = root, file = file, full = full),
-                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                             ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -197,7 +195,7 @@ if (12 %in% waves){
 if (13 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave13(root = root, file = file, full = full),
-                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                             ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -208,7 +206,7 @@ if (13 %in% waves){
 if (14 %in% waves){
 
   wave <- ukhls_clean_global(ukhls_read_wave14(root = root, file = file, full = full),
-                             ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
+                             ages = ages, complete_vars = complete_vars, calendar_year = calendar_year, inflation = inflation)
 
   data_list <- append(data_list, list(wave)) ; rm(wave)
 
@@ -246,24 +244,6 @@ if (youth == TRUE){
 cat(crayon::blue("\n\t\tYouth data... \n"))
 
 youth_data <- ukhls_clean_youth(ukhls_read_youth(root = root, file = file)) # change :::
-
-# ## Other smokers in hh
-# if ("current_smoker" %in% colnames(data)) {
-#
-#   # indicator for any other household smokers
-#   data[!(wave_no %in% c(1,3,4)) & current_smoker == "smoker", smoke := 1]
-#   data[!(wave_no %in% c(1,3,4)) & current_smoker == "non_smoker", smoke := 0]
-#   data[!(wave_no %in% c(1,3,4)), num_smoker_hhold := sum(smoke, na.rm=TRUE), by = c("wave_no","hidp")]
-#   # number of other smokers = number of smokers - respondent
-#   data[!(wave_no %in% c(1,3,4)), num_othersmoker_hhold := num_smoker_hhold - smoke]
-#   # create a binary indicator
-#   data[!(wave_no %in% c(1,3,4)) & num_othersmoker_hhold > 0, othersmoker_hhold := "yes"]
-#   data[!(wave_no %in% c(1,3,4)) & num_othersmoker_hhold == 0, othersmoker_hhold := "no"]
-#
-#   data[, othersmoker_hhold := as.factor(othersmoker_hhold)]
-#
-#   data[, othersmoker_hhold := NA]
-# }
 
 ### Merging other smokers in household to youth data
 data_hholdsmoke <- data.table::copy(main[, c("hidp","wave","s_current_smoker")])

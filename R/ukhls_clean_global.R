@@ -17,7 +17,6 @@
 ukhls_clean_global <- function(data,
                                ages = 16:89,
                                country = NULL,
-                               keep_vars = NULL,
                                complete_vars = NULL,
                                calendar_year = FALSE,
                                inflation = ukhlsclean::cpih
@@ -122,7 +121,6 @@ ukhls_clean_global <- function(data,
     data = merged_data,
     ages = ages,
     country = country,
-    keep_vars = keep_vars,
     complete_vars = complete_vars,
     calendar_year = calendar_year
   )

@@ -14,7 +14,6 @@ ukhlsclean(
   waves = 1:12,
   ages = NULL,
   country = NULL,
-  keep_vars = NULL,
   complete_vars = NULL,
   youth = FALSE,
   child = FALSE,
@@ -33,8 +32,6 @@ ukhlsclean(
 \item{ages}{Integer vector - the ages in single years to retain (defaults to NULL - all ages).}
 
 \item{country}{Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.}
-
-\item{keep_vars}{Character vector - the names of the variables to keep (defaults NULL - keep all variables).}
 
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).}
 

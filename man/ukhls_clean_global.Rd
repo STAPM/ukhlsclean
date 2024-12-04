@@ -8,7 +8,6 @@ ukhls_clean_global(
   data,
   ages = 16:89,
   country = NULL,
-  keep_vars = NULL,
   complete_vars = NULL,
   calendar_year = FALSE,
   inflation = ukhlsclean::cpih
@@ -21,13 +20,13 @@ ukhls_clean_global(
 
 \item{country}{Character - country to produce data for. One of c("england","wales","scotland","northern_ireland"). Defaults to NULL which includes all UK.}
 
-\item{keep_vars}{Character vector - the names of the variables to keep (defaults NULL - keep all variables).}
-
 \item{complete_vars}{Character vector - the names of the variables on which the selection of complete cases will be based (defaults to NULL - keep all observations).}
 
 \item{calendar_year}{Logical - TRUE when the code is processing calendar year data (defaults to FALSE).}
 
 \item{inflation}{Data table. Inflation data input for real-terms adjustments. Defaults to CPIH.}
+
+\item{keep_vars}{Character vector - the names of the variables to keep (defaults NULL - keep all variables).}
 }
 \value{
 Returns a new set of variables
