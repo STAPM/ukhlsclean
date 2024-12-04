@@ -39,7 +39,7 @@
 #' @export
 ukhls_read_wave1 <- function(
   root = c("X:/"),
-  file = "HAR_PR/PR/USoc/Data/SN6614_2023_11_24/tab/ukhls/",
+  file = "HAR_PR/PR/USoc/Data/SN6614_2024_12_02/tab/ukhls/",
   full = TRUE
 ) {
 

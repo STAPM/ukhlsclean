@@ -11,7 +11,7 @@ and Harmonised BHPS: Waves 1-18, 1991-2009. [data collection]. 17th Edition. UK 
 \usage{
 ukhls_read_wave13(
   root = c("X:/"),
-  file = "HAR_PR/PR/USoc/Data/SN6614_2023_11_24/tab/ukhls/",
+  file = "HAR_PR/PR/USoc/Data/SN6614_2024_12_02/tab/ukhls/",
   full = TRUE
 )
 }
@@ -34,7 +34,7 @@ except -8 ("don't know") as this is data.
 }
 }
 \description{
-Reads and performs basic cleaning operations on the UKHLS twelfth wave. Missing values as detailed below are all set to NA.
+Reads and performs basic cleaning operations on the UKHLS 13th wave (Jan 2021 - May 2023). Missing values as detailed below are all set to NA.
 }
 \details{
 MISSING VALUES

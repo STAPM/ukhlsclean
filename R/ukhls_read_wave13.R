@@ -1,6 +1,6 @@
 #' Read Understanding Society Wave 13
 #'
-#' Reads and performs basic cleaning operations on the UKHLS twelfth wave. Missing values as detailed below are all set to NA.
+#' Reads and performs basic cleaning operations on the UKHLS 13th wave (Jan 2021 - May 2023). Missing values as detailed below are all set to NA.
 #'
 #' MISSING VALUES
 #'
@@ -34,7 +34,7 @@
 #' @export
 ukhls_read_wave13 <- function(
     root = c("X:/"),
-    file = "HAR_PR/PR/USoc/Data/SN6614_2023_11_24/tab/ukhls/",
+    file = "HAR_PR/PR/USoc/Data/SN6614_2024_12_02/tab/ukhls/",
     full = TRUE
 ) {
 
