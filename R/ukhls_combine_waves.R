@@ -34,6 +34,8 @@ ukhls_combine_waves <- function(
   data[, wave_10 := ifelse(wave_no == 10,1,0)]
   data[, wave_11 := ifelse(wave_no == 11,1,0)]
   data[, wave_12 := ifelse(wave_no == 12,1,0)]
+  data[, wave_13 := ifelse(wave_no == 13,1,0)]
+  data[, wave_14 := ifelse(wave_no == 14,1,0)]
 
   data[, wave_1  := max(wave_1) , by = "id"]
   data[, wave_2  := max(wave_2) , by = "id"]
@@ -47,6 +49,8 @@ ukhls_combine_waves <- function(
   data[, wave_10 := max(wave_10), by = "id"]
   data[, wave_11 := max(wave_11), by = "id"]
   data[, wave_12 := max(wave_12), by = "id"]
+  data[, wave_13 := max(wave_13), by = "id"]
+  data[, wave_14 := max(wave_14), by = "id"]
 
   ## calculate number of waves each individual is in
 
@@ -56,6 +60,7 @@ ukhls_combine_waves <- function(
   setcolorder(data, c("pidp","id","hidp","wave","wave_no","bhps_sample","nwaves",
                       "wave_1","wave_2","wave_3","wave_4","wave_5","wave_6",
                       "wave_7","wave_8","wave_9","wave_10","wave_11","wave_12",
+                      "wave_13","wave_14",
                       "year","month","day","weight_xw"))
 
 
