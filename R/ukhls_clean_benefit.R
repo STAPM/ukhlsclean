@@ -70,47 +70,47 @@ ukhls_clean_benefit <- function(data = NULL) {
   }
   ### W6-12
   if ("benbase96" %in% colnames(data)) {
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), income_support := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), jbseek_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), national_pen_cred := "non_receipt"] ##### need to create checkfor others
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), child_benefit := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), child_tax_credit := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), other_family_benefit := "non_receipt"] ### legacy category, keep (?)
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), housing_council_rent_rate := "non_receipt"] ### legacy category, keep (?)
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), other_ben_cred := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), income_support := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), jbseek_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), national_pen_cred := "non_receipt"] ##### need to create checkfor others
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), child_benefit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), child_tax_credit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), other_family_benefit := "non_receipt"] ### legacy category, keep (?)
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), housing_council_rent_rate := "non_receipt"] ### legacy category, keep (?)
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), other_ben_cred := "non_receipt"]
 
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), foster_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), maternity_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), maintenance_alimony := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), family_payments := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), foster_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), maternity_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), maintenance_alimony := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), family_payments := "non_receipt"]
 
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), NI_state_pension := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), pension_credit := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), NI_credits := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), NI_state_pension := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), pension_credit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), NI_credits := "non_receipt"]
 
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), council_tax_benefit := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), housing_benefit := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), rate_rebate := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), rent_rebate := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), universal_credit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), council_tax_benefit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), housing_benefit := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), rate_rebate := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), rent_rebate := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), universal_credit := "non_receipt"]
 
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), work_tax_cred := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), work_tax_cred := "non_receipt"]
 
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), war_pen := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), incap_ben := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), ES_Allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), sev_disab_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), carers_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), disliving_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), pers.indep_pay := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), attend_allowance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), industry_inj_ben := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), sick.accident_insurance := "non_receipt"]
-    data[wave_no %in% c(6:12) & ! is.na(benbase96), oth_disab_ben := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), war_pen := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), incap_ben := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), ES_Allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), sev_disab_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), carers_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), disliving_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), pers.indep_pay := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), attend_allowance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), industry_inj_ben := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), sick.accident_insurance := "non_receipt"]
+    data[wave_no %in% c(6:14) & ! is.na(benbase96), oth_disab_ben := "non_receipt"]
 
     if ("bendis12" %in% colnames(data)) { # W3-12[6:12]
-      data[wave_no %in% c(6:12) & ! is.na(benbase96), pers.indep_pay := "non_receipt"]
-      data[wave_no %in% c(6:12) & ! is.na(benbase96), oth_disab_ben := "non_receipt"]
+      data[wave_no %in% c(6:14) & ! is.na(benbase96), pers.indep_pay := "non_receipt"]
+      data[wave_no %in% c(6:14) & ! is.na(benbase96), oth_disab_ben := "non_receipt"]
     }
 
     if ("income_serps" %in% colnames(data)) { # W1-11[6:11]
@@ -119,9 +119,9 @@ ukhls_clean_benefit <- function(data = NULL) {
       data[wave_no %in% c(6:11) & ! is.na(benbase96), SERPs := "non_receipt"]
     }
     if (! "income_serps" %in% colnames(data)) { # W1-11[6:11]
-      data[wave_no %in% c(12) & ! is.na(benbase96), iw_lone_cred := NA]
-      data[wave_no %in% c(12) & ! is.na(benbase96), RTW_cred := NA]
-      data[wave_no %in% c(12) & ! is.na(benbase96), SERPs := NA]
+      data[wave_no %in% c(12:14) & ! is.na(benbase96), iw_lone_cred := NA]
+      data[wave_no %in% c(12:14) & ! is.na(benbase96), RTW_cred := NA]
+      data[wave_no %in% c(12:14) & ! is.na(benbase96), SERPs := NA]
     }
   }
 
@@ -193,25 +193,25 @@ ukhls_clean_benefit <- function(data = NULL) {
   if ("benbase1" %in% colnames(data)) {
 
     ### Legacy benefits ###
-    data[wave_no %in% c(6:12) & benbase1 == 1, income_support := "receipt"]
-    data[wave_no %in% c(6:12) & benbase2 == 1, jbseek_allowance := "receipt"]
-    data[wave_no %in% c(6:12) & benbase3 == 1, child_benefit := "receipt"]
-    data[wave_no %in% c(6:12) & benbase3 == 1 & benbase4 != 1 & benctc == 1, child_tax_credit := "receipt"]
-    data[wave_no %in% c(6:12) & othben97 == 1, other_ben_cred := "receipt"]
+    data[wave_no %in% c(6:14) & benbase1 == 1, income_support := "receipt"]
+    data[wave_no %in% c(6:14) & benbase2 == 1, jbseek_allowance := "receipt"]
+    data[wave_no %in% c(6:14) & benbase3 == 1, child_benefit := "receipt"]
+    data[wave_no %in% c(6:14) & benbase3 == 1 & benbase4 != 1 & benctc == 1, child_tax_credit := "receipt"]
+    data[wave_no %in% c(6:14) & othben97 == 1, other_ben_cred := "receipt"]
     ## Legacy categories: national_pension; other_family_benefit; housing_council_rent_rate
-    data[wave_no %in% c(6:12) & (NI.state_pen == 1 | pencred_pen == 1), national_pension := "receipt"]
+    data[wave_no %in% c(6:14) & (NI.state_pen == 1 | pencred_pen == 1), national_pension := "receipt"]
     if ("othben3" %in% colnames(data)) {
-      data[wave_no %in% c(6:12) & (othben1 == 1 | othben2 == 1 | bensta_alimony == 1 | othben3 == 1 | bensta_fampay == 1), other_family_benefit := "receipt"]
+      data[wave_no %in% c(6:14) & (othben1 == 1 | othben2 == 1 | bensta_alimony == 1 | othben3 == 1 | bensta_fampay == 1), other_family_benefit := "receipt"]
     }
     if (! "othben3" %in% colnames(data)) {
-      data[wave_no %in% c(6:12) & (othben1 == 1 | othben2 == 1 | bensta_alimony == 1 | bensta_fampay == 1), other_family_benefit := "receipt"]
+      data[wave_no %in% c(6:14) & (othben1 == 1 | othben2 == 1 | bensta_alimony == 1 | bensta_fampay == 1), other_family_benefit := "receipt"]
     }
-    data[wave_no %in% c(6:12) & (othben6 == 1 | othben7 == 1 | othben8 == 1 | othben9 == 1), housing_council_rent_rate := "receipt"]
+    data[wave_no %in% c(6:14) & (othben6 == 1 | othben7 == 1 | othben8 == 1 | othben9 == 1), housing_council_rent_rate := "receipt"]
 
     ### Allowances ###
-    data[wave_no %in% c(6:12) & othben1 == 1, foster_allowance := "receipt"]
-    data[wave_no %in% c(6:12) & othben2 == 1, maternity_allowance := "receipt"]
-    data[wave_no %in% c(6:12) & bensta_alimony == 1, maintenance_alimony := "receipt"]
+    data[wave_no %in% c(6:14) & othben1 == 1, foster_allowance := "receipt"]
+    data[wave_no %in% c(6:14) & othben2 == 1, maternity_allowance := "receipt"]
+    data[wave_no %in% c(6:14) & bensta_alimony == 1, maintenance_alimony := "receipt"]
     data[wave_no %in% c(1:5) & bensta_fampay == 1, family_payments := "receipt"]
 
     ### National Insurance ###
@@ -219,17 +219,17 @@ ukhls_clean_benefit <- function(data = NULL) {
     data[wave_no %in% c(1:5) & pencred_pen == 1, pension_credit := "receipt"]
 
     ### Housing benefits + Council tax ###
-    data[wave_no %in% c(6:12) & othben6 == 1, council_tax_benefit := "receipt"] # GB only
-    data[wave_no %in% c(6:12) & othben7 == 1, rate_rebate := "receipt"] # NI only
-    data[wave_no %in% c(6:12) & othben8 == 1, housing_benefit := "receipt"] # GB only
-    data[wave_no %in% c(6:12) & othben9 == 1, rent_rebate := "receipt"] # NI only
-    data[wave_no %in% c(6:12) & (othben7 == 1 | othben9 == 1) & othben6 == 0, council_tax_benefit := NA]
-    data[wave_no %in% c(6:12) & (othben7 == 1 | othben9 == 1) & othben8 == 0, housing_benefit := NA]
-    data[wave_no %in% c(6:12) & (othben6 == 1 | othben8 == 1) & othben7 == 0, rate_rebate := NA]
-    data[wave_no %in% c(6:12) & (othben6 == 1 | othben8 == 1) & othben9 == 0, rent_rebate := NA]
+    data[wave_no %in% c(6:14) & othben6 == 1, council_tax_benefit := "receipt"] # GB only
+    data[wave_no %in% c(6:14) & othben7 == 1, rate_rebate := "receipt"] # NI only
+    data[wave_no %in% c(6:14) & othben8 == 1, housing_benefit := "receipt"] # GB only
+    data[wave_no %in% c(6:14) & othben9 == 1, rent_rebate := "receipt"] # NI only
+    data[wave_no %in% c(6:14) & (othben7 == 1 | othben9 == 1) & othben6 == 0, council_tax_benefit := NA]
+    data[wave_no %in% c(6:14) & (othben7 == 1 | othben9 == 1) & othben8 == 0, housing_benefit := NA]
+    data[wave_no %in% c(6:14) & (othben6 == 1 | othben8 == 1) & othben7 == 0, rate_rebate := NA]
+    data[wave_no %in% c(6:14) & (othben6 == 1 | othben8 == 1) & othben9 == 0, rent_rebate := NA]
 
     ### Universal Credit ###
-    data[wave_no %in% c(6:12) & benbase4 == 1, universal_credit := "receipt"]
+    data[wave_no %in% c(6:14) & benbase4 == 1, universal_credit := "receipt"]
 
     ### Other credits ###
     if ("othben3" %in% colnames(data)) {
@@ -238,9 +238,9 @@ ukhls_clean_benefit <- function(data = NULL) {
     if ("othben4" %in% colnames(data)) {
       data[wave_no %in% c(6:11) & othben4 == 1, RTW_cred := "receipt"] ## bentax_rtw # bendis6
     }
-    data[wave_no %in% c(6:12) & othben5 == 1, work_tax_cred := "receipt"]
+    data[wave_no %in% c(6:14) & othben5 == 1, work_tax_cred := "receipt"]
     # National insurance credits?
-    data[wave_no %in% c(6:12), NI_credit := NA] ### What is this function meant to do?
+    data[wave_no %in% c(6:14), NI_credit := NA] ### What is this function meant to do?
 
   }
 
@@ -249,14 +249,14 @@ ukhls_clean_benefit <- function(data = NULL) {
   #### Waves 1 - 12 Disability benefits, Pensions + NI ####
 
   ### Disability ###
-  data[wave_no %in% c(1:12) & bendis1 == 1, incap_ben := "receipt"]
-  data[wave_no %in% c(1:12) & bendis10 == 1, sick.accident_insurance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis2 == 1, ES_Allowance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis3 == 1, sev_disab_allowance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis4 == 1, carers_allowance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis5 == 1, disliving_allowance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis7 == 1, attend_allowance := "receipt"]
-  data[wave_no %in% c(1:12) & bendis8 == 1, industry_inj_ben := "receipt"]
+  data[wave_no %in% c(1:14) & bendis1 == 1, incap_ben := "receipt"]
+  data[wave_no %in% c(1:14) & bendis10 == 1, sick.accident_insurance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis2 == 1, ES_Allowance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis3 == 1, sev_disab_allowance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis4 == 1, carers_allowance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis5 == 1, disliving_allowance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis7 == 1, attend_allowance := "receipt"]
+  data[wave_no %in% c(1:14) & bendis8 == 1, industry_inj_ben := "receipt"]
   if ("bendis11" %in% colnames(data)) {
     data[wave_no %in% c(1,2,4,5) & bendis11 == 1, universal_credit := "receipt"]
   }
@@ -265,13 +265,13 @@ ukhls_clean_benefit <- function(data = NULL) {
     data[wave_no %in% c(1:5) & (bendis9 == 1 | benpen8 == 1), war_pen := "receipt"]
   }
   if ("bendis12" %in% colnames(data)) {
-    data[wave_no %in% c(3:12) & bendis12 == 1, pers.indep_pay := "receipt"]
-    data[wave_no %in% c(3:12) & bendis97 == 1, oth_disab_ben := "receipt"]
+    data[wave_no %in% c(3:14) & bendis12 == 1, pers.indep_pay := "receipt"]
+    data[wave_no %in% c(3:14) & bendis97 == 1, oth_disab_ben := "receipt"]
   }
 
   ### National Insurance ###
-  data[wave_no %in% c(1:12) & NI.state_pen == 1, NI_state_pension := "receipt"]
-  data[wave_no %in% c(1:12) & pencred_pen == 1, pension_credit := "receipt"]
+  data[wave_no %in% c(1:14) & NI.state_pen == 1, NI_state_pension := "receipt"]
+  data[wave_no %in% c(1:14) & pencred_pen == 1, pension_credit := "receipt"]
 
 
   ###################################
