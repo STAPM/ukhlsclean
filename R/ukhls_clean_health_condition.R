@@ -5,7 +5,7 @@
 #' @param data Data table. Understanding Society data produced using the read functions.
 #'
 #' @export
-ukhls_clean_health_condition <- function(data = NULL) {
+ukhls_clean_health_conditions <- function(data = NULL) {
 
   if("hconds01" %in% colnames(data)) {
 
