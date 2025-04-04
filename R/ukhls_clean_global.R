@@ -47,6 +47,12 @@ ukhls_clean_global <- function(data,
 
   health <- ukhlsclean::ukhls_clean_health(data = data)
 
+  ### health and well-being
+
+  #cat(crayon::bold(crayon::green("\n\t\tHealth and wellbeing variables module\n")))
+
+  health_conditions <- ukhlsclean::ukhls_clean_health_conditions(data = data)
+
   ### alcohol
 
   #cat(crayon::bold(crayon::green("\n\t\tAlcohol variables module\n")))
