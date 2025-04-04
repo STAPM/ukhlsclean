@@ -164,6 +164,17 @@ ukhls_clean_health_conditions <- function(data = NULL) {
 
   } else {
 
+  ### Generate missings for years with no data
+    data[, condition1_respiratory := NA]
+    data[, condition2_circulatory := NA]
+    data[, condition3_musculoskeletal := NA]
+    data[, condition4_mental := NA]
+    data[, condition5_diabetes := NA]
+    data[, condition6_cancer := NA]
+    data[, condition7_liver := NA]
+    data[, condition8_nerve := NA]
+    data[, condition9_metabolic := NA]
+
   data[, hcond1_asthma := NA]
   data[, hcond3_congestive_heart_failure := NA]
   data[, hcond4_coronary_heart_disease := NA]
