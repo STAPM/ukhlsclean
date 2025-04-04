@@ -79,6 +79,17 @@ ukhls_read_wave12 <- function(
   health_vars      <- Hmisc::Cs(l_health, l_aidhh, l_sclfsat1, l_sclfsato, l_sf12pcs_dv, l_sf12mcs_dv,
                                 l_scsf1, l_scsf2a, l_scsf2b, l_scsf3a, l_scsf3b, l_scsf4a, l_scsf4b, l_scsf5, l_scsf6a,
                                 l_scsf6b, l_scsf6c, l_scsf7)
+  health_cond_vars <- Hmisc::Cs(l_hconds01, l_hconds03, l_hconds04, l_hconds05, l_hconds08,
+                                l_hconds10, l_hconds11, l_hconds12, l_hconds15, l_hconds16,
+                                l_hconds21, l_hconds23, l_hconds24, l_hconds25, l_hconds26, l_hconds27, l_hconds28, l_hconds29,
+                                l_hconds30, l_hconds31, l_hconds32, l_hconds33, l_hconds34, l_hconds35, l_hconds36, l_hconds37, l_hconds38, l_hconds39,
+                                l_hconds40, l_hconds41, l_hconds42, l_hconds43, l_hconds97,
+
+                                l_hcondns1, l_hcondns3, l_hcondns4, l_hcondns5, l_hcondns6, l_hcondns7, l_hcondns8,
+                                l_hcondns10, l_hcondns11, l_hcondns12, l_hcondns15, l_hcondns16, l_hcondns19,
+                                l_hcondns21, l_hcondns23, l_hcondns24, l_hcondns26, l_hcondns27, l_hcondns28, l_hcondns29,
+                                l_hcondns30, l_hcondns31, l_hcondns33, l_hcondns34, l_hcondns35, l_hcondns37, l_hcondns38, l_hcondns39,
+                                l_hcondns40, l_hcondns41, l_hcondns42)
   preg_vars        <- Hmisc::Cs(l_preg,
                                 l_pregout1, l_pregend1, l_pregsmoke1, l_smkmnth11, l_smkmnth21, l_smkmnth31, l_pregsmk11, l_pregsmk21, l_pregsmk31, l_aedrof1, l_aepuwk1, l_aepuda1, l_lchmulti1,
                                 l_pregout2, l_pregend2, l_pregsmoke2, l_smkmnth12, l_smkmnth22, l_smkmnth32, l_pregsmk12, l_pregsmk22, l_pregsmk32, l_aedrof2, l_aepuwk2, l_aepuda2, l_lchmulti2,
@@ -90,7 +101,7 @@ ukhls_read_wave12 <- function(
 
   names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars,
              s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, bendis_vars, otherben_vars,
-             benincome_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+             benincome_vars, hhfinance_vars, education_vars, health_vars, health_cond_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -136,6 +147,18 @@ ukhls_read_wave12 <- function(
                          ## health variables
                          "l_health","l_aidhh","l_sclfsat1","l_sclfsato","l_sf12pcs_dv","l_sf12mcs_dv",
                          "l_scsf1","l_scsf2a","l_scsf2b","l_scsf3a","l_scsf3b","l_scsf4a","l_scsf4b","l_scsf5","l_scsf6a","l_scsf6b","l_scsf6c","l_scsf7",
+                         ## health condition variables
+                         "l_hconds01", "l_hconds03", "l_hconds04", "l_hconds05", "l_hconds08",
+                         "l_hconds10", "l_hconds11", "l_hconds12", "l_hconds15", "l_hconds16",
+                         "l_hconds21", "l_hconds23", "l_hconds24", "l_hconds25", "l_hconds26", "l_hconds27", "l_hconds28", "l_hconds29",
+                         "l_hconds30", "l_hconds31", "l_hconds32", "l_hconds33", "l_hconds34", "l_hconds35", "l_hconds36", "l_hconds37", "l_hconds38", "l_hconds39",
+                         "l_hconds40", "l_hconds41", "l_hconds42", "l_hconds43", "l_hconds97",
+
+                         "l_hcondns1", "l_hcondns3", "l_hcondns4", "l_hcondns5", "l_hcondns6", "l_hcondns7", "l_hcondns8",
+                         "l_hcondns10", "l_hcondns11", "l_hcondns12", "l_hcondns15", "l_hcondns16", "l_hcondns19",
+                         "l_hcondns21", "l_hcondns23", "l_hcondns24", "l_hcondns26", "l_hcondns27", "l_hcondns28", "l_hcondns29",
+                         "l_hcondns30", "l_hcondns31", "l_hcondns33", "l_hcondns34", "l_hcondns35", "l_hcondns37", "l_hcondns38", "l_hcondns39",
+                         "l_hcondns40", "l_hcondns41", "l_hcondns42",
                          ## pregnancy variables
                          "l_preg",
                          "l_pregout1","l_pregend1","l_pregsmoke1","l_smkmnth11","l_smkmnth21","l_smkmnth31","l_pregsmk11","l_pregsmk21","l_pregsmk31","l_aedrof1","l_aepuwk1","l_aepuda1","l_lchmulti1",
@@ -190,6 +213,18 @@ ukhls_read_wave12 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         ## health condition variables
+                         "hconds01", "hconds03", "hconds04", "hconds05", "hconds08",
+                         "hconds10", "hconds11", "hconds12", "hconds15", "hconds16",
+                         "hconds21", "hconds23", "hconds24", "hconds25", "hconds26", "hconds27", "hconds28", "hconds29",
+                         "hconds30", "hconds31", "hconds32", "hconds33", "hconds34", "hconds35", "hconds36", "hconds37", "hconds38", "hconds39",
+                         "hconds40", "hconds41", "hconds42", "hconds43", "hconds97",
+
+                         "hcondns1", "hcondns3", "hcondns4", "hcondns5", "hcondns6", "hcondns7", "hcondns8",
+                         "hcondns10", "hcondns11", "hcondns12", "hcondns15", "hcondns16", "hcondns19",
+                         "hcondns21", "hcondns23", "hcondns24", "hcondns26", "hcondns27", "hcondns28", "hcondns29",
+                         "hcondns30", "hcondns31", "hcondns33", "hcondns34", "hcondns35", "hcondns37", "hcondns38", "hcondns39",
+                         "hcondns40", "hcondns41", "hcondns42",
                          ## pregnancy variables
                          "preg",
                          "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",
