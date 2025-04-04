@@ -25,7 +25,7 @@
 ukhlsclean <- function(root = "X:/",
                        file = "HAR_PR/PR/USoc/Data/SN6614_2022_11_29/tab/ukhls",
                        full = TRUE,
-                       waves = 1:12,
+                       waves = 1:14,
                        ages = NULL,
                        country = NULL,
                        complete_vars = NULL,

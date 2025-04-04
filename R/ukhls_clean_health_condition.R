@@ -33,6 +33,11 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   data[, hcond8_emphysema := 0]
   data[hconds08 == 1 | hcondns8 == 1, hcond8_emphysema := 1]
 
+  ### hypothyroidism not in wave 14 - fill in as missing
+  if ("hconds75" %in% colnames(data)){
+
+    data[, hconds10 := NA]
+  }
   data[, hcond10_hypothyroidism := 0]
   data[hconds10 == 1 | hcondns10 == 1, hcond10_hypothyroidism := 1]
 
@@ -53,6 +58,15 @@ ukhls_clean_health_conditions <- function(data = NULL) {
 
   data[, hcond21_copd := 0]
   data[hconds21 == 1 | hcondns21 == 1, hcond21_copd := 1]
+
+  ### some musculoskeletal vars not in wave 14 - fill in as missing
+  if ("hconds75" %in% colnames(data)){
+
+  data[, hconds23 := NA]
+  data[, hconds24 := NA]
+  data[, hconds25 := NA]
+
+  }
 
   data[, hcond23_osteoarthritis := 0]
   data[hconds23 == 1 | hcondns23 == 1, hcond23_osteoarthritis := 1]
@@ -93,8 +107,16 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   data[, hcond35_diabetes_gestational := 0]
   data[hconds35 == 1 | hcondns35 == 1, hcond35_diabetes_gestational := 1]
 
+  ### other diabetes not in wave 14 - fill in as missing
+  if ("hconds75" %in% colnames(data)){
+    data[, hconds36 := NA]
+    data[, hcondns36 := NA]
+  }
   data[, hcond36_diabetes_other := 0]
   data[hconds36 == 1, hcond36_diabetes_other := 1]
+
+  ### mental health conditions - wave 11-12
+  if (!("mhconds38" %in% colnames(data)) & !("hconds75" %in% colnames(data))){
 
   data[, hcond37_anxiety := 0]
   data[hconds37 == 1 | hcondns37 == 1, hcond37_anxiety := 1]
@@ -116,6 +138,68 @@ ukhls_clean_health_conditions <- function(data = NULL) {
 
   data[, hcond43_mental_health_other := 0]
   data[hconds43 == 1, hcond43_mental_health_other := 1]
+  }
+  ### mental health conditions - wave 13
+  if ("mhconds38" %in% colnames(data)){
+
+    data[, hcond37_anxiety := 0]
+    data[mhconds54 == 1 | mhconds55 == 1 | mhconds61 == 1 | hcondns37 == 1, hcond37_anxiety := 1]
+
+    data[, hcond38_depression := 0]
+    data[mhconds38 == 1 | hcondns38 == 1, hcond38_depression := 1]
+
+    data[, hcond39_psychosis_schiz := 0]
+    data[mhconds39 == 1 | hcondns39 == 1, hcond39_psychosis_schiz := 1]
+
+    data[, hcond40_bipolar_manic_depression := 0]
+    data[mhconds40 == 1 | hcondns40 == 1, hcond40_bipolar_manic_depression := 1]
+
+    data[, hcond41_eating_disorder := 0]
+    data[mhconds41 == 1 | hcondns41 == 1, hcond41_eating_disorder := 1]
+
+    data[, hcond42_ptsd := 0]
+    data[mhconds42 == 1 | hcondns42 == 1, hcond42_ptsd := 1]
+
+    data[, hcond43_mental_health_other := 0]
+    data[mhconds56 == 1 | mhconds57 == 1 | mhconds59 == 1 | mhconds60 == 1, hcond43_mental_health_other := 1]
+
+    ## split out alcohol and drug dependence from other mental health conditions
+    data[, hcond63_alcohol_drug_dependence := 0]
+    data[mhconds63 == 1 , hcond63_alcohol_drug_dependence := 1]
+
+  }
+
+  ### mental health conditions - wave 13
+  if ("hconds75" %in% colnames(data)){
+
+    data[, hcond37_anxiety := 0]
+    data[hconds66 == 1 | hconds67 == 1 | hconds73 == 1 |
+           hcondns66 == 1 | hcondns67 == 1 | hcondns73 == 1   , hcond37_anxiety := 1]
+
+    data[, hcond38_depression := 0]
+    data[hconds38 == 1 | hcondns38 == 1, hcond38_depression := 1]
+
+    data[, hcond39_psychosis_schiz := 0]
+    data[hconds39 == 1 | hcondns39 == 1, hcond39_psychosis_schiz := 1]
+
+    data[, hcond40_bipolar_manic_depression := 0]
+    data[hconds40 == 1 | hcondns40 == 1, hcond40_bipolar_manic_depression := 1]
+
+    data[, hcond41_eating_disorder := 0]
+    data[hconds41 == 1 | hcondns41 == 1, hcond41_eating_disorder := 1]
+
+    data[, hcond42_ptsd := 0]
+    data[hconds42 == 1 | hcondns42 == 1, hcond42_ptsd := 1]
+
+    data[, hcond43_mental_health_other := 0]
+    data[hconds68 == 1 | hconds69 == 1 | hconds72 == 1 | hconds74 == 1 |
+           hcondns68 == 1 | hcondns69 == 1 | hcondns70 == 1 | hcondns71 == 1 | hcondns72 == 1 | hcondns74 == 1, hcond43_mental_health_other := 1]
+
+    ## split out alcohol and drug dependence from other mental health conditions
+    data[, hcond63_alcohol_drug_dependence := 0]
+    data[hconds75 == 1 | hcondns75 == 1  , hcond63_alcohol_drug_dependence := 1]
+
+  }
 
   #############################################
   ### Aggregate into more detailed groups #####
@@ -161,6 +245,33 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   ## (9) Endocrine, nutritional, and metabolic
   data[, condition9_metabolic := 0]
   data[hcond10_hypothyroidism == 1, condition9_metabolic := 1]
+
+  if ("mhconds38" %in% colnames(data) | "hconds75" %in% colnames(data)){
+  ## (10) Alcohol or drug dependence (wave 13 onwards)
+    data[, condition10_alcohol_drug_dependence := 0]
+    data[hcond63_alcohol_drug_dependence == 1, condition10_alcohol_drug_dependence := 1]
+  }
+
+  ### Add new conditions from Wave 14 into the broader condition groups (NOT RETAINED AS INDIVIDUAL CONDITIONS)
+
+  if ("hconds75" %in% colnames(data)){
+    ## add 78 cystic fibrosis to metabolic
+    data[hcondns78 == 1, condition9_metabolic := 1]
+
+    ## add 79 blood cancer to cancers
+    data[hconds79 == 1 | hcondns79 == 1, condition6_cancer := 1]
+
+    ## add 81 parkinsons 82 motor neurone disease 84 cerebral palsy to nervous system conditions
+    data[hconds81 == 1 | hconds82 == 1 |
+           hcondns81 == 1 | hcondns82 == 1 | hcondns84 == 1, condition8_nerve := 1]
+
+    ## add 89 generalised anxiety to mental health conditions
+    data[hconds89 == 1 | hcondns89 == 1 , condition4_mental := 1]
+  }
+
+
+
+
 
   } else {
 
@@ -210,6 +321,12 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   data[, hcond41_eating_disorder := NA]
   data[, hcond42_ptsd := NA]
   data[, hcond43_mental_health_other := NA]
+
+  }
+  if (!("mhconds38" %in% colnames(data)) & !("hconds75" %in% colnames(data))){
+    data[, hcond63_alcohol_drug_dependence := NA]
+    data[, condition10_alcohol_drug_dependence := NA]
+
   }
 
 
@@ -217,11 +334,11 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("pidp", "id", "hidp", "wave_no",
-                                ## broad conditions
+                        ## broad conditions
                                 "condition1_respiratory","condition2_circulatory","condition3_musculoskeletal",
                                 "condition4_mental","condition5_diabetes","condition6_cancer",
-                                "condition7_liver","condition8_nerve","condition9_metabolic",
-                                ## more detailed conditions
+                                "condition7_liver","condition8_nerve","condition9_metabolic","condition10_alcohol_drug_dependence",
+                        ## more detailed conditions
                                 "hcond1_asthma","hcond3_congestive_heart_failure","hcond4_coronary_heart_disease",
                                 "hcond5_angina","hcond6_heart_attack","hcond7_stroke","hcond8_emphysema","hcond10_hypothyroidism",
                                 "hcond11_chronic_bronchitis","hcond12_liver_conditions","hcond15_epilepsy","hcond16_high_blood_pressure",
@@ -229,13 +346,13 @@ ukhls_clean_health_conditions <- function(data = NULL) {
                                 "hcond26_cancer_bowel_colorectal","hcond27_cancer_lung","hcond28_cancer_breast","hcond29_cancer_prostate","hcond30_cancer_liver",
                                 "hcond31_cancer_skin","hcond32_cancer_other","hcond33_diabetes_type1","hcond34_diabetes_type2","hcond35_diabetes_gestational",
                                 "hcond36_diabetes_other","hcond37_anxiety","hcond38_depression","hcond39_psychosis_schiz","hcond40_bipolar_manic_depression",
-                                "hcond41_eating_disorder","hcond42_ptsd","hcond43_mental_health_other")]
+                                "hcond41_eating_disorder","hcond42_ptsd","hcond43_mental_health_other","hcond63_alcohol_drug_dependence")]
 
   var_names <- c(
     ## broad conditions
     "condition1_respiratory","condition2_circulatory","condition3_musculoskeletal",
     "condition4_mental","condition5_diabetes","condition6_cancer",
-    "condition7_liver","condition8_nerve","condition9_metabolic",
+    "condition7_liver","condition8_nerve","condition9_metabolic","condition10_alcohol_drug_dependence",
     ## more detailed conditions
     "hcond1_asthma","hcond3_congestive_heart_failure","hcond4_coronary_heart_disease",
     "hcond5_angina","hcond6_heart_attack","hcond7_stroke","hcond8_emphysema","hcond10_hypothyroidism",
@@ -244,7 +361,7 @@ ukhls_clean_health_conditions <- function(data = NULL) {
     "hcond26_cancer_bowel_colorectal","hcond27_cancer_lung","hcond28_cancer_breast","hcond29_cancer_prostate","hcond30_cancer_liver",
     "hcond31_cancer_skin","hcond32_cancer_other","hcond33_diabetes_type1","hcond34_diabetes_type2","hcond35_diabetes_gestational",
     "hcond36_diabetes_other","hcond37_anxiety","hcond38_depression","hcond39_psychosis_schiz","hcond40_bipolar_manic_depression",
-    "hcond41_eating_disorder","hcond42_ptsd","hcond43_mental_health_other")
+    "hcond41_eating_disorder","hcond42_ptsd","hcond43_mental_health_other","hcond63_alcohol_drug_dependence")
 
   setnames(final_data, var_names, paste0("h_", var_names))
 
