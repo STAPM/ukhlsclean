@@ -33,8 +33,8 @@ ukhls_clean_health_conditions <- function(data = NULL) {
   data[, hcond8_emphysema := 0]
   data[hconds08 == 1 | hcondns8 == 1, hcond8_emphysema := 1]
 
-  ### hypothyroidism not in wave 14 - fill in as missing
-  if ("hconds75" %in% colnames(data)){
+  ### hypothyroidism not in wave 14 or calendar year data - fill in as missing
+  if ("hconds75" %in% colnames(data) | !("hconds10" %in% colnames(data))){
 
     data[, hconds10 := NA]
   }

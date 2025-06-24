@@ -70,6 +70,12 @@ ukhlsclean_2022 <- function(
   health_vars      <- Hmisc::Cs(lmn_health, lmn_aidhh, lmn_sclfsat1, lmn_sclfsato, lmn_sf12pcs_dv, lmn_sf12mcs_dv,
                                 lmn_scsf1, lmn_scsf2a, lmn_scsf2b, lmn_scsf3a, lmn_scsf3b, lmn_scsf4a, lmn_scsf4b, lmn_scsf5, lmn_scsf6a,
                                 lmn_scsf6b, lmn_scsf6c, lmn_scsf7)
+  health_cond_vars <- Hmisc::Cs(lmn_hconds01, lmn_hconds03, lmn_hconds04, lmn_hconds05, lmn_hconds08,
+                                              lmn_hconds11, lmn_hconds12, lmn_hconds15, lmn_hconds16,
+                                lmn_hconds21,                                           lmn_hconds26, lmn_hconds27, lmn_hconds28, lmn_hconds29,
+                                lmn_hconds30, lmn_hconds31, lmn_hconds32, lmn_hconds33, lmn_hconds34, lmn_hconds35,
+
+                                lmn_hcondns1, lmn_hcondns3, lmn_hcondns4, lmn_hcondns5, lmn_hcondns6, lmn_hcondns7, lmn_hcondns8, lmn_hcondns10)
   preg_vars        <- Hmisc::Cs(lmn_pregout1, lmn_pregout2)
   smoke_vars       <- Hmisc::Cs(lmn_smoker, lmn_ncigs)
   benefits_vars    <- Hmisc::Cs(lmn_benbase1, lmn_benbase2, lmn_benbase3, lmn_benbase4, lmn_benbase96,
@@ -106,6 +112,14 @@ ukhlsclean_2022 <- function(
                          ## health variables
                          "lmn_health","lmn_aidhh","lmn_sclfsat1","lmn_sclfsato","lmn_sf12pcs_dv","lmn_sf12mcs_dv",
                          "lmn_scsf1","lmn_scsf2a","lmn_scsf2b","lmn_scsf3a","lmn_scsf3b","lmn_scsf4a","lmn_scsf4b","lmn_scsf5","lmn_scsf6a","lmn_scsf6b","lmn_scsf6c","lmn_scsf7",
+                         ## health conditions
+                         #"lmn_hconds01", "lmn_hconds03", "lmn_hconds04", "lmn_hconds05", "lmn_hconds08",
+                         #                "lmn_hconds11", "lmn_hconds12", "lmn_hconds15", "lmn_hconds16",
+                         #"lmn_hconds21"                                                , "lmn_hconds26", "lmn_hconds27", "lmn_hconds28", "lmn_hconds29",
+                         #"lmn_hconds30", "lmn_hconds31", "lmn_hconds32", "lmn_hconds33", "lmn_hconds34", "lmn_hconds35",
+
+                         #"lmn_hcondns1", "lmn_hcondns3", "lmn_hcondns4", "lmn_hcondns5", "lmn_hcondns6", "lmn_hcondns7", "lmn_hcondns8",
+                         #"lmn_hcondns10",
                          ## pregnancy variables
                          "lmn_pregout1","lmn_pregout2",
                          ## smoke variables
@@ -141,6 +155,13 @@ ukhlsclean_2022 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         ## health condition variables
+                         #"hconds01", "hconds03", "hconds04", "hconds05", "hconds08",
+                         #            "hconds11", "hconds12", "hconds15", "hconds16",
+                         #"hconds21",                                     "hconds26", "hconds27", "hconds28", "hconds29",
+                         #"hconds30", "hconds31", "hconds32", "hconds33", "hconds34", "hconds35",
+
+                         #"hcondns1", "hcondns3", "hcondns4", "hcondns5", "hcondns6", "hcondns7", "hcondns8", "hcondns10",
                          ## pregnancy variables
                          "pregout1","pregout2",
                          ## smoke variables
