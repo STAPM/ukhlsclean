@@ -93,14 +93,15 @@ ukhls_clean_global <- function(data,
   ######################
   ### Merge datasets ###
 
-  merged_data <- merge(main_data, demographics, by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, health,     by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, alcohol,    by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, smoke,      by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, lmkt,       by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, work,       by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, benefit,    by = c("pidp", "id", "hidp", "wave_no"))
-  merged_data <- merge(merged_data, hhold,      by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(main_data, demographics,        by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, health,            by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, health_conditions, by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, alcohol,           by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, smoke,             by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, lmkt,              by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, work,              by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, benefit,           by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, hhold,             by = c("pidp", "id", "hidp", "wave_no"))
 
   ####################################################
   ### Post process benefits by employment activity ###
