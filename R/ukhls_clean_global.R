@@ -37,56 +37,42 @@ ukhls_clean_global <- function(data,
 
   ### demographics
 
-  #cat(crayon::bold(crayon::green("\n\t\tDemographic variables module\n")))
-
   demographics <- ukhlsclean::ukhls_clean_demographic(data = data)
 
-  ### health and well-being
+  ### income
 
-  #cat(crayon::bold(crayon::green("\n\t\tHealth and wellbeing variables module\n")))
+  income <- ukhlsclean::ukhls_clean_income(data = data)
+
+  ### health and well-being
 
   health <- ukhlsclean::ukhls_clean_health(data = data)
 
-  ### health and well-being
-
-  #cat(crayon::bold(crayon::green("\n\t\tHealth and wellbeing variables module\n")))
+  ### health conditions
 
   health_conditions <- ukhlsclean::ukhls_clean_health_conditions(data = data)
 
   ### alcohol
 
-  #cat(crayon::bold(crayon::green("\n\t\tAlcohol variables module\n")))
-
   alcohol <- ukhlsclean::ukhls_clean_alcohol(data = data)
 
   ### smoking
 
-  #cat(crayon::bold(crayon::green("\n\t\tSmoking variables module\n")))
-
   smoke <- ukhlsclean::ukhls_clean_smoke(data = data)
 
   ### labour market
-
-  #cat(crayon::bold(crayon::green("\n\t\tLabour market variables module\n")))
 
   lmkt <- ukhlsclean::ukhls_clean_econstat(data = data,
                                            inflation = inflation)
 
   ### work
 
-  #cat(crayon::bold(crayon::green("\n\t\tWork variables module\n")))
-
   work <- ukhlsclean::ukhls_clean_work(data = data, calendar_year = calendar_year)
 
   ### benefits
 
-  #cat(crayon::bold(crayon::green("\n\t\tBenefits variables module\n")))
-
-  benefit <- ukhlsclean:::ukhls_clean_benefit(data = data)
+  benefit <- ukhlsclean::ukhls_clean_benefit(data = data)
 
   ### household
-
-  #cat(crayon::bold(crayon::green("\n\t\tFamily and household variables module\n\n")))
 
   hhold <- ukhlsclean::ukhls_clean_hhold(data = data, calendar_year = calendar_year, inflation = inflation)
 
@@ -94,6 +80,7 @@ ukhls_clean_global <- function(data,
   ### Merge datasets ###
 
   merged_data <- merge(main_data, demographics,        by = c("pidp", "id", "hidp", "wave_no"))
+  merged_data <- merge(merged_data, income,            by = c("pidp", "id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, health,            by = c("pidp", "id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, health_conditions, by = c("pidp", "id", "hidp", "wave_no"))
   merged_data <- merge(merged_data, alcohol,           by = c("pidp", "id", "hidp", "wave_no"))

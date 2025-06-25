@@ -60,6 +60,8 @@ ukhls_read_wave9 <- function(
   demographic_vars <- Hmisc::Cs(i_sex, i_dvage, i_birthy, i_gor_dv, i_urban_dv, i_mlstat, i_marstat)
   prev_wave_vars   <- Hmisc::Cs(i_notempchk, i_empchk)
   econ_stat_vars   <- Hmisc::Cs(i_jbstat, i_jbhas, i_jboff, i_jboffy, i_jbterm1, i_jbterm2, i_jbsemp)
+  income_vars      <- Hmisc::Cs(i_fimnnet_dv, i_fimngrs_dv,
+                                i_fimnlabnet_dv, i_fimnmisc_dv, i_fimnprben_dv, i_fimninvnet_dv, i_fimnpen_dv, i_fimnsben_dv)
   work_vars        <- Hmisc::Cs(i_paygu_dv, i_payg_dv, i_jbhrs, i_fimnlabgrs_dv, i_seearngrs_dv, i_jbsic07_cc, i_jbot, i_jbotpd,
                                 i_jbnssec_dv, i_jbnssec3_dv, i_jbnssec5_dv, i_jbnssec8_dv, i_jbsize)
   employees_vars   <- Hmisc::Cs(i_paygl, i_paynl, i_payu, i_payug, i_paytyp, i_ovtpay, i_pvtpyset, i_extrate, i_extrest, i_basnset, i_basrate, i_basrest, i_ovtnset, i_ovtrate, i_ovtrest)
@@ -90,7 +92,7 @@ ukhls_read_wave9 <- function(
   weight_vars      <- Hmisc::Cs(i_indinus_lw, i_indinui_xw)
 
 
-  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, bendis_vars, otherben_vars, benincome_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
+  names <- c(id_vars, demographic_vars, prev_wave_vars, econ_stat_vars, income_vars, work_vars, employees_vars, s.emp_vars, non.emp_vars, job2_vars, benefits_vars, pension_vars, bendis_vars, otherben_vars, benincome_vars, hhfinance_vars, education_vars, health_vars, preg_vars, smoke_vars, alc_vars, weight_vars)
   names <- tolower(names)
 
   data <- data[ , names, with = F]
@@ -104,6 +106,9 @@ ukhls_read_wave9 <- function(
                          "i_notempchk","i_empchk",
                          ## economic status
                          "i_jbstat","i_jbhas","i_jboff","i_jboffy","i_jbterm1","i_jbterm2","i_jbsemp",
+                         ## income variables
+                         "i_fimnnet_dv", "i_fimngrs_dv",
+                         "i_fimnlabnet_dv", "i_fimnmisc_dv", "i_fimnprben_dv", "i_fimninvnet_dv", "i_fimnpen_dv", "i_fimnsben_dv",
                          ## work variables
                          "i_paygu_dv","i_payg_dv","i_jbhrs","i_fimnlabgrs_dv","i_seearngrs_dv","i_jbsic07_cc","i_jbot","i_jbotpd",
                          "i_jbnssec_dv","i_jbnssec3_dv","i_jbnssec5_dv","i_jbnssec8_dv", "i_jbsize",
@@ -159,6 +164,9 @@ ukhls_read_wave9 <- function(
                          "notempchk","empchk",
                          ## economic status
                          "econ_stat","jbhas","jboff","jboffy","jbterm1","jbterm2","jbsemp",
+                         ## income variables
+                         "fimnnet_dv", "fimngrs_dv",
+                         "fimnlabnet_dv", "fimnmisc_dv", "fimnprben_dv", "fimninvnet_dv", "fimnpen_dv", "fimnsben_dv",
                          ## work variables
                          "grss_pay_usual","grss_pay_last","hours","grss_lab_inc","grss_semp","sic07","ovthours_pw","ovthours_paid",
                          "nssec","nssec_3cat","nssec_5cat","nssec_8cat", "jbsize",
