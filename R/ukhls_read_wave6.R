@@ -78,7 +78,8 @@ ukhls_read_wave6 <- function(
   hhfinance_vars   <- Hmisc::Cs(f_fiyrdia, f_fiyrdb1, f_fiyrdb2, f_fiyrdb3, f_fiyrdb4, f_fiyrdb5, f_fiyrdb6, f_finnow, f_finfut)
   education_vars   <- Hmisc::Cs(f_hiqual_dv)
   health_vars      <- Hmisc::Cs(f_health, f_aidhh, f_sclfsat1, f_sclfsato, f_sf12pcs_dv, f_sf12mcs_dv,
-                                f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7)
+                                f_scsf1, f_scsf2a, f_scsf2b, f_scsf3a, f_scsf3b, f_scsf4a, f_scsf4b, f_scsf5, f_scsf6a, f_scsf6b, f_scsf6c, f_scsf7,
+                                f_scghq1_dv,f_scghq2_dv)
   preg_vars        <- Hmisc::Cs(f_preg,
                                 f_pregout1, f_pregend1, f_pregsmoke1, f_smkmnth11, f_smkmnth21, f_smkmnth31, f_pregsmk11, f_pregsmk21, f_pregsmk31, f_aedrof1, f_aepuwk1, f_aepuda1, f_lchmulti1,
                                 f_pregout2, f_pregend2, f_pregsmoke2, f_smkmnth12, f_smkmnth22, f_smkmnth32, f_pregsmk12, f_pregsmk22, f_pregsmk32, f_aedrof2, f_aepuwk2, f_aepuda2, f_lchmulti2,
@@ -139,6 +140,7 @@ ukhls_read_wave6 <- function(
                          ## health variables
                          "f_health","f_aidhh","f_sclfsat1","f_sclfsato","f_sf12pcs_dv","f_sf12mcs_dv",
                          "f_scsf1","f_scsf2a","f_scsf2b","f_scsf3a","f_scsf3b","f_scsf4a","f_scsf4b","f_scsf5","f_scsf6a","f_scsf6b","f_scsf6c","f_scsf7",
+                         "f_scghq1_dv","f_scghq2_dv",
                          ## pregnancy variables
                          "f_preg","f_pregout1","f_pregend1","f_pregsmoke1","f_smkmnth11","f_smkmnth21","f_smkmnth31","f_pregsmk11","f_pregsmk21","f_pregsmk31","f_aedrof1","f_aepuwk1","f_aepuda1","f_lchmulti1",
                          "f_pregout2","f_pregend2","f_pregsmoke2","f_smkmnth12","f_smkmnth22","f_smkmnth32","f_pregsmk12","f_pregsmk22","f_pregsmk32","f_aedrof2","f_aepuwk2","f_aepuda2","f_lchmulti2",
@@ -193,6 +195,7 @@ ukhls_read_wave6 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## pregnancy variables
                          "preg",
                          "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",

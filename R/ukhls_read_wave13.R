@@ -78,7 +78,8 @@ ukhls_read_wave13 <- function(
   education_vars   <- Hmisc::Cs(m_hiqual_dv)
   health_vars      <- Hmisc::Cs(m_health, m_aidhh, m_sclfsat1, m_sclfsato, m_sf12pcs_dv, m_sf12mcs_dv,
                                 m_scsf1, m_scsf2a, m_scsf2b, m_scsf3a, m_scsf3b, m_scsf4a, m_scsf4b, m_scsf5, m_scsf6a,
-                                m_scsf6b, m_scsf6c, m_scsf7)
+                                m_scsf6b, m_scsf6c, m_scsf7,
+                                m_scghq1_dv,m_scghq2_dv)
   health_cond_vars <- Hmisc::Cs(m_hconds01, m_hconds03, m_hconds04, m_hconds05, m_hconds08,
                                 m_hconds10, m_hconds11, m_hconds12, m_hconds15, m_hconds16,
                                 m_hconds21, m_hconds23, m_hconds24, m_hconds25, m_hconds26, m_hconds27, m_hconds28, m_hconds29,
@@ -149,6 +150,7 @@ ukhls_read_wave13 <- function(
                          ## health variables
                          "m_health","m_aidhh","m_sclfsat1","m_sclfsato","m_sf12pcs_dv","m_sf12mcs_dv",
                          "m_scsf1","m_scsf2a","m_scsf2b","m_scsf3a","m_scsf3b","m_scsf4a","m_scsf4b","m_scsf5","m_scsf6a","m_scsf6b","m_scsf6c","m_scsf7",
+                         "m_scghq1_dv","m_scghq2_dv",
                          ## health conditions
                          "m_hconds01", "m_hconds03", "m_hconds04", "m_hconds05", "m_hconds08",
                          "m_hconds10", "m_hconds11", "m_hconds12", "m_hconds15", "m_hconds16",
@@ -216,6 +218,7 @@ ukhls_read_wave13 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## health conditions
                          "hconds01", "hconds03", "hconds04", "hconds05", "hconds08",
                          "hconds10", "hconds11", "hconds12", "hconds15", "hconds16",

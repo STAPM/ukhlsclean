@@ -102,7 +102,10 @@ ukhls_clean_health <- function(data = NULL) {
   data[, pregnant := factor(pregnant, levels = 0:1, labels = c("not_pregnant","pregnant"))]
 
   ###################################
-  ##### EQ-5d mapped from SF-12 #####
+  ##### GHQ-12 ######################
+
+  ###################################
+  ##### EQ-5D mapped from SF-12 #####
 
   ## Use the algorithm from :
   ## https://www.herc.ox.ac.uk/downloads/downloads-supporting-material-1/sf-12-responses-and-eq-5d-utility-values
@@ -126,10 +129,12 @@ ukhls_clean_health <- function(data = NULL) {
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- merged_data[, c("pidp", "id", "hidp", "wave_no",
-                                "eq5d_score", "pregnant", "disability", "care_hhold",
+                                "eq5d_score", "sf12_pcs","sf12_mcs",
+                                "pregnant", "disability", "care_hhold",
                                 "satisfaction_health", "satisfaction_life")]
 
-  var_names <- c("eq5d_score", "pregnant", "disability", "care_hhold",
+  var_names <- c("eq5d_score", "sf12_pcs","sf12_mcs",
+                 "pregnant", "disability", "care_hhold",
                  "satisfaction_health", "satisfaction_life")
 
   setnames(final_data, var_names, paste0("h_", var_names))

@@ -78,7 +78,8 @@ ukhls_read_wave10 <- function(
   hhfinance_vars   <- Hmisc::Cs(j_fiyrdia, j_fiyrdb1, j_fiyrdb2, j_fiyrdb3, j_fiyrdb4, j_fiyrdb5, j_fiyrdb6, j_finnow, j_finfut)
   education_vars   <- Hmisc::Cs(j_hiqual_dv)
   health_vars      <- Hmisc::Cs(j_health, j_aidhh, j_sclfsat1, j_sclfsato, j_sf12pcs_dv, j_sf12mcs_dv,
-                                j_scsf1, j_scsf2a, j_scsf2b, j_scsf3a, j_scsf3b, j_scsf4a, j_scsf4b, j_scsf5, j_scsf6a, j_scsf6b, j_scsf6c, j_scsf7)
+                                j_scsf1, j_scsf2a, j_scsf2b, j_scsf3a, j_scsf3b, j_scsf4a, j_scsf4b, j_scsf5, j_scsf6a, j_scsf6b, j_scsf6c, j_scsf7,
+                                j_scghq1_dv,j_scghq2_dv)
   health_cond_vars <- Hmisc::Cs(j_hconds01, j_hconds03, j_hconds04, j_hconds05, j_hconds08,
                                 j_hconds10, j_hconds11, j_hconds12, j_hconds15, j_hconds16,
                                 j_hconds21, j_hconds23, j_hconds24, j_hconds25, j_hconds26, j_hconds27, j_hconds28, j_hconds29,
@@ -151,6 +152,7 @@ ukhls_read_wave10 <- function(
                          ## health variables
                          "j_health","j_aidhh","j_sclfsat1","j_sclfsato","j_sf12pcs_dv","j_sf12mcs_dv",
                          "j_scsf1","j_scsf2a","j_scsf2b","j_scsf3a","j_scsf3b","j_scsf4a","j_scsf4b","j_scsf5","j_scsf6a","j_scsf6b","j_scsf6c","j_scsf7",
+                         "j_scghq1_dv","j_scghq2_dv",
                          ## health condition variables
                          "j_hconds01", "j_hconds03", "j_hconds04", "j_hconds05", "j_hconds08",
                          "j_hconds10", "j_hconds11", "j_hconds12", "j_hconds15", "j_hconds16",
@@ -213,6 +215,7 @@ ukhls_read_wave10 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## health condition variables
                          "hconds01", "hconds03", "hconds04", "hconds05", "hconds08",
                          "hconds10", "hconds11", "hconds12", "hconds15", "hconds16",

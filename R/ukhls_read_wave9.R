@@ -78,7 +78,8 @@ ukhls_read_wave9 <- function(
   hhfinance_vars   <- Hmisc::Cs(i_fiyrdia, i_fiyrdb1, i_fiyrdb2, i_fiyrdb3, i_fiyrdb4, i_fiyrdb5, i_fiyrdb6, i_finnow, i_finfut)
   education_vars   <- Hmisc::Cs(i_hiqual_dv)
   health_vars      <- Hmisc::Cs(i_health, i_aidhh, i_sclfsat1, i_sclfsato, i_sf12pcs_dv, i_sf12mcs_dv,
-                                i_scsf1, i_scsf2a, i_scsf2b, i_scsf3a, i_scsf3b, i_scsf4a, i_scsf4b, i_scsf5, i_scsf6a, i_scsf6b, i_scsf6c, i_scsf7)
+                                i_scsf1, i_scsf2a, i_scsf2b, i_scsf3a, i_scsf3b, i_scsf4a, i_scsf4b, i_scsf5, i_scsf6a, i_scsf6b, i_scsf6c, i_scsf7,
+                                i_scghq1_dv,i_scghq2_dv)
   preg_vars        <- Hmisc::Cs(i_preg,
                                 i_pregout1, i_pregend1, i_pregsmoke1, i_smkmnth11, i_smkmnth21, i_smkmnth31, i_pregsmk11, i_pregsmk21, i_pregsmk31, i_aedrof1, i_aepuwk1, i_aepuda1, i_lchmulti1,
                                 i_pregout2, i_pregend2, i_pregsmoke2, i_smkmnth12, i_smkmnth22, i_smkmnth32, i_pregsmk12, i_pregsmk22, i_pregsmk32, i_aedrof2, i_aepuwk2, i_aepuda2, i_lchmulti2,
@@ -136,6 +137,7 @@ ukhls_read_wave9 <- function(
                          ## health variables
                          "i_health","i_aidhh","i_sclfsat1","i_sclfsato","i_sf12pcs_dv","i_sf12mcs_dv",
                          "i_scsf1","i_scsf2a","i_scsf2b","i_scsf3a","i_scsf3b","i_scsf4a","i_scsf4b","i_scsf5","i_scsf6a","i_scsf6b","i_scsf6c","i_scsf7",
+                         "i_scghq1_dv","i_scghq2_dv",
                          ## pregnancy variables
                          "i_preg",
                          "i_pregout1","i_pregend1","i_pregsmoke1","i_smkmnth11","i_smkmnth21","i_smkmnth31","i_pregsmk11","i_pregsmk21","i_pregsmk31","i_aedrof1","i_aepuwk1","i_aepuda1","i_lchmulti1",
@@ -190,6 +192,7 @@ ukhls_read_wave9 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## pregnancy variables
                          "preg",
                          "pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrnk_freq1","pregdrnk_unitpw1","pregdrnk_unit1","lchmulti1",

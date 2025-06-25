@@ -79,7 +79,8 @@ ukhls_read_wave11 <- function(
   education_vars   <- Hmisc::Cs(k_hiqual_dv)
   health_vars      <- Hmisc::Cs(k_health, k_aidhh, k_sclfsat1, k_sclfsato, k_sf12pcs_dv, k_sf12mcs_dv,
                                 k_scsf1, k_scsf2a, k_scsf2b, k_scsf3a, k_scsf3b, k_scsf4a, k_scsf4b, k_scsf5, k_scsf6a,
-                                k_scsf6b, k_scsf6c, k_scsf7)
+                                k_scsf6b, k_scsf6c, k_scsf7,
+                                k_scghq1_dv,k_scghq2_dv)
   health_cond_vars <- Hmisc::Cs(k_hconds01, k_hconds03, k_hconds04, k_hconds05, k_hconds08,
                                 k_hconds10, k_hconds11, k_hconds12, k_hconds15, k_hconds16,
                                 k_hconds21, k_hconds23, k_hconds24, k_hconds25, k_hconds26, k_hconds27, k_hconds28, k_hconds29,
@@ -149,6 +150,7 @@ ukhls_read_wave11 <- function(
                          ## health variables
                          "k_health","k_aidhh","k_sclfsat1","k_sclfsato","k_sf12pcs_dv","k_sf12mcs_dv",
                          "k_scsf1","k_scsf2a","k_scsf2b","k_scsf3a","k_scsf3b","k_scsf4a","k_scsf4b","k_scsf5","k_scsf6a","k_scsf6b","k_scsf6c","k_scsf7",
+                         "k_scghq1_dv","k_scghq2_dv",
                          ## health condition variables
                          "k_hconds01", "k_hconds03", "k_hconds04", "k_hconds05", "k_hconds08",
                          "k_hconds10", "k_hconds11", "k_hconds12", "k_hconds15", "k_hconds16",
@@ -215,6 +217,7 @@ ukhls_read_wave11 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## health condition variables
                          "hconds01", "hconds03", "hconds04", "hconds05", "hconds08",
                          "hconds10", "hconds11", "hconds12", "hconds15", "hconds16",

@@ -77,7 +77,8 @@ ukhls_read_wave2 <- function(
   hhfinance_vars   <- Hmisc::Cs(b_fiyrdia, b_fiyrdb1, b_fiyrdb2, b_fiyrdb3, b_fiyrdb4, b_fiyrdb5, b_fiyrdb6, b_finnow, b_finfut)
   education_vars   <- Hmisc::Cs(b_hiqual_dv)
   health_vars      <- Hmisc::Cs(b_health, b_aidhh, b_sclfsat1, b_sclfsato, b_sf12pcs_dv, b_sf12mcs_dv,
-                                b_scsf1, b_scsf2a, b_scsf2b, b_scsf3a, b_scsf3b, b_scsf4a, b_scsf4b, b_scsf5, b_scsf6a, b_scsf6b, b_scsf6c, b_scsf7)
+                                b_scsf1, b_scsf2a, b_scsf2b, b_scsf3a, b_scsf3b, b_scsf4a, b_scsf4b, b_scsf5, b_scsf6a, b_scsf6b, b_scsf6c, b_scsf7,
+                                b_scghq1_dv,b_scghq2_dv)
   preg_vars        <- Hmisc::Cs(b_preg, b_pregout1, b_pregend1, b_pregsmoke1, b_smkmnth11, b_smkmnth21, b_smkmnth31, b_pregsmk11, b_pregsmk21, b_pregsmk31, b_pregdrink1, b_lchmulti1,
                                 b_pregout2, b_pregend2, b_pregsmoke2, b_smkmnth12, b_smkmnth22, b_smkmnth32, b_pregsmk12, b_pregsmk22, b_pregsmk32, b_pregdrink2, b_lchmulti2,
                                 b_pregout3, b_pregend3, b_pregsmoke3, b_smkmnth13, b_smkmnth23, b_smkmnth33, b_pregsmk13, b_pregsmk23, b_pregsmk33, b_pregdrink3, b_lchmulti3,
@@ -133,6 +134,7 @@ ukhls_read_wave2 <- function(
                          ## health variables
                          "b_health","b_aidhh","b_sclfsat1","b_sclfsato","b_sf12pcs_dv","b_sf12mcs_dv",
                          "b_scsf1","b_scsf2a","b_scsf2b","b_scsf3a","b_scsf3b","b_scsf4a","b_scsf4b","b_scsf5","b_scsf6a","b_scsf6b","b_scsf6c","b_scsf7",
+                         "b_scghq1_dv","b_scghq2_dv",
                          ## pregnancy variables
                          "b_preg","b_pregout1","b_pregend1","b_pregsmoke1","b_smkmnth11","b_smkmnth21","b_smkmnth31","b_pregsmk11","b_pregsmk21","b_pregsmk31","b_pregdrink1","b_lchmulti1",
                          "b_pregout2","b_pregend2","b_pregsmoke2","b_smkmnth12","b_smkmnth22","b_smkmnth32","b_pregsmk12","b_pregsmk22","b_pregsmk32","b_pregdrink2","b_lchmulti2",
@@ -183,6 +185,7 @@ ukhls_read_wave2 <- function(
                          ## health variables
                          "lt_sick","caring","health_satisf","life_satisf","sf12_pcs","sf12_mcs",
                          "sf1","sf2a","sf2b","sf3a","sf3b","sf4a","sf4b","sf5","sf6a","sf6b","sf6c","sf7",
+                         "ghq1","ghq2",
                          ## pregnancy variables
                          "preg","pregout1","pregend1","pregsmoke1","smkmnth11","smkmnth21","smkmnth31","pregsmk_ncigs11","pregsmk_ncigs21","pregsmk_ncigs31","pregdrink1","lchmulti1",
                          "pregout2","pregend2","pregsmoke2","smkmnth12","smkmnth22","smkmnth32","pregsmk_ncigs12","pregsmk_ncigs22","pregsmk_ncigs32","pregdrink2","lchmulti2",
