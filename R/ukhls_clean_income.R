@@ -9,19 +9,29 @@
 #' @export
 ukhls_clean_income <- function(data = NULL) {
 
+  data[, income_net := fimnnet_dv]
+  data[, income_grs := fimngrs_dv]
+
+  data[, lab_income_net  := fimnlabnet_dv]
+  data[, misc_income_net := fimnmisc_dv]
+  data[, priv_income_net := fimnprben_dv]
+  data[, inv_income_net  := fimninvnet_dv]
+  data[, pens_income_net := fimnpen_dv]
+  data[, ben_income_net  := fimnsben_dv]
+
 
   ##################
   ## RETAIN THE CLEANED VARIABLES
 
   final_data <- data[, c("pidp", "id", "hidp", "wave_no",
-                         "fimnnet_dv", "fimngrs_dv",
-                         "fimnlabnet_dv", "fimnmisc_dv", "fimnprben_dv",
-                         "fimninvnet_dv", "fimnpen_dv", "fimnsben_dv")]
+                         "income_net", "income_grs",
+                         "lab_income_net", "misc_income_net", "priv_income_net",
+                         "inv_income_net", "pens_income_net", "ben_income_net")]
 
 
-  var_names <- c("fimnnet_dv", "fimngrs_dv",
-                 "fimnlabnet_dv", "fimnmisc_dv", "fimnprben_dv",
-                 "fimninvnet_dv", "fimnpen_dv", "fimnsben_dv")
+  var_names <- c("income_net", "income_grs",
+                 "lab_income_net", "misc_income_net", "priv_income_net",
+                 "inv_income_net", "pens_income_net", "ben_income_net")
 
   setnames(final_data, var_names, paste0("y_", var_names))
 
